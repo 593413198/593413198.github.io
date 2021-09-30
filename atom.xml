@@ -3,11 +3,11 @@
   <title>Luhao&#39;s Wiki</title>
   
   <subtitle>luhao wiki</subtitle>
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="http://luhao.wiki/"/>
   <updated>2021-09-30T22:54:31.626Z</updated>
-  <id>http://example.com/</id>
+  <id>http://luhao.wiki/</id>
   
   <author>
     <name>Luhao</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>写给三年内的技术成长目标</title>
-    <link href="http://example.com/2021/10/01/%E5%86%99%E7%BB%99%E4%B8%89%E5%B9%B4%E5%86%85%E7%9A%84%E6%8A%80%E6%9C%AF%E6%88%90%E9%95%BF%E7%9B%AE%E6%A0%87/"/>
-    <id>http://example.com/2021/10/01/%E5%86%99%E7%BB%99%E4%B8%89%E5%B9%B4%E5%86%85%E7%9A%84%E6%8A%80%E6%9C%AF%E6%88%90%E9%95%BF%E7%9B%AE%E6%A0%87/</id>
+    <link href="http://luhao.wiki/2021/10/01/%E5%86%99%E7%BB%99%E4%B8%89%E5%B9%B4%E5%86%85%E7%9A%84%E6%8A%80%E6%9C%AF%E6%88%90%E9%95%BF%E7%9B%AE%E6%A0%87/"/>
+    <id>http://luhao.wiki/2021/10/01/%E5%86%99%E7%BB%99%E4%B8%89%E5%B9%B4%E5%86%85%E7%9A%84%E6%8A%80%E6%9C%AF%E6%88%90%E9%95%BF%E7%9B%AE%E6%A0%87/</id>
     <published>2021-09-30T22:52:16.000Z</published>
     <updated>2021-09-30T22:54:31.626Z</updated>
     
@@ -35,15 +35,15 @@
     
     
     
-    <category term="随笔" scheme="http://example.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="http://luhao.wiki/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
   </entry>
   
   <entry>
     <title>这是第一篇测试blog</title>
-    <link href="http://example.com/2021/10/01/%E8%BF%99%E6%98%AF%E7%AC%AC%E4%B8%80%E7%AF%87%E6%B5%8B%E8%AF%95blog/"/>
-    <id>http://example.com/2021/10/01/%E8%BF%99%E6%98%AF%E7%AC%AC%E4%B8%80%E7%AF%87%E6%B5%8B%E8%AF%95blog/</id>
+    <link href="http://luhao.wiki/2021/10/01/%E8%BF%99%E6%98%AF%E7%AC%AC%E4%B8%80%E7%AF%87%E6%B5%8B%E8%AF%95blog/"/>
+    <id>http://luhao.wiki/2021/10/01/%E8%BF%99%E6%98%AF%E7%AC%AC%E4%B8%80%E7%AF%87%E6%B5%8B%E8%AF%95blog/</id>
     <published>2021-09-30T22:48:28.000Z</published>
     <updated>2021-09-30T22:49:01.865Z</updated>
     
@@ -57,7 +57,7 @@
     
     
     
-    <category term="test" scheme="http://example.com/categories/test/"/>
+    <category term="test" scheme="http://luhao.wiki/categories/test/"/>
     
     
   </entry>
