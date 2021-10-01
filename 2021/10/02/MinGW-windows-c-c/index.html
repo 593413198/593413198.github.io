@@ -3,21 +3,27 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Archive: 2021/9 | Luhao&#39;s Wiki</title>
+    <title>MinGW: windows c/c++ | Luhao&#39;s Wiki</title>
     
     
-        <meta name="keywords" content="Luhao&#39;s Wiki" />
+        <meta name="keywords" content="C,C++" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Just for Learing">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Luhao&#39;s Wiki">
-<meta property="og:url" content="http://luhao.wiki/archives/2021/09/index.html">
+    <meta name="description" content="概要 MinGW (Minimalist GNU&#x2F;GCC for Windows) 是专为Win32移植的产物 换言之，Linux C才是主流！    Windows MinGW环境搭建 首先安利一波MSYS2(Minial SYStem 2 ) 它集成了一系列标准Linux工具，当然包含clang和gcc; 其实有很多类似的Shell: Cygwin, WSL... msys2.org给出了详细">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MinGW: windows c&#x2F;c++">
+<meta property="og:url" content="http://luhao.wiki/2021/10/02/MinGW-windows-c-c/index.html">
 <meta property="og:site_name" content="Luhao&#39;s Wiki">
-<meta property="og:description" content="Just for Learing">
+<meta property="og:description" content="概要 MinGW (Minimalist GNU&#x2F;GCC for Windows) 是专为Win32移植的产物 换言之，Linux C才是主流！    Windows MinGW环境搭建 首先安利一波MSYS2(Minial SYStem 2 ) 它集成了一系列标准Linux工具，当然包含clang和gcc; 其实有很多类似的Shell: Cygwin, WSL... msys2.org给出了详细">
 <meta property="og:locale">
+<meta property="og:image" content="http://www.luhao.wiki/images/gcc-O.png">
+<meta property="article:published_time" content="2021-10-01T17:37:28.000Z">
+<meta property="article:modified_time" content="2021-10-01T18:36:11.987Z">
 <meta property="article:author" content="Luhao">
+<meta property="article:tag" content="C">
+<meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.luhao.wiki/images/gcc-O.png">
     
 
     
@@ -176,13 +182,13 @@
         
         
          <ul class="unstyled" id="tree" style="display: block;"> 
-                    <li class="directory">
+                    <li class="directory open">
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder-open"></i>
                             &nbsp;
                             C/C++
                         </a>
-                         <ul class="unstyled" id="tree" style="display: block;">  <li class="file"><a href="/2021/10/02/MinGW-windows-c-c/">MinGW: windows c/c++</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" style="display: block;">  <li class="file active"><a href="/2021/10/02/MinGW-windows-c-c/">MinGW: windows c/c++</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -273,52 +279,139 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><div class="timeline timeline-wrap">
-    
-            <div class="timeline-row timeline-row-major">
-                <span class="node"><i class="fa fa-calendar-o"></i></span>
-                <h1 class="title"><a href="/archives/2021/">2021</a></h1>
-            </div>
-    
-            <div class="timeline-row timeline-row-major">
-                <span class="node"><i class="fa fa-calendar"></i></span>
-                <h1 class="title"><a href="/archives/2021/09/">2021-09</a><span class="archive-list-count">1</span></h1>
-            </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-MinGW-windows-c-c" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
                 
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2021/09/30/markdown-test-blog/">markdown: test blog</a>
-        </h1>
-    
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/C-C/">C/C++</a>
+    </div>
 
-                
-                <div class="article-meta">
-                    
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/C/" rel="tag">C</a>, <a class="tag-link-link" href="/tags/C/" rel="tag">C++</a>
+    </div>
+
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2021/09/30/markdown-test-blog/">
-            <time datetime="2021-09-30T03:22:13.000Z" itemprop="datePublished">2021-09-30</time>
+        <a href="/2021/10/02/MinGW-windows-c-c/">
+            <time datetime="2021-10-01T17:37:28.000Z" itemprop="datePublished">2021-10-02</time>
         </a>
     </div>
 
 
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
-    </div>
-
-                    
-                </div>
+                        
+                            <!-- <i class="fa fa-bar-chart"></i> -->
+                            <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
+                            <span class="post-count">
+                                | 字数统计180字 
+                              </span>
+                              <span class="post-count">
+                                | 阅读时长1分钟 
+                              </span>
+                        
+                        
+                    </div>
                 
-            </div>
-        </div>
+                
     
+        <h1 class="article-title" itemprop="name">
+            MinGW: windows c/c++
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#windows-mingw%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">1.</span> <span class="toc-text"> Windows MinGW环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gccg-manuals"><span class="toc-number">2.</span> <span class="toc-text"> gcc&#x2F;g++ manuals</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">3.</span> <span class="toc-text"> 参考资料</span></a></li></ol>
+                </div>
+            
+        
+        
+            <div class="admonition note"><p class="admonition-title">概要
+</p><p><strong>MinGW</strong> <em>(Minimalist GNU/GCC for Windows)</em> 是专为Win32移植的产物
+换言之，<strong>Linux C</strong>才是主流！</p>
 </div>
+<hr />
+<h2 id="windows-mingw环境搭建"><a class="markdownIt-Anchor" href="#windows-mingw环境搭建"></a> Windows MinGW环境搭建</h2>
+<p>首先安利一波<a target="_blank" rel="noopener" href="https://www.msys2.org/"><strong>MSYS2</strong>(Minial SYStem 2 )</a><br />
+它集成了一系列标准Linux工具，当然包含clang和gcc;<br />
+其实有很多类似的Shell: <code>Cygwin, WSL...</code></p>
+<p><a href="msys2.org">msys2.org</a>给出了详细的安装指南~</p>
+<h2 id="gccg-manuals"><a class="markdownIt-Anchor" href="#gccg-manuals"></a> gcc/g++ manuals</h2>
+<p>这不禁让我想起大学刚接触linux c的开发情景；<br />
+<code>gcc --help</code> : 多使用help or <a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/gcc.1.html">Linux Manul</a></p>
+<div class="admonition info"><p class="admonition-title">Syntax
+</p><p>gcc [-c|-S|-E] [-std=standard] [-Wall] [-o &lt;file&gt;]</p>
+</div>
+<p><code>-c</code>: Compile and assemble, not link<br />
+<code>-S</code>: Compile only<br />
+<code>-E</code>: Preprocess only, not compile, assemable or link<br />
+<code>-std</code>: standard, c11, c20<br />
+<code>-o</code>: output filename<br />
+<code>-O0</code>: Optimization, <a target="_blank" rel="noopener" href="https://www.rapidtables.com/code/linux/gcc/gcc-o.html">watch this: gcc -o / -O options</a></p>
+<ul>
+<li>gcc -O不同优化的区别？<br />
+<img src="http://www.luhao.wiki/images/gcc-O.png" alt="" /></li>
+</ul>
+<div class="admonition note"><p class="admonition-title">Note</p><p>for test</p>
+</div>
+<h2 id="参考资料"><a class="markdownIt-Anchor" href="#参考资料"></a> 参考资料</h2>
+<blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/MinGW">MinGW</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.msys2.org/">MSYS2</a></li>
+<li><a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/gcc.1.html">gcc manual</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.rapidtables.com/code/linux/gcc/gcc-o.html">gcc -o / -O</a></li>
+</ul>
+</blockquote>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+    
+        <a href="/2021/10/01/hexo-a-blog-framework/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title"></div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
 </section>
         </div>
         <footer id="footer">
