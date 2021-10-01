@@ -176,9 +176,9 @@
     <link href="http://luhao.wiki/2021/09/30/Todo-list-%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92/"/>
     <id>http://luhao.wiki/2021/09/30/Todo-list-%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92/</id>
     <published>2021-09-30T02:43:35.000Z</published>
-    <updated>2021-10-01T21:57:08.218Z</updated>
+    <updated>2021-10-01T21:59:42.523Z</updated>
     
-    <content type="html"><![CDATA[<div class="admonition todo"><p class="admonition-title">一些规划</p><p>折腾了几日，发现<code>css web</code>的前端开发很是有趣！<br>发现了很多有意思的开源插件，~~<em>顺手修复了不少bug</em>~~ <br>目前<code>v1.0</code>的外观和功能仍差强人意，同志仍需努力！</p></div><hr /><h2 id="关于外观"><a class="markdownIt-Anchor" href="#关于外观"></a> 关于外观</h2><p><strong>对着一个丑不拉几的博客，你有动力<s>每天</s> 每周写下去吗？</strong></p><p>主要围绕以下几块方向作美化：</p><h4 id="markdown表现力"><a class="markdownIt-Anchor" href="#markdown表现力"></a> Markdown表现力</h4><p><code>hexo-admonition</code> : 实现丰富显目的提示内容<br /><img src="http://www.luhao.wiki/images/admonition.png" alt="" /></p>]]></content>
+    <content type="html"><![CDATA[<div class="admonition todo"><p class="admonition-title">一些规划</p><p>折腾了几日，发现<code>css web</code>的前端开发很是有趣！<br>发现了很多有意思的开源插件，~~<em>顺手修复了不少bug</em>~~ <br>目前<code>v1.0</code>的外观和功能仍差强人意，同志仍需努力！</p></div><hr /><h2 id="关于外观"><a class="markdownIt-Anchor" href="#关于外观"></a> 关于外观</h2><p><strong>对着一个丑不拉几的博客，你有动力<s>每天</s> 每周写下去吗？</strong></p><p>主要围绕以下几块方向作美化：</p><h4 id="markdown表现力"><a class="markdownIt-Anchor" href="#markdown表现力"></a> Markdown表现力</h4><p><code>hexo-admonition</code> : 实现丰富显目的提示内容<br /><img src="http://www.luhao.wiki/images/admonition.png" width="200" height="150"></p>]]></content>
     
     
       
