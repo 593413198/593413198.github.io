@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-10-01T18:39:08.563Z</updated>
+  <updated>2021-10-01T18:42:04.818Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -20,8 +20,8 @@
     <title>MinGW: windows c/c++</title>
     <link href="http://luhao.wiki/2021/10/02/MinGW-windows-c-c/"/>
     <id>http://luhao.wiki/2021/10/02/MinGW-windows-c-c/</id>
-    <published>2021-10-01T17:37:28.000Z</published>
-    <updated>2021-10-01T18:39:08.563Z</updated>
+    <published>2021-10-01T16:37:28.000Z</published>
+    <updated>2021-10-01T18:42:04.818Z</updated>
     
     <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p><strong>MinGW</strong> <em>(Minimalist GNU/GCC for Windows)</em> 是专为Win32移植的产物；换言之，<strong>Linux C</strong>才是主流！</p></div><hr /><h2 id="windows-mingw环境搭建"><a class="markdownIt-Anchor" href="#windows-mingw环境搭建"></a> Windows MinGW环境搭建</h2><p>首先安利一波<a href="https://www.msys2.org/"><strong>MSYS2</strong>(Minial SYStem 2 )</a><br />它集成了一系列标准Linux工具，当然包含clang和gcc;<br />其实有很多类似的Shell: <code>Cygwin, WSL...</code></p><p><a href="msys2.org">msys2.org</a>给出了详细的安装指南~</p><h2 id="gccg-manuals"><a class="markdownIt-Anchor" href="#gccg-manuals"></a> gcc/g++ manuals</h2><p>这不禁让我想起大学刚接触linux c的开发情景；<br /><code>gcc --help</code> : 多使用help or <a href="https://man7.org/linux/man-pages/man1/gcc.1.html">Linux Manul</a></p><div class="admonition info"><p class="admonition-title">Syntax</p><p>gcc [-c|-S|-E] [-std=standard] [-Wall] [-o &lt;file&gt;]</p></div><p><code>-c</code>: Compile and assemble, not link<br /><code>-S</code>: Compile only<br /><code>-E</code>: Preprocess only, not compile, assemable or link<br /><code>-std</code>: standard, c11, c20<br /><code>-o</code>: output filename<br /><code>-O0</code>: Optimization, <a href="https://www.rapidtables.com/code/linux/gcc/gcc-o.html">watch this: gcc -o / -O options</a></p><ul><li>gcc -O不同优化的区别？<br /><img src="http://www.luhao.wiki/images/gcc-O.png" alt="" /></li></ul><div class="admonition note"><p class="admonition-title">Note</p><p>for test</p></div><h2 id="参考资料"><a class="markdownIt-Anchor" href="#参考资料"></a> 参考资料</h2><blockquote><ul><li><a href="https://zh.wikipedia.org/wiki/MinGW">MinGW</a></li><li><a href="https://www.msys2.org/">MSYS2</a></li><li><a href="https://man7.org/linux/man-pages/man1/gcc.1.html">gcc manual</a></li><li><a href="https://www.rapidtables.com/code/linux/gcc/gcc-o.html">gcc -o / -O</a></li></ul></blockquote>]]></content>
     
