@@ -6,22 +6,24 @@
     <title>MinGW: windows c/c++ | Luhao&#39;s Blog</title>
     
     
-        <meta name="keywords" content="C,C++" />
+        <meta name="keywords" content="C,C++,linux,游戏" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="概要 MinGW (Minimalist GNU&#x2F;GCC for Windows) 是专为Win32移植的产物； 换言之，Linux C才是主流！    Windows MinGW环境搭建 首先安利一波MSYS2(Minial SYStem 2 ) 它集成了一系列标准Linux工具，当然包含clang和gcc; 其实有很多类似的Shell: Cygwin, WSL... msys2.org给出了详">
+    <meta name="description" content="概要 MinGW (Minimalist GNU&#x2F;GCC for Windows) 是专为Win32移植的产物 换言之，Linux C才是主流！   游戏  Windows MinGW环境搭建 首先安利一波MSYS2(Minial SYStem 2 ) 它集成了一系列标准Linux工具，当然包含clang和gcc; 其实有很多类似的Shell: Cygwin, WSL... msys2.org给出">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MinGW: windows c&#x2F;c++">
-<meta property="og:url" content="http://luhao.wiki/2021/10/02/MinGW-windows-c-c/index.html">
+<meta property="og:url" content="http://luhao.wiki/2021/10/02/C-C++/MinGW-windows-c-c/index.html">
 <meta property="og:site_name" content="Luhao&#39;s Blog">
-<meta property="og:description" content="概要 MinGW (Minimalist GNU&#x2F;GCC for Windows) 是专为Win32移植的产物； 换言之，Linux C才是主流！    Windows MinGW环境搭建 首先安利一波MSYS2(Minial SYStem 2 ) 它集成了一系列标准Linux工具，当然包含clang和gcc; 其实有很多类似的Shell: Cygwin, WSL... msys2.org给出了详">
+<meta property="og:description" content="概要 MinGW (Minimalist GNU&#x2F;GCC for Windows) 是专为Win32移植的产物 换言之，Linux C才是主流！   游戏  Windows MinGW环境搭建 首先安利一波MSYS2(Minial SYStem 2 ) 它集成了一系列标准Linux工具，当然包含clang和gcc; 其实有很多类似的Shell: Cygwin, WSL... msys2.org给出">
 <meta property="og:locale">
 <meta property="og:image" content="http://www.luhao.wiki/images/gcc-O.png">
 <meta property="article:published_time" content="2021-10-01T16:37:28.000Z">
-<meta property="article:modified_time" content="2021-10-01T18:43:01.187Z">
+<meta property="article:modified_time" content="2021-10-01T20:02:15.990Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content="C++">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="游戏">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://www.luhao.wiki/images/gcc-O.png">
     
@@ -100,7 +102,7 @@
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -119,10 +121,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Entradas',
+            POSTS: 'Posts',
             PAGES: 'Pages',
-            CATEGORIES: 'Categorias',
-            TAGS: 'Etiquetas',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
             UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/',
@@ -155,7 +157,7 @@
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
     </div>
 
                 </td>
@@ -172,7 +174,7 @@
         
     <div class="widget-wrap" id='categories'>
         <h3 class="widget-title">
-            <span>Categorias</span>
+            <span>categories</span>
             &nbsp;
             <a id='allExpand' href="#">
                 <i class="fa fa-angle-double-up fa-2x"></i>
@@ -188,16 +190,16 @@
                             &nbsp;
                             C/C++
                         </a>
-                         <ul class="unstyled" id="tree" style="display: block;">  <li class="file active"><a href="/2021/10/02/MinGW-windows-c-c/">MinGW: windows c/c++</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" style="display: block;">  <li class="file active"><a href="/2021/10/02/C-C++/MinGW-windows-c-c/">MinGW: windows c/c++</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder-open"></i>
                             &nbsp;
-                            工具
+                            开发工具
                         </a>
-                         <ul class="unstyled" id="tree" style="display: block;">  <li class="file"><a href="/2021/09/30/markdown-test-blog/">markdown: test blog</a></li>  <li class="file"><a href="/2021/10/01/vim-the-best-editor/">vim: the best editor</a></li>  <li class="file"><a href="/2021/10/01/hexo-a-blog-framework/">hexo: a blog framework</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" style="display: block;">  <li class="file"><a href="/2021/09/30/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/markdown-test-blog/">markdown: test blog</a></li>  <li class="file"><a href="/2021/10/01/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/vim-the-best-editor/">vim: the best editor</a></li>  <li class="file"><a href="/2021/10/01/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/hexo-a-blog-framework/">hexo: a blog framework</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -206,7 +208,7 @@
                             &nbsp;
                             随笔
                         </a>
-                         <ul class="unstyled" id="tree" style="display: block;">  <li class="file"><a href="/2021/10/01/%E5%86%99%E7%BB%99%E4%B8%89%E5%B9%B4%E5%86%85%E7%9A%84%E6%8A%80%E6%9C%AF%E6%88%90%E9%95%BF%E7%9B%AE%E6%A0%87/">写给三年内的技术成长目标</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" style="display: block;">  <li class="file"><a href="/2021/10/01/%E9%9A%8F%E7%AC%94/%E5%86%99%E7%BB%99%E4%B8%89%E5%B9%B4%E5%86%85%E7%9A%84%E6%8A%80%E6%9C%AF%E6%88%90%E9%95%BF%E7%9B%AE%E6%A0%87/">写给三年内的技术成长目标</a></li>  </ul> 
                     </li> 
                      </ul> 
     </div>
@@ -276,10 +278,19 @@
     </script>
 
     
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title"><span>tag cloud</span></h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C/" style="font-size: 20px;">C</a> <a href="/tags/C/" style="font-size: 17px;">C++</a> <a href="/tags/Java/" style="font-size: 14px;">Java</a> <a href="/tags/hexo/" style="font-size: 17px;">hexo</a> <a href="/tags/linux/" style="font-size: 17px;">linux</a> <a href="/tags/markdown/" style="font-size: 14px;">markdown</a> <a href="/tags/vim/" style="font-size: 17px;">vim</a> <a href="/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 14px;">游戏</a>
+        </div>
+    </div>
+
+    
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="post-MinGW-windows-c-c" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-C-C++/MinGW-windows-c-c" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -295,13 +306,13 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/C/" rel="tag">C</a>, <a class="tag-link-link" href="/tags/C/" rel="tag">C++</a>
+        <a class="tag-link-link" href="/tags/C/" rel="tag">C</a>, <a class="tag-link-link" href="/tags/C/" rel="tag">C++</a>, <a class="tag-link-link" href="/tags/linux/" rel="tag">linux</a>, <a class="tag-link-link" href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag">游戏</a>
     </div>
 
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2021/10/02/MinGW-windows-c-c/">
+        <a href="/2021/10/02/C-C++/MinGW-windows-c-c/">
             <time datetime="2021-10-01T16:37:28.000Z" itemprop="datePublished">2021-10-02</time>
         </a>
     </div>
@@ -311,7 +322,7 @@
                             <!-- <i class="fa fa-bar-chart"></i> -->
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                             <span class="post-count">
-                                | 字数统计178字 
+                                | 字数统计191字 
                               </span>
                               <span class="post-count">
                                 | 阅读时长1分钟 
@@ -335,37 +346,43 @@
         
             
                 <div id="toc" class="toc-article">
-                <strong class="toc-title">Catálogo</strong>
+                <strong class="toc-title">Catalogue</strong>
                     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#windows-mingw%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">1.</span> <span class="toc-text"> Windows MinGW环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gccg-manuals"><span class="toc-number">2.</span> <span class="toc-text"> gcc&#x2F;g++ manuals</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">3.</span> <span class="toc-text"> 参考资料</span></a></li></ol>
                 </div>
             
         
         
             <div class="admonition note"><p class="admonition-title">概要
-</p><p><strong>MinGW</strong> <em>(Minimalist GNU/GCC for Windows)</em> 是专为Win32移植的产物；
+</p><p><strong>MinGW</strong> <em>(Minimalist GNU/GCC for Windows)</em> 是专为Win32移植的产物<br>
 换言之，<strong>Linux C</strong>才是主流！</p>
 </div>
 <hr />
+<p>游戏</p>
 <h2 id="windows-mingw环境搭建"><a class="markdownIt-Anchor" href="#windows-mingw环境搭建"></a> Windows MinGW环境搭建</h2>
 <p>首先安利一波<a target="_blank" rel="noopener" href="https://www.msys2.org/"><strong>MSYS2</strong>(Minial SYStem 2 )</a><br />
 它集成了一系列标准Linux工具，当然包含clang和gcc;<br />
 其实有很多类似的Shell: <code>Cygwin, WSL...</code></p>
 <p><a href="msys2.org">msys2.org</a>给出了详细的安装指南~</p>
+<hr />
 <h2 id="gccg-manuals"><a class="markdownIt-Anchor" href="#gccg-manuals"></a> gcc/g++ manuals</h2>
 <p>这不禁让我想起大学刚接触linux c的开发情景；<br />
-<code>gcc --help</code> : 多使用help or <a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/gcc.1.html">Linux Manul</a></p>
+<code>gcc --help</code> : 多使用help or <a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/gcc.1.html">Linux Manul 😄</a></p>
 <div class="admonition info"><p class="admonition-title">Syntax
 </p><p><strong>gcc [-c|-S|-E] [-std=standard] [-Wall] [-o &lt;file&gt;]</strong></p>
 </div>
-<p><code>-c</code>: Compile and assemble, not link<br />
+<p><code>-c</code>: Compile and assemble, not link ★<br />
 <code>-S</code>: Compile only<br />
 <code>-E</code>: Preprocess only, not compile, assemable or link<br />
-<code>-std</code>: standard, c11, c20<br />
+<code>-std</code>: standard, c11, c20 ★<br />
+<code>-Wall</code>: treat all Warnings as Error ★<br />
 <code>-o</code>: output filename<br />
-<code>-O0</code>: Optimization, <a target="_blank" rel="noopener" href="https://www.rapidtables.com/code/linux/gcc/gcc-o.html">watch this: gcc -o / -O options</a></p>
+<code>-O0</code>: Optimization, <a target="_blank" rel="noopener" href="https://www.rapidtables.com/code/linux/gcc/gcc-o.html">watch this: gcc -o / -O options</a> ★</p>
 <ul>
 <li><strong>gcc -O不同优化的区别？</strong></li>
 </ul>
+<hr />
+<div class="admonition todo"><p class="admonition-title">todo</p><p>未完待续</p>
+</div>
 <p><img src="http://www.luhao.wiki/images/gcc-O.png" alt="" /></p>
 <h2 id="参考资料"><a class="markdownIt-Anchor" href="#参考资料"></a> 参考资料</h2>
 <blockquote>
@@ -389,8 +406,8 @@
 <nav id="article-nav">
     
     
-        <a href="/2021/10/01/hexo-a-blog-framework/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Más viejo</strong>
+        <a href="/2021/10/01/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/hexo-a-blog-framework/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
             <div class="article-nav-title">hexo: a blog framework</div>
         </a>
     
@@ -416,14 +433,14 @@
     <div class="outer">
         <div id="footer-info" class="inner">
             Luhao &copy; 2021 
-            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
-            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
-            
+            <a rel="license noopener" target="_blank" href="https://github.com/593413198"><img alt="Creative Commons License" style="border-width:0" src="https://www.luhao.wiki/css/images/logo.png" width=16/></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            <!-- 
                 <br>
                 <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
                 &nbsp;|&nbsp;
                 <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
-            
+             -->
         </div>
     </div>
 </footer>

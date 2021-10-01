@@ -1220,7 +1220,7 @@ div .article-more-link {
   margin-right: -2px;
 }
 .article-nav-title {
-  font-size: 0.85em;
+  font-size: 1.5em;
   margin-top: 0.5em;
   color: #565a5f;
   line-height: 1.6em;
@@ -1452,7 +1452,7 @@ ol.toc {
 .archive-category-wrap,
 .archive-tag-wrap,
 .layout-title {
-  font-size: 1.4em;
+  font-size: 1.5em;
   margin: 40px 0 20px 0;
 }
 @media screen and (max-width: 559px) {
@@ -1792,6 +1792,9 @@ ol.toc {
   word-wrap: break-word;
   font-size: 0.9em;
 }
+.widget.tagcloud > a {
+  color: #1d95c3;
+}
 .widget ul,
 .widget ol {
   list-style: none;
@@ -1831,9 +1834,11 @@ ol.toc {
 .tagcloud a {
   display: inline-block;
   margin-right: 10px;
+  font-weight: bold;
+  font-size: 0.85em;
 }
 .tagcloud a:before {
-  content: "#";
+  content: "";
 }
 .widget-wrap {
   margin: 40px 0;
@@ -2102,6 +2107,7 @@ ol.toc {
 }
 #categories li.file.active > a {
   font-weight: bold;
+  color: #333;
 }
 #categories li li.file {
   padding-left: 10px;
