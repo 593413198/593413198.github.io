@@ -8,3 +8,5 @@ Disallow: /css/
 Disallow: /vendor/
 Disallow: /content.json
 Disallow: /404.html
+
+Sitemap: http://luhao.wiki/sitemap.xml
