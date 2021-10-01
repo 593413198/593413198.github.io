@@ -163,11 +163,11 @@
     
     <category term="C" scheme="http://luhao.wiki/tags/C/"/>
     
+    <category term="markdown" scheme="http://luhao.wiki/tags/markdown/"/>
+    
     <category term="hexo" scheme="http://luhao.wiki/tags/hexo/"/>
     
     <category term="vim" scheme="http://luhao.wiki/tags/vim/"/>
-    
-    <category term="markdown" scheme="http://luhao.wiki/tags/markdown/"/>
     
   </entry>
   
@@ -176,9 +176,9 @@
     <link href="http://luhao.wiki/2021/09/30/Todo-list-%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92/"/>
     <id>http://luhao.wiki/2021/09/30/Todo-list-%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92/</id>
     <published>2021-09-30T02:43:35.000Z</published>
-    <updated>2021-10-01T21:59:42.523Z</updated>
+    <updated>2021-10-01T22:34:14.480Z</updated>
     
-    <content type="html"><![CDATA[<div class="admonition todo"><p class="admonition-title">一些规划</p><p>折腾了几日，发现<code>css web</code>的前端开发很是有趣！<br>发现了很多有意思的开源插件，~~<em>顺手修复了不少bug</em>~~ <br>目前<code>v1.0</code>的外观和功能仍差强人意，同志仍需努力！</p></div><hr /><h2 id="关于外观"><a class="markdownIt-Anchor" href="#关于外观"></a> 关于外观</h2><p><strong>对着一个丑不拉几的博客，你有动力<s>每天</s> 每周写下去吗？</strong></p><p>主要围绕以下几块方向作美化：</p><h4 id="markdown表现力"><a class="markdownIt-Anchor" href="#markdown表现力"></a> Markdown表现力</h4><p><code>hexo-admonition</code> : 实现丰富显目的提示内容<br /><img src="http://www.luhao.wiki/images/admonition.png" width="200" height="150"></p>]]></content>
+    <content type="html"><![CDATA[<div class="admonition todo"><p class="admonition-title">一些规划</p><p>折腾了几日，发现<code>css web</code>的前端开发很是有趣！<br>发现了很多有意思的开源插件，~~<em>顺手修复了不少bug</em>~~ <br>目前<code>v1.0</code>的外观和功能仍差强人意，同志仍需努力！</p></div><hr /><h2 id="关于外观"><a class="markdownIt-Anchor" href="#关于外观"></a> 关于外观</h2><p><strong>对着一个丑不拉几的博客，你有动力<s>每天</s> 每周写下去吗？</strong></p><p>主要围绕以下几块方向作美化：</p><h3 id="markdown表现力"><a class="markdownIt-Anchor" href="#markdown表现力"></a> Markdown表现力</h3><p><code>hexo-admonition</code> : 实现丰富显目的提示内容</p><div align=left><img  src="http://www.luhao.wiki/images/admonition.png" width="400" height="300"/></div><br><p><code>hexo-renderer-markdown-it-plus</code> : 支持emoji等render<br />😄  😏 😅 😂 😭 😱<br />⭐️ ✨ ❤️ ❗️ ❓ 🅰️ 🆚<br />👍 ✌️ 👇 👈 👉 💪</p><hr /><h2 id="关于功能"><a class="markdownIt-Anchor" href="#关于功能"></a> 关于功能</h2><p>一个健全的博客系统，包含但不局限与如下功能 （<s>有些实属是鸡肋啊</s>）</p><h3 id="1blog-render"><a class="markdownIt-Anchor" href="#1blog-render"></a> 1.blog render ★★★★★</h3><ul><li>博客的渲染支持</li></ul><h3 id="2article-manager"><a class="markdownIt-Anchor" href="#2article-manager"></a> 2.article manager ★★★★</h3><ul><li>文章的归类、标签、推荐等</li></ul><h3 id="3search-engine"><a class="markdownIt-Anchor" href="#3search-engine"></a> 3.search engine ★★★★</h3><ul><li>站内搜索，支持跳转等</li></ul><h3 id="4sitemap-for-baidugoogle"><a class="markdownIt-Anchor" href="#4sitemap-for-baidugoogle"></a> 4.sitemap for baidu/google… ★★★</h3><ul><li>外部搜索引擎的收录</li></ul><h3 id="5fast-response-and-site-security"><a class="markdownIt-Anchor" href="#5fast-response-and-site-security"></a> 5.fast-response and site security ★★</h3><ul><li>快速响应与安全性</li></ul><h3 id="6comment-and-share"><a class="markdownIt-Anchor" href="#6comment-and-share"></a> 6.comment and share ★</h3><ul><li>站内评论与分享</li></ul><hr /><h2 id="开发与改进计划"><a class="markdownIt-Anchor" href="#开发与改进计划"></a> 开发与改进计划</h2><div class="admonition todo"><p class="admonition-title">TODO: 站内搜索功能不够完善</p><ol><li>搜索命中有高亮，但辨识度不高；</li><li>搜索跳转只支持到文章标题；</li><li>搜索窗口很难用；</li></ol></div><div class="admonition todo"><p class="admonition-title">TODO: 不支持Google/Baidu的引擎收录</p></div><div class="admonition todo"><p class="admonition-title">TODO: 文章首页的TOC跳转布局页面过大</p></div><img src="http://www.luhao.wiki/images/todo.png" >]]></content>
     
     
       
@@ -193,9 +193,9 @@
     
     <category term="C" scheme="http://luhao.wiki/tags/C/"/>
     
-    <category term="hexo" scheme="http://luhao.wiki/tags/hexo/"/>
-    
     <category term="markdown" scheme="http://luhao.wiki/tags/markdown/"/>
+    
+    <category term="hexo" scheme="http://luhao.wiki/tags/hexo/"/>
     
   </entry>
   
