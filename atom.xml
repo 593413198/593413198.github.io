@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-10-02T18:07:49.232Z</updated>
+  <updated>2021-10-02T19:49:44.128Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://luhao.wiki/2021/10/03/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/VScode-useful-features-and-plugins/"/>
     <id>http://luhao.wiki/2021/10/03/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/VScode-useful-features-and-plugins/</id>
     <published>2021-10-02T16:28:40.000Z</published>
-    <updated>2021-10-02T18:07:49.232Z</updated>
+    <updated>2021-10-02T19:49:44.128Z</updated>
     
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p><strong>Visual Studio Code:</strong>  open-source, cross-platform, user-friendly <br>汇总一些实用的功能、插件，自己的环境和扩展功能</p></div><hr /><h2 id="写在最前面"><a class="markdownIt-Anchor" href="#写在最前面"></a> 写在最前面:</h2><p>开发工具是伴随每一个程序猿一生<s>到35岁</s>的东西，它的重要程度不亚于一门语言；<br />真正精通一门开发工具，从来不是简单记住几个快捷键而已! （试试时隔一个月再用它，还记得住乱七八糟的shortcut吗？）</p><p>为什么推荐VScode？<br />open-source意味着我们可以<s>读懂源码</s>，知其然并开发自己的Extensions；<br />cross-platform为我们省去很多不必要的烦恼；<br />user-friendly？当一门工具都没人去用，你还有精力去维护和开发它吗？</p><p>让我们从开发一个Surround插件开始:<br />- 功能：使用特定字符，包围一段选中的代码</p><p><code>npm install -g yo generator-code</code> : 安装环境<br /><code>yo code</code> : 进入开发环境</p><p>&lt;img src=“<a href="http://www.luhao.wiki/images/surround.png">http://www.luhao.wiki/images/surround.png</a>” width=“350” height=“350”</p><h2 id="vscode-start"><a class="markdownIt-Anchor" href="#vscode-start"></a> VScode Start</h2><p>🏠 <a href="https://github.com/microsoft/vscode">Visual Studio Code - Open Source</a></p><p>💪 <a href="https://code.visualstudio.com/api/get-started/your-first-extension">Building your VScode extension</a></p><p>💻 <a href="https://www.typescriptlang.org/">TypeScript</a></p><h2 id="参考资料"><a class="markdownIt-Anchor" href="#参考资料"></a> 参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p><strong>Visual Studio Code:</strong>  open-source, cross-platform, user-friendly <br>汇总一些实用的功能、插件，自己的环境和扩展功能</p></div><hr /><h2 id="写在最前面"><a class="markdownIt-Anchor" href="#写在最前面"></a> 写在最前面:</h2><p>开发工具是伴随每一个程序猿一生<s>到35岁</s>的东西；<br />真正精通一门开发工具，从来不是简单记住几个快捷键而已! （试试时隔一个月再用它，还记得住乱七八糟的shortcut吗？）<br /><font color=#bf311><strong>入门者游离于各大IDE+编辑器+Shell</strong></font><br /><font color=#d76a03><strong>进阶者善用其中二三，用至炉火纯青</strong></font><br /><font color=#ec9f05><strong>高手则化为己有，可肆意变化其功能与模样</strong></font></p><hr /><h2 id="实现自己的vscode插件-markdown-snippet"><a class="markdownIt-Anchor" href="#实现自己的vscode插件-markdown-snippet"></a> 实现自己的VScode插件: <code>markdown-snippet</code></h2><p>🏠 <a href="https://github.com/593413198/VScode-Markdown-Snippet"><strong>VScode-Markdown-Snippet: 这是项目的Github</strong></a></p><!-- 为什么推荐VScode？open-source意味着我们可以~~读懂源码~~，知其然并开发自己的Extensions；cross-platform为我们省去很多不必要的烦恼；user-friendly？当一门工具都没人去用，你还有精力去维护和开发它吗？ --><p><strong>让我们从开发一个Markdown的代码补全插件开始:</strong><br />- <strong>简单功能：使用特定字符，包围一段选中的代码</strong></p><h3 id="配置vscode-extension环境"><a class="markdownIt-Anchor" href="#配置vscode-extension环境"></a> 配置vscode extension环境</h3><p><code>npm install -g yo generator-code</code> : 安装环境<br /><code>yo code</code> : 进入开发环境, 如下图</p><ul><li>不得体不说这个开发体验做的真是nice<br /><img src="http://www.luhao.wiki/images/surround.png" width="550" height="450"></li></ul><hr /><h3 id="最简单的插件逻辑"><a class="markdownIt-Anchor" href="#最简单的插件逻辑"></a> 最简单的插件逻辑</h3><div class="admonition todo"><p class="admonition-title">TODO</p><p>这里有空稍微记录下 <br>不过还是推荐看<a href="https://code.visualstudio.com/api/get-started/your-first-extension">VScode Extenion</a>的文档来开发</p></div><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> disposable = vscode.commands.registerCommand(<span class="string">&#x27;surround.sur&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    vscode.window.showInputBox(</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// ignoreFocusOut:false, // if true, when focus out, the InputBox will destroy</span></span><br><span class="line">            <span class="attr">prompt</span>:<span class="string">&#x27;insert snippet words&#x27;</span>, <span class="comment">// prompt words in box</span></span><br><span class="line">        &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">msg</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (msg !== <span class="string">&#x27;undefined&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">let</span> snippet = msg + <span class="string">&#x27;$&#123;TM_SELECTED_TEXT&#125;&#x27;</span> + msg;</span><br><span class="line">            vscode.commands.executeCommand(<span class="string">&#x27;editor.action.insertSnippet&#x27;</span>, </span><br><span class="line">                &#123;<span class="string">&#x27;snippet&#x27;</span>: snippet&#125; )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><h2 id="参考资料"><a class="markdownIt-Anchor" href="#参考资料"></a> 参考资料</h2><blockquote><ul><li>🏠 <a href="https://github.com/microsoft/vscode">Visual Studio Code - Open Source</a></li><li>💪 <a href="https://code.visualstudio.com/api/get-started/your-first-extension">Building your VScode extension</a></li><li>💻 <a href="https://www.typescriptlang.org/">TypeScript</a></li><li><a href="https://liiked.github.io/VS-Code-Extension-Doc-ZH/#/">VScode插件开发 中文文档</a></li><li><a href="https://cloud.tencent.com/developer/article/1827236">VScode LaTex Snippets开发教程</a></li></ul></blockquote>]]></content>
     
     
       
@@ -38,6 +38,8 @@
     
     
     <category term="C" scheme="http://luhao.wiki/tags/C/"/>
+    
+    <category term="markdown" scheme="http://luhao.wiki/tags/markdown/"/>
     
   </entry>
   
@@ -97,11 +99,11 @@
     
     <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
     
+    <category term="Java" scheme="http://luhao.wiki/tags/Java/"/>
+    
     <category term="Compiler" scheme="http://luhao.wiki/tags/Compiler/"/>
     
     <category term="Interpreter" scheme="http://luhao.wiki/tags/Interpreter/"/>
-    
-    <category term="Java" scheme="http://luhao.wiki/tags/Java/"/>
     
   </entry>
   
