@@ -510,7 +510,7 @@ c-1 5-5 9-11 9h-2L532 67 19 159h-2c-5 0-9-4-11-9l-5-22c-1-6 2-12 8-13z'/></svg><
             <!-- <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
             <span id="busuanzi_container_site_pv" style="display: none;"> | 👤本站访问量<span id="busuanzi_value_site_pv"></span>次</span>
             <span class="post-meta-divider">|</span>
-            <span id="busuanzi_container_site_uv">👁️本站访客数<span id="busuanzi_value_site_uv"></span>人<br></span>
+            <span id="busuanzi_container_site_uv" style="display: none;">👁️本站访客数<span id="busuanzi_value_site_uv"></span>人<br></span>
             <script>
                 var now = new Date(); 
                 function createtime() { 
@@ -519,11 +519,11 @@ c-1 5-5 9-11 9h-2L532 67 19 159h-2c-5 0-9-4-11-9l-5-22c-1-6 2-12 8-13z'/></svg><
                     days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
                     hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
                     if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
-                    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
-                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
-                    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                    // mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                    // seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                    // snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
                     document.getElementById("timeDate").innerHTML = "本站已运行 "+dnum+" 天 "; 
-                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒" + "\n"; 
+                    document.getElementById("times").innerHTML = hnum + " 小时 "; // + mnum + " 分 " + snum + " 秒" + "\n"; 
                 } 
             setInterval("createtime()",250);
             </script>
