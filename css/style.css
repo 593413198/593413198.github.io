@@ -835,8 +835,7 @@ article {
 }
 .article-title {
   font-size: 2em;
-  /* color: #565a5f; */
-  color: #c56103;
+  color: #565a5f;
   text-decoration: none;
   line-height: 1.3em;
 }
