@@ -1035,8 +1035,8 @@ div.article-meta-button a:hover {
   top: 20px;
   left: -40px;
   float: left;
-  content: "\f10d";
-  color: #e2e2e2;
+  content: "\f02d";
+  /* color: #e2e2e2; */
   font-size: 32px;
   font-family: FontAwesome;
   text-align: center;
