@@ -16,6 +16,13 @@
   </url>
   
   <url>
+    <loc>http://luhao.wiki/2021/10/02/Compiler/fuckc-a-mini-C-interpreter/</loc>
+    
+    <lastmod>2021-10-02</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://luhao.wiki/2021/10/02/C-C++/MinGW-windows-c-c/</loc>
     
     <lastmod>2021-10-02</lastmod>
@@ -124,6 +131,13 @@
   
   <url>
     <loc>http://luhao.wiki/tags/Compiler/</loc>
+    <lastmod>2021-10-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://luhao.wiki/tags/Interpreter/</loc>
     <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
