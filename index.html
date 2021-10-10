@@ -66,7 +66,9 @@
     
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 <body>
     <div id="container">
@@ -200,7 +202,16 @@
                             &nbsp;
                             Computer Graphics
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/29K6Y2H/">Graphics: 大纲</a></li>  <li class="file"><a href="/posts/1513JCX/">Transformation: 相机/投影/NDC变换</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/SQMNPS/">Graphics: 图形学大纲</a></li>  <li class="file"><a href="/posts/2DBGYFH/">Transformation: 基本空间变换</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Physics Engines
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/GCC5SG/">Physics Engines: 物理引擎大纲</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -319,7 +330,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title"><span>标签</span></h3>
         <div class="widget tagcloud">
-            <a href="/tags/C/" style="font-size: 20px;">C</a> <a href="/tags/C/" style="font-size: 18.5px;">C++</a> <a href="/tags/Compiler/" style="font-size: 15.5px;">Compiler</a> <a href="/tags/Interpreter/" style="font-size: 15.5px;">Interpreter</a> <a href="/tags/Java/" style="font-size: 18.5px;">Java</a> <a href="/tags/TypeScript/" style="font-size: 18.5px;">TypeScript</a> <a href="/tags/VScode%E6%8F%92%E4%BB%B6/" style="font-size: 14px;">VScode插件</a> <a href="/tags/hexo/" style="font-size: 17px;">hexo</a> <a href="/tags/linux/" style="font-size: 15.5px;">linux</a> <a href="/tags/markdown/" style="font-size: 17px;">markdown</a> <a href="/tags/vim/" style="font-size: 15.5px;">vim</a>
+            <a href="/tags/C/" style="font-size: 20px;">C</a> <a href="/tags/C/" style="font-size: 17px;">C++</a> <a href="/tags/Compiler/" style="font-size: 14px;">Compiler</a> <a href="/tags/Interpreter/" style="font-size: 14px;">Interpreter</a> <a href="/tags/Java/" style="font-size: 17px;">Java</a> <a href="/tags/TypeScript/" style="font-size: 17px;">TypeScript</a> <a href="/tags/VScode%E6%8F%92%E4%BB%B6/" style="font-size: 14px;">VScode插件</a> <a href="/tags/hexo/" style="font-size: 15.5px;">hexo</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/markdown/" style="font-size: 18.5px;">markdown</a> <a href="/tags/vim/" style="font-size: 14px;">vim</a>
         </div>
     </div>
 
@@ -328,7 +339,7 @@
 </aside>
             
             <section id="main">
-        <article id="post-Computer Graphics/Transformation-相机-投影-NDC变换" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Computer Graphics/Transformation-基本空间变换" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -350,7 +361,7 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/posts/1513JCX/">
+        <a href="/posts/2DBGYFH/">
             <time datetime="2021-10-10T11:53:23.000Z" itemprop="datePublished">2021-10-10</time>
         </a>
     </div>
@@ -361,7 +372,7 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计814字 
+                            | 字数统计723字 
                           </span>
                           <!-- <span class="post-count"> -->
                             <!-- | 阅读时长3分钟  -->
@@ -372,7 +383,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/posts/1513JCX/">Transformation: 相机/投影/NDC变换</a>
+            <a class="article-title" href="/posts/2DBGYFH/">Transformation: 基本空间变换</a>
         </h1>
     
 
@@ -403,10 +414,10 @@
                 
                     
                     <p><div class="admonition note"><p class="admonition-title">概要
-</p><p><strong>空间与坐标变换</strong>是Graphics的入门知识<br>
-它决定了你怎么把图像画到一个二维平面上</p>
+</p><p><strong>空间与坐标变换</strong>是Graphics的入门知识；<br>
+它决定了你怎么把图像画到一个二维平面上；</p>
 </div>
-<hr />
+<hr>
 <p>
                 
             
@@ -414,7 +425,7 @@
         
             <!-- </div>    -->
             <!-- <div class="article-more-link"> -->
-                <!-- <a href="/posts/1513JCX/#more">Read More</a> -->
+                <!-- <a href="/posts/2DBGYFH/#more">Read More</a> -->
             <!-- </div> -->
         
         <footer class="article-footer">
@@ -461,7 +472,7 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计548字 
+                            | 字数统计546字 
                           </span>
                           <!-- <span class="post-count"> -->
                             <!-- | 阅读时长1分钟  -->
@@ -506,7 +517,7 @@
 </p><p>希望这个理念，能够伴随我所有的开发生涯；<br>
 优秀的开发，是<strong>大道至简，而不是简单问题复杂化</strong></p>
 </div>
-<hr />
+<hr>
 <p>
                 
             
@@ -606,7 +617,7 @@
 </p><p>罗列了常用、令人困惑的英文专有词汇<br>
 可结合站内<strong>右上角的搜索</strong>速查!</p>
 </div>
-<hr />
+<hr>
 <p>
                 
             
@@ -661,10 +672,10 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计449字 
+                            | 字数统计419字 
                           </span>
                           <!-- <span class="post-count"> -->
-                            <!-- | 阅读时长2分钟  -->
+                            <!-- | 阅读时长1分钟  -->
                         <!-- </span> -->
                         
                     </div>
@@ -702,11 +713,11 @@
                 
                 
                     
-                    <p><h2 id="置顶-type-challenge"><a class="markdownIt-Anchor" href="#置顶-type-challenge"></a> 🔥 置顶: <a target="_blank" rel="noopener" href="https://github.com/type-challenges/type-challenges/blob/master/README.zh-CN.md">Type Challenge</a></h2>
-<p>这是为TypeScript打造的<code>Online Judge</code><br />
+                    <p><h2 id="fire-置顶-Type-Challenge"><span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 置顶: <a target="_blank" rel="noopener" href="https://github.com/type-challenges/type-challenges/blob/master/README.zh-CN.md">Type Challenge</a></h2>
+<p>这是为TypeScript打造的<code>Online Judge</code><br>
 可以考察对其<strong>类型</strong>的理解</p>
-<hr />
-<h2 id="常用的类型"><a class="markdownIt-Anchor" href="#常用的类型"></a> 常用的类型</h2>
+<hr>
+<h2 id="常用的类型">常用的类型</h2>
 <p>
                 
             
@@ -761,7 +772,7 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计647字 
+                            | 字数统计623字 
                           </span>
                           <!-- <span class="post-count"> -->
                             <!-- | 阅读时长3分钟  -->
@@ -861,10 +872,10 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计729字 
+                            | 字数统计688字 
                           </span>
                           <!-- <span class="post-count"> -->
-                            <!-- | 阅读时长3分钟  -->
+                            <!-- | 阅读时长2分钟  -->
                         <!-- </span> -->
                         
                     </div>
@@ -906,7 +917,7 @@
 </p><p>实现了一款用于<strong>Markdown代码补全、CSS样式插入</strong>等功能的VScode插件； <br>
 开发环境：<code>VScode, TypeScript</code></p>
 </div>
-<hr />
+<hr>
 <p>
                 
             
@@ -928,7 +939,107 @@
 
 
     
-        <article id="post-Computer Graphics/Graphics-大纲" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Physics Engines/Physics-Engines-物理引擎大纲" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Physics-Engines/">Physics Engines</a>
+    </div>
+
+                        <!-- 
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/C/" rel="tag">C</a>
+    </div>
+ -->
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/posts/GCC5SG/">
+            <time datetime="2021-10-05T17:39:18.000Z" itemprop="datePublished">2021-10-06</time>
+        </a>
+    </div>
+
+
+                        <!--  -->
+                            <!-- <i class="fa fa-bar-chart"></i> -->
+                            <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
+                        <!--  -->
+                        <span class="post-count">
+                            | 字数统计4字 
+                          </span>
+                          <!-- <span class="post-count"> -->
+                            <!-- | 阅读时长1分钟  -->
+                        <!-- </span> -->
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/posts/GCC5SG/">Physics Engines: 物理引擎大纲</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><h2 id="参考资料">参考资料</h2>
+<blockquote>
+<ul>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<p>
+                
+            
+        
+        
+            <!-- </div>    -->
+            <!-- <div class="article-more-link"> -->
+                <!-- <a href="/posts/GCC5SG/#more">Read More</a> -->
+            <!-- </div> -->
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-Computer Graphics/Graphics-图形学大纲" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -950,7 +1061,7 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/posts/29K6Y2H/">
+        <a href="/posts/SQMNPS/">
             <time datetime="2021-10-05T11:34:05.000Z" itemprop="datePublished">2021-10-05</time>
         </a>
     </div>
@@ -972,7 +1083,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/posts/29K6Y2H/">Graphics: 大纲</a>
+            <a class="article-title" href="/posts/SQMNPS/">Graphics: 图形学大纲</a>
         </h1>
     
 
@@ -1014,7 +1125,7 @@
         
             <!-- </div>    -->
             <!-- <div class="article-more-link"> -->
-                <!-- <a href="/posts/29K6Y2H/#more">Read More</a> -->
+                <!-- <a href="/posts/SQMNPS/#more">Read More</a> -->
             <!-- </div> -->
         
         <footer class="article-footer">
@@ -1044,7 +1155,7 @@
                         <!-- 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/C/" rel="tag">C</a>, <a class="tag-link-link" href="/tags/Java/" rel="tag">Java</a>, <a class="tag-link-link" href="/tags/TypeScript/" rel="tag">TypeScript</a>
+        <a class="tag-link-link" href="/tags/C/" rel="tag">C</a>, <a class="tag-link-link" href="/tags/Java/" rel="tag">Java</a>, <a class="tag-link-link" href="/tags/TypeScript/" rel="tag">TypeScript</a>, <a class="tag-link-link" href="/tags/VScode%E6%8F%92%E4%BB%B6/" rel="tag">VScode插件</a>, <a class="tag-link-link" href="/tags/markdown/" rel="tag">markdown</a>
     </div>
  -->
                         
@@ -1061,7 +1172,7 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计316字 
+                            | 字数统计332字 
                           </span>
                           <!-- <span class="post-count"> -->
                             <!-- | 阅读时长1分钟  -->
@@ -1161,7 +1272,7 @@ week 4 (10.29~)</p>
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计718字 
+                            | 字数统计708字 
                           </span>
                           <!-- <span class="post-count"> -->
                             <!-- | 阅读时长2分钟  -->
@@ -1206,7 +1317,7 @@ week 4 (10.29~)</p>
 </p><p>什么是<strong>Compiler(编译器)与Interpreter(解释器) <br></strong>
 两者的<strong>区别与优缺点</strong>，并以常用的（高级）语言为例</p>
 </div>
-<hr />
+<hr>
 <p>
                 
             
@@ -1215,106 +1326,6 @@ week 4 (10.29~)</p>
             <!-- </div>    -->
             <!-- <div class="article-more-link"> -->
                 <!-- <a href="/posts/208KKE2/#more">Read More</a> -->
-            <!-- </div> -->
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-Compiler/fuckc-a-mini-C-interpreter" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Compiler/">Compiler</a>
-    </div>
-
-                        <!-- 
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/C/" rel="tag">C</a>, <a class="tag-link-link" href="/tags/Compiler/" rel="tag">Compiler</a>, <a class="tag-link-link" href="/tags/Interpreter/" rel="tag">Interpreter</a>
-    </div>
- -->
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/posts/1ZP02KZ/">
-            <time datetime="2021-10-02T12:04:37.000Z" itemprop="datePublished">2021-10-02</time>
-        </a>
-    </div>
-
-
-                        <!--  -->
-                            <!-- <i class="fa fa-bar-chart"></i> -->
-                            <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
-                        <!--  -->
-                        <span class="post-count">
-                            | 字数统计163字 
-                          </span>
-                          <!-- <span class="post-count"> -->
-                            <!-- | 阅读时长1分钟  -->
-                        <!-- </span> -->
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/posts/1ZP02KZ/">fuckc: a mini C-interpreter</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p><div class="admonition note"><p class="admonition-title">概要
-</p><p>Compilers（编译原理）是每一位CS同学的必学课程；<br>
-这里将记录<strong>从0实现一个微型C Compiler</strong>（其实是Interpreter）；</p>
-</div>
-<hr />
-<p>
-                
-            
-        
-        
-            <!-- </div>    -->
-            <!-- <div class="article-more-link"> -->
-                <!-- <a href="/posts/1ZP02KZ/#more">Read More</a> -->
             <!-- </div> -->
         
         <footer class="article-footer">

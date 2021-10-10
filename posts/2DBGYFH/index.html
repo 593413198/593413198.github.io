@@ -3,21 +3,29 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Tag: TypeScript | Luhao&#39;s Blog</title>
+    <title>Transformation: 基本空间变换 | Luhao&#39;s Blog</title>
     
     
-        <meta name="keywords" content="Luhao&#39;s Blog" />
+        <meta name="keywords" content="C" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Just for Learing">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Luhao&#39;s Blog">
-<meta property="og:url" content="http://luhao.wiki/tags/TypeScript/index.html">
+    <meta name="description" content="概要 空间与坐标变换是Graphics的入门知识； 它决定了你怎么把图像画到一个二维平面上；   一：Homogeneous coordinates   齐次坐标   这篇回答写的非常透彻 知乎: 什么是齐次坐标系？为什么要用齐次坐标系？   屏幕空间是一个笛卡尔坐标$(x, y)$, 但是透视空间下, $(x, y)$可能表示很多个点, 因为忽略了深度 所以引入齐次坐标   齐次坐标 &lt;—">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Transformation: 基本空间变换">
+<meta property="og:url" content="http://luhao.wiki/posts/2DBGYFH/index.html">
 <meta property="og:site_name" content="Luhao&#39;s Blog">
-<meta property="og:description" content="Just for Learing">
+<meta property="og:description" content="概要 空间与坐标变换是Graphics的入门知识； 它决定了你怎么把图像画到一个二维平面上；   一：Homogeneous coordinates   齐次坐标   这篇回答写的非常透彻 知乎: 什么是齐次坐标系？为什么要用齐次坐标系？   屏幕空间是一个笛卡尔坐标$(x, y)$, 但是透视空间下, $(x, y)$可能表示很多个点, 因为忽略了深度 所以引入齐次坐标   齐次坐标 &lt;—">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://www.luhao.wiki/images/transformation.png">
+<meta property="og:image" content="http://www.luhao.wiki/images/proj1.png">
+<meta property="og:image" content="http://www.luhao.wiki/images/proj2.png">
+<meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png?v8">
+<meta property="article:published_time" content="2021-10-10T11:53:23.000Z">
+<meta property="article:modified_time" content="2021-10-10T17:44:56.409Z">
 <meta property="article:author" content="Luhao">
+<meta property="article:tag" content="C">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.luhao.wiki/images/transformation.png">
     
 
     
@@ -196,13 +204,13 @@
                          <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/1ZP02KZ/">fuckc: a mini C-interpreter</a></li>  <li class="file"><a href="/posts/208KKE2/">0: Compiler vs Interpreter</a></li>  <li class="file"><a href="/posts/2DQASEF/">1: memory, register and instruction</a></li>  </ul> 
                     </li> 
                     
-                    <li class="directory">
+                    <li class="directory open">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
+                            <i class="fa fa-folder-open"></i>
                             &nbsp;
                             Computer Graphics
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/SQMNPS/">Graphics: 图形学大纲</a></li>  <li class="file"><a href="/posts/2DBGYFH/">Transformation: 基本空间变换</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/SQMNPS/">Graphics: 图形学大纲</a></li>  <li class="file active"><a href="/posts/2DBGYFH/">Transformation: 基本空间变换</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -338,158 +346,253 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fa fa-tag"></i></span>
-        <h1 class="title">#TypeScript</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-Computer Graphics/Transformation-基本空间变换" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
                 
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/posts/ZKSK6W/">TypeScript: 数据类型</a>
-        </h1>
-    
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Computer-Graphics/">Computer Graphics</a>
+    </div>
 
-                <div class="article-meta">
-                    
+                        <!-- 
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/C/" rel="tag">C</a>
+    </div>
+ -->
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/posts/ZKSK6W/">
-            <time datetime="2021-10-08T16:13:59.000Z" itemprop="datePublished">2021-10-09</time>
+        <a href="/posts/2DBGYFH/">
+            <time datetime="2021-10-10T11:53:23.000Z" itemprop="datePublished">2021-10-10</time>
         </a>
     </div>
 
 
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/TypeScript/">TypeScript</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/C/" rel="tag">C</a>, <a class="tag-link-link" href="/tags/TypeScript/" rel="tag">TypeScript</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+                        <!--  -->
+                            <!-- <i class="fa fa-bar-chart"></i> -->
+                            <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
+                        <!--  -->
+                        <span class="post-count">
+                            | 字数统计723字 
+                          </span>
+                          <!-- <span class="post-count"> -->
+                            <!-- | 阅读时长3分钟  -->
+                        <!-- </span> -->
+                        
+                    </div>
+                
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/posts/3P9KQQ1/">Markdown-Snippet: 开发一款VScode插件</a>
+        <h1 class="article-title" itemprop="name">
+            Transformation: 基本空间变换
         </h1>
     
 
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/posts/3P9KQQ1/">
-            <time datetime="2021-10-07T07:45:37.000Z" itemprop="datePublished">2021-10-07</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/C/" rel="tag">C</a>, <a class="tag-link-link" href="/tags/TypeScript/" rel="tag">TypeScript</a>, <a class="tag-link-link" href="/tags/VScode%E6%8F%92%E4%BB%B6/" rel="tag">VScode插件</a>, <a class="tag-link-link" href="/tags/markdown/" rel="tag">markdown</a>
-    </div>
-
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%EF%BC%9AHomogeneous-coordinates"><span class="toc-number">1.</span> <span class="toc-text">一：Homogeneous coordinates</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%EF%BC%9AChain-of-Transformations"><span class="toc-number">2.</span> <span class="toc-text">二：Chain of Transformations</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Model-Transformation"><span class="toc-number">2.1.</span> <span class="toc-text">1. Model Transformation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-View-Camera-Transformation"><span class="toc-number">2.2.</span> <span class="toc-text">2. View&#x2F;Camera Transformation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Projection-Transformation"><span class="toc-number">2.3.</span> <span class="toc-text">3. Projection Transformation</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-Orthographic-Projection"><span class="toc-number">2.3.1.</span> <span class="toc-text">3.1 Orthographic Projection</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-Perspective-Projection"><span class="toc-number">2.3.2.</span> <span class="toc-text">3.2 Perspective Projection</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#star-Furthermore%E2%80%A6"><span class="toc-number">3.</span> <span class="toc-text">⭐ Furthermore…</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a></li></ol>
                 </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/posts/2BHC26P/">TypeScript Personal Manual</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/posts/2BHC26P/">
-            <time datetime="2021-10-04T14:55:04.000Z" itemprop="datePublished">2021-10-04</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/TypeScript/">TypeScript</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/C/" rel="tag">C</a>, <a class="tag-link-link" href="/tags/Java/" rel="tag">Java</a>, <a class="tag-link-link" href="/tags/TypeScript/" rel="tag">TypeScript</a>, <a class="tag-link-link" href="/tags/VScode%E6%8F%92%E4%BB%B6/" rel="tag">VScode插件</a>, <a class="tag-link-link" href="/tags/markdown/" rel="tag">markdown</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/posts/c98bb1ae/">写给三年内的技术成长目标</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/posts/c98bb1ae/">
-            <time datetime="2021-09-30T22:52:16.000Z" itemprop="datePublished">2021-10-01</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E6%96%87%E6%A1%A3/">文档</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/C/" rel="tag">C</a>, <a class="tag-link-link" href="/tags/C/" rel="tag">C++</a>, <a class="tag-link-link" href="/tags/Java/" rel="tag">Java</a>, <a class="tag-link-link" href="/tags/TypeScript/" rel="tag">TypeScript</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
+            
+        
+        
+            <div class="admonition note"><p class="admonition-title">概要
+</p><p><strong>空间与坐标变换</strong>是Graphics的入门知识；<br>
+它决定了你怎么把图像画到一个二维平面上；</p>
 </div>
+<hr>
+<h2 id="一：Homogeneous-coordinates">一：Homogeneous coordinates</h2>
+<ul>
+<li>
+<p>齐次坐标</p>
+</li>
+<li>
+<p>这篇回答写的非常透彻<br>
+<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/59595799">知乎: 什么是齐次坐标系？为什么要用齐次坐标系？</a></p>
+</li>
+</ul>
+<p>屏幕空间是一个笛卡尔坐标$(x, y)$,<br>
+但是透视空间下, $(x, y)$可能表示很多个点, 因为忽略了深度<br>
+所以引入齐次坐标</p>
+<ul>
+<li>
+<p>齐次坐标 &lt;—&gt; 笛卡尔坐标如下:</p>
+<p><strong>$(x, y, w) \Longleftrightarrow (\frac{x}{w}, \frac{y}{w})$</strong></p>
+</li>
+<li>
+<p><strong>假设透视空间的深度取值$w=[0, 1]$</strong></p>
+<ul>
+<li>当$w=1$, 这个点在两个坐标下取值相等，即恰好在屏幕上；<font color="#ef6d3b">(近裁面)</font></li>
+<li>当$w=0$, 这个点在透视空间下的最远处；<font color="#ef6d3b">(远裁面)</font></li>
+</ul>
+</li>
+<li>
+<p>我想到一个通俗但不准确的解释:<br>
+笛卡尔坐标(2D)是屏幕坐标, 齐次坐标(3D)是屏幕中构建三维世界的坐标</p>
+</li>
+</ul>
+<hr>
+<h2 id="二：Chain-of-Transformations">二：Chain of Transformations</h2>
+<p>网上看到一段绝妙的比喻，它几乎描述了三维到二维投影变换的所有要素!</p>
+<ul>
+<li>想象你拍照片的过程？
+<ul>
+<li>Find a good place and arrange people. <font color="#ef6d3b">(Model transformation)</font></li>
+<li>Fine a good angle <font color="#ef6d3b">(FOV)</font> to put the camera. <font color="#ef6d3b">(View transformation)</font></li>
+<li>Cheese! <font color="#ef6d3b">(Projection transformation)</font></li>
+<li><font color="#ef6d3b"><strong>MVP</strong></font>, 能帮助你更好的记忆这仨步骤!</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-Model-Transformation"><strong>1. Model Transformation</strong></h3>
+<p>将所有model转化到统一的世界空间下 (world space)</p>
+<h3 id="2-View-Camera-Transformation"><strong>2. View/Camera Transformation</strong></h3>
+<p>再变换到统一的相机空间下 (camera space).</p>
+<h3 id="3-Projection-Transformation"><strong>3. Projection Transformation</strong></h3>
+<p>变换到相机的视角：投影空间</p>
+<ul>
+<li>区分一下透视变换与正交变换:<br>
+<img src="http://www.luhao.wiki/images/transformation.png" width="500"></li>
+</ul>
+<div class="admonition warning"><p class="admonition-title">敲重点
+</p><p>下面变换都是在<strong>相机坐标系</strong>下；<br>
+不妨通过<strong>归一化</strong>让其变成一个1x1x1的正方体盒子，即$(x,y,z)$取值范围是$[-1,1]$；<br>
+为什么？ 因为方便做<strong>Clipping</strong>；</p>
+</div>
+<ul>
+<li>定义一些空间参数:
+<ul>
+<li>
+<p><strong>Width / Height</strong>: 二维屏幕的宽高</p>
+</li>
+<li>
+<p><strong>Near / Far z value</strong>: 近/远裁面的z值</p>
+</li>
+<li>
+<p><strong>FOV</strong>: 相机能捕捉的角度</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-1-Orthographic-Projection">3.1 Orthographic Projection</h4>
+<ul>
+<li>
+<p>正交变换<br>
+<img src="http://www.luhao.wiki/images/proj1.png" alt="" width="500"></p>
+</li>
+<li>
+<p>对于$(x,y)$分别除以宽高做归一;</p>
+</li>
+<li>
+<p>对于$(z)$较复杂，因为要移动到$z_{far}$和$z_{near}$的中间:</p>
+<ul>
+<li>归一的分母是 $\frac{z_{far} - z_{near}}{2}$</li>
+<li>移动???</li>
+</ul>
+</li>
+</ul>
+<div class="admonition todo"><p class="admonition-title">FAQ
+</p><ol>
+<li>$z$做Scaling为啥取负?<br></li>
+<li>$z$做Translate的值怎么来的?</li>
+</ol>
+</div>
+<p>$$<br>
+\left[<br>
+\begin{matrix}<br>
+\frac{1}{w} &amp; 0 &amp; 0 &amp; 0\\<br>
+0 &amp; \frac{1}{h} &amp; 0 &amp; 0\\<br>
+0 &amp; 0 &amp; -\frac{2}{z_{far} - z_{near}} &amp; -\frac{z_{far} + z_{near}}{z_{far} - z_{near}} \\<br>
+0 &amp; 0 &amp; 0 &amp; 1<br>
+\end{matrix}<br>
+\right]<br>
+$$</p>
+<hr>
+<h4 id="3-2-Perspective-Projection">3.2 Perspective Projection</h4>
+<ul>
+<li>透视变换 (符合人眼直观)<br>
+<img src="http://www.luhao.wiki/images/proj2.png" alt="" width="500"></li>
+</ul>
+<div class="admonition todo"><p class="admonition-title">FAQ
+</p><p>这里需要严格的推导一下!</p>
+</div>
+<p>$$<br>
+\left[<br>
+\begin{matrix}<br>
+tan^{-1}(\frac{FOV_{x}}{2}) &amp; 0 &amp; 0 &amp; 0\\<br>
+0 &amp; tan^{-1}(\frac{FOV_{y}}{2}) &amp; 0 &amp; 0\\<br>
+0 &amp; 0 &amp; -\frac{z_{far} + z_{near}}{z_{far} - z_{near}} &amp; -\frac{2(z_{far}z_{near})}{z_{far} - z_{near}}\\<br>
+0 &amp; 0 &amp; -1 &amp; 0<br>
+\end{matrix}<br>
+\right]<br>
+$$</p>
+<hr>
+<h2 id="star-Furthermore…"><span class="github-emoji"><span>⭐</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> Furthermore…</h2>
+<ul>
+<li>
+<p>Re-mapping points from $[-1, 1]$ to $[0, 1]$.</p>
+</li>
+<li>
+<p>Rasterizing the triangles to the screen.</p>
+</li>
+<li>
+<p>Sampling , AA …</p>
+</li>
+</ul>
+<hr>
+<h2 id="参考资料">参考资料</h2>
+<blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://sites.cs.ucsb.edu/~lingqi/teaching/resources/GAMES101_Lecture_04.pdf">GAMES101-Transformation</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.codinglabs.net/article_world_view_projection_matrix.aspx">World, View and Projection Transformation Matrices</a></li>
+</ul>
+</blockquote>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+    
+        <a href="/posts/1ZMZBDW/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">关于开发理念: Simple is Good</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
 </section>
         </div>
         <footer id="footer">
