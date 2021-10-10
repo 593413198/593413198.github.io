@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://luhao.wiki/posts/2DQASEF/</loc>
+    
+    <lastmod>2021-10-10</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://luhao.wiki/posts/1ZP02KZ/</loc>
+    
+    <lastmod>2021-10-10</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://luhao.wiki/posts/208KKE2/</loc>
+    
+    <lastmod>2021-10-10</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://luhao.wiki/posts/2VY467R/</loc>
     
     <lastmod>2021-10-08</lastmod>
@@ -23,13 +44,6 @@
   </url>
   
   <url>
-    <loc>http://luhao.wiki/posts/1ZP02KZ/</loc>
-    
-    <lastmod>2021-10-07</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://luhao.wiki/posts/3P9KQQ1/</loc>
     
     <lastmod>2021-10-07</lastmod>
@@ -38,13 +52,6 @@
   
   <url>
     <loc>http://luhao.wiki/posts/94b493b2/</loc>
-    
-    <lastmod>2021-10-02</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://luhao.wiki/posts/39C17JZ/</loc>
     
     <lastmod>2021-10-02</lastmod>
     
@@ -109,7 +116,7 @@
 
   <url>
     <loc>http://luhao.wiki/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2021-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -117,77 +124,77 @@
   
   <url>
     <loc>http://luhao.wiki/tags/C/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2021-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://luhao.wiki/tags/C/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2021-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://luhao.wiki/tags/linux/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2021-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://luhao.wiki/tags/Java/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2021-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://luhao.wiki/tags/Compiler/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2021-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://luhao.wiki/tags/Interpreter/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2021-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://luhao.wiki/tags/markdown/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2021-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://luhao.wiki/tags/hexo/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2021-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://luhao.wiki/tags/TypeScript/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2021-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://luhao.wiki/tags/VScode%E6%8F%92%E4%BB%B6/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2021-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://luhao.wiki/tags/vim/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2021-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -196,42 +203,42 @@
   
   <url>
     <loc>http://luhao.wiki/categories/C-C/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2021-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://luhao.wiki/categories/Compiler/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2021-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://luhao.wiki/categories/TODO/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2021-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://luhao.wiki/categories/TypeScript/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2021-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://luhao.wiki/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2021-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://luhao.wiki/categories/%E9%9A%8F%E7%AC%94/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2021-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

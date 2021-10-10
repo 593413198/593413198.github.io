@@ -9,15 +9,15 @@
         <meta name="keywords" content="C,Compiler,Interpreter" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="概要 Compilers（编译原理）是每一位CS同学的必学课程； 这里将记录从0实现一个微型C Compiler（其实是Interpreter）；    🏠 Github Repo   👀 - 此博客纯粹用作自学与记录，因此写作规划较乱；   ❗️ - 细分模块会在别的文章详细展开，请关注侧边栏的Compiler；     0. 编译器与解释器?  1. 一个基础的编译器框架  2. 认识一些">
+    <meta name="description" content="概要 Compilers（编译原理）是每一位CS同学的必学课程； 这里将记录从0实现一个微型C Compiler（其实是Interpreter）；   开发计划 week 1 (10.08~10.14): 词法分析: 原理部分 week 2 (10.15~10.21): 词法分析: coding week 3 (10.22~10.28): 语法分析: 原理部分 week 4 (10.29~11.0">
 <meta property="og:type" content="article">
 <meta property="og:title" content="fuckc: a mini C-interpreter">
 <meta property="og:url" content="http://luhao.wiki/posts/1ZP02KZ/index.html">
 <meta property="og:site_name" content="Luhao&#39;s Blog">
-<meta property="og:description" content="概要 Compilers（编译原理）是每一位CS同学的必学课程； 这里将记录从0实现一个微型C Compiler（其实是Interpreter）；    🏠 Github Repo   👀 - 此博客纯粹用作自学与记录，因此写作规划较乱；   ❗️ - 细分模块会在别的文章详细展开，请关注侧边栏的Compiler；     0. 编译器与解释器?  1. 一个基础的编译器框架  2. 认识一些">
+<meta property="og:description" content="概要 Compilers（编译原理）是每一位CS同学的必学课程； 这里将记录从0实现一个微型C Compiler（其实是Interpreter）；   开发计划 week 1 (10.08~10.14): 词法分析: 原理部分 week 2 (10.15~10.21): 词法分析: coding week 3 (10.22~10.28): 语法分析: 原理部分 week 4 (10.29~11.0">
 <meta property="og:locale">
-<meta property="article:published_time" content="2021-10-02T12:34:37.000Z">
-<meta property="article:modified_time" content="2021-10-07T17:12:32.627Z">
+<meta property="article:published_time" content="2021-10-02T12:04:37.000Z">
+<meta property="article:modified_time" content="2021-10-10T03:41:08.961Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content="Compiler">
@@ -196,7 +196,7 @@
                             &nbsp;
                             Compiler
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/39C17JZ/">Compiler vs Interpreter</a></li>  <li class="file active"><a href="/posts/1ZP02KZ/">fuckc: a mini C-interpreter</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file active"><a href="/posts/1ZP02KZ/">fuckc: a mini C-interpreter</a></li>  <li class="file"><a href="/posts/208KKE2/">0: Compiler vs Interpreter</a></li>  <li class="file"><a href="/posts/2DQASEF/">1: memory, register and instruction</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -306,7 +306,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title"><span>标签</span></h3>
         <div class="widget tagcloud">
-            <a href="/tags/C/" style="font-size: 20px;">C</a> <a href="/tags/C/" style="font-size: 17px;">C++</a> <a href="/tags/Compiler/" style="font-size: 15.5px;">Compiler</a> <a href="/tags/Interpreter/" style="font-size: 15.5px;">Interpreter</a> <a href="/tags/Java/" style="font-size: 17px;">Java</a> <a href="/tags/TypeScript/" style="font-size: 18.5px;">TypeScript</a> <a href="/tags/VScode%E6%8F%92%E4%BB%B6/" style="font-size: 14px;">VScode插件</a> <a href="/tags/hexo/" style="font-size: 17px;">hexo</a> <a href="/tags/linux/" style="font-size: 15.5px;">linux</a> <a href="/tags/markdown/" style="font-size: 17px;">markdown</a> <a href="/tags/vim/" style="font-size: 15.5px;">vim</a>
+            <a href="/tags/C/" style="font-size: 20px;">C</a> <a href="/tags/C/" style="font-size: 17px;">C++</a> <a href="/tags/Compiler/" style="font-size: 15.5px;">Compiler</a> <a href="/tags/Interpreter/" style="font-size: 15.5px;">Interpreter</a> <a href="/tags/Java/" style="font-size: 18.5px;">Java</a> <a href="/tags/TypeScript/" style="font-size: 18.5px;">TypeScript</a> <a href="/tags/VScode%E6%8F%92%E4%BB%B6/" style="font-size: 14px;">VScode插件</a> <a href="/tags/hexo/" style="font-size: 17px;">hexo</a> <a href="/tags/linux/" style="font-size: 15.5px;">linux</a> <a href="/tags/markdown/" style="font-size: 17px;">markdown</a> <a href="/tags/vim/" style="font-size: 15.5px;">vim</a>
         </div>
     </div>
 
@@ -337,7 +337,7 @@
     <div class="article-date">
         <i class="fa fa-calendar"></i>
         <a href="/posts/1ZP02KZ/">
-            <time datetime="2021-10-02T12:34:37.000Z" itemprop="datePublished">2021-10-02</time>
+            <time datetime="2021-10-02T12:04:37.000Z" itemprop="datePublished">2021-10-02</time>
         </a>
     </div>
 
@@ -347,7 +347,7 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计207字 
+                            | 字数统计163字 
                           </span>
                           <!-- <span class="post-count"> -->
                             <!-- | 阅读时长1分钟  -->
@@ -371,7 +371,7 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#github-repo"><span class="toc-number">1.</span> <span class="toc-text"> 🏠 Github Repo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0-%E7%BC%96%E8%AF%91%E5%99%A8%E4%B8%8E%E8%A7%A3%E9%87%8A%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text"> 0. 编译器与解释器?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%80%E4%B8%AA%E5%9F%BA%E7%A1%80%E7%9A%84%E7%BC%96%E8%AF%91%E5%99%A8%E6%A1%86%E6%9E%B6"><span class="toc-number">3.</span> <span class="toc-text"> 1. 一个基础的编译器框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%AE%A4%E8%AF%86%E4%B8%80%E4%BA%9Bx86%E6%8C%87%E4%BB%A4%E9%9B%86"><span class="toc-number">4.</span> <span class="toc-text"> 2. 认识一些x86指令集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mov"><span class="toc-number">4.1.</span> <span class="toc-text"> MOV</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pop"><span class="toc-number">4.2.</span> <span class="toc-text"> POP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jmp"><span class="toc-number">4.3.</span> <span class="toc-text"> JMP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#logic-instruction"><span class="toc-number">4.4.</span> <span class="toc-text"> Logic Instruction</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#github-repo"><span class="toc-number">1.</span> <span class="toc-text"> 🏠 Github Repo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0-%E7%BC%96%E8%AF%91%E5%99%A8%E4%B8%8E%E8%A7%A3%E9%87%8A%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text"> 0. 编译器与解释器?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%80%E4%B8%AA%E5%9F%BA%E7%A1%80%E7%9A%84%E7%BC%96%E8%AF%91%E5%99%A8%E6%A1%86%E6%9E%B6"><span class="toc-number">3.</span> <span class="toc-text"> 1. 一个基础的编译器框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%AE%A4%E8%AF%86%E4%B8%80%E4%BA%9Bx86%E6%8C%87%E4%BB%A4%E9%9B%86"><span class="toc-number">4.</span> <span class="toc-text"> 2. 认识一些x86指令集</span></a></li></ol>
                 </div>
             
         
@@ -381,6 +381,12 @@
 这里将记录<strong>从0实现一个微型C Compiler</strong>（其实是Interpreter）；</p>
 </div>
 <hr />
+<div class="admonition todo"><p class="admonition-title">开发计划
+</p><p>week 1 (10.08~10.14): 词法分析: 原理部分<br>
+week 2 (10.15~10.21): 词法分析: coding<br>
+week 3 (10.22~10.28): 语法分析: 原理部分<br>
+week 4 (10.29~11.04): 词法分析: coding<br></p>
+</div>
 <h2 id="github-repo"><a class="markdownIt-Anchor" href="#github-repo"></a> 🏠 <a target="_blank" rel="noopener" href="https://github.com/593413198/fuckc"><strong>Github Repo</strong></a></h2>
 <ul>
 <li>
@@ -394,21 +400,6 @@
 <h2 id="0-编译器与解释器"><a class="markdownIt-Anchor" href="#0-编译器与解释器"></a> <a target="_blank" rel="noopener" href="https://www.luhao.wiki/posts/39C17JZ/">0. 编译器与解释器?</a></h2>
 <h2 id="1-一个基础的编译器框架"><a class="markdownIt-Anchor" href="#1-一个基础的编译器框架"></a> <a href="">1. 一个基础的编译器框架</a></h2>
 <h2 id="2-认识一些x86指令集"><a class="markdownIt-Anchor" href="#2-认识一些x86指令集"></a> <a href="">2. 认识一些x86指令集</a></h2>
-<ul>
-<li>阅读手册: <a target="_blank" rel="noopener" href="https://www.cs.virginia.edu/~evans/cs216/guides/x86.html"><strong>x86 Assembly Guide</strong></a></li>
-</ul>
-<div class="admonition warning"><p class="admonition-title">warning</p><p>文档是最快、最准确的信息获取方式 <br>
-以下只是一个自我总结和理解的过程！</p>
-</div>
-<h3 id="mov"><a class="markdownIt-Anchor" href="#mov"></a> MOV</h3>
-<p><em><strong>mov</strong></em> instruction copies data from source location to destination.</p>
-<p><em><strong>push</strong></em> instruction places its operand onto the top of stack.</p>
-<h3 id="pop"><a class="markdownIt-Anchor" href="#pop"></a> POP</h3>
-<p><em><strong>pop</strong></em> instruction removes 4-byte data from the top of stack. (对比<em>push</em>)</p>
-<h3 id="jmp"><a class="markdownIt-Anchor" href="#jmp"></a> JMP</h3>
-<p><em><strong>jmp</strong></em> instruction transfers program control flow to the instruction at the memory location indicated by the operand.</p>
-<h3 id="logic-instruction"><a class="markdownIt-Anchor" href="#logic-instruction"></a> Logic Instruction</h3>
-<p><code>ADD, SUB, DIV, OR ...</code></p>
 <!-- ## 参考资料 -->
 <!-- > - []() -->
 <!-- > - []() -->
@@ -424,19 +415,19 @@
     
 <nav id="article-nav">
     
-        <a href="/posts/3P9KQQ1/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/posts/208KKE2/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
             <div class="article-nav-title">
                 
-                    Markdown-Snippet: 开发一款VScode插件
+                    0: Compiler vs Interpreter
                 
             </div>
         </a>
     
     
-        <a href="/posts/39C17JZ/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/posts/a57e44ac/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">Compiler vs Interpreter</div>
+            <div class="article-nav-title">MinGW: windows c/c++</div>
         </a>
     
 </nav>

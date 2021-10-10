@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-10-08T17:15:30.623Z</updated>
+  <updated>2021-10-10T06:22:28.975Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>1: memory, register and instruction</title>
+    <link href="http://luhao.wiki/posts/2DQASEF/"/>
+    <id>http://luhao.wiki/posts/2DQASEF/</id>
+    <published>2021-10-10T02:26:47.000Z</published>
+    <updated>2021-10-10T06:22:28.975Z</updated>
+    
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p><strong>CPU、内存、寄存器、指令集</strong>，这些与编译器的实现息息相关<br>本文只讨论编译背景下的内容</p></div><div class="admonition warning"><p class="admonition-title">warning</p><p><strong>阅读文档是最快速、最准确的信息渠道</strong><br>以下只是一个自我学习和记录的过程</p></div><hr /><h2 id="memory-内存"><a class="markdownIt-Anchor" href="#memory-内存"></a> Memory: 内存</h2><p>一段C代码进程，会将内存分为如下几个部分:</p><style>table th:first-of-type {    width: 20%;}table th:nth-of-type(2) {    width: 20%;}table th:nth-of-type(3) {    width: 60%;}</style><table><thead><tr><th style="text-align:left">Memory Usage</th><th style="text-align:center">Symbol</th><th style="text-align:left">Example</th></tr></thead><tbody><tr><td style="text-align:left">code data</td><td style="text-align:center"><em><strong>.text</strong></em></td><td style="text-align:left"><code>int main() &#123; // ... &#125;</code></td></tr><tr><td style="text-align:left">initialized data</td><td style="text-align:center"><em><strong>.data</strong></em></td><td style="text-align:left"><code>int8_t var = 0xff;</code></td></tr><tr><td style="text-align:left">uninitialized data</td><td style="text-align:center"><em><strong>.bss</strong></em></td><td style="text-align:left"><code>int8_t var;</code></td></tr><tr><td style="text-align:left">function call data</td><td style="text-align:center"><em><strong>stack</strong></em></td><td style="text-align:left"></td></tr><tr><td style="text-align:left">malloc (dynamically allocated)</td><td style="text-align:center"><em><strong>heap</strong></em></td><td style="text-align:left"><code>char *p = malloc(1024);</code></td></tr></tbody></table><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">+------------------+</span></span><br><span class="line"><span class="comment">|    stack   |     |      high address</span></span><br><span class="line"><span class="comment">|    ...     v     |</span></span><br><span class="line"><span class="comment">|                  |</span></span><br><span class="line"><span class="comment">|                  |</span></span><br><span class="line"><span class="comment">|                  |</span></span><br><span class="line"><span class="comment">|                  |</span></span><br><span class="line"><span class="comment">|    ...     ^     |</span></span><br><span class="line"><span class="comment">|    heap    |     |</span></span><br><span class="line"><span class="comment">+------------------+</span></span><br><span class="line"><span class="comment">| bss  segment     |</span></span><br><span class="line"><span class="comment">+------------------+</span></span><br><span class="line"><span class="comment">| data segment     |</span></span><br><span class="line"><span class="comment">+------------------+</span></span><br><span class="line"><span class="comment">| text segment     |      low address</span></span><br><span class="line"><span class="comment">+------------------+</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure><hr /><h2 id="register-寄存器"><a class="markdownIt-Anchor" href="#register-寄存器"></a> Register: 寄存器</h2><ul><li>Register is <strong>a very fast computer memory</strong>, used to <strong>store data/instruction</strong> in-execution;</li></ul><p>阅读如下文档:</p><ul><li><p><a href="https://www.javatpoint.com/computer-registers">Computer Registers</a></p></li><li><p><a href="https://sciencerack.com/types-of-cpu-registers/">Types of CPU Registers and Their Functions</a></p></li><li><p><strong>介绍一些常用的寄存器</strong>:</p></li></ul><table><thead><tr><th style="text-align:left">Register</th><th style="text-align:center">Symbol</th><th style="text-align:left">function</th></tr></thead><tbody><tr><td style="text-align:left">Program Counter</td><td style="text-align:center"><em><strong>PC</strong></em></td><td style="text-align:left">指向要执行的指令</td></tr><tr><td style="text-align:left">Accumulator</td><td style="text-align:center"><em><strong>AX</strong></em></td><td style="text-align:left">存一些运算结果</td></tr><tr><td style="text-align:left">Stack Pointer</td><td style="text-align:center"><em><strong>SP</strong></em></td><td style="text-align:left">永远指向栈顶</td></tr><tr><td style="text-align:left">Base Pointer</td><td style="text-align:center"><em><strong>BP</strong></em></td><td style="text-align:left">通用指针寄存器</td></tr></tbody></table><hr /><h2 id="instructions-指令集"><a class="markdownIt-Anchor" href="#instructions-指令集"></a> Instructions: 指令集</h2><p>阅读如下文档:</p><ul><li><a href="https://www.cs.virginia.edu/~evans/cs216/guides/x86.html">x86 Assembly Guide</a></li></ul><style>table th:first-of-type {    width: 10%;}table th:nth-of-type(2) {    width: 60%;}table th:nth-of-type(3) {    width: 30%;}</style><table><thead><tr><th style="text-align:center">Instruction</th><th style="text-align:center">Usage</th><th style="text-align:left">Example</th></tr></thead><tbody><tr><td style="text-align:center"><em><strong>MOV</strong></em></td><td style="text-align:center">copy data from source to destination.</td><td style="text-align:left"><code>mov eax, ebx</code></td></tr><tr><td style="text-align:center"><em><strong>PUSH</strong></em></td><td style="text-align:center">place data onto stack top.</td><td style="text-align:left"><code>push eax</code></td></tr><tr><td style="text-align:center"><em><strong>POP</strong></em></td><td style="text-align:center">remove 4-byte data froms tack top and save.</td><td style="text-align:left"><code>pop edi</code></td></tr><tr><td style="text-align:center"><em><strong>JMP</strong></em></td><td style="text-align:center">transfer PC to somewhere.</td><td style="text-align:left"><code>jmp begin</code></td></tr></tbody></table><ul><li>Logic Instruction<br /><code>ADD, SUB, DIV, OR ...</code></li></ul><h2 id="参考资料"><a class="markdownIt-Anchor" href="#参考资料"></a> 参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
+&lt;/p&gt;&lt;p&gt;&lt;strong&gt;CPU、内存、寄存器、指令集&lt;/strong&gt;，这些与编译器的实现息息相关&lt;br&gt;
+本文只讨论编译背景下的内容&lt;/p&gt;
+&lt;/div</summary>
+      
+    
+    
+    
+    <category term="Compiler" scheme="http://luhao.wiki/categories/Compiler/"/>
+    
+    
+    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
+    
+    <category term="Java" scheme="http://luhao.wiki/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>TypeScript: 数据类型</title>
@@ -108,41 +137,11 @@ week 2 (10.15~10.21): TS类型</summary>
   </entry>
   
   <entry>
-    <title>fuckc: a mini C-interpreter</title>
-    <link href="http://luhao.wiki/posts/1ZP02KZ/"/>
-    <id>http://luhao.wiki/posts/1ZP02KZ/</id>
-    <published>2021-10-02T12:34:37.000Z</published>
-    <updated>2021-10-07T17:12:32.627Z</updated>
-    
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>Compilers（编译原理）是每一位CS同学的必学课程；<br>这里将记录<strong>从0实现一个微型C Compiler</strong>（其实是Interpreter）；</p></div><hr /><h2 id="github-repo"><a class="markdownIt-Anchor" href="#github-repo"></a> 🏠 <a href="https://github.com/593413198/fuckc"><strong>Github Repo</strong></a></h2><ul><li><p>👀 - 此博客纯粹用作自学与记录，因此<s>写作规划较乱</s>；</p></li><li><p>❗️ - 细分模块会在别的文章详细展开，请关注侧边栏的<code>Compiler</code>；</p></li></ul><hr /><h2 id="0-编译器与解释器"><a class="markdownIt-Anchor" href="#0-编译器与解释器"></a> <a href="https://www.luhao.wiki/posts/39C17JZ/">0. 编译器与解释器?</a></h2><h2 id="1-一个基础的编译器框架"><a class="markdownIt-Anchor" href="#1-一个基础的编译器框架"></a> <a href="">1. 一个基础的编译器框架</a></h2><h2 id="2-认识一些x86指令集"><a class="markdownIt-Anchor" href="#2-认识一些x86指令集"></a> <a href="">2. 认识一些x86指令集</a></h2><ul><li>阅读手册: <a href="https://www.cs.virginia.edu/~evans/cs216/guides/x86.html"><strong>x86 Assembly Guide</strong></a></li></ul><div class="admonition warning"><p class="admonition-title">warning</p><p>文档是最快、最准确的信息获取方式 <br>以下只是一个自我总结和理解的过程！</p></div><h3 id="mov"><a class="markdownIt-Anchor" href="#mov"></a> MOV</h3><p><em><strong>mov</strong></em> instruction copies data from source location to destination.</p><p><em><strong>push</strong></em> instruction places its operand onto the top of stack.</p><h3 id="pop"><a class="markdownIt-Anchor" href="#pop"></a> POP</h3><p><em><strong>pop</strong></em> instruction removes 4-byte data from the top of stack. (对比<em>push</em>)</p><h3 id="jmp"><a class="markdownIt-Anchor" href="#jmp"></a> JMP</h3><p><em><strong>jmp</strong></em> instruction transfers program control flow to the instruction at the memory location indicated by the operand.</p><h3 id="logic-instruction"><a class="markdownIt-Anchor" href="#logic-instruction"></a> Logic Instruction</h3><p><code>ADD, SUB, DIV, OR ...</code></p><!-- ## 参考资料 --><!-- > - []() --><!-- > - []() -->]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
-&lt;/p&gt;&lt;p&gt;Compilers（编译原理）是每一位CS同学的必学课程；&lt;br&gt;
-这里将记录&lt;strong&gt;从0实现一个微型C Compiler&lt;/strong</summary>
-      
-    
-    
-    
-    <category term="Compiler" scheme="http://luhao.wiki/categories/Compiler/"/>
-    
-    
-    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
-    
-    <category term="Compiler" scheme="http://luhao.wiki/tags/Compiler/"/>
-    
-    <category term="Interpreter" scheme="http://luhao.wiki/tags/Interpreter/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Compiler vs Interpreter</title>
-    <link href="http://luhao.wiki/posts/39C17JZ/"/>
-    <id>http://luhao.wiki/posts/39C17JZ/</id>
+    <title>0: Compiler vs Interpreter</title>
+    <link href="http://luhao.wiki/posts/208KKE2/"/>
+    <id>http://luhao.wiki/posts/208KKE2/</id>
     <published>2021-10-02T12:15:22.000Z</published>
-    <updated>2021-10-02T17:24:35.091Z</updated>
+    <updated>2021-10-10T02:25:05.214Z</updated>
     
     <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>什么是<strong>Compiler(编译器)与Interpreter(解释器) <br></strong>两者的<strong>区别与优缺点</strong>，并以常用的（高级）语言为例</p></div><hr /><h2 id="什么是compiler"><a class="markdownIt-Anchor" href="#什么是compiler"></a> 什么是Compiler？</h2><ul><li>Compilers are programs that <strong>convert high-level language(source code) to machine language code</strong> before executing it.</li></ul><p>提取一下关键词：</p><ul><li><ol><li><font color=#ef6d3b><strong>programs</strong></font><br />编译器也是一个程序，也是又某一种Language实现的；<br />所以不要将其看得过于抽象！</li></ol></li><li><ol start="2"><li><strong>high lanage -&gt; machine language</strong><br />将高级语言转化为可执行的机器语言，当然中间省略了一些步骤；<br />可查阅： <a href="https://www.javatpoint.com/compilation-process-in-c">The Four Stages of Compiling a C program</a></li></ol></li><li><ol start="3"><li><strong>before executing it</strong><br />这是区别于解释器最大的地方，先全部编译成机器语言，以后要用了随时执行！</li></ol></li></ul><hr /><h2 id="什么是interpreter"><a class="markdownIt-Anchor" href="#什么是interpreter"></a> 什么是Interpreter？</h2><ul><li>Interpreters are also programs that convert high-level language(source code) to machine language code, but <strong>compile and execute for each line</strong>.</li></ul><p>提取一下关键词：</p><ul><li>1.2点都与Compiler一样，即从高级语言转化到机器语言;</li><li><ol start="3"><li><strong>compile and execute for each line</strong><br />解释器不会产生任何中间代码，一旦编译一行，便开始立即执行；<br />你应该发现，python的报错总是出现只有一处，而C++却能同时报好多的warning和erro</li></ol></li></ul><div class="admonition todo"><p class="admonition-title">Self-Reference</p><p>什么是自举？<strong>即一个语言能自己解释自己</strong>；<br>举个例子：用C语言实现了python，再用python写一个python解释器，那python的编译运行就可以完全脱离C了（这就是<a href="https://en.wikipedia.org/wiki/PyPy">pypy</a>) <br>欢迎移步:  <br><a href="https://segmentfault.com/q/1010000000692678">1.segmentfault: 什么是编程语言的自举?</a>  <br><a href="https://www.zhihu.com/question/28513473">2.知乎: 编译器的自举原理是什么?</a></p></div><ul><li><strong>突然想到一个哲学问题：<code>到底是先有鸡，还是先有蛋？</code></strong><br />鸡生蛋，蛋孵鸡，那么鸡是自举的；<br />但凡自举的东西，必然是由某个更低级的东西衍生、创造而来；（女娲造人，但她能造能造人的人（自己）吗？）<br />所以第一只鸡（或蛋），必然是野鸡、<s>鸟、或大象</s>进化（或蛋变异）而来；<br />证毕。</li></ul><hr /><h2 id="compiler和interpreter的区别"><a class="markdownIt-Anchor" href="#compiler和interpreter的区别"></a> Compiler和Interpreter的区别</h2><table><thead><tr><th style="text-align:center">左对齐</th><th style="text-align:center">Compiler</th><th style="text-align:center">Interpreter</th></tr></thead><tbody><tr><td style="text-align:center">步骤</td><td style="text-align:center">先编译后, (再执行)</td><td style="text-align:center">编译与执行一起</td></tr><tr><td style="text-align:center">特点</td><td style="text-align:center">better performance</td><td style="text-align:center">memory efficient</td></tr><tr><td style="text-align:center">运行速度</td><td style="text-align:center">快</td><td style="text-align:center">慢 <a href="http://www.hildstrom.com/projects/langcomp/index.html">(常见语言的性能对比)</a></td></tr><tr><td style="text-align:center">硬盘</td><td style="text-align:center">大：存储机器码</td><td style="text-align:center">小：不保存任何机器码 <a href="https://www.edureka.co/community/73116/what-is-the-difference-between-py-and-pyc-files-in-python">(.pyc)</a></td></tr><tr><td style="text-align:center">内存</td><td style="text-align:center">大：生成中间代码</td><td style="text-align:center">小</td></tr><tr><td style="text-align:center">error report</td><td style="text-align:center">所有报错一起出现</td><td style="text-align:center">单行报错即阻碍 (python <code>try</code>)</td></tr><tr><td style="text-align:center">常见语言</td><td style="text-align:center"><code>C, C++, C#, Java, Go</code></td><td style="text-align:center"><code>python, js, lua</code></td></tr></tbody></table><hr /><h2 id="compiler相关补充"><a class="markdownIt-Anchor" href="#compiler相关补充"></a> Compiler相关补充</h2><h3 id="c-compiler的几个阶段"><a class="markdownIt-Anchor" href="#c-compiler的几个阶段"></a> C compiler的几个阶段</h3><img src="http://www.luhao.wiki/images/compiler.png" alt="图片来源于网络" width="350" height="350"><h2 id="参考资料"><a class="markdownIt-Anchor" href="#参考资料"></a> 参考资料</h2><blockquote><ul><li><a href="https://www.softwaretestinghelp.com/compiler-vs-interpreter/#Compiler_And_Interpreter_Key_Differences">Compiler Vs Interpreter: What Are The Key Differences</a></li><li><a href="https://www.cnblogs.com/lemon-le/p/13840014.html">解释器( interpreter ) 与 编译器( compiler ) 的对比</a></li><li><a href="https://www.javatpoint.com/compilation-process-in-c">The Four Stages of Compiling a C program</a></li></ul></blockquote>]]></content>
     
@@ -164,6 +163,36 @@ week 2 (10.15~10.21): TS类型</summary>
     <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
     
     <category term="Java" scheme="http://luhao.wiki/tags/Java/"/>
+    
+    <category term="Compiler" scheme="http://luhao.wiki/tags/Compiler/"/>
+    
+    <category term="Interpreter" scheme="http://luhao.wiki/tags/Interpreter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>fuckc: a mini C-interpreter</title>
+    <link href="http://luhao.wiki/posts/1ZP02KZ/"/>
+    <id>http://luhao.wiki/posts/1ZP02KZ/</id>
+    <published>2021-10-02T12:04:37.000Z</published>
+    <updated>2021-10-10T03:41:08.961Z</updated>
+    
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>Compilers（编译原理）是每一位CS同学的必学课程；<br>这里将记录<strong>从0实现一个微型C Compiler</strong>（其实是Interpreter）；</p></div><hr /><div class="admonition todo"><p class="admonition-title">开发计划</p><p>week 1 (10.08~10.14): 词法分析: 原理部分<br>week 2 (10.15~10.21): 词法分析: coding<br>week 3 (10.22~10.28): 语法分析: 原理部分<br>week 4 (10.29~11.04): 词法分析: coding<br></p></div><h2 id="github-repo"><a class="markdownIt-Anchor" href="#github-repo"></a> 🏠 <a href="https://github.com/593413198/fuckc"><strong>Github Repo</strong></a></h2><ul><li><p>👀 - 此博客纯粹用作自学与记录，因此<s>写作规划较乱</s>；</p></li><li><p>❗️ - 细分模块会在别的文章详细展开，请关注侧边栏的<code>Compiler</code>；</p></li></ul><hr /><h2 id="0-编译器与解释器"><a class="markdownIt-Anchor" href="#0-编译器与解释器"></a> <a href="https://www.luhao.wiki/posts/39C17JZ/">0. 编译器与解释器?</a></h2><h2 id="1-一个基础的编译器框架"><a class="markdownIt-Anchor" href="#1-一个基础的编译器框架"></a> <a href="">1. 一个基础的编译器框架</a></h2><h2 id="2-认识一些x86指令集"><a class="markdownIt-Anchor" href="#2-认识一些x86指令集"></a> <a href="">2. 认识一些x86指令集</a></h2><!-- ## 参考资料 --><!-- > - []() --><!-- > - []() -->]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
+&lt;/p&gt;&lt;p&gt;Compilers（编译原理）是每一位CS同学的必学课程；&lt;br&gt;
+这里将记录&lt;strong&gt;从0实现一个微型C Compiler&lt;/strong</summary>
+      
+    
+    
+    
+    <category term="Compiler" scheme="http://luhao.wiki/categories/Compiler/"/>
+    
+    
+    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
     
     <category term="Compiler" scheme="http://luhao.wiki/tags/Compiler/"/>
     
