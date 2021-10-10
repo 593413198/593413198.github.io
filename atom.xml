@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-10-10T09:25:28.555Z</updated>
+  <updated>2021-10-10T11:27:11.929Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>关于开发理念: Simple is Good</title>
+    <link href="http://luhao.wiki/posts/1ZMZBDW/"/>
+    <id>http://luhao.wiki/posts/1ZMZBDW/</id>
+    <published>2021-10-10T10:03:53.000Z</published>
+    <updated>2021-10-10T11:27:11.929Z</updated>
+    
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>希望这个理念，能够伴随我所有的开发生涯；<br>优秀的开发，是<strong>大道至简，而不是简单问题复杂化</strong></p></div><hr /><h2 id="为什么写下这篇文章"><a class="markdownIt-Anchor" href="#为什么写下这篇文章"></a> 为什么写下这篇文章?</h2><p>大学身边有一帮要好的文科朋友，经常会观察到这些现象：<br />理工科出身的同志，喜欢提枪就上，埋头苦干，就算没思路也要把电脑敲的噼里啪啦响；<br />文科出身的同志，喜欢事前构思，可能琢磨半天也挤不出几个字；</p><p>如果要双方取长补短的话，<br />我希望程序员的世界，多一些<strong>主观性的理念的东西</strong>，<br />就是在每次敲代码之前，有个尼采一样的诗人在你耳边朗诵一遍：<br />“每一次不写Bug的日子，都是对生命的辜负”</p><p>程序员喜欢review，就是<strong>事后在垃圾堆里翻垃圾</strong>；<br />但为什么不学文科生，<br />脑海中树立一些宏观的、虚头巴脑的、理念的东西，<br />每次动键盘前，有个“社会主义核心价值观”在脑子里过一遍：<br />“1.少用宏； 2.做好封装；3.保持代码整洁 …”<br />虽然玄学了些，但我觉得是个好建议。</p><p>这就是我写这些随笔的原因。</p><hr /><h2 id="simple-is-good"><a class="markdownIt-Anchor" href="#simple-is-good"></a> Simple is Good</h2><ol><li><p>我尝试用一些观点来论证<strong>why &quot;simple is good&quot;</strong></p><ul><li><p>理解成本更低</p></li><li><p>运行更快</p></li><li><p>Bug几率更低</p></li></ul></li></ol><blockquote><p>有两种软件设计方法:<br />第一种是使得软件足够简单以至于<strong>显然没有错误</strong>;<br />第二种是使得软件足够复杂以至于<strong>没有显然的错误</strong>。<br />(最难的是第一种)<br />- Tony Hoare (1980图领奖得主)</p></blockquote><ol start="2"><li><p>如果你说如何让一个复杂的功能保持simple？ 试试 <font color=#ef6d3b><strong>封装</strong></font></p></li><li><p>simple不是无脑delete，<font color=#ef6d3b><strong>合理的解耦与拆分</strong></font>也是一种simple</p></li><li><p>优化尝尝是一个不断<strong>删除代码</strong>的过程</p></li><li><p>你可以<strong>控制“少”</strong>，但你永远无法<strong>控制“多”</strong>；<br />想象一万个人对同一个需求的不同实现，总是千奇百怪。</p></li></ol><hr /><h2 id="simple-拓展阅读"><a class="markdownIt-Anchor" href="#simple-拓展阅读"></a> Simple 拓展阅读</h2><ul><li><p><a href="https://github.com/awerdx520/awesome-programming-books-1/blob/master/clean-code/%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93.pdf">代码整洁之道</a></p></li><li><p><a href="https://www.zhihu.com/question/26483508">知乎: 一百行以下有哪些给力代码？</a></p></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
+&lt;/p&gt;&lt;p&gt;希望这个理念，能够伴随我所有的开发生涯；&lt;br&gt;
+优秀的开发，是&lt;strong&gt;大道至简，而不是简单问题复杂化&lt;/strong&gt;&lt;/p&gt;
+&lt;/di</summary>
+      
+    
+    
+    
+    <category term="随笔" scheme="http://luhao.wiki/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>专业词汇中英对照表</title>
     <link href="http://luhao.wiki/posts/326SNS0/"/>
     <id>http://luhao.wiki/posts/326SNS0/</id>
     <published>2021-10-10T08:06:11.000Z</published>
-    <updated>2021-10-10T09:25:28.555Z</updated>
+    <updated>2021-10-10T10:09:57.443Z</updated>
     
     <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>罗列了常用、令人困惑的英文专有词汇<br>可结合站内<strong>右上角的搜索</strong>速查!</p></div><hr /><h2 id="好的翻译多重要"><a class="markdownIt-Anchor" href="#好的翻译多重要"></a> 好的翻译多重要?</h2><ul><li><p>先祭出CS领域的三大<s>经典垃圾</s>翻译:</p><ul><li><strong>socket</strong>: 套接字</li><li><strong>robust</strong>: 鲁棒性</li><li><strong>handle</strong>: 句柄</li></ul></li><li><p>再看看什么是<s>我认为优秀直观</s>的翻译:</p><ul><li><strong>context</strong>: 上下文 (通俗)</li><li><strong>process/thread</strong>: 进程/线程 (进行中的程序)</li><li><strong>garbage collection</strong>: 垃圾回收 (直译就够了)</li></ul></li><li><p>欢迎移步知乎话题:</p><ul><li><a href="https://www.zhihu.com/question/22950899">为什么handle会被翻译成句柄？</a></li><li><a href="https://www.zhihu.com/question/27192923">哪些专业名词翻译得特别烂？</a></li></ul></li></ul><hr /><h2 id="中英对照"><a class="markdownIt-Anchor" href="#中英对照"></a> 中英对照</h2><div class="admonition warning"><p class="admonition-title">关于对照表</p><p>1.Wikipedia的解释准确且全面，但可能不易理解；<br>2.个人备注栏，添加了一些自己的理解；</p></div><table><thead><tr><th style="text-align:center">英文</th><th style="text-align:center">中文</th><th style="text-align:center">解释</th><th style="text-align:left">个人备注</th></tr></thead><tbody><tr><td style="text-align:center">socket</td><td style="text-align:center">套接字</td><td style="text-align:center"><a href="https://en.wikipedia.org/wiki/Network_socket">Wikipedia</a></td><td style="text-align:left"></td></tr><tr><td style="text-align:center">robust</td><td style="text-align:center">鲁棒性</td><td style="text-align:center"><a href="https://en.wikipedia.org/wiki/Robustness">Wikipedia</a></td><td style="text-align:left">功能健壮, 具有高扩展性</td></tr><tr><td style="text-align:center">handle</td><td style="text-align:center">句柄</td><td style="text-align:center"><a href="https://en.wikipedia.org/wiki/Handle_(computing)">Wikipedia</a></td><td style="text-align:left">对一段资源的引用, 像pointer?</td></tr><tr><td style="text-align:center">rasterization</td><td style="text-align:center">光栅化</td><td style="text-align:center"><a href="https://en.wikipedia.org/wiki/Rasterisation">Wikipedia</a></td><td style="text-align:left">三维场景渲染到二维屏幕</td></tr><tr><td style="text-align:center">anti-aliasing</td><td style="text-align:center">抗锯齿(AA)</td><td style="text-align:center"><a href="https://en.wikipedia.org/wiki/Anti-aliasing">Wikipedia</a></td><td style="text-align:left"></td></tr></tbody></table><p>| socket |  | <a href="">Wikipedia</a> | |</p><h2 id="参考资料"><a class="markdownIt-Anchor" href="#参考资料"></a> 参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
     
