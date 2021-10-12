@@ -207,13 +207,6 @@
   </url>
   
   <url>
-    <loc>http://luhao.wiki/tags/hexo/</loc>
-    <lastmod>2021-10-12</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://luhao.wiki/tags/TypeScript/</loc>
     <lastmod>2021-10-12</lastmod>
     <changefreq>daily</changefreq>
@@ -222,6 +215,13 @@
   
   <url>
     <loc>http://luhao.wiki/tags/VScode%E6%8F%92%E4%BB%B6/</loc>
+    <lastmod>2021-10-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://luhao.wiki/tags/hexo/</loc>
     <lastmod>2021-10-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -258,7 +258,7 @@
   </url>
   
   <url>
-    <loc>http://luhao.wiki/categories/Physics-Engines/</loc>
+    <loc>http://luhao.wiki/categories/TypeScript/</loc>
     <lastmod>2021-10-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -272,7 +272,7 @@
   </url>
   
   <url>
-    <loc>http://luhao.wiki/categories/TypeScript/</loc>
+    <loc>http://luhao.wiki/categories/Physics-Engines/</loc>
     <lastmod>2021-10-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
