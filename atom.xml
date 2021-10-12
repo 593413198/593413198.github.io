@@ -224,9 +224,9 @@
     <link href="http://luhao.wiki/posts/SQMNPS/"/>
     <id>http://luhao.wiki/posts/SQMNPS/</id>
     <published>2021-10-05T11:34:05.000Z</published>
-    <updated>2021-10-10T17:39:51.464Z</updated>
+    <updated>2021-10-12T15:23:51.567Z</updated>
     
-    <content type="html"><![CDATA[<ul><li><p>Mathematics：dot/cross, matrix…</p></li><li><p>transformation: view/camera, proj()…</p></li><li><p>rasterization, sampling</p></li><li><p>AA, Z-buffering</p></li><li><p>shading</p></li><li><p>pipeline</p></li><li><p>texture mapping</p></li><li><p>ray tracing</p></li><li><p>animation</p></li></ul>]]></content>
+    <content type="html"><![CDATA[<ul><li><p>Mathematics：dot/cross, matrix…</p></li><li><p><a href="http://localhost:4000/posts/2DBGYFH/">Transformation: view/camera, proj…</a></p></li><li><p>rasterization, sampling</p></li><li><p>AA</p></li><li><p>shading</p></li><li><p>pipeline</p></li><li><p>texture mapping</p></li><li><p>ray tracing</p></li><li><p>animation</p></li></ul>]]></content>
     
     
       
@@ -236,10 +236,7 @@
 &lt;p&gt;Mathematics：dot/cross, matrix…&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;transformation: view/camera, proj()…&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;rasterization, sampling</summary>
+&lt;p&gt;&lt;a href=&quot;http://localhost:4000/posts/2DBGYFH/&quot;&gt;Transformation: view/camera, pr</summary>
       
     
     
