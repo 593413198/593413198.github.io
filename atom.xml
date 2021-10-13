@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-10-10T17:44:56.409Z</updated>
+  <updated>2021-10-13T15:25:21.914Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2: Lexical Analysis</title>
+    <link href="http://luhao.wiki/posts/1KXFP8G/"/>
+    <id>http://luhao.wiki/posts/1KXFP8G/</id>
+    <published>2021-10-13T14:43:25.000Z</published>
+    <updated>2021-10-13T15:25:21.914Z</updated>
+    
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>词法分析（Lexical Analysis）原理及coding实现; <br></p></div><hr><h2 id="什么是词法分析">什么是词法分析?</h2><ul><li>将Characters转化为Tokens的过程!</li></ul><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"int a = 100;"</span></span><br><span class="line"><span class="comment">// 这是一段c代码的source code, 但它仅仅是一段字符串而已</span></span><br><span class="line"><span class="comment">// Lex的作用是，输出如下可以喂给语法分析器的Tokens:</span></span><br><span class="line"><span class="string">"int"</span> <span class="string">"a"</span> <span class="string">"="</span> <span class="string">"100"</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure><img src="http://www.luhao.wiki/images/lexical.png" width="500"><ul><li><a href="https://github.com/westes/flex">flex: 一个开源词法分析器</a></li></ul><div class="admonition warning"><p class="admonition-title"> BUT</p><p><span class="github-emoji"><span>💪</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f4aa.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> <span class="github-emoji"><span>💪</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f4aa.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 我们要实现自己的词法分析器!</p></div><hr><h2 id="有哪些Tokens">有哪些Tokens?</h2><table><thead><tr><th style="text-align:center">Tokens</th><th style="text-align:center">注意点</th><th style="text-align:center">示例</th></tr></thead><tbody><tr><td style="text-align:center">数字(number)</td><td style="text-align:center">十进制、十六进制等</td><td style="text-align:center"><code>66</code>, <code>0xff</code></td></tr><tr><td style="text-align:center">字符串(string)</td><td style="text-align:center">一般以<code>"</code>引号识别</td><td style="text-align:center"><code>"string"</code></td></tr><tr><td style="text-align:center">符号表(symbol)</td><td style="text-align:center">内置关键字</td><td style="text-align:center"><code>int</code></td></tr><tr><td style="text-align:center">标识符(identifer)</td><td style="text-align:center">定义的变量名</td><td style="text-align:center"><code>int a</code>中的<code>a</code></td></tr><tr><td style="text-align:center">注释(comment)</td><td style="text-align:center">C有两+种注释</td><td style="text-align:center"><code>//</code>, <code>/* */</code></td></tr><tr><td style="text-align:center">宏(macro)</td><td style="text-align:center">有点复杂</td><td style="text-align:center"><code>#define A</code>, <code>#include &lt;stdio.h&gt;</code></td></tr><tr><td style="text-align:center">其他</td><td style="text-align:center">换行、退格等</td><td style="text-align:center"><code>\n</code>, <code>\t\</code></td></tr></tbody></table><ul><li><font color="#ef6d3b"><strong>下面依次实现他们</strong></font></li></ul><div class="admonition todo"><p class="admonition-title">Tokens解析</p></div><hr><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
+&lt;/p&gt;&lt;p&gt;词法分析（Lexical Analysis）原理及coding实现; &lt;br&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;什么是词法分析&quot;&gt;</summary>
+      
+    
+    
+    
+    <category term="Compiler" scheme="http://luhao.wiki/categories/Compiler/"/>
+    
+    
+    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
+    
+  </entry>
   
   <entry>
     <title>Transformation: 基本空间变换</title>
@@ -321,9 +349,9 @@ week 2 (10.15~10.21): TS类型</summary>
     <link href="http://luhao.wiki/posts/1ZP02KZ/"/>
     <id>http://luhao.wiki/posts/1ZP02KZ/</id>
     <published>2021-10-02T12:04:37.000Z</published>
-    <updated>2021-10-10T03:41:08.961Z</updated>
+    <updated>2021-10-13T14:37:58.273Z</updated>
     
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>Compilers（编译原理）是每一位CS同学的必学课程；<br>这里将记录<strong>从0实现一个微型C Compiler</strong>（其实是Interpreter）；</p></div><hr><div class="admonition todo"><p class="admonition-title">开发计划</p><p>week 1 (10.08~10.14): 词法分析: 原理部分<br>week 2 (10.15~10.21): 词法分析: coding<br>week 3 (10.22~10.28): 语法分析: 原理部分<br>week 4 (10.29~11.04): 词法分析: coding<br></p></div><h2 id="🏠-Github-Repo">🏠 <a href="https://github.com/593413198/fuckc"><strong>Github Repo</strong></a></h2><ul><li><p><span class="github-emoji"><span>👀</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f440.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> - 此博客纯粹用作自学与记录，因此<s>写作规划较乱</s>；</p></li><li><p><span class="github-emoji"><span>❗</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> - 细分模块会在别的文章详细展开，请关注侧边栏的<code>Compiler</code>；</p></li></ul><hr><h2 id="0-编译器与解释器"><a href="https://www.luhao.wiki/posts/39C17JZ/">0. 编译器与解释器?</a></h2><h2 id="1-一个基础的编译器框架"><a href="">1. 一个基础的编译器框架</a></h2><h2 id="2-认识一些x86指令集"><a href="">2. 认识一些x86指令集</a></h2><!-- ## 参考资料 --><!-- > - []() --><!-- > - []() -->]]></content>
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>Compilers（编译原理）是每一位CS同学的必学课程；<br>这里将记录<strong>从0实现一个微型C Compiler</strong>（其实是Interpreter）；</p></div><hr><div class="admonition todo"><p class="admonition-title">开发计划</p><p>week 1 (10.08~10.14): 词法分析: 原理部分<br>week 2 (10.15~10.21): 词法分析: coding<br>week 3 (10.22~10.28): 语法分析: 原理部分<br>week 4 (10.29~11.04): 词法分析: coding<br></p></div><h2 id="🏠-Github-Repo">🏠 <a href="https://github.com/593413198/fuckc"><strong>Github Repo</strong></a></h2><ul><li><p><span class="github-emoji"><span>👀</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f440.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> - 此博客纯粹用作自学与记录，因此<s>写作规划较乱</s>；</p></li><li><p><span class="github-emoji"><span>❗</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> - 细分模块会在别的文章详细展开，请关注侧边栏的<code>Compiler</code>；</p></li></ul><hr><h2 id="0-编译器与解释器"><a href="https://www.luhao.wiki/posts/39C17JZ/">0. 编译器与解释器?</a></h2><h2 id="1-内存、寄存器与指令集"><a href="https://www.luhao.wiki/posts/2DQASEF/">1. 内存、寄存器与指令集</a></h2><h2 id="2-词法分析"><a href="">2. 词法分析</a></h2><!-- ## 参考资料 --><!-- > - []() --><!-- > - []() -->]]></content>
     
     
       
