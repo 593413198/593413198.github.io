@@ -17,8 +17,9 @@
 <meta property="og:description" content="概要 光栅化决定如何将三维场景画到二维屏幕上； 但以什么样的顺序绘制？（Visibility） 是否所有的物体都要绘制到屏幕上? （Occlusion）   Occlusion   一叶障目，不见泰山   想象你的视线，远处的物体总被近处的遮挡，这就是Occlusion!   将“看不见”的物体剔除掉，是图形学优化的重要方向之一!    Painter’s Algorithm  画家算法：由远到近">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://www.luhao.wiki/images/painter.png">
+<meta property="og:image" content="http://www.luhao.wiki/images/painter_bounds.png">
 <meta property="article:published_time" content="2021-10-14T14:10:29.000Z">
-<meta property="article:modified_time" content="2021-10-14T17:27:19.259Z">
+<meta property="article:modified_time" content="2021-10-14T17:31:57.365Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="C">
 <meta name="twitter:card" content="summary">
@@ -376,7 +377,7 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计130字 
+                            | 字数统计161字 
                           </span>
                           <!-- <span class="post-count"> -->
                             <!-- | 阅读时长1分钟  -->
@@ -429,6 +430,15 @@
 <li><font color="#ef6d3b"><strong>画家算法：由远到近绘制物体，远处总被近处的遮挡；</strong></font></li>
 </ul>
 <img src="http://www.luhao.wiki/images/painter.png" alt="" width="500">
+<ul>
+<li>Bounds
+<ul>
+<li>需要对n个物体排序: $O(nlogn)$的复杂度，对n面数;</li>
+<li>不能处理多面重叠的情形;</li>
+</ul>
+</li>
+</ul>
+<img src="http://www.luhao.wiki/images/painter_bounds.png" alt="" width="200">
 <h2 id="参考资料">参考资料</h2>
 <blockquote>
 <ul>

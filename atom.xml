@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-10-14T17:27:19.259Z</updated>
+  <updated>2021-10-14T17:31:57.365Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://luhao.wiki/posts/2AR5BC4/"/>
     <id>http://luhao.wiki/posts/2AR5BC4/</id>
     <published>2021-10-14T14:10:29.000Z</published>
-    <updated>2021-10-14T17:27:19.259Z</updated>
+    <updated>2021-10-14T17:31:57.365Z</updated>
     
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p><strong>光栅化</strong>决定如何将三维场景画到二维屏幕上；<br>但以什么样的顺序绘制？（<strong>Visibility</strong>）<br>是否所有的物体都要绘制到屏幕上? （<strong>Occlusion</strong>）<br></p></div><hr><h2 id="Occlusion">Occlusion</h2><ul><li><p><font color="#ef6d3b"><strong>一叶障目，不见泰山</strong></font></p></li><li><p>想象你的视线，远处的物体总被近处的遮挡，这就是Occlusion!</p></li><li><p>将“看不见”的物体剔除掉，是图形学优化的重要方向之一!</p></li></ul><hr><h2 id="Painter’s-Algorithm">Painter’s Algorithm</h2><ul><li><font color="#ef6d3b"><strong>画家算法：由远到近绘制物体，远处总被近处的遮挡；</strong></font></li></ul><img src="http://www.luhao.wiki/images/painter.png" alt="" width="500"><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p><strong>光栅化</strong>决定如何将三维场景画到二维屏幕上；<br>但以什么样的顺序绘制？（<strong>Visibility</strong>）<br>是否所有的物体都要绘制到屏幕上? （<strong>Occlusion</strong>）<br></p></div><hr><h2 id="Occlusion">Occlusion</h2><ul><li><p><font color="#ef6d3b"><strong>一叶障目，不见泰山</strong></font></p></li><li><p>想象你的视线，远处的物体总被近处的遮挡，这就是Occlusion!</p></li><li><p>将“看不见”的物体剔除掉，是图形学优化的重要方向之一!</p></li></ul><hr><h2 id="Painter’s-Algorithm">Painter’s Algorithm</h2><ul><li><font color="#ef6d3b"><strong>画家算法：由远到近绘制物体，远处总被近处的遮挡；</strong></font></li></ul><img src="http://www.luhao.wiki/images/painter.png" alt="" width="500"><ul><li>Bounds<ul><li>需要对n个物体排序: $O(nlogn)$的复杂度，对n面数;</li><li>不能处理多面重叠的情形;</li></ul></li></ul><img src="http://www.luhao.wiki/images/painter_bounds.png" alt="" width="200"><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
     
     
       
