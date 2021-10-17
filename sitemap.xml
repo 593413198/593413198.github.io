@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://luhao.wiki/posts/34DWTE7/</loc>
+    
+    <lastmod>2021-10-17</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://luhao.wiki/posts/20S2P1/</loc>
+    
+    <lastmod>2021-10-17</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://luhao.wiki/posts/2AR5BC4/</loc>
     
     <lastmod>2021-10-17</lastmod>
@@ -172,14 +186,14 @@
   </url>
   
   <url>
-    <loc>http://luhao.wiki/tags/linux/</loc>
+    <loc>http://luhao.wiki/tags/Graphics/</loc>
     <lastmod>2021-10-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://luhao.wiki/tags/Java/</loc>
+    <loc>http://luhao.wiki/tags/linux/</loc>
     <lastmod>2021-10-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -200,7 +214,7 @@
   </url>
   
   <url>
-    <loc>http://luhao.wiki/tags/Graphics/</loc>
+    <loc>http://luhao.wiki/tags/OpenGL/</loc>
     <lastmod>2021-10-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -272,6 +286,13 @@
   </url>
   
   <url>
+    <loc>http://luhao.wiki/categories/OpenGL/</loc>
+    <lastmod>2021-10-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://luhao.wiki/categories/Physics-Engines/</loc>
     <lastmod>2021-10-17</lastmod>
     <changefreq>daily</changefreq>
@@ -286,7 +307,7 @@
   </url>
   
   <url>
-    <loc>http://luhao.wiki/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</loc>
+    <loc>http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2021-10-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

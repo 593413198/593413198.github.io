@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-10-17T06:59:55.588Z</updated>
+  <updated>2021-10-17T17:33:22.140Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -15,6 +15,66 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>gvector: 空间向量库</title>
+    <link href="http://luhao.wiki/posts/34DWTE7/"/>
+    <id>http://luhao.wiki/posts/34DWTE7/</id>
+    <published>2021-10-18T14:48:36.000Z</published>
+    <updated>2021-10-17T17:33:22.140Z</updated>
+    
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>为Garen实现一个<code>vector</code>库</p></div><hr><h2 id="Introduction">Introduction</h2><ul><li>cpp file: <a href=""><strong><code>gvector.h</code></strong></a></li><li><code>GLFW</code>, <code>glad</code>等没有一个好的vector库，因此自己实现一个，借此学习C++ Coding</li></ul><hr><h2 id="Code">Code</h2><ul><li>C++ template的使用;</li><li>C++ template为啥无法使用typedef;</li></ul><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// @brief: Vector, Matrix</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vector2</span> </span></span><br><span class="line"><span class="class">{</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">T x;</span><br><span class="line">T y;</span><br><span class="line"></span><br><span class="line">Vector2(T x, T y) :</span><br><span class="line">x(x), y(y) {}</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> <span class="keyword">operator</span>+(<span class="keyword">const</span> Vector2&amp; vec2)</span><br><span class="line">{</span><br><span class="line"><span class="keyword">this</span>-&gt;x += vec2.x;</span><br><span class="line"><span class="keyword">this</span>-&gt;y += vec2.y;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> <span class="keyword">operator</span>-(<span class="keyword">const</span> Vector2&amp; vec2)</span><br><span class="line">{</span><br><span class="line"><span class="keyword">this</span>-&gt;x -= vec2.x;</span><br><span class="line"><span class="keyword">this</span>-&gt;y -= vec2.y;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> <span class="keyword">operator</span>*(<span class="keyword">const</span> T num)</span><br><span class="line">{</span><br><span class="line"><span class="keyword">this</span>-&gt;x *= num;</span><br><span class="line"><span class="keyword">this</span>-&gt;y *= num;</span><br><span class="line">}</span><br><span class="line"><span class="comment">// no division for safety</span></span><br><span class="line"></span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> Vector2&lt;<span class="keyword">float</span>&gt; vec2;</span><br><span class="line"><span class="keyword">typedef</span> Vector2&lt;<span class="keyword">int</span>&gt; ivec2;</span><br></pre></td></tr></tbody></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
+&lt;/p&gt;&lt;p&gt;为Garen实现一个&lt;code&gt;vector&lt;/code&gt;库&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;Introduction&quot;&gt;Intr</summary>
+      
+    
+    
+    
+    <category term="OpenGL" scheme="http://luhao.wiki/categories/OpenGL/"/>
+    
+    
+    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
+    
+    <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OpenGL开发实战</title>
+    <link href="http://luhao.wiki/posts/20S2P1/"/>
+    <id>http://luhao.wiki/posts/20S2P1/</id>
+    <published>2021-10-17T14:17:10.000Z</published>
+    <updated>2021-10-17T17:04:11.786Z</updated>
+    
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>基于OpenGL实现一个功能健全的<code>mini engine</code></p></div><hr><h2 id="Introduction">Introduction</h2><ul><li><p><span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> Github page: <a href="https://github.com/593413198/Garen"><strong>Garen</strong></a></p></li><li><p>基于OpenGL开发的一个<s>微型引擎</s>，取名自LOL中的盖伦，希望其<em>simple but strong</em>.</p></li></ul><hr><h2 id="Dependence">Dependence</h2><ul><li><p><a href="https://www.glfw.org/download.html"><strong>GLFW</strong></a></p></li><li><p><a href="https://glad.dav1d.de/"><strong>glad</strong></a></p></li></ul><hr><h2 id="release">release</h2><h3 id="v1-0-0">v1.0.0</h3><ul><li>main loop of engine</li><li>draw: 绘制基本图形</li><li>input: 输入</li><li>gvector: 矩阵库</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
+&lt;/p&gt;&lt;p&gt;基于OpenGL实现一个功能健全的&lt;code&gt;mini engine&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;Introdu</summary>
+      
+    
+    
+    
+    <category term="OpenGL" scheme="http://luhao.wiki/categories/OpenGL/"/>
+    
+    
+    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
+    
+    <category term="OpenGL" scheme="http://luhao.wiki/tags/OpenGL/"/>
+    
+  </entry>
   
   <entry>
     <title>Occlusion: 可见性与剔除</title>
@@ -184,8 +244,6 @@
     
     <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
     
-    <category term="Java" scheme="http://luhao.wiki/tags/Java/"/>
-    
   </entry>
   
   <entry>
@@ -207,7 +265,7 @@
     
     
     
-    <category term="开发工具" scheme="http://luhao.wiki/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    <category term="工具" scheme="http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
     <category term="C" scheme="http://luhao.wiki/tags/C/"/>
@@ -310,8 +368,6 @@
     
     <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
     
-    <category term="Java" scheme="http://luhao.wiki/tags/Java/"/>
-    
     <category term="Compiler" scheme="http://luhao.wiki/tags/Compiler/"/>
     
     <category term="Interpreter" scheme="http://luhao.wiki/tags/Interpreter/"/>
@@ -398,7 +454,7 @@
     
     
     
-    <category term="开发工具" scheme="http://luhao.wiki/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    <category term="工具" scheme="http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
     <category term="C" scheme="http://luhao.wiki/tags/C/"/>
@@ -428,7 +484,7 @@
     
     
     
-    <category term="开发工具" scheme="http://luhao.wiki/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    <category term="工具" scheme="http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
     <category term="C" scheme="http://luhao.wiki/tags/C/"/>
@@ -467,9 +523,9 @@
     
     <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
     
-    <category term="Java" scheme="http://luhao.wiki/tags/Java/"/>
-    
     <category term="Graphics" scheme="http://luhao.wiki/tags/Graphics/"/>
+    
+    <category term="OpenGL" scheme="http://luhao.wiki/tags/OpenGL/"/>
     
     <category term="Physics" scheme="http://luhao.wiki/tags/Physics/"/>
     
@@ -497,7 +553,7 @@
     
     
     
-    <category term="开发工具" scheme="http://luhao.wiki/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    <category term="工具" scheme="http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
     <category term="C" scheme="http://luhao.wiki/tags/C/"/>

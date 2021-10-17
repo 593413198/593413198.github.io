@@ -3,20 +3,24 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Category: 开发工具 | Luhao&#39;s Blog</title>
+    <title>gvector: 空间向量库 | Luhao&#39;s Blog</title>
     
     
-        <meta name="keywords" content="Luhao&#39;s Blog" />
+        <meta name="keywords" content="C,C++" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Just for Learing">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Luhao&#39;s Blog">
-<meta property="og:url" content="http://luhao.wiki/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/index.html">
+    <meta name="description" content="概要 为Garen实现一个vector库   Introduction  cpp file: gvector.h GLFW, glad等没有一个好的vector库，因此自己实现一个，借此学习C++ Coding   Code  C++ template的使用; C++ template为啥无法使用typedef;  12345678910111213141516171819202122232425">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gvector: 空间向量库">
+<meta property="og:url" content="http://luhao.wiki/posts/34DWTE7/index.html">
 <meta property="og:site_name" content="Luhao&#39;s Blog">
-<meta property="og:description" content="Just for Learing">
+<meta property="og:description" content="概要 为Garen实现一个vector库   Introduction  cpp file: gvector.h GLFW, glad等没有一个好的vector库，因此自己实现一个，借此学习C++ Coding   Code  C++ template的使用; C++ template为啥无法使用typedef;  12345678910111213141516171819202122232425">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-18T14:48:36.000Z">
+<meta property="article:modified_time" content="2021-10-17T17:33:22.140Z">
 <meta property="article:author" content="Luhao">
+<meta property="article:tag" content="C">
+<meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
     
 
@@ -205,6 +209,15 @@
                          <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/SQMNPS/">Graphics: 图形学大纲</a></li>  <li class="file"><a href="/posts/2DBGYFH/">Transformation: 基本空间变换</a></li>  <li class="file"><a href="/posts/2AR5BC4/">Occlusion: 可见性与剔除</a></li>  </ul> 
                     </li> 
                     
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            OpenGL
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/20S2P1/">OpenGL开发实战</a></li>  <li class="file active"><a href="/posts/34DWTE7/">gvector: 空间向量库</a></li>  </ul> 
+                    </li> 
+                    
                     <li class="directory">
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder"></i>
@@ -227,7 +240,7 @@
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder"></i>
                             &nbsp;
-                            开发工具
+                            工具
                         </a>
                          <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/94b493b2/">markdown: test blog</a></li>  <li class="file"><a href="/posts/adff27ce/">vim: the best editor</a></li>  <li class="file"><a href="/posts/796558c1/">hexo: a blog framework</a></li>  <li class="file"><a href="/posts/3P9KQQ1/">Markdown-Snippet: 开发一款VScode插件</a></li>  </ul> 
                     </li> 
@@ -321,7 +334,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title"><span>标签</span></h3>
         <div class="widget tagcloud">
-            <a href="/tags/C/" style="font-size: 20px;">C</a> <a href="/tags/C/" style="font-size: 18px;">C++</a> <a href="/tags/Compiler/" style="font-size: 14px;">Compiler</a> <a href="/tags/Graphics/" style="font-size: 18px;">Graphics</a> <a href="/tags/Interpreter/" style="font-size: 14px;">Interpreter</a> <a href="/tags/Java/" style="font-size: 16px;">Java</a> <a href="/tags/Physics/" style="font-size: 14px;">Physics</a> <a href="/tags/TypeScript/" style="font-size: 14px;">TypeScript</a> <a href="/tags/VScode/" style="font-size: 14px;">VScode</a> <a href="/tags/hexo/" style="font-size: 16px;">hexo</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/markdown/" style="font-size: 18px;">markdown</a> <a href="/tags/vim/" style="font-size: 14px;">vim</a>
+            <a href="/tags/C/" style="font-size: 20px;">C</a> <a href="/tags/C/" style="font-size: 18.5px;">C++</a> <a href="/tags/Compiler/" style="font-size: 14px;">Compiler</a> <a href="/tags/Graphics/" style="font-size: 17px;">Graphics</a> <a href="/tags/Interpreter/" style="font-size: 14px;">Interpreter</a> <a href="/tags/OpenGL/" style="font-size: 14px;">OpenGL</a> <a href="/tags/Physics/" style="font-size: 14px;">Physics</a> <a href="/tags/TypeScript/" style="font-size: 14px;">TypeScript</a> <a href="/tags/VScode/" style="font-size: 14px;">VScode</a> <a href="/tags/hexo/" style="font-size: 15.5px;">hexo</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/markdown/" style="font-size: 17px;">markdown</a> <a href="/tags/vim/" style="font-size: 14px;">vim</a>
         </div>
     </div>
 
@@ -329,158 +342,117 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fa fa-folder"></i></span>
-        <h1 class="title">开发工具</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-OpenGL/gvector-空间向量库" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
                 
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/posts/3P9KQQ1/">Markdown-Snippet: 开发一款VScode插件</a>
-        </h1>
-    
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/OpenGL/">OpenGL</a>
+    </div>
 
-                <div class="article-meta">
-                    
+                        <!-- 
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/C/" rel="tag">C</a>, <a class="tag-link-link" href="/tags/C/" rel="tag">C++</a>
+    </div>
+ -->
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/posts/3P9KQQ1/">
-            <time datetime="2021-10-07T07:45:37.000Z" itemprop="datePublished">2021-10-07</time>
+        <a href="/posts/34DWTE7/">
+            <time datetime="2021-10-18T14:48:36.000Z" itemprop="datePublished">2021-10-18</time>
         </a>
     </div>
 
 
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/C/" rel="tag">C</a>, <a class="tag-link-link" href="/tags/TypeScript/" rel="tag">TypeScript</a>, <a class="tag-link-link" href="/tags/VScode/" rel="tag">VScode</a>, <a class="tag-link-link" href="/tags/markdown/" rel="tag">markdown</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+                        <!--  -->
+                            <!-- <i class="fa fa-bar-chart"></i> -->
+                            <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
+                        <!--  -->
+                        <span class="post-count">
+                            | 字数统计139字 
+                          </span>
+                          <!-- <span class="post-count"> -->
+                            <!-- | 阅读时长1分钟  -->
+                        <!-- </span> -->
+                        
+                    </div>
+                
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/posts/796558c1/">hexo: a blog framework</a>
+        <h1 class="article-title" itemprop="name">
+            gvector: 空间向量库
         </h1>
     
 
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/posts/796558c1/">
-            <time datetime="2021-10-01T09:38:21.000Z" itemprop="datePublished">2021-10-01</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/C/" rel="tag">C</a>, <a class="tag-link-link" href="/tags/hexo/" rel="tag">hexo</a>, <a class="tag-link-link" href="/tags/markdown/" rel="tag">markdown</a>
-    </div>
-
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Code"><span class="toc-number">2.</span> <span class="toc-text">Code</span></a></li></ol>
                 </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/posts/adff27ce/">vim: the best editor</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/posts/adff27ce/">
-            <time datetime="2021-10-01T07:56:55.000Z" itemprop="datePublished">2021-10-01</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/C/" rel="tag">C</a>, <a class="tag-link-link" href="/tags/linux/" rel="tag">linux</a>, <a class="tag-link-link" href="/tags/vim/" rel="tag">vim</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/posts/94b493b2/">markdown: test blog</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/posts/94b493b2/">
-            <time datetime="2021-09-30T03:22:13.000Z" itemprop="datePublished">2021-09-30</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/C/" rel="tag">C</a>, <a class="tag-link-link" href="/tags/hexo/" rel="tag">hexo</a>, <a class="tag-link-link" href="/tags/markdown/" rel="tag">markdown</a>, <a class="tag-link-link" href="/tags/vim/" rel="tag">vim</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
+            
+        
+        
+            <div class="admonition note"><p class="admonition-title">概要
+</p><p>为Garen实现一个<code>vector</code>库</p>
 </div>
+<hr>
+<h2 id="Introduction">Introduction</h2>
+<ul>
+<li>cpp file: <a href=""><strong><code>gvector.h</code></strong></a></li>
+<li><code>GLFW</code>, <code>glad</code>等没有一个好的vector库，因此自己实现一个，借此学习C++ Coding</li>
+</ul>
+<hr>
+<h2 id="Code">Code</h2>
+<ul>
+<li>C++ template的使用;</li>
+<li>C++ template为啥无法使用typedef;</li>
+</ul>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// @brief: Vector, Matrix</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vector2</span> </span></span><br><span class="line"><span class="class">{</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	T x;</span><br><span class="line">	T y;</span><br><span class="line"></span><br><span class="line">	Vector2(T x, T y) :</span><br><span class="line">		x(x), y(y) {}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">void</span> <span class="keyword">operator</span>+(<span class="keyword">const</span> Vector2&amp; vec2)</span><br><span class="line">	{</span><br><span class="line">		<span class="keyword">this</span>-&gt;x += vec2.x;</span><br><span class="line">		<span class="keyword">this</span>-&gt;y += vec2.y;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">void</span> <span class="keyword">operator</span>-(<span class="keyword">const</span> Vector2&amp; vec2)</span><br><span class="line">	{</span><br><span class="line">		<span class="keyword">this</span>-&gt;x -= vec2.x;</span><br><span class="line">		<span class="keyword">this</span>-&gt;y -= vec2.y;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">void</span> <span class="keyword">operator</span>*(<span class="keyword">const</span> T num)</span><br><span class="line">	{</span><br><span class="line">		<span class="keyword">this</span>-&gt;x *= num;</span><br><span class="line">		<span class="keyword">this</span>-&gt;y *= num;</span><br><span class="line">	}</span><br><span class="line">	<span class="comment">// no division for safety</span></span><br><span class="line"></span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> Vector2&lt;<span class="keyword">float</span>&gt; vec2;</span><br><span class="line"><span class="keyword">typedef</span> Vector2&lt;<span class="keyword">int</span>&gt; ivec2;</span><br></pre></td></tr></tbody></table></figure>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+    
+        <a href="/posts/20S2P1/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">OpenGL开发实战</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
 </section>
         </div>
         <footer id="footer">
