@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-10-14T17:57:17.518Z</updated>
+  <updated>2021-10-17T06:59:55.588Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://luhao.wiki/posts/2AR5BC4/"/>
     <id>http://luhao.wiki/posts/2AR5BC4/</id>
     <published>2021-10-14T14:10:29.000Z</published>
-    <updated>2021-10-14T17:57:17.518Z</updated>
+    <updated>2021-10-17T06:59:55.588Z</updated>
     
     <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p><strong>光栅化</strong>决定如何将三维场景画到二维屏幕上；<br>但以什么样的顺序绘制？（<strong>Visibility</strong>）<br>是否所有的物体都要绘制到屏幕上? （<strong>Occlusion</strong>）<br></p></div><hr><h2 id="Occlusion">Occlusion</h2><ul><li><p><font color="#ef6d3b"><strong>一叶障目，不见泰山</strong></font></p></li><li><p>想象你的视线，远处的物体总被近处的遮挡，这就是Occlusion!</p></li><li><p>将“看不见”的物体剔除掉，是图形学优化的重要方向之一!</p></li></ul><hr><h2 id="Painter’s-Algorithm">Painter’s Algorithm</h2><ul><li><font color="#ef6d3b"><strong>画家算法：由远到近绘制物体，远处总被近处的遮挡；</strong></font><br>因此又称<em><strong>Depth-sort Algorithm</strong></em>;</li></ul><img src="http://www.luhao.wiki/images/painter.png" alt="" width="500"><ul><li><font color="#ef6d3b"><strong>算法分析</strong></font>:<ul><li>需要对n个物体排序: $O(nlogn)$的复杂度，对$n$面数;</li><li>不能处理多面重叠的情形;</li></ul></li></ul><img src="http://www.luhao.wiki/images/painter_bounds.png" alt="" width="150"><hr><h2 id="Z-Buffer">Z-Buffer</h2><ul><li>对于每个三角形面片中每个Pixel$(x,y,z$），不断取其$z_{min}$，并赋值位z-buffer上该pixel的值</li></ul><figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># init zbuffer for +∞</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (each tri T):</span><br><span class="line">    <span class="keyword">for</span> (each pixel (x,y,z) <span class="keyword">in</span> T):</span><br><span class="line">        <span class="keyword">if</span> (z &lt; zbuffer[x][y]):</span><br><span class="line">            framebuffer[x][y] = rgb; <span class="comment"># also as color buffer</span></span><br><span class="line">            zbuffer[x][y] = z; <span class="comment"># also as depth buffer</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># occlusion now!</span></span><br></pre></td></tr></tbody></table></figure><ul><li><font color="#ef6d3b"><strong>算法分析</strong></font>:<ul><li>省略了排序，因此是$O(n)$的复杂度，对$n$面数；</li><li>不能处理两个三角形，存在深度值z相同的pixel的情形；（虽然这种情况很少发生，因为是float32）</li></ul></li></ul><h3 id="什么是framebuffer与zbuffer">什么是<em>framebuffer</em>与<em>zbuffer</em>?</h3><ul><li>通俗的说，它们都是一块内存（<em><strong>RAM</strong></em>）;<ul><li><font color="#ef6d3b"><em><strong>framebuffer</strong></em></font>：存储rgb的颜色值</li><li><font color="#ef6d3b"><em><strong>z-buffer (depth-buffer)</strong></em></font>：存储深度信息</li></ul></li></ul><h3 id="图解z-buffer的生成过程">图解z-buffer的生成过程</h3><ul><li>可以看出，计算z-buffer就是一个不断取$min$的过程！<br><img src="http://www.luhao.wiki/images/zbuffer.png" alt="" width="500"></li></ul><div class="admonition todo"><p class="admonition-title">TODO</p><p>补充一张Nsight抓帧的frame-buffer, depth-buffer截图~</p></div><hr><h2 id="Futhermore…">Futhermore…</h2><ul><li><p>常用的culling方案</p></li><li><p>hlod</p></li></ul>]]></content>
     
@@ -39,6 +39,8 @@
     
     
     <category term="C" scheme="http://luhao.wiki/tags/C/"/>
+    
+    <category term="Graphics" scheme="http://luhao.wiki/tags/Graphics/"/>
     
   </entry>
   
@@ -94,6 +96,8 @@
     
     
     <category term="C" scheme="http://luhao.wiki/tags/C/"/>
+    
+    <category term="Graphics" scheme="http://luhao.wiki/tags/Graphics/"/>
     
   </entry>
   
@@ -154,32 +158,6 @@
   </entry>
   
   <entry>
-    <title>TypeScript: 数据类型</title>
-    <link href="http://luhao.wiki/posts/ZKSK6W/"/>
-    <id>http://luhao.wiki/posts/ZKSK6W/</id>
-    <published>2021-10-08T16:13:59.000Z</published>
-    <updated>2021-10-10T07:23:42.492Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="fire-置顶-Type-Challenge"><span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 置顶: <a href="https://github.com/type-challenges/type-challenges/blob/master/README.zh-CN.md">Type Challenge</a></h2><p>这是为TypeScript打造的<code>Online Judge</code><br>可以考察对其<strong>类型</strong>的理解</p><hr><h2 id="常用的类型">常用的类型</h2><ul><li><p><font color="#ef6d3b"><strong>Primitives Types</strong></font></p><ul><li><em><strong>string</strong></em><ol><li>单引号与双引号皆可 (同python);</li><li><code>${expr}</code>用来嵌入表达式;</li></ol></li><li><em><strong>number</strong></em><ol><li>没有<code>int, float</code>之分;</li><li><code>0x, 0o</code>都是ES6的进制表示法;</li></ol></li><li><em><strong>boolean</strong></em><br><code>true, false</code></li><li><em><strong>空值</strong></em><br><code>undefined, null</code>: 变量赋值<br><code>void</code>: 函数返回值</li></ul></li><li><p><font color="#ef6d3b"><strong>Object Types</strong></font></p><ul><li><em><strong>Array</strong></em><br><code>let arr: number[] = [1, 2, 3];</code><br><code>let arr: Array&lt;number&gt; = [1, 2, 3];</code></li><li>…</li></ul></li></ul><h2 id="TypeScript-any类型">TypeScript any类型</h2><p>当不确定类型时，使用any，这样后面可以赋予它任何类型</p><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo: any;</span><br><span class="line">foo = <span class="literal">true</span>;</span><br><span class="line">foo = <span class="string">'abcd'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr: any[] = [<span class="string">'John'</span>, <span class="number">88</span>, <span class="literal">true</span>];</span><br><span class="line">arr.push(<span class="string">'luhao'</span>);</span><br></pre></td></tr></tbody></table></figure><p>any对象可以调用任意属性与方法!</p><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo: any;</span><br><span class="line"><span class="built_in">console</span>.log(foo.name); <span class="comment">// OK</span></span><br><span class="line">foo.setName(<span class="string">'luhao'</span>); <span class="comment">// OK</span></span><br></pre></td></tr></tbody></table></figure><p>没有申明类型的变量，等价于any</p><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 两者等价</span></span><br><span class="line"><span class="keyword">let</span> foo;</span><br><span class="line"><span class="keyword">let</span> foo: any</span><br></pre></td></tr></tbody></table></figure><p><a href="https://stackoverflow.com/questions/50875618/any-in-typescript">stackoverflow: 申明any与否的意义?</a></p><blockquote><p><code>tsconfig.json</code>中有如果对"strict"定义为true，那么对所有any的非法访问都是错误的!</p></blockquote><h2 id="Type-inferrender-类型推论">Type inferrender: 类型推论</h2><p>对于没有指定类型但已经赋值的变量，TypeScript会推断出一个类型：</p><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo = <span class="string">'luhao'</span>; <span class="comment">// 此时TS已推断foo为string</span></span><br><span class="line">foo = <span class="number">100</span>; <span class="comment">// Error</span></span><br><span class="line"><span class="comment">// error TS2322: Type 'number' is not assignable to type 'string'.</span></span><br></pre></td></tr></tbody></table></figure><h2 id="Union-Types-联合类型">Union Types: 联合类型</h2><p>联合类型使用<code>|</code>表示几个类型的并集：</p><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo: string | number;</span><br><span class="line">foo = <span class="string">'luhao'</span>; <span class="comment">// OK</span></span><br><span class="line">foo = <span class="number">100</span>; <span class="comment">// OK</span></span><br><span class="line">foo = <span class="literal">true</span>; <span class="comment">// Error</span></span><br></pre></td></tr></tbody></table></figure><p>联合类型一旦被赋值，其类型就是唯一的：</p><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo: string | number;</span><br><span class="line">foo = <span class="string">'luhao'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(foo.length); <span class="comment">// OK</span></span><br><span class="line">foo = <span class="number">100</span>;</span><br><span class="line"><span class="built_in">console</span>.log(foo.length); <span class="comment">// Error, 此时foo是number类型</span></span><br></pre></td></tr></tbody></table></figure><hr><h2 id="interface-对象的类型">interface: 对象的类型</h2><p>它就像C中的<code>struck</code>:</p><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">interface IPerson {</span><br><span class="line">    <span class="attr">name</span>: string; <span class="comment">// 必选属性</span></span><br><span class="line">    age?: number; <span class="comment">// 可选属性</span></span><br><span class="line">    readonly gender: boolean; <span class="comment">// 只读属性</span></span><br><span class="line">    [optName: string]: any; <span class="comment">// 任意属性</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> person: IPerson = {</span><br><span class="line">    <span class="attr">name</span>: <span class="string">'luhao'</span>,</span><br><span class="line">    <span class="comment">// age: 24, // 可选</span></span><br><span class="line">    <span class="attr">gender</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">school</span>: <span class="string">'NJU'</span>,</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><h2 id="Type-Assertion-类型断言">Type Assertion: 类型断言</h2><div class="admonition todo"><p class="admonition-title">todo</p></div><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;fire-置顶-Type-Challenge&quot;&gt;&lt;span class=&quot;github-emoji&quot;&gt;&lt;span&gt;🔥&lt;/span&gt;&lt;img src=&quot;https://github.githubassets.com/images/icons/emoji/unico</summary>
-      
-    
-    
-    
-    <category term="TypeScript" scheme="http://luhao.wiki/categories/TypeScript/"/>
-    
-    
-    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
-    
-    <category term="TypeScript" scheme="http://luhao.wiki/tags/TypeScript/"/>
-    
-  </entry>
-  
-  <entry>
     <title>1: memory, register and instruction</title>
     <link href="http://luhao.wiki/posts/2DQASEF/"/>
     <id>http://luhao.wiki/posts/2DQASEF/</id>
@@ -236,9 +214,9 @@
     
     <category term="markdown" scheme="http://luhao.wiki/tags/markdown/"/>
     
-    <category term="TypeScript" scheme="http://luhao.wiki/tags/TypeScript/"/>
+    <category term="VScode" scheme="http://luhao.wiki/tags/VScode/"/>
     
-    <category term="VScode插件" scheme="http://luhao.wiki/tags/VScode%E6%8F%92%E4%BB%B6/"/>
+    <category term="TypeScript" scheme="http://luhao.wiki/tags/TypeScript/"/>
     
   </entry>
   
@@ -271,6 +249,8 @@
     
     <category term="C" scheme="http://luhao.wiki/tags/C/"/>
     
+    <category term="Physics" scheme="http://luhao.wiki/tags/Physics/"/>
+    
   </entry>
   
   <entry>
@@ -300,39 +280,7 @@
     
     <category term="C" scheme="http://luhao.wiki/tags/C/"/>
     
-  </entry>
-  
-  <entry>
-    <title>TypeScript Personal Manual</title>
-    <link href="http://luhao.wiki/posts/2BHC26P/"/>
-    <id>http://luhao.wiki/posts/2BHC26P/</id>
-    <published>2021-10-04T14:55:04.000Z</published>
-    <updated>2021-10-10T17:37:06.559Z</updated>
-    
-    <content type="html"><![CDATA[<div class="admonition todo"><p class="admonition-title">开发计划</p><p>week 1 (10.08~10.14): TS的特性与环境搭建, TS基本类型<br>week 2 (10.15~10.21): TS类型推论, 函数, 内置对象<br>week 3 (10.22~10.28): <br>week 4 (10.29~)</p></div><hr><h2 id="什么是TypeScript">什么是TypeScript?</h2><ul><li>在此之前，先看看什么是<strong>JavaScript</strong>?<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Introduction">JavaScript 中文介绍</a><br><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript">What is JavaScript?</a></li></ul><hr><blockquote><p>Typed JavaScript at Any Scale.<br>添加了类型系统的 JavaScript，适用于任何规模的项目。</p></blockquote><h3 id="TypeScript基本特性？">TypeScript基本特性？</h3><ul><li><font color="#ef6d3b"><strong>Staticlly Typed</strong></font><br>这是TypeScript区别于JavaScript的最大特点，TS在编译阶段，便确认每个变量的类型；<br>下面这段代码，在编译阶段就会报错：</li></ul><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo = <span class="number">1</span>;</span><br><span class="line">foo.split(<span class="string">' '</span>);</span><br><span class="line"><span class="comment">// 但对于JavaScript，上述代码只有运行时才报错；</span></span><br></pre></td></tr></tbody></table></figure><ul><li><font color="#ef6d3b"><strong>Weakly Typed</strong></font><br>允许存在隐式类型转化，如下代码是允许的：</li></ul><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> + <span class="string">'1'</span>);</span><br><span class="line"><span class="comment">// 终端打印出'11'</span></span><br></pre></td></tr></tbody></table></figure><ul><li><p><font color="#ef6d3b"><strong>Compatibility with JavaScript</strong></font><br>严格按照<code>ECMAScript</code>标准，因此完全兼容JavaScript</p></li><li><p><font color="#ef6d3b"><strong>Type annotations</strong></font><br>允许使用类型标注；<br>动态类型写起来很爽，Debug起来火葬场！(<code>python2</code>)</p></li></ul><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo: number = <span class="number">1</span>;</span><br><span class="line"><span class="comment">// 定义一个number类型的变量</span></span><br></pre></td></tr></tbody></table></figure><hr><h2 id="TypeScript开发环境">TypeScript开发环境</h2><p><code>npm install -g typescript</code>: 安装TypeScript<br><code>tsc demo.ts</code>: 编译一个ts文件, 得到一个.js文件<br><code>node demo.js</code>: 编译生成的js文件</p><hr><h2 id="TypeScript项目">TypeScript项目</h2><ul><li>这是我开发的一个VScode插件： <a href="https://github.com/593413198/VScode-Markdown-Snippet"><strong>VScode-Markdown-Snippet</strong></a></li></ul><hr><h2 id="一些好的TypeScript教程">一些好的TypeScript教程</h2><blockquote><ul><li><a href="https://www.typescriptlang.org/">TypeScript官网</a></li><li><a href="https://ts.xcatliu.com/">一个中文的TypeScript入门教程</a></li></ul></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;admonition todo&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;开发计划
-&lt;/p&gt;&lt;p&gt;week 1 (10.08~10.14): TS的特性与环境搭建, TS基本类型&lt;br&gt;
-week 2 (10.15~10.21): TS类型</summary>
-      
-    
-    
-    
-    <category term="TypeScript" scheme="http://luhao.wiki/categories/TypeScript/"/>
-    
-    
-    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
-    
-    <category term="Java" scheme="http://luhao.wiki/tags/Java/"/>
-    
-    <category term="markdown" scheme="http://luhao.wiki/tags/markdown/"/>
-    
-    <category term="TypeScript" scheme="http://luhao.wiki/tags/TypeScript/"/>
-    
-    <category term="VScode插件" scheme="http://luhao.wiki/tags/VScode%E6%8F%92%E4%BB%B6/"/>
+    <category term="Graphics" scheme="http://luhao.wiki/tags/Graphics/"/>
     
   </entry>
   
@@ -521,6 +469,10 @@ week 2 (10.15~10.21): TS类型</summary>
     
     <category term="Java" scheme="http://luhao.wiki/tags/Java/"/>
     
+    <category term="Graphics" scheme="http://luhao.wiki/tags/Graphics/"/>
+    
+    <category term="Physics" scheme="http://luhao.wiki/tags/Physics/"/>
+    
     <category term="TypeScript" scheme="http://luhao.wiki/tags/TypeScript/"/>
     
   </entry>
@@ -585,6 +537,8 @@ week 2 (10.15~10.21): TS类型</summary>
     <category term="markdown" scheme="http://luhao.wiki/tags/markdown/"/>
     
     <category term="hexo" scheme="http://luhao.wiki/tags/hexo/"/>
+    
+    <category term="VScode" scheme="http://luhao.wiki/tags/VScode/"/>
     
   </entry>
   
