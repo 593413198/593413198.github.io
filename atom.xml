@@ -205,9 +205,9 @@
     <link href="http://luhao.wiki/posts/2Y252XS/"/>
     <id>http://luhao.wiki/posts/2Y252XS/</id>
     <published>2021-10-15T14:00:14.000Z</published>
-    <updated>2021-10-20T18:09:51.186Z</updated>
+    <updated>2021-10-20T18:13:30.984Z</updated>
     
-    <content type="html"><![CDATA[<div class="admonition warning"><p class="admonition-title">提示</p><p>常见算法的原理与实现!<br>这是大学时写的...</p></div><h2 id="常用算法的C-Python实现">常用算法的C++/Python实现</h2><p><strong>开始时间：</strong><br><code>2019/4/30 (大学)</code></p><p><strong>搭建环境：</strong><br><code>Ubuntu 18.04.1  gcc 7.3.0  python 3.6</code><br><code>Now: Windows MinGW</code></p><p><strong>目录如下：</strong></p><ul><li><p>Sort Algorithm</p><ul><li>BubbleSort</li><li>InsertSort</li><li>SelectSort</li><li>MergerSort</li><li>QuickSort</li></ul></li><li><p>Backtrack</p><ul><li>8-Queens (n皇后问题)</li><li>01-Bag (背包问题()</li><li>TSP 旅行商问题</li></ul></li><li><p>Graph</p><ul><li>graph_matrix</li><li>graph_link</li><li>BFS</li><li>DFS</li></ul></li></ul><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
+    <content type="html"><![CDATA[<div class="admonition warning"><p class="admonition-title">提示</p><p>常见算法的原理与实现!<br>这是大学时写的...</p></div><h2 id="常用算法的C-Python实现">常用算法的C++/Python实现</h2><p><strong><span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> <a href="https://github.com/593413198/Algorithm">Github</a></strong></p><p><strong>开始时间：</strong><br><code>2019/4/30 (大学)</code></p><p><strong>搭建环境：</strong><br><code>Ubuntu 18.04.1  gcc 7.3.0  python 3.6</code><br><code>Now: Windows MinGW</code></p><p><strong>目录如下：</strong></p><ul><li><p><a href="https://www.luhao.wiki/posts/2X2CDR4/">Sort Algorithm</a></p><ul><li>Bubble Sort</li><li>Insert Sort</li><li>Select Sort</li><li>Merge Sort ★</li><li>Quick Sort ★</li></ul></li><li><p>Backtrack</p><ul><li>8-Queens</li><li>01-Bag</li><li>TSP ★</li></ul></li><li><p>Graph</p><ul><li>graph_matrix</li><li>graph_link</li><li>BFS ★</li><li>DFS ★</li></ul></li></ul><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
     
     
       
@@ -225,6 +225,8 @@
     
     
     <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
+    
+    <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
     
     <category term="Algorithm" scheme="http://luhao.wiki/tags/Algorithm/"/>
     
@@ -534,11 +536,11 @@
     <category term="Compiler" scheme="http://luhao.wiki/categories/Compiler/"/>
     
     
+    <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
+    
     <category term="Compiler" scheme="http://luhao.wiki/tags/Compiler/"/>
     
     <category term="Interpreter" scheme="http://luhao.wiki/tags/Interpreter/"/>
-    
-    <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
     
   </entry>
   
