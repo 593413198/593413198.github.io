@@ -18,8 +18,9 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://www.luhao.wiki/images/shader.png">
 <meta property="og:image" content="http://www.luhao.wiki/images/NDC.png">
+<meta property="og:image" content="http://www.luhao.wiki/images/vbo_vao.png">
 <meta property="article:published_time" content="2021-10-20T14:51:51.000Z">
-<meta property="article:modified_time" content="2021-10-20T15:26:44.949Z">
+<meta property="article:modified_time" content="2021-10-20T16:00:58.750Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content="Graphics">
@@ -379,10 +380,10 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计304字 
+                            | 字数统计630字 
                           </span>
                           <!-- <span class="post-count"> -->
-                            <!-- | 阅读时长1分钟  -->
+                            <!-- | 阅读时长3分钟  -->
                         <!-- </span> -->
                         
                     </div>
@@ -403,7 +404,7 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Graphics-Pipeline"><span class="toc-number">1.</span> <span class="toc-text">Graphics Pipeline</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Vertex-Shader"><span class="toc-number">1.1.</span> <span class="toc-text">1. Vertex Shader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Geometry-Shader"><span class="toc-number">1.2.</span> <span class="toc-text">2. Geometry Shader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Rasterization"><span class="toc-number">1.3.</span> <span class="toc-text">3. Rasterization</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Pixel-Shader-Fragment-Sahder"><span class="toc-number">1.4.</span> <span class="toc-text">4. Pixel Shader (Fragment Sahder)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Alpha-test-and-Blending"><span class="toc-number">1.5.</span> <span class="toc-text">5. Alpha test and Blending</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pratice-%E7%AC%AC%E4%B8%80%E4%B8%AAShader"><span class="toc-number">2.</span> <span class="toc-text">Pratice: 第一个Shader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">3.</span> <span class="toc-text">参考资料</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Graphics-Pipeline"><span class="toc-number">1.</span> <span class="toc-text">Graphics Pipeline</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Vertex-Shader"><span class="toc-number">1.1.</span> <span class="toc-text">1. Vertex Shader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Geometry-Shader"><span class="toc-number">1.2.</span> <span class="toc-text">2. Geometry Shader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Rasterization"><span class="toc-number">1.3.</span> <span class="toc-text">3. Rasterization</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Pixel-Shader-Fragment-Sahder"><span class="toc-number">1.4.</span> <span class="toc-text">4. Pixel Shader (Fragment Sahder)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Alpha-test-and-Blending"><span class="toc-number">1.5.</span> <span class="toc-text">5. Alpha test and Blending</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pratice-%E7%AC%AC%E4%B8%80%E4%B8%AAShader"><span class="toc-number">2.</span> <span class="toc-text">Pratice: 第一个Shader</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vertex-data"><span class="toc-number">2.1.</span> <span class="toc-text">Vertex data</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vertex-Shader"><span class="toc-number">2.2.</span> <span class="toc-text">Vertex Shader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Compile-Vertex-Shader-run-time"><span class="toc-number">2.3.</span> <span class="toc-text">Compile Vertex Shader (run-time)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pixel-Shader"><span class="toc-number">2.4.</span> <span class="toc-text">Pixel Shader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Link-and-Combine"><span class="toc-number">2.5.</span> <span class="toc-text">Link and Combine</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB"><span class="toc-number">3.</span> <span class="toc-text">问题汇总</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-OpenGL%E7%9A%84VAO%E3%80%81VBP%E5%8C%BA%E5%88%AB"><span class="toc-number">3.1.</span> <span class="toc-text">1. OpenGL的VAO、VBP区别?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a></li></ol>
                 </div>
             
         
@@ -479,21 +480,71 @@
 </ul>
 <hr>
 <h2 id="Pratice-第一个Shader">Pratice: 第一个Shader</h2>
+<h3 id="Vertex-data">Vertex data</h3>
 <ul>
-<li>
-<p><font color="#ef6d3b"><strong>NDC</strong></font>: Normalized Device Coordinates.</p>
+<li><font color="#ef6d3b"><strong>NDC</strong></font>: Normalized Device Coordinates.
 <ul>
-<li>vertex shader的输入，就是定义在NDC坐标下.<br>
-<img src="http://www.luhao.wiki/images/NDC.png" alt="" width="500"></li>
+<li>vertex shader的输入，就是定义在NDC坐标下.</li>
+<li>如下我们定义一个三角形:</li>
 </ul>
 </li>
-<li>
-<p>接下来，我们需要定义一串Vertex数据传给CPU，并用于Vertex Shader的计算！</p>
+</ul>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> vertices[] = {</span><br><span class="line">    <span class="number">-0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>,</span><br><span class="line">     <span class="number">0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>,</span><br><span class="line">     <span class="number">0.0f</span>,  <span class="number">0.5f</span>, <span class="number">0.0f</span></span><br><span class="line">};  </span><br></pre></td></tr></tbody></table></figure>
+<img src="http://www.luhao.wiki/images/NDC.png" alt="" width="500">
+<ul>
+<li>接下来，我们要将这些数据传给CPU，用于Vertex Shader的计算！
 <ul>
 <li><font color="#ef6d3b"><strong>VBO</strong></font>：Vertex Buffer Objects，存放以上数据的GPU Memory</li>
+<li>opengl有很多VBO的类型：<code>GL_ARRAY_BUFFER</code>是比较常用的;</li>
 </ul>
 </li>
 </ul>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> VBO;</span><br><span class="line">glGenBuffers(<span class="number">1</span>, &amp;VBO);</span><br><span class="line">glBindBuffer(GL_ARRAY_BUFFER, VBO);</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>glBufferData: 将顶点数据真正的喂给GPU</li>
+</ul>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">glBufferData(GL_ARRAY_BUFFER, <span class="keyword">sizeof</span>(vertices), vertices, GL_STATIC_DRAW);</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Vertex-Shader">Vertex Shader</h3>
+<ul>
+<li>介绍一些简单的语法:
+<ul>
+<li>#version, 指定GLSL的版本，如330代表OpenGL 3.3</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line">layout (location = <span class="number">0</span>) in vec3 aPos;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    gl_Position = vec4(aPos.x, aPos.y, aPos.z, <span class="number">1.0</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Compile-Vertex-Shader-run-time">Compile Vertex Shader (run-time)</h3>
+<ul>
+<li>先对char[]编译，后续会扩展开发!</li>
+</ul>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> *vertexShaderSource = <span class="string">"#version 330 core\n"</span></span><br><span class="line">    <span class="string">"layout (location = 0) in vec3 aPos;\n"</span></span><br><span class="line">    <span class="string">"void main()\n"</span></span><br><span class="line">    <span class="string">"{\n"</span></span><br><span class="line">    <span class="string">"   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"</span></span><br><span class="line">    <span class="string">"}\0"</span>;</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>如何编译VS?</li>
+</ul>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> vertexShader;</span><br><span class="line">vertexShader = glCreateShader(GL_VERTEX_SHADER);</span><br><span class="line"></span><br><span class="line">glShaderSource(vertexShader, <span class="number">1</span>, &amp;vertexShaderSource, <span class="literal">NULL</span>);</span><br><span class="line">glCompileShader(vertexShader);</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Pixel-Shader">Pixel Shader</h3>
+<ul>
+<li>同理，ps更关心的是color，vs则关心位置</li>
+</ul>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> *fragmentShaderSource = <span class="string">"#version 330 core\n"</span></span><br><span class="line"><span class="string">"out vec4 FragColor;\n"</span></span><br><span class="line"><span class="string">"void main()\n"</span></span><br><span class="line"><span class="string">"{\n"</span></span><br><span class="line"><span class="string">"   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"</span></span><br><span class="line"><span class="string">"}\n\0"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> fragmentShader;</span><br><span class="line">fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);</span><br><span class="line">glShaderSource(fragmentShader, <span class="number">1</span>, &amp;fragmentShaderSource, <span class="literal">NULL</span>);</span><br><span class="line">glCompileShader(fragmentShader);</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Link-and-Combine">Link and Combine</h3>
+<ul>
+<li>Shader编译完，需要链接并整合起来</li>
+</ul>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> shaderProgram;</span><br><span class="line">shaderProgram = glCreateProgram();</span><br><span class="line"></span><br><span class="line">glAttachShader(shaderProgram, vertexShader);</span><br><span class="line">glAttachShader(shaderProgram, fragmentShader);</span><br><span class="line">glLinkProgram(shaderProgram);</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>渲染线程中开始绘制: glUserProgram()</li>
+</ul>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">glUseProgram(shaderProgram);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 记得回收</span></span><br><span class="line">glDeleteShader(vertexShader);</span><br><span class="line">glDeleteShader(fragmentShader);  </span><br></pre></td></tr></tbody></table></figure>
+<hr>
+<h2 id="问题汇总">问题汇总</h2>
+<h3 id="1-OpenGL的VAO、VBP区别">1. OpenGL的VAO、VBP区别?</h3>
+<ul>
+<li>VBO: 存储大量顶点信息，给Vertex Shader用</li>
+<li>VAO: 告诉GPU如何使用VBO，使用哪个VBO</li>
+</ul>
+<img src="http://www.luhao.wiki/images/vbo_vao.png" alt="" width="600">
 <h2 id="参考资料">参考资料</h2>
 <blockquote>
 <ul>
