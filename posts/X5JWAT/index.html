@@ -9,15 +9,15 @@
         <meta name="keywords" content="C" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="概要 汇总了Git使用遇到的一些坑!     fatal: unable to access &#39;https:&#x2F;&#x2F;github.com&#x2F;593413198&#x2F;Garen.git&#x2F;&#39;: Failed to connect to github.com port 443: Timed out  1.stackoverflow 2.尝试 git config --global --unset https.pr">
+    <meta name="description" content="概要 汇总了自己使用Git时遇到的一些坑!     fatal: unable to access &#39;https:&#x2F;&#x2F;github.com&#x2F;xxx.git&#x2F;&#39;:Failed to connect to github.com port 443: Timed out  stackoverflow 尝试 git config --global --unset https.proxy    参考资料">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git: 坑爹问题汇总">
 <meta property="og:url" content="http://luhao.wiki/posts/X5JWAT/index.html">
 <meta property="og:site_name" content="Luhao&#39;s Blog">
-<meta property="og:description" content="概要 汇总了Git使用遇到的一些坑!     fatal: unable to access &#39;https:&#x2F;&#x2F;github.com&#x2F;593413198&#x2F;Garen.git&#x2F;&#39;: Failed to connect to github.com port 443: Timed out  1.stackoverflow 2.尝试 git config --global --unset https.pr">
+<meta property="og:description" content="概要 汇总了自己使用Git时遇到的一些坑!     fatal: unable to access &#39;https:&#x2F;&#x2F;github.com&#x2F;xxx.git&#x2F;&#39;:Failed to connect to github.com port 443: Timed out  stackoverflow 尝试 git config --global --unset https.proxy    参考资料">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-19T15:47:07.000Z">
-<meta property="article:modified_time" content="2021-10-19T16:49:05.349Z">
+<meta property="article:modified_time" content="2021-10-19T16:54:47.506Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="C">
 <meta name="twitter:card" content="summary">
@@ -235,13 +235,13 @@
                          <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/2VY467R/">博客开发计划</a></li>  </ul> 
                     </li> 
                     
-                    <li class="directory">
+                    <li class="directory open">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
+                            <i class="fa fa-folder-open"></i>
                             &nbsp;
                             工具
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/94b493b2/">markdown: test blog</a></li>  <li class="file"><a href="/posts/adff27ce/">vim: the best editor</a></li>  <li class="file"><a href="/posts/796558c1/">hexo: a blog framework</a></li>  <li class="file"><a href="/posts/3P9KQQ1/">Markdown-Snippet: 开发一款VScode插件</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/94b493b2/">markdown: test blog</a></li>  <li class="file"><a href="/posts/adff27ce/">vim: the best editor</a></li>  <li class="file"><a href="/posts/796558c1/">hexo: a blog framework</a></li>  <li class="file"><a href="/posts/3P9KQQ1/">Markdown-Snippet: 开发一款VScode插件</a></li>  <li class="file active"><a href="/posts/X5JWAT/">Git: 坑爹问题汇总</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -261,7 +261,7 @@
                         </a>
                          <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/c98bb1ae/">写给三年内的技术成长目标</a></li>  <li class="file"><a href="/posts/1ZMZBDW/">关于开发理念: Simple is Good</a></li>  </ul> 
                     </li> 
-                     <li class="file active"><a href="/posts/X5JWAT/">Git: 坑爹问题汇总</a></li>  </ul> 
+                     </ul> 
     </div>
     <script>
         $(document).ready(function() {
@@ -341,7 +341,7 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="post-Git-坑爹问题汇总" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-工具/Git-坑爹问题汇总" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -349,6 +349,11 @@
                 
                     <div class="article-meta">
                         
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+    </div>
+
                         <!-- 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
@@ -399,15 +404,15 @@
         
         
             <div class="admonition note"><p class="admonition-title">概要
-</p><p>汇总了Git使用遇到的一些坑!</p>
+</p><p>汇总了自己使用<code>Git</code>时遇到的一些坑!</p>
 </div>
 <hr>
 <ul>
 <li>
-<p><code>fatal: unable to access 'https://github.com/593413198/Garen.git/': Failed to connect to github.com port 443: Timed out</code></p>
+<p><code>fatal: unable to access 'https://github.com/xxx.git/':Failed to connect to github.com port 443: Timed out</code></p>
 <ul>
-<li>1.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/18356502/github-failed-to-connect-to-github-443-windows-failed-to-connect-to-github">stackoverflow</a></li>
-<li>2.尝试 <code>git config --global --unset https.proxy</code></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/18356502/github-failed-to-connect-to-github-443-windows-failed-to-connect-to-github">stackoverflow</a></li>
+<li>尝试 <code>git config --global --unset https.proxy</code></li>
 </ul>
 </li>
 </ul>

@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-10-19T16:49:05.349Z</updated>
+  <updated>2021-10-19T16:54:47.506Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -21,23 +21,25 @@
     <link href="http://luhao.wiki/posts/X5JWAT/"/>
     <id>http://luhao.wiki/posts/X5JWAT/</id>
     <published>2021-10-19T15:47:07.000Z</published>
-    <updated>2021-10-19T16:49:05.349Z</updated>
+    <updated>2021-10-19T16:54:47.506Z</updated>
     
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>汇总了Git使用遇到的一些坑!</p></div><hr><ul><li><p><code>fatal: unable to access 'https://github.com/593413198/Garen.git/': Failed to connect to github.com port 443: Timed out</code></p><ul><li>1.<a href="https://stackoverflow.com/questions/18356502/github-failed-to-connect-to-github-443-windows-failed-to-connect-to-github">stackoverflow</a></li><li>2.尝试 <code>git config --global --unset https.proxy</code></li></ul></li></ul><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>汇总了自己使用<code>Git</code>时遇到的一些坑!</p></div><hr><ul><li><p><code>fatal: unable to access 'https://github.com/xxx.git/':Failed to connect to github.com port 443: Timed out</code></p><ul><li><a href="https://stackoverflow.com/questions/18356502/github-failed-to-connect-to-github-443-windows-failed-to-connect-to-github">stackoverflow</a></li><li>尝试 <code>git config --global --unset https.proxy</code></li></ul></li></ul><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
     
     
       
       
     <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
-&lt;/p&gt;&lt;p&gt;汇总了Git使用遇到的一些坑!&lt;/p&gt;
+&lt;/p&gt;&lt;p&gt;汇总了自己使用&lt;code&gt;Git&lt;/code&gt;时遇到的一些坑!&lt;/p&gt;
 &lt;/div&gt;
 &lt;hr&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;code&gt;fatal: unable to acces</summary>
+&lt;p&gt;&lt;code&gt;fatal:</summary>
       
     
     
+    
+    <category term="工具" scheme="http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
     <category term="C" scheme="http://luhao.wiki/tags/C/"/>
