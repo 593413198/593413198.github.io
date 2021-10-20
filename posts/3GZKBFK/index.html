@@ -3,25 +3,26 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Graphics: 图形学大纲 | Luhao&#39;s Blog</title>
+    <title>Shaders | Luhao&#39;s Blog</title>
     
     
-        <meta name="keywords" content="C,Graphics" />
+        <meta name="keywords" content="C" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Mathematics：dot&#x2F;cross, matrix…   Transformation: view&#x2F;camera, proj…   rasterization, sampling   AA   Occlusion   shading   pipeline   texture mapping   ray tracing   animation">
+    <meta name="description" content="概要 Shader, 理解为一种GPU Program 不要尝试用中文翻译它!    参考资料">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Graphics: 图形学大纲">
-<meta property="og:url" content="http://luhao.wiki/posts/SQMNPS/index.html">
+<meta property="og:title" content="Shaders">
+<meta property="og:url" content="http://luhao.wiki/posts/3GZKBFK/index.html">
 <meta property="og:site_name" content="Luhao&#39;s Blog">
-<meta property="og:description" content="Mathematics：dot&#x2F;cross, matrix…   Transformation: view&#x2F;camera, proj…   rasterization, sampling   AA   Occlusion   shading   pipeline   texture mapping   ray tracing   animation">
+<meta property="og:description" content="概要 Shader, 理解为一种GPU Program 不要尝试用中文翻译它!    参考资料">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-10-05T11:34:05.000Z">
-<meta property="article:modified_time" content="2021-10-14T17:11:48.482Z">
+<meta property="og:image" content="http://www.luhao.wiki/images/shader.png">
+<meta property="article:published_time" content="2021-10-20T14:51:51.000Z">
+<meta property="article:modified_time" content="2021-10-20T14:53:38.730Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="C">
-<meta property="article:tag" content="Graphics">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.luhao.wiki/images/shader.png">
     
 
     
@@ -200,22 +201,22 @@
                          <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/1ZP02KZ/">fuckc: a mini C-interpreter</a></li>  <li class="file"><a href="/posts/208KKE2/">0: Compiler vs Interpreter</a></li>  <li class="file"><a href="/posts/2DQASEF/">1: memory, register and instruction</a></li>  <li class="file"><a href="/posts/1KXFP8G/">2: Lexical Analysis</a></li>  </ul> 
                     </li> 
                     
-                    <li class="directory open">
-                        <a href="#" data-role="directory">
-                            <i class="fa fa-folder-open"></i>
-                            &nbsp;
-                            Computer Graphics
-                        </a>
-                         <ul class="unstyled" id="tree" >  <li class="file active"><a href="/posts/SQMNPS/">Graphics: 图形学大纲</a></li>  <li class="file"><a href="/posts/2DBGYFH/">Transformation: 基本空间变换</a></li>  <li class="file"><a href="/posts/2AR5BC4/">Occlusion: 可见性与剔除</a></li>  </ul> 
-                    </li> 
-                    
                     <li class="directory">
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder"></i>
                             &nbsp;
+                            Computer Graphics
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/SQMNPS/">Graphics: 图形学大纲</a></li>  <li class="file"><a href="/posts/2DBGYFH/">Transformation: 基本空间变换</a></li>  <li class="file"><a href="/posts/2AR5BC4/">Occlusion: 可见性与剔除</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
                             OpenGL
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/20S2P1/">OpenGL开发实战</a></li>  <li class="file"><a href="/posts/34DWTE7/">gvector: 空间向量库</a></li>  <li class="file"><a href="/posts/3GZKBFK/">Shaders</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/20S2P1/">OpenGL开发实战</a></li>  <li class="file"><a href="/posts/34DWTE7/">gvector: 空间向量库</a></li>  <li class="file active"><a href="/posts/3GZKBFK/">Shaders</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -342,7 +343,7 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="post-Computer Graphics/Graphics-图形学大纲" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-OpenGL/Shaders" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -352,20 +353,20 @@
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Computer-Graphics/">Computer Graphics</a>
+        <a class="article-category-link" href="/categories/OpenGL/">OpenGL</a>
     </div>
 
                         <!-- 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/C/" rel="tag">C</a>, <a class="tag-link-link" href="/tags/Graphics/" rel="tag">Graphics</a>
+        <a class="tag-link-link" href="/tags/C/" rel="tag">C</a>
     </div>
  -->
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/posts/SQMNPS/">
-            <time datetime="2021-10-05T11:34:05.000Z" itemprop="datePublished">2021-10-05</time>
+        <a href="/posts/3GZKBFK/">
+            <time datetime="2021-10-20T14:51:51.000Z" itemprop="datePublished">2021-10-20</time>
         </a>
     </div>
 
@@ -375,7 +376,7 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计19字 
+                            | 字数统计24字 
                           </span>
                           <!-- <span class="post-count"> -->
                             <!-- | 阅读时长1分钟  -->
@@ -386,7 +387,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            Graphics: 图形学大纲
+            Shaders
         </h1>
     
 
@@ -399,43 +400,24 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">2.</span> <span class="toc-text">参考资料</span></a></li></ol>
                 </div>
             
         
         
-            <ul>
-<li>
-<p>Mathematics：dot/cross, matrix…</p>
-</li>
-<li>
-<p><a target="_blank" rel="noopener" href="https://www.luhao.wiki/posts/2DBGYFH/">Transformation: view/camera, proj…</a></p>
-</li>
-<li>
-<p>rasterization, sampling</p>
-</li>
-<li>
-<p>AA</p>
-</li>
-<li>
-<p><a href="">Occlusion</a></p>
-</li>
-<li>
-<p>shading</p>
-</li>
-<li>
-<p>pipeline</p>
-</li>
-<li>
-<p>texture mapping</p>
-</li>
-<li>
-<p>ray tracing</p>
-</li>
-<li>
-<p>animation</p>
-</li>
+            <div class="admonition note"><p class="admonition-title">概要
+</p><p>Shader, 理解为一种GPU Program<br>
+不要尝试用中文翻译它!</p>
+</div>
+<img src="http://www.luhao.wiki/images/shader.png" alt="" width="500">
+<h2 id=""></h2>
+<h2 id="参考资料">参考资料</h2>
+<blockquote>
+<ul>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
 </ul>
+</blockquote>
 
             </div>
         
@@ -448,19 +430,10 @@
     
 <nav id="article-nav">
     
-        <a href="/posts/GCC5SG/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">
-                
-                    Physics Engines: 物理引擎大纲
-                
-            </div>
-        </a>
     
-    
-        <a href="/posts/208KKE2/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/posts/X5JWAT/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">0: Compiler vs Interpreter</div>
+            <div class="article-nav-title">Git: 坑爹问题汇总</div>
         </a>
     
 </nav>
