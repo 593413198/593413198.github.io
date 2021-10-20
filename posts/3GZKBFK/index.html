@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://www.luhao.wiki/images/shader.png">
 <meta property="og:image" content="http://www.luhao.wiki/images/NDC.png">
 <meta property="article:published_time" content="2021-10-20T14:51:51.000Z">
-<meta property="article:modified_time" content="2021-10-20T15:21:32.699Z">
+<meta property="article:modified_time" content="2021-10-20T15:26:44.949Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content="Graphics">
@@ -338,7 +338,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title"><span>标签</span></h3>
         <div class="widget tagcloud">
-            <a href="/tags/C/" style="font-size: 20px;">C</a> <a href="/tags/C/" style="font-size: 18.5px;">C++</a> <a href="/tags/Compiler/" style="font-size: 14px;">Compiler</a> <a href="/tags/Graphics/" style="font-size: 18.5px;">Graphics</a> <a href="/tags/Interpreter/" style="font-size: 14px;">Interpreter</a> <a href="/tags/OpenGL/" style="font-size: 17px;">OpenGL</a> <a href="/tags/Physics/" style="font-size: 14px;">Physics</a> <a href="/tags/TypeScript/" style="font-size: 14px;">TypeScript</a> <a href="/tags/VScode/" style="font-size: 14px;">VScode</a> <a href="/tags/hexo/" style="font-size: 15.5px;">hexo</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/markdown/" style="font-size: 17px;">markdown</a> <a href="/tags/vim/" style="font-size: 14px;">vim</a>
+            <a href="/tags/C/" style="font-size: 20px;">C</a> <a href="/tags/C/" style="font-size: 17.6px;">C++</a> <a href="/tags/Compiler/" style="font-size: 14px;">Compiler</a> <a href="/tags/Git/" style="font-size: 18.8px;">Git</a> <a href="/tags/Graphics/" style="font-size: 17.6px;">Graphics</a> <a href="/tags/Interpreter/" style="font-size: 14px;">Interpreter</a> <a href="/tags/OpenGL/" style="font-size: 16.4px;">OpenGL</a> <a href="/tags/Physics/" style="font-size: 14px;">Physics</a> <a href="/tags/TypeScript/" style="font-size: 14px;">TypeScript</a> <a href="/tags/VScode/" style="font-size: 14px;">VScode</a> <a href="/tags/hexo/" style="font-size: 15.2px;">hexo</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/markdown/" style="font-size: 16.4px;">markdown</a> <a href="/tags/vim/" style="font-size: 14px;">vim</a>
         </div>
     </div>
 
@@ -379,7 +379,7 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计250字 
+                            | 字数统计304字 
                           </span>
                           <!-- <span class="post-count"> -->
                             <!-- | 阅读时长1分钟  -->
@@ -480,14 +480,25 @@
 <hr>
 <h2 id="Pratice-第一个Shader">Pratice: 第一个Shader</h2>
 <ul>
-<li><font color="#ef6d3b"><strong>NDC</strong></font>: Normalized Device Coordinates<br>
+<li>
+<p><font color="#ef6d3b"><strong>NDC</strong></font>: Normalized Device Coordinates.</p>
+<ul>
+<li>vertex shader的输入，就是定义在NDC坐标下.<br>
 <img src="http://www.luhao.wiki/images/NDC.png" alt="" width="500"></li>
+</ul>
+</li>
+<li>
+<p>接下来，我们需要定义一串Vertex数据传给CPU，并用于Vertex Shader的计算！</p>
+<ul>
+<li><font color="#ef6d3b"><strong>VBO</strong></font>：Vertex Buffer Objects，存放以上数据的GPU Memory</li>
+</ul>
+</li>
 </ul>
 <h2 id="参考资料">参考资料</h2>
 <blockquote>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/832545/what-are-vertex-and-pixel-shaders">Stackoverflow: What are Vertex and Pixel shaders?</a></li>
-<li><a href=""></a></li>
+<li><a target="_blank" rel="noopener" href="https://learnopengl.com/Getting-started/Hello-Triangle">LearOpenGL: Hello-Triangle</a></li>
 </ul>
 </blockquote>
 

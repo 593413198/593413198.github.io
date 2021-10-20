@@ -228,14 +228,14 @@
   </url>
   
   <url>
-    <loc>http://luhao.wiki/tags/OpenGL/</loc>
+    <loc>http://luhao.wiki/tags/Git/</loc>
     <lastmod>2021-10-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://luhao.wiki/tags/Physics/</loc>
+    <loc>http://luhao.wiki/tags/OpenGL/</loc>
     <lastmod>2021-10-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -257,6 +257,13 @@
   
   <url>
     <loc>http://luhao.wiki/tags/VScode/</loc>
+    <lastmod>2021-10-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://luhao.wiki/tags/Physics/</loc>
     <lastmod>2021-10-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -307,14 +314,14 @@
   </url>
   
   <url>
-    <loc>http://luhao.wiki/categories/Physics-Engines/</loc>
+    <loc>http://luhao.wiki/categories/TODO/</loc>
     <lastmod>2021-10-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://luhao.wiki/categories/TODO/</loc>
+    <loc>http://luhao.wiki/categories/Physics-Engines/</loc>
     <lastmod>2021-10-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
