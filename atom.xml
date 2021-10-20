@@ -40,8 +40,6 @@
     <category term="OpenGL" scheme="http://luhao.wiki/categories/OpenGL/"/>
     
     
-    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
-    
     <category term="Graphics" scheme="http://luhao.wiki/tags/Graphics/"/>
     
     <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
@@ -76,8 +74,6 @@
     <category term="工具" scheme="http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
-    
     <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
     
   </entry>
@@ -106,9 +102,69 @@
     <category term="OpenGL" scheme="http://luhao.wiki/categories/OpenGL/"/>
     
     
-    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
+    <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
+    
+    <category term="OpenGL" scheme="http://luhao.wiki/tags/OpenGL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Sort: 排序算法</title>
+    <link href="http://luhao.wiki/posts/2X2CDR4/"/>
+    <id>http://luhao.wiki/posts/2X2CDR4/</id>
+    <published>2021-10-18T14:03:47.000Z</published>
+    <updated>2021-10-20T18:08:42.817Z</updated>
+    
+    <content type="html"><![CDATA[<div class="admonition warning"><p class="admonition-title">提示</p><p>几大排序算法的原理与实现!<br>这是大学时写的...</p></div><hr><h2 id="排序算法的深入分析和实现">排序算法的深入分析和实现</h2><p><strong>1.1 排序的定义</strong><br>对一序列对象根据某个关键字进行排序。</p><p><strong>1.2 术语说明</strong></p><p><strong>稳定</strong>：如果a原本在b前面，而a=b，排序之后a仍然在b的前面；</p><p><strong>不稳定</strong>：如果a原本在b的前面，而a=b，排序之后a可能会出现在b的后面；</p><p><strong>内排序In-place</strong>：所有排序操作都在内存中完成；</p><p><strong>外排序Out-place</strong>：由于数据太大，因此把数据放在磁盘中，而排序通过磁盘和内存的数据传输才能进行；</p><p><strong>1.3 算法总结</strong><img src="https://img-blog.csdnimg.cn/20190419171130152.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2x1aGFvMTk5ODA5MDk=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><h3 id="1、冒泡排序（Bubble-Sort）"><strong>1、冒泡排序（Bubble Sort）</strong></h3><p>相邻两个元素比较大小，一次外循环比较(n-1)次；<br>如跑完第一次循环，最大的元素被移到最后一位；<br>内循环跑(n-i)次，因为最后i个元素已排好序；<br><img src="https://img-blog.csdnimg.cn/20190420003741295.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2x1aGFvMTk5ODA5MDk=,size_16,color_FFFFFF,t_70" alt="冒泡排序"></p><p><strong>时间复杂度分析</strong>：<br>比较次数：不管怎样，冒泡排序都要比较(n+(n-1)+…+2+1)次，即n(n-1)/2 ，O(N^2);<br>交换次数：有序不需要交换，逆序交换n(n-1)/2次；O(N^2);</p><p><strong>稳定性分析：</strong><br>相邻两元素大小一样，自然不会多此一举去交换，因此稳定；</p><p><strong>C++代码实现：</strong></p><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//冒泡排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble_sort</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> n)</span></span>{</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n<span class="number">-1</span>; i++){ <span class="comment">//外循环n-1次</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;n-i<span class="number">-1</span>; j++){ <span class="comment">//内循环找出前n-i个中最大元素，不断往末尾移</span></span><br><span class="line"><span class="keyword">if</span> (a[j]&gt;a[j+<span class="number">1</span>]){</span><br><span class="line">                <span class="keyword">int</span> tmp = a[j];</span><br><span class="line">                a[j] = a[j+<span class="number">1</span>];</span><br><span class="line">                a[j+<span class="number">1</span>] = tmp;</span><br><span class="line">}</span><br><span class="line">}</span><br><span class="line">}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><h2 id="br"><br></h2><h3 id="2、选择排序（Select-Sort）"><strong>2、选择排序（Select Sort）</strong></h3><p>每次选择第i小的元素，把它放在index为i的位置上；<br>一共n次外循环，第一次选出最小元素，放在第一个；第i次选出第i小的元素；<br>每次内循环要比较(n-i)次，最终选出后(n-i)个元素中最小的，放到i位置上。<br><img src="https://img-blog.csdnimg.cn/2019042000365789.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2x1aGFvMTk5ODA5MDk=,size_16,color_FFFFFF,t_70" alt="选择排序"></p><p><strong>时间复杂度分析</strong>：<br>比较次数：选择排序同样比较(n+(n-1)+…+2+1)次，即n(n-1)/2 ，O(N^2);<br>交换次数：有序不需要交换，逆序交换n(n-1)/2次；O(N^2);</p><p><strong>稳定性分析：</strong><br>因为涉及相隔较远的元素交换位置！<br>例如3 2 3 1，第一次循环结束，3和1交换，破坏了稳定。显然选择排序是不稳定。</p><p><strong>C++代码实现：</strong></p><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//选择排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">select_sort</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> n)</span></span>{</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n<span class="number">-1</span>; i++){ <span class="comment">//外循环n-1次</span></span><br><span class="line"><span class="keyword">int</span> min = a[i], index = i;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> j=i; j&lt;n; j++){ <span class="comment">//内循环找出后n-i个中最小元素，放到第i位置</span></span><br><span class="line"><span class="keyword">if</span> (a[j] &lt; min){</span><br><span class="line">min = a[j];</span><br><span class="line">index = j;</span><br><span class="line">}</span><br><span class="line">}</span><br><span class="line">a[index] = a[i];</span><br><span class="line">a[i] = min;</span><br><span class="line">}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><h2 id="br-2"><br></h2><h3 id="3、插入排序（Insert-Sort）"><strong>3、插入排序（Insert Sort）</strong></h3><p>类比平时打牌时插牌，拿到新元素，把它放到已排好序的元素中的适当位置；<br>外循环n次，第i次外循环结束，则前i个数已排好序，第一个默认排好序；<br>内循环为执行(n-i)次，将新元素和前i个排好序的依次比较，是一个不断往前插的过程；<br><img src="https://img-blog.csdnimg.cn/20190420003829832.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2x1aGFvMTk5ODA5MDk=,size_16,color_FFFFFF,t_70" alt="插入排序"></p><p><strong>时间复杂度分析</strong>：<br>比较次数：同O(N^2);<br>交换次数：有序不需要交换，逆序交换n(n-1)/2次；O(N^2);</p><p><strong>稳定性分析：</strong><br>插入排序是稳定的；例如 1 2 3 3，前三个已经排好序，最后的3显然不会再往前插；</p><p><strong>C++代码实现：</strong></p><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//插入排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert_sort</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> n)</span></span>{</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; i++){ <span class="comment">//外循环n-1次，第i次外循环结束前i+1个元素排好序列</span></span><br><span class="line"><span class="keyword">int</span> index = i;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> j=i<span class="number">-1</span>; j&gt;=<span class="number">0</span>; j--){ <span class="comment">//内循环将第i个元素往前插</span></span><br><span class="line"><span class="keyword">if</span> (a[index]&lt;a[j]){</span><br><span class="line"><span class="keyword">int</span> tmp = a[index];</span><br><span class="line">a[index] = a[j];</span><br><span class="line">a[j] = tmp;</span><br><span class="line">index = j;</span><br><span class="line">}</span><br><span class="line">}</span><br><span class="line">}</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure><h2 id="br-3"><br></h2><h3 id="4、归并排序（Merge-Sort）"><strong>4、归并排序（Merge Sort）</strong></h3><p>采用分治法，将序列分成两个n/2长度的子序列，合并时依次按大小输出到新序列；<br>占用额外空间，非原址排序；<br><img src="https://img-blog.csdnimg.cn/20190420003900232.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2x1aGFvMTk5ODA5MDk=,size_5,color_FFFFFF,t_70" alt="归并排序"></p><p><strong>时间复杂度分析</strong>：<br>每次递归复杂度O(n)，递归层数O(lgn)，所以复杂度为O(nlgn);</p><p><strong>稳定性分析：</strong><br>归并排序是稳定的，合并过程左右两个序列的比较大小保证了这种稳定性；</p><p><strong>C++代码实现：</strong></p><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//归并排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> *b, <span class="keyword">int</span> p, <span class="keyword">int</span> r, <span class="keyword">int</span> q)</span></span>{ <span class="comment">//合并下标为p到r 与 r+1到q 这两部分</span></span><br><span class="line"><span class="keyword">int</span> write = p; <span class="comment">//写入b的下标</span></span><br><span class="line"><span class="keyword">int</span> i=p,j=r+<span class="number">1</span>; <span class="comment">//分别标记左右序列正要读的位置</span></span><br><span class="line"><span class="keyword">while</span> (i&lt;=r &amp;&amp; j &lt;= q){</span><br><span class="line"><span class="keyword">if</span> (a[i]&lt;=a[j])</span><br><span class="line">b[write++] = a[i++];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (a[i]&gt;a[j])</span><br><span class="line">b[write++] = a[j++];</span><br><span class="line">}</span><br><span class="line"><span class="comment">//此时左、右序列可能有一个未写完</span></span><br><span class="line"><span class="keyword">while</span> (i&lt;=r)</span><br><span class="line">b[write++] = a[i++];</span><br><span class="line"><span class="keyword">while</span> (j&lt;=q)</span><br><span class="line">b[write++] = a[j++];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> k=p; k&lt;=q; k++)</span><br><span class="line">a[k] = b[k];</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_sort</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> *b, <span class="keyword">int</span> beg, <span class="keyword">int</span> end)</span></span>{</span><br><span class="line"><span class="keyword">if</span> (end==beg){ <span class="comment">//1个元素直接返回</span></span><br><span class="line"><span class="keyword">return</span>;</span><br><span class="line">}</span><br><span class="line"><span class="keyword">if</span> (end-beg == <span class="number">1</span>){ <span class="comment">//2个元素，排个序</span></span><br><span class="line"><span class="keyword">if</span> (a[beg]&gt;a[end]){</span><br><span class="line"><span class="keyword">int</span> tmp = a[beg];</span><br><span class="line">a[beg] = a[end];</span><br><span class="line">a [end] = tmp;</span><br><span class="line">}</span><br><span class="line"><span class="keyword">return</span>;</span><br><span class="line">}</span><br><span class="line">merge_sort(a,b,beg,(beg+end)/<span class="number">2</span>);</span><br><span class="line">merge_sort(a,b,(beg+end)/<span class="number">2</span>+<span class="number">1</span>,end);</span><br><span class="line">merge(a,b,beg,(beg+end)/<span class="number">2</span>,end);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><h2 id="br-4"><br></h2><h3 id="5、快速排序（Quick-Sort）"><strong>5、快速排序（Quick Sort）</strong></h3><p>从数列中挑出一个元素，称为 “基准”(pivot)；<br>重新排序数列，所有比pivot小的摆放在基准前面，所有比pivot大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；<br>递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序；</p><p>Partition操作实现：<br>pivot选择末尾元素，维护i和j，i指向头，j指向pivot前一个。i不断往后搜索直到找到第一个大于pivot的元素；j不断往前搜索直到找到第一个小于pivot的元素。i,j都找到时交换i,j上的元素，如果j&lt;i，退出循环，此时交换pivot和i位置，满足pivot(即i原来位置)左边都比它小，右边都比它大；<br><img src="https://img-blog.csdnimg.cn/20190420015014337.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2x1aGFvMTk5ODA5MDk=,size_16,color_FFFFFF,t_70" alt="快速排序"><br><strong>时间复杂度分析</strong>：<br>每次递归复杂度O(n)，递归层数O(lgn)，所以复杂度为O(nlgn);</p><p><strong>稳定性分析：</strong><br>快速排序是不稳定的；<br>因为间隔元素的交换，很可能打破原有相同元素的顺序关系；<br>例如3 3 1 1 2，选择2为pivot，那么第一次循环，3和1就发生了交换，打乱了稳定性；</p><p><strong>C++代码实现：</strong></p><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//快速排序</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> p, <span class="keyword">int</span> q)</span></span>{</span><br><span class="line"><span class="keyword">int</span> pivot = q; <span class="comment">//选择最后一个元素作为pivot</span></span><br><span class="line"><span class="keyword">int</span> i=<span class="number">0</span>,j=q<span class="number">-1</span>;</span><br><span class="line"><span class="keyword">while</span> (i&lt;=j){</span><br><span class="line"><span class="keyword">while</span> (a[i]&lt;=a[pivot] &amp;&amp; i&lt;q ){ <span class="comment">//i左边都&lt;=pivot</span></span><br><span class="line">i++;</span><br><span class="line">}</span><br><span class="line"><span class="keyword">while</span> (a[j]&gt;a[pivot] &amp;&amp; j&gt;=p ){ <span class="comment">//j右边都&gt;pivot</span></span><br><span class="line">j--;</span><br><span class="line">}</span><br><span class="line"><span class="keyword">if</span> (i&lt;j){ <span class="comment">//i不会等于j</span></span><br><span class="line"><span class="keyword">int</span> tmp = a[i];</span><br><span class="line">a[i] = a[j];</span><br><span class="line">a[j] = tmp;</span><br><span class="line">}</span><br><span class="line">}</span><br><span class="line"><span class="comment">//交换i和pivot</span></span><br><span class="line"><span class="keyword">int</span> tmp = a[i];</span><br><span class="line">a[i] = a[pivot];</span><br><span class="line">a[pivot] = tmp;</span><br><span class="line"><span class="keyword">return</span> i; <span class="comment">//partition结束，满足左边&lt;=它，右边&gt;它</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> beg, <span class="keyword">int</span> end)</span></span>{</span><br><span class="line"><span class="keyword">if</span> (beg&gt;=end)</span><br><span class="line"><span class="keyword">return</span>;</span><br><span class="line"><span class="keyword">int</span> pivot = partition(a,beg,end);</span><br><span class="line">quick_sort(a,beg,pivot<span class="number">-1</span>);</span><br><span class="line">quick_sort(a,pivot+<span class="number">1</span>,end);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;admonition warning&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;提示
+&lt;/p&gt;&lt;p&gt;几大排序算法的原理与实现!&lt;br&gt;
+这是大学时写的...&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;排序算法的深入分析和实现&quot;&gt;排序算</summary>
+      
+    
+    
+    
+    <category term="Algorithm" scheme="http://luhao.wiki/categories/Algorithm/"/>
+    
     
     <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Garen: 基于OpenGL做一款引擎</title>
+    <link href="http://luhao.wiki/posts/1KH1TD4/"/>
+    <id>http://luhao.wiki/posts/1KH1TD4/</id>
+    <published>2021-10-17T14:17:10.000Z</published>
+    <updated>2021-10-20T17:58:20.953Z</updated>
+    
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>我TM想做一款游戏引擎！</p></div><hr><h2 id="Introduction">Introduction</h2><ul><li><p>Github page: <a href="https://github.com/593413198/Garen"><span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span><strong>Garen</strong></a></p></li><li><p>基于OpenGL开发的一个<s>微型引擎</s>，取名自LOL中的盖伦，希望其<font color="#ef6d3b"><strong>simple but strong</strong></font>.</p></li><li><p>Maybe <font color="#ef6d3b"><strong>重复造轮子</strong></font>，因为这也是我提高C++ Coding的重要方式.</p></li></ul><hr><h2 id="Dependence">Dependence</h2><ul><li><a href="https://www.glfw.org/download.html"><em><strong>GLFW</strong></em></a></li><li><a href="https://glad.dav1d.de/"><em><strong>glad</strong></em></a></li></ul><hr><h2 id="release">release</h2><h3 id="v1-0-0"><a href="https://github.com/593413198/Garen/releases/tag/v1.0.0">v1.0.0</a></h3><ul><li>main loop of engine</li><li>draw: 绘制基本图形</li><li>input: 输入</li><li>gvector: 矩阵库</li></ul><h3 id="v1-0-1"><a href="https://github.com/593413198/Garen/releases/tag/v1.0.1">v1.0.1</a></h3><ul><li>gshader: 读取和编译shader</li><li>./shader: 存放vs, ps</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
+&lt;/p&gt;&lt;p&gt;我TM想做一款游戏引擎！&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;Introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;ul&gt;</summary>
+      
+    
+    
+    
+    <category term="OpenGL" scheme="http://luhao.wiki/categories/OpenGL/"/>
+    
+    
+    <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
+    
+    <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
     
     <category term="OpenGL" scheme="http://luhao.wiki/tags/OpenGL/"/>
     
@@ -119,9 +175,9 @@
     <link href="http://luhao.wiki/posts/20S2P1/"/>
     <id>http://luhao.wiki/posts/20S2P1/</id>
     <published>2021-10-17T14:17:10.000Z</published>
-    <updated>2021-10-20T17:38:22.011Z</updated>
+    <updated>2021-10-20T17:48:44.611Z</updated>
     
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>基于OpenGL实现一个功能健全的<code>mini engine</code></p></div><hr><h2 id="Introduction">Introduction</h2><ul><li><p><span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> Github page: <a href="https://github.com/593413198/Garen"><strong>Garen</strong></a></p></li><li><p>基于OpenGL开发的一个<s>微型引擎</s>，取名自LOL中的盖伦，希望其<em>simple but strong</em>.</p></li></ul><hr><h2 id="Dependence">Dependence</h2><ul><li><p><a href="https://www.glfw.org/download.html"><strong>GLFW</strong></a></p></li><li><p><a href="https://glad.dav1d.de/"><strong>glad</strong></a></p></li></ul><hr><h2 id="release">release</h2><h3 id="v1-0-0">v1.0.0</h3><ul><li>main loop of engine</li><li>draw: 绘制基本图形</li><li>input: 输入</li><li>gvector: 矩阵库</li></ul><h3 id="v1-0-1">v1.0.1</h3><ul><li>gshader: 读取和编译shader</li><li>./shader: 存放vs, ps</li></ul>]]></content>
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>基于OpenGL实现一个功能健全的<code>mini engine</code></p></div><hr><h2 id="Introduction">Introduction</h2><ul><li><p>Github page: <a href="https://github.com/593413198/Garen"><span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> <strong>Garen</strong></a></p></li><li><p>基于OpenGL开发的一个<s>微型引擎</s>，取名自LOL中的盖伦，希望其<em>simple but strong</em>.</p></li></ul><hr><h2 id="Dependence">Dependence</h2><ul><li><p><a href="https://www.glfw.org/download.html"><strong>GLFW</strong></a></p></li><li><p><a href="https://glad.dav1d.de/"><strong>glad</strong></a></p></li></ul><hr><h2 id="release">release</h2><h3 id="v1-0-0">v1.0.0</h3><ul><li>main loop of engine</li><li>draw: 绘制基本图形</li><li>input: 输入</li><li>gvector: 矩阵库</li></ul><h3 id="v1-0-1">v1.0.1</h3><ul><li>gshader: 读取和编译shader</li><li>./shader: 存放vs, ps</li></ul>]]></content>
     
     
       
@@ -138,11 +194,39 @@
     <category term="OpenGL" scheme="http://luhao.wiki/categories/OpenGL/"/>
     
     
-    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
-    
     <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
     
     <category term="OpenGL" scheme="http://luhao.wiki/tags/OpenGL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Algorithm: 算法大纲</title>
+    <link href="http://luhao.wiki/posts/2Y252XS/"/>
+    <id>http://luhao.wiki/posts/2Y252XS/</id>
+    <published>2021-10-15T14:00:14.000Z</published>
+    <updated>2021-10-20T18:09:51.186Z</updated>
+    
+    <content type="html"><![CDATA[<div class="admonition warning"><p class="admonition-title">提示</p><p>常见算法的原理与实现!<br>这是大学时写的...</p></div><h2 id="常用算法的C-Python实现">常用算法的C++/Python实现</h2><p><strong>开始时间：</strong><br><code>2019/4/30 (大学)</code></p><p><strong>搭建环境：</strong><br><code>Ubuntu 18.04.1  gcc 7.3.0  python 3.6</code><br><code>Now: Windows MinGW</code></p><p><strong>目录如下：</strong></p><ul><li><p>Sort Algorithm</p><ul><li>BubbleSort</li><li>InsertSort</li><li>SelectSort</li><li>MergerSort</li><li>QuickSort</li></ul></li><li><p>Backtrack</p><ul><li>8-Queens (n皇后问题)</li><li>01-Bag (背包问题()</li><li>TSP 旅行商问题</li></ul></li><li><p>Graph</p><ul><li>graph_matrix</li><li>graph_link</li><li>BFS</li><li>DFS</li></ul></li></ul><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;admonition warning&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;提示
+&lt;/p&gt;&lt;p&gt;常见算法的原理与实现!&lt;br&gt;
+这是大学时写的...&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&quot;常用算法的C-Python实现&quot;&gt;常用算法的C+</summary>
+      
+    
+    
+    
+    <category term="Algorithm" scheme="http://luhao.wiki/categories/Algorithm/"/>
+    
+    
+    <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
+    
+    <category term="Algorithm" scheme="http://luhao.wiki/tags/Algorithm/"/>
     
   </entry>
   
@@ -168,9 +252,9 @@
     <category term="Computer Graphics" scheme="http://luhao.wiki/categories/Computer-Graphics/"/>
     
     
-    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
-    
     <category term="Graphics" scheme="http://luhao.wiki/tags/Graphics/"/>
+    
+    <category term="Algorithm" scheme="http://luhao.wiki/tags/Algorithm/"/>
     
   </entry>
   
@@ -197,8 +281,6 @@
     
     <category term="Compiler" scheme="http://luhao.wiki/categories/Compiler/"/>
     
-    
-    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
     
     <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
     
@@ -227,8 +309,6 @@
     <category term="Computer Graphics" scheme="http://luhao.wiki/categories/Computer-Graphics/"/>
     
     
-    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
-    
     <category term="Graphics" scheme="http://luhao.wiki/tags/Graphics/"/>
     
   </entry>
@@ -255,8 +335,6 @@
     
     <category term="随笔" scheme="http://luhao.wiki/categories/%E9%9A%8F%E7%AC%94/"/>
     
-    
-    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
     
     <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
     
@@ -287,7 +365,7 @@
     <category term="文档" scheme="http://luhao.wiki/categories/%E6%96%87%E6%A1%A3/"/>
     
     
-    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
+    <category term="Algorithm" scheme="http://luhao.wiki/tags/Algorithm/"/>
     
   </entry>
   
@@ -313,8 +391,6 @@
     
     <category term="Compiler" scheme="http://luhao.wiki/categories/Compiler/"/>
     
-    
-    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
     
     <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
     
@@ -342,15 +418,9 @@
     <category term="工具" scheme="http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
-    
     <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
     
     <category term="markdown" scheme="http://luhao.wiki/tags/markdown/"/>
-    
-    <category term="VScode" scheme="http://luhao.wiki/tags/VScode/"/>
-    
-    <category term="TypeScript" scheme="http://luhao.wiki/tags/TypeScript/"/>
     
   </entry>
   
@@ -381,10 +451,6 @@
     <category term="Physics Engines" scheme="http://luhao.wiki/categories/Physics-Engines/"/>
     
     
-    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
-    
-    <category term="Physics" scheme="http://luhao.wiki/tags/Physics/"/>
-    
   </entry>
   
   <entry>
@@ -412,8 +478,6 @@
     <category term="Computer Graphics" scheme="http://luhao.wiki/categories/Computer-Graphics/"/>
     
     
-    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
-    
     <category term="Graphics" scheme="http://luhao.wiki/tags/Graphics/"/>
     
   </entry>
@@ -439,8 +503,6 @@
     
     <category term="Compiler" scheme="http://luhao.wiki/categories/Compiler/"/>
     
-    
-    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
     
     <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
     
@@ -471,8 +533,6 @@
     
     <category term="Compiler" scheme="http://luhao.wiki/categories/Compiler/"/>
     
-    
-    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
     
     <category term="Compiler" scheme="http://luhao.wiki/tags/Compiler/"/>
     
@@ -535,118 +595,9 @@
     <category term="工具" scheme="http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
-    
     <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
     
     <category term="markdown" scheme="http://luhao.wiki/tags/markdown/"/>
-    
-    <category term="hexo" scheme="http://luhao.wiki/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vim: the best editor</title>
-    <link href="http://luhao.wiki/posts/adff27ce/"/>
-    <id>http://luhao.wiki/posts/adff27ce/</id>
-    <published>2021-10-01T07:56:55.000Z</published>
-    <updated>2021-10-01T19:11:28.481Z</updated>
-    
-    <content type="html"><![CDATA[<p><em>As we known, Vim is the best editor in the world!</em></p><div class="admonition note"><p class="admonition-title">提要</p><p>大二开始一门《计算机系统基础》的课程<br>那是第一次接触linux c开发，同样也是vim入坑的开端<br>据说使用Vim的人都会经历如下几个阶段：</p><ul><li><em>1. what a fucking editor!</em></li><li><em>2. what a useful-fucking editor!</em></li><li><em>3. just a tool! (vim script...)</em></li></ul></div><hr><h2 id="1、Vim-Vi-improvment">1、Vim: Vi improvment</h2><p>先从一个stackoverflow经典问题看起：<br><a href="https://stackoverflow.com/questions/11828270/how-do-i-exit-the-vim-editor">How do I exit the Vim editor?</a></p><p>这是回答：<br>Hit the <code>Esc</code> key to enter “Normal mode”. Then you can type : to enter “Command-line mode”. A colon <code>(:)</code> will appear at the bottom of the screen and you can type in one of the following commands. To execute a command, press the Enter key.</p><p><code>:q</code> to quit (short for :quit)<br><code>:q!</code> to quit without saving (short for :quit!)<br><code>:wq</code> to write and quit<br><code>:wq!</code> to write and quit even if file has only read permission (if file does not have write permission: force write)</p><p>到这里，你至少不用窘迫的不知如何退出Vim界面了！</p><ul><li>技巧：所有Vim Operation，都源于英文的缩写，like :q(quit), 因此下面的所有Vim快捷键，我都会尽可能列出其英文含义，已帮助你更快得记住它！</li></ul><h2 id="2、Vim-modes-Vim的模式">2、Vim modes: Vim的模式</h2><p>什么是mode？<br><em>模式，几乎所有的编辑器只有一种模式，即insert 插入</em><br><strong>但是，Vim有起码3种重要的mode：normal, insert, visual</strong></p><ul><li>引自3中一句话：Programming大多数的时间消耗，不是在Writing上，而是review和Editing。</li></ul><h3 id="vim-mode-normal">vim mode: normal</h3><p>如何移动光标?</p><ul><li><code>h</code> - move left ←</li><li><code>j</code> - move down ↓</li><li><code>k</code> - move up ↑</li><li><code>l</code> - move right →</li></ul><p>更高效得，如何以单词为单位移动?</p><ul><li><code>w</code> - move to beginning of next word (<strong>word</strong>)</li><li><code>b</code> - move to previous beginning of word (<strong>back word</strong>)</li><li><code>e</code> - move to end of word (<strong>end word</strong>)</li></ul><p><code>just type 'vim' in terminal, and check these with your hands!</code></p><h3 id="vim-mode-insert">vim mode: insert</h3><p>使用<code>i</code>来进入insert模式，使用Esc来退出insert。</p><ul><li><code>i</code> - insert text before cursor (<strong>insert</strong>)</li><li><code>a</code> - insert text after cursor (<strong>insert after</strong>)</li><li><code>o</code> - Start a new line below cursor, insert text (<strong>??</strong>)</li></ul><h3 id="vim-mode-visual">vim mode: visual</h3><p>你一定猜到了，使用<code>v</code>可以进入visual模式。<br>此时可以批量成段的选择、编辑文本！</p><h2 id="3、Vim-commands-Vim的操作指令">3、Vim commands: Vim的操作指令</h2><p>直到阅读这篇文章前，我都不曾理解vim command的真正要义：<br><a href="https://blog.carbonfive.com/vim-text-objects-the-definitive-guide/">Vim Text Objects: The Definitive Guide</a></p><p><strong>在Vim的眼中，一切内容分为两种：text和objects。</strong><br>试想一下，一串无规律的字符串，它在编辑器眼里是text，这不无道理。<br>但如果是一个word，一个sentence，甚至是argument，那vim会视其为一个text object，以实现个更高效的操作。</p><ul><li><p><code>&lt;number&gt;&lt;command&gt;&lt;text object&gt;</code><br>这构成了几乎vim 90%的操作。</p></li><li><p><code>daw</code> – (<strong>delete a(around) word</strong>)<br>没错，它执行了删除一个单词的操作，并取决于你光标所在的位置。</p></li><li><p><code>diw</code> - (<strong>delete inner word</strong>)<br>inner于around有什么区别？around删除了周围的空白符，但是inner只删除了单词！</p></li><li><p><code>vf)</code> - (<strong>visual(select) until(find) first <code>)</code></strong>)<br>选中直到)的所有字符，并进入visual模式！ （需要稍加理解）</p></li></ul><p>下面罗列了几乎所有的command和obejct，标星的表示常用！</p><h3 id="Command：">Command：</h3><ul><li><code>d</code> - delete ★</li><li><code>y</code> - yank (经典ctrl c) ★</li><li><code>c</code> - change (delete and insert) ★</li><li><code>v</code> - visual (选中并进入visual模式) ★</li><li><code>r</code> - replace (delte and insert)</li></ul><h3 id="Object：">Object：</h3><ul><li><code>w</code> - word ★</li><li><code>s</code> - sentence</li><li><code>p</code> - paragraph (其实对不同于语言的识别不佳)</li><li><code>a</code> - argument ★ (编辑函数很有用)</li><li><code>"</code> - quoted ★ (引号内)</li><li><code>)</code>, <code>]</code>, <code>}</code>, <code>:</code>… 一切皆可</li></ul><h2 id="5、关于Vim的更多">5、关于Vim的更多</h2><p><a href="https://www.zhihu.com/question/58488056/answer/2098302756">知乎：用vim被人说装逼，怎么办?</a><br><a href="https://github.com/593413198/backup/blob/master/vimrc">本人的vimrc配置, 代码高亮、快捷键等</a></p><h2 id="Reference">Reference</h2><blockquote><ul><li><a href="https://stackoverflow.com/questions/11828270/how-do-i-exit-the-vim-editor">1. How do I exit the Vim editor?</a></li><li><a href="https://blog.carbonfive.com/vim-text-objects-the-definitive-guide/">2. Vim Text Objects: The Definitive Guide</a></li><li><a href="https://irian.to/blogs/introduction-to-vim-modes/">3. Introduction to Vim Modes</a></li><li><a href="https://wklken.me/posts/2017/03/25/vim-about-edit.html">4. vim 杂谈 - 关于快速编辑</a></li></ul></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;em&gt;As we known, Vim is the best editor in the world!&lt;/em&gt;&lt;/p&gt;
-&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;提要
-&lt;/p&gt;&lt;p&gt;大二开始一门《</summary>
-      
-    
-    
-    
-    <category term="工具" scheme="http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
-    
-    <category term="linux" scheme="http://luhao.wiki/tags/linux/"/>
-    
-    <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
-    
-    <category term="vim" scheme="http://luhao.wiki/tags/vim/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>写给三年内的技术成长目标</title>
-    <link href="http://luhao.wiki/posts/c98bb1ae/"/>
-    <id>http://luhao.wiki/posts/c98bb1ae/</id>
-    <published>2021-09-30T22:52:16.000Z</published>
-    <updated>2021-10-01T19:12:08.106Z</updated>
-    
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">提要</p><p><em>此规划写于2021年国庆</em> <br><em>希望在三年后，能够达到如下的水平</em></p></div><h3 id="1-精通2-脚本语言">1. 精通2+ 脚本语言</h3><ul><li><code>python 2/3</code></li><li><code>Lua</code></li><li><code>TypeScript</code></li><li><code>JavaScript</code></li></ul><h3 id="2-精通1-Strongly-typed语言">2. 精通1+ Strongly typed语言</h3><ul><li><code>C++</code></li><li><code>C</code></li><li><code>C#</code></li><li><code>Java</code></li></ul><h3 id="3-实现3-大型GamePlay模块">3. 实现3+ 大型GamePlay模块</h3><ul><li>技能框架 Skill</li><li>xx战斗模块</li><li>UI模块 cocos…</li><li>FPS/TPS 射击模块</li><li>商城模块 （偏server）</li><li>时装外观模块</li><li>匹配、排行模块 （偏server+database)</li><li>…</li></ul><h3 id="4-熟悉1-physics-engine">4. 熟悉1+ physics engine</h3><ul><li>box2d (2d)</li><li>physx (3d)</li><li>bullet (3d)</li></ul><h3 id="5-手写一套opengl渲染框架">5. 手写一套opengl渲染框架</h3><ul><li>lighing manager</li><li>shadaw</li><li>texture</li><li>sader language</li><li>…</li></ul><h3 id="6-手写一套粗略的3d-engine">6. 手写一套粗略的3d engine</h3><ul><li>memory malloc</li><li>object manager (scene, model…)</li><li>model (fbx)</li><li>texture and material</li><li>shader</li><li>rendering pipeline</li><li>physics (how to give better api)</li><li>animation</li><li>editor (model and scene editor?)</li><li>asset manager and tools … (like unity?)</li></ul><h3 id="7-精通Graphics">7. 精通Graphics</h3><ul><li>良好的数学基础</li><li>足够的coding实践</li><li>UE4/u3d的code learning</li></ul><h3 id="8-持续不断的English-Learning">8. 持续不断的English Learning</h3><ul><li>Reading Paper (GDC…)</li><li>Reading Document (API…)</li><li>Maybe talking</li></ul><h3 id="9-优秀的编程习惯Good-Coding">9. 优秀的编程习惯Good Coding</h3><ul><li>Code review</li><li>Blog record</li><li>Learn good open-source code</li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;提要
-&lt;/p&gt;&lt;p&gt;&lt;em&gt;此规划写于2021年国庆&lt;/em&gt; &lt;br&gt;
-&lt;em&gt;希望在三年后，能够达到如下的水平&lt;/em&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;h3 id=&quot;1</summary>
-      
-    
-    
-    
-    <category term="随笔" scheme="http://luhao.wiki/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
-    
-    <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
-    
-    <category term="Graphics" scheme="http://luhao.wiki/tags/Graphics/"/>
-    
-    <category term="OpenGL" scheme="http://luhao.wiki/tags/OpenGL/"/>
-    
-    <category term="Physics" scheme="http://luhao.wiki/tags/Physics/"/>
-    
-    <category term="TypeScript" scheme="http://luhao.wiki/tags/TypeScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>markdown: test blog</title>
-    <link href="http://luhao.wiki/posts/94b493b2/"/>
-    <id>http://luhao.wiki/posts/94b493b2/</id>
-    <published>2021-09-30T03:22:13.000Z</published>
-    <updated>2021-10-02T17:24:45.459Z</updated>
-    
-    <content type="html"><![CDATA[<div class="admonition warning"><p class="admonition-title">这仅是一篇测试文章</p></div><h2 id="1-排版">1. 排版</h2><p><strong>粗体</strong> <em>斜体</em></p><p><s>这是一段错误的文本。</s></p><blockquote><p>这是一段引用</p></blockquote><p>无需列表:</p><ol><li>支持Vim</li><li>支持Emacs</li></ol><p>无序列表:</p><ul><li>项目1</li><li>项目2</li></ul><h2 id="2-图片与链接">2. 图片与链接</h2><p>图片:<br><img src="http://www.luhao.wiki/css/images/favicon.ico" alt="wiki"></p><p>链接:<br><a href="http://github.com">github</a></p><h2 id="3-标题">3. 标题</h2><p>以下是各级标题, 最多支持5级标题</p><h3 id="h1">h1</h3><h4 id="h2">h2</h4><h5 id="h3">h3</h5><h2 id="4-代码">4. 代码</h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span>:</span></span><br><span class="line">   empCount = <span class="number">0</span></span><br><span class="line"> </span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name, salary</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.salary = salary</span><br><span class="line">        Employee.empCount += <span class="number">1</span></span><br></pre></td></tr></tbody></table></figure><h2 id="5-Markdown-扩展">5. Markdown 扩展</h2><h3 id="5-1-表格">5.1 表格</h3><table><thead><tr><th>Item</th><th>Value</th></tr></thead><tbody><tr><td>Computer</td><td>$1600</td></tr><tr><td>Phone</td><td>$12</td></tr><tr><td>Pipe</td><td>$1</td></tr></tbody></table><h3 id="5-2-Html-标签">5.2 Html 标签</h3><p>支持在 Markdown 语法中嵌套 Html 标签</p><table>    <tbody><tr>        <th rowspan="2">值班人员</th>        <th>星期一</th>        <th>星期二</th>        <th>星期三</th>    </tr>    <tr>        <td>李强</td>        <td>张明</td>        <td>王平</td>    </tr></tbody></table><h3 id="5-3-MathJax-公式">5.3 MathJax 公式</h3><p>$ 表示行内公式：</p><p>质能守恒方程可以用一个很简洁的方程式 $E=mc^2$ 来表达。</p><p>$$\sum_{i=1}^n a_i=0$$</p><p>$$f(x_1,x_x,\ldots,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2 $$</p><p>$$\sum^{j-1}<em>{k=0}{\widehat{\gamma}</em>{kj} z_k}$$</p><h3 id="5-4-emoji-表情">5.4 emoji 表情</h3><p>watch this: <a href="https://gist.github.com/rxaviers/7360908">https://gist.github.com/rxaviers/7360908</a><br><span class="github-emoji"><span>🤣</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f923.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> - <code>:rofl:</code> 笑哭<br><span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> - <code>:smile:</code> 微笑<br><span class="github-emoji"><span>😜</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f61c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> - <code>:stuck_out_tongue_winking_eye:</code> 吐舌<br><span class="github-emoji"><span>😅</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f605.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> - <code>:sweat_smile:</code> 尴尬<br><span class="github-emoji"><span>👍</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> - <code>:thumbsup:</code> 夸赞<br><span class="github-emoji"><span>👉</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f449.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> - <code>:point_right:</code> 右侧<br><span class="github-emoji"><span>💪</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f4aa.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> - <code>:muscle:</code> 肌肉A</p><h3 id="5-5-差异化的信息提示">5.5 差异化的信息提示</h3><div class="admonition note"><p class="admonition-title">note</p></div><div class="admonition error"><p class="admonition-title">error</p></div><div class="admonition warning"><p class="admonition-title">warning</p></div><div class="admonition todo"><p class="admonition-title">todo</p></div><p>也可以不要标题:</p><div class="admonition todo"><p>测试空标题</p></div><h2 id="参考">参考</h2><blockquote><ul><li><a href="https://github.com/CHENXCHEN/hexo-renderer-markdown-it-plus">hexo markdown plus</a></li></ul></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;admonition warning&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;这仅是一篇测试文章
-&lt;/p&gt;&lt;/div&gt;
-&lt;h2 id=&quot;1-排版&quot;&gt;1. 排版&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;粗体&lt;/strong&gt; &lt;em&gt;斜体&lt;/em&gt;</summary>
-      
-    
-    
-    
-    <category term="工具" scheme="http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
-    
-    <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
-    
-    <category term="markdown" scheme="http://luhao.wiki/tags/markdown/"/>
-    
-    <category term="hexo" scheme="http://luhao.wiki/tags/hexo/"/>
-    
-    <category term="vim" scheme="http://luhao.wiki/tags/vim/"/>
     
   </entry>
   

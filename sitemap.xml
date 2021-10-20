@@ -2,7 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://luhao.wiki/posts/3GZKBFK/</loc>
+    <loc>http://luhao.wiki/posts/2Y252XS/</loc>
+    
+    <lastmod>2021-10-20</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://luhao.wiki/posts/2X2CDR4/</loc>
+    
+    <lastmod>2021-10-20</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://luhao.wiki/posts/1KH1TD4/</loc>
     
     <lastmod>2021-10-20</lastmod>
     
@@ -10,6 +24,13 @@
   
   <url>
     <loc>http://luhao.wiki/posts/20S2P1/</loc>
+    
+    <lastmod>2021-10-20</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://luhao.wiki/posts/3GZKBFK/</loc>
     
     <lastmod>2021-10-20</lastmod>
     
@@ -207,6 +228,13 @@
   </url>
   
   <url>
+    <loc>http://luhao.wiki/tags/Algorithm/</loc>
+    <lastmod>2021-10-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://luhao.wiki/tags/linux/</loc>
     <lastmod>2021-10-20</lastmod>
     <changefreq>daily</changefreq>
@@ -242,35 +270,7 @@
   </url>
   
   <url>
-    <loc>http://luhao.wiki/tags/Physics/</loc>
-    <lastmod>2021-10-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://luhao.wiki/tags/markdown/</loc>
-    <lastmod>2021-10-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://luhao.wiki/tags/hexo/</loc>
-    <lastmod>2021-10-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://luhao.wiki/tags/VScode/</loc>
-    <lastmod>2021-10-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://luhao.wiki/tags/TypeScript/</loc>
     <lastmod>2021-10-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -287,6 +287,13 @@
   
   <url>
     <loc>http://luhao.wiki/categories/C-C/</loc>
+    <lastmod>2021-10-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://luhao.wiki/categories/Algorithm/</loc>
     <lastmod>2021-10-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
