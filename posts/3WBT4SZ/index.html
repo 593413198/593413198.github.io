@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://www.luhao.wiki/images/KMP.png">
 <meta property="article:published_time" content="2021-10-16T15:51:06.000Z">
-<meta property="article:modified_time" content="2021-10-23T15:41:44.485Z">
+<meta property="article:modified_time" content="2021-10-23T16:37:35.438Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="Algorithm">
 <meta property="article:tag" content="linux">
@@ -368,7 +368,7 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计661字 
+                            | 字数统计724字 
                           </span>
                           <!-- <span class="post-count"> -->
                             <!-- | 阅读时长2分钟  -->
@@ -486,6 +486,14 @@
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">0</span> <span class="comment"># 父串S下标</span></span><br><span class="line">j = <span class="number">0</span> <span class="comment"># 子串P下标</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> i &lt; <span class="built_in">len</span>(S):</span><br><span class="line">    <span class="keyword">if</span> S[i] == P[j]:</span><br><span class="line">        i++; j++</span><br><span class="line">    <span class="keyword">elif</span> j &gt; <span class="number">0</span>:</span><br><span class="line">        j = LPS[j-<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        i++</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> j = <span class="built_in">len</span>(P):</span><br><span class="line">        <span class="comment"># Match Success</span></span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></tbody></table></figure>
 <p>这一步时间复杂度是len(S)，即$O(n)$<br>
 <font color="#ef6d3b"><strong>KMP算法的复杂度即$O(n+m)$</strong></font></p>
+<div class="admonition warning"><p class="admonition-title">FAQ
+</p><p>笔者python测试对比如上三种算法（随机字符n=1000w, m=10），时间如下：<br>
+BF: 5.6s<br>
+Robin-Karp: 1.18s<br>
+KMP: 1.41s<br>
+为什么KMP稳定比RK算法慢？
+虽然KMP严重依赖Pattern的性质，但不至于稳定差</p>
+</div>
 <!-- ### Boyer-Moore(BM)算法
 
 ### Sunday算法 -->
