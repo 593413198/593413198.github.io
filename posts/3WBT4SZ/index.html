@@ -3,24 +3,26 @@
 <head>
     <meta charset="utf-8">
     
-    <title>String: 字符串匹配 | Luhao&#39;s Blog</title>
+    <title>String matching: 字符串匹配 | Luhao&#39;s Blog</title>
     
     
         <meta name="keywords" content="linux" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="概要 linux grep的效率令人称奇! 字符串匹配的常用算法与原理；   字符串匹配算法 问题描述 在字符串$(String, len&#x3D;n)$中寻找一个合法子串$(Pattern, len&#x3D;m)$； 例如，abcdef的一个合法子串是abc，但ac就不是 warning不要尝试写代码和图解，侧重算法思想和推导过程！ 如果连一个非CS专业的都能看懂，那才叫棒；   暴力匹配 遍历两个字符串，$O">
+    <meta name="description" content="概要 linux grep的效率令人称奇! 字符串匹配的常用算法与原理；   字符串匹配算法 问题描述 在父串$(String, len&#x3D;n)$中寻找一个合法子串$(Pattern, len&#x3D;m)$； 例如，abcdef的一个合法子串是abc，但ac就不是 warning不要尝试写代码和图解，侧重算法思想和推导过程！ 如果连一个非CS专业的都能看懂，那才叫棒；      算法 时间复杂度 精髓">
 <meta property="og:type" content="article">
-<meta property="og:title" content="String: 字符串匹配">
-<meta property="og:url" content="http://luhao.wiki/posts/1RXFW87/index.html">
+<meta property="og:title" content="String matching: 字符串匹配">
+<meta property="og:url" content="http://luhao.wiki/posts/3WBT4SZ/index.html">
 <meta property="og:site_name" content="Luhao&#39;s Blog">
-<meta property="og:description" content="概要 linux grep的效率令人称奇! 字符串匹配的常用算法与原理；   字符串匹配算法 问题描述 在字符串$(String, len&#x3D;n)$中寻找一个合法子串$(Pattern, len&#x3D;m)$； 例如，abcdef的一个合法子串是abc，但ac就不是 warning不要尝试写代码和图解，侧重算法思想和推导过程！ 如果连一个非CS专业的都能看懂，那才叫棒；   暴力匹配 遍历两个字符串，$O">
+<meta property="og:description" content="概要 linux grep的效率令人称奇! 字符串匹配的常用算法与原理；   字符串匹配算法 问题描述 在父串$(String, len&#x3D;n)$中寻找一个合法子串$(Pattern, len&#x3D;m)$； 例如，abcdef的一个合法子串是abc，但ac就不是 warning不要尝试写代码和图解，侧重算法思想和推导过程！ 如果连一个非CS专业的都能看懂，那才叫棒；      算法 时间复杂度 精髓">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-10-20T17:51:06.000Z">
-<meta property="article:modified_time" content="2021-10-23T12:23:01.542Z">
+<meta property="og:image" content="http://www.luhao.wiki/images/KMP.png">
+<meta property="article:published_time" content="2021-10-16T15:51:06.000Z">
+<meta property="article:modified_time" content="2021-10-23T13:46:09.193Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.luhao.wiki/images/KMP.png">
     
 
     
@@ -187,7 +189,7 @@
                             &nbsp;
                             Algorithm
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/2Y252XS/">Algorithm: 算法大纲</a></li>  <li class="file"><a href="/posts/2X2CDR4/">Sort: 排序算法</a></li>  <li class="file active"><a href="/posts/1RXFW87/">String: 字符串匹配</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/2Y252XS/">Algorithm: 算法大纲</a></li>  <li class="file"><a href="/posts/48BPQV/">Sorting: 排序算法</a></li>  <li class="file active"><a href="/posts/3WBT4SZ/">String matching: 字符串匹配</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -332,7 +334,7 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="post-Algorithm/String-字符串匹配" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-Algorithm/String-matching-字符串匹配" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -354,8 +356,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/posts/1RXFW87/">
-            <time datetime="2021-10-20T17:51:06.000Z" itemprop="datePublished">2021-10-21</time>
+        <a href="/posts/3WBT4SZ/">
+            <time datetime="2021-10-16T15:51:06.000Z" itemprop="datePublished">2021-10-16</time>
         </a>
     </div>
 
@@ -365,7 +367,7 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计142字 
+                            | 字数统计384字 
                           </span>
                           <!-- <span class="post-count"> -->
                             <!-- | 阅读时长1分钟  -->
@@ -376,7 +378,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            String: 字符串匹配
+            String matching: 字符串匹配
         </h1>
     
 
@@ -401,26 +403,74 @@
 <hr>
 <h2 id="字符串匹配算法">字符串匹配算法</h2>
 <p><strong>问题描述</strong><br>
-在字符串$(String, len=n)$中寻找一个合法子串$(Pattern, len=m)$；<br>
+在父串$(String, len=n)$中寻找一个合法子串$(Pattern, len=m)$；<br>
 例如，<code>abcdef</code>的一个合法子串是<code>abc</code>，但<code>ac</code>就不是</p>
 <div class="admonition warning"><p class="admonition-title">warning</p><p>不要尝试写代码和图解，侧重算法思想和推导过程！<br>
 如果连一个非CS专业的都能看懂，那才叫棒；</p>
 </div>
 <hr>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">算法</th>
+<th style="text-align:center">时间复杂度</th>
+<th style="text-align:center">精髓</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><font color="#ef6d3b"><em><strong>Brute Force</strong></em></font></td>
+<td style="text-align:center">$O(nm)$</td>
+<td style="text-align:center">有脑子就行</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color="#ef6d3b"><em><strong>Robin-Karp</strong></em></font></td>
+<td style="text-align:center">$O(n+km)$</td>
+<td style="text-align:center"><em>Hash</em>算法很重要，$k$ 是<em>hash hit</em>但不匹配的次数</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color="#ef6d3b"><em><strong>KMP</strong></em></font></td>
+<td style="text-align:center">$O(n+m)$</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><font color="#ef6d3b"><em><strong>Boyer-Moore</strong></em></font></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><font color="#ef6d3b"><em><strong>Sunday</strong></em></font></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<hr>
 <h3 id="暴力匹配">暴力匹配</h3>
-<p>遍历两个字符串，$O(mn)$；</p>
+<p>两层$for$循环的遍历：<br>
+父串$S$中共有$n$个长度为$m$的子串，复杂度$O(n)$<br>
+将长度为$m$的子串与$Pattern$逐字符比较，复杂度$O(m)$<br>
+暴力的复杂度是$O(nm)$；</p>
 <hr>
 <h3 id="Robin-Karp算法">Robin-Karp算法</h3>
+<p>暴力中逐字符对比很浪费，尝试<em>Hash</em>算法，可以从$O(m)$ 降低到 $O(1)$；<br>
+但考虑到<font color="#ef6d3b"><em>hash collision</em></font>，即使<em>hash hit</em>，也需要逐字符对比来验证；<br>
+时间复杂是 $O(n+km), k$ 为<em>hash hit</em>但不匹配的次数；</p>
+<p><strong>缺陷</strong><br>
+假设每次都<em>hash hit</em>但又不匹配，那<em>Robin-Karp</em>就退化为了暴力算法；(显然不可能)<br>
+因此越选择精确的<em>Hash</em>算法，<em>Robin-Karp</em>的效率就越高；</p>
+<hr>
 <h3 id="KMP算法">KMP算法</h3>
-<!-- !!! warning FAQ
-    网上看了一圈资料，发现鲜有讲清楚KMP算法和LSP数组的!<br>
-    撸起袖子后面试试 -->
+<img src="http://www.luhao.wiki/images/KMP.png" alt="" width="400">
+<div class="admonition warning"><p class="admonition-title">FAQ
+</p><p>网上看了一圈资料，发现没几个讲得清楚的...<br></p>
+</div>
 <h3 id="Boyer-Moore-BM-算法">Boyer-Moore(BM)算法</h3>
 <h3 id="Sunday算法">Sunday算法</h3>
 <h2 id="参考资料">参考资料</h2>
 <blockquote>
 <ul>
-<li><a href=""></a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/21923021">如何更好地理解和掌握 KMP 算法?</a></li>
 <li><a href=""></a></li>
 </ul>
 </blockquote>
@@ -436,19 +486,19 @@
     
 <nav id="article-nav">
     
-        <a href="/posts/1EF3PT0/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/posts/1KH1TD4/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
             <div class="article-nav-title">
                 
-                    Textures
+                    Garen: 基于OpenGL做一款引擎
                 
             </div>
         </a>
     
     
-        <a href="/posts/3GZKBFK/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/posts/48BPQV/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">Shaders</div>
+            <div class="article-nav-title">Sorting: 排序算法</div>
         </a>
     
 </nav>
