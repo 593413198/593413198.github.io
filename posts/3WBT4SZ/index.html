@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://www.luhao.wiki/images/KMP.png">
 <meta property="article:published_time" content="2021-10-16T15:51:06.000Z">
-<meta property="article:modified_time" content="2021-10-23T13:46:09.193Z">
+<meta property="article:modified_time" content="2021-10-23T13:53:53.632Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
@@ -367,7 +367,7 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计384字 
+                            | 字数统计484字 
                           </span>
                           <!-- <span class="post-count"> -->
                             <!-- | 阅读时长1分钟  -->
@@ -461,7 +461,13 @@
 因此越选择精确的<em>Hash</em>算法，<em>Robin-Karp</em>的效率就越高；</p>
 <hr>
 <h3 id="KMP算法">KMP算法</h3>
+<p>KMP的精髓在于，<strong>如何从之前失败的匹配中，提取一些有用信息？</strong></p>
 <img src="http://www.luhao.wiki/images/KMP.png" alt="" width="400">
+<p>如上图，当C和D匹配失败时，暴力法会回到第二个字母D处重新开始对比，这显然是效率低下的；<br>
+想想在$pattern$的$P[j](j &gt; 0)$处匹配失败，意味着什么？</p>
+<ul>
+<li>$P[0 : j-1]$一定是一个合法匹配的子串；</li>
+</ul>
 <div class="admonition warning"><p class="admonition-title">FAQ
 </p><p>网上看了一圈资料，发现没几个讲得清楚的...<br></p>
 </div>
