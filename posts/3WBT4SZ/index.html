@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     
-    <title>String matching: 字符串匹配 | Luhao&#39;s Blog</title>
+    <title>String matching: 字符串匹配 | Luhao&#39;s Blog</title><meta name="robots" content="noindex">
     
     
-        <meta name="keywords" content="linux" />
+        <meta name="keywords" content="Algorithm,linux" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="概要 linux grep的效率令人称奇! 字符串匹配的常用算法与原理；   字符串匹配算法 问题描述 在父串$(String, len&#x3D;n)$中寻找一个合法子串$(Pattern, len&#x3D;m)$； 例如，abcdef的一个合法子串是abc，但ac就不是 warning不要尝试写代码和图解，侧重算法思想和推导过程！ 如果连一个非CS专业的都能看懂，那才叫棒；      算法 时间复杂度 精髓">
@@ -18,8 +18,9 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://www.luhao.wiki/images/KMP.png">
 <meta property="article:published_time" content="2021-10-16T15:51:06.000Z">
-<meta property="article:modified_time" content="2021-10-23T13:53:53.632Z">
+<meta property="article:modified_time" content="2021-10-23T15:26:17.996Z">
 <meta property="article:author" content="Luhao">
+<meta property="article:tag" content="Algorithm">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://www.luhao.wiki/images/KMP.png">
@@ -183,13 +184,13 @@
         
         
          <ul class="unstyled" id="tree" > 
-                    <li class="directory open">
+                    <li class="directory">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder-open"></i>
+                            <i class="fa fa-folder"></i>
                             &nbsp;
                             Algorithm
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/2Y252XS/">Algorithm: 算法大纲</a></li>  <li class="file"><a href="/posts/48BPQV/">Sorting: 排序算法</a></li>  <li class="file active"><a href="/posts/3WBT4SZ/">String matching: 字符串匹配</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/2Y252XS/">Algorithm: 算法大纲</a></li>  <li class="file"><a href="/posts/48BPQV/">Sorting: 排序算法</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -326,7 +327,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title"><span>标签</span></h3>
         <div class="widget tagcloud">
-            <a href="/tags/Algorithm/" style="font-size: 16.4px;">Algorithm</a> <a href="/tags/C/" style="font-size: 14px;">C</a> <a href="/tags/C/" style="font-size: 18.8px;">C++</a> <a href="/tags/Compiler/" style="font-size: 16.4px;">Compiler</a> <a href="/tags/Git/" style="font-size: 20px;">Git</a> <a href="/tags/Graphics/" style="font-size: 17.6px;">Graphics</a> <a href="/tags/OpenGL/" style="font-size: 17.6px;">OpenGL</a> <a href="/tags/linux/" style="font-size: 16.4px;">linux</a> <a href="/tags/markdown/" style="font-size: 17.6px;">markdown</a> <a href="/tags/vim/" style="font-size: 15.2px;">vim</a>
+            <a href="/tags/Algorithm/" style="font-size: 16.4px;">Algorithm</a> <a href="/tags/C/" style="font-size: 14px;">C</a> <a href="/tags/C/" style="font-size: 18.8px;">C++</a> <a href="/tags/Compiler/" style="font-size: 16.4px;">Compiler</a> <a href="/tags/Git/" style="font-size: 20px;">Git</a> <a href="/tags/Graphics/" style="font-size: 17.6px;">Graphics</a> <a href="/tags/OpenGL/" style="font-size: 17.6px;">OpenGL</a> <a href="/tags/linux/" style="font-size: 15.2px;">linux</a> <a href="/tags/markdown/" style="font-size: 17.6px;">markdown</a> <a href="/tags/vim/" style="font-size: 15.2px;">vim</a>
         </div>
     </div>
 
@@ -350,7 +351,7 @@
                         <!-- 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/linux/" rel="tag">linux</a>
+        <a class="tag-link-link" href="/tags/Algorithm/" rel="tag">Algorithm</a>, <a class="tag-link-link" href="/tags/linux/" rel="tag">linux</a>
     </div>
  -->
                         
@@ -367,10 +368,10 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计484字 
+                            | 字数统计661字 
                           </span>
                           <!-- <span class="post-count"> -->
-                            <!-- | 阅读时长1分钟  -->
+                            <!-- | 阅读时长2分钟  -->
                         <!-- </span> -->
                         
                     </div>
@@ -391,7 +392,7 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">字符串匹配算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9A%B4%E5%8A%9B%E5%8C%B9%E9%85%8D"><span class="toc-number">1.1.</span> <span class="toc-text">暴力匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Robin-Karp%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">Robin-Karp算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#KMP%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">KMP算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Boyer-Moore-BM-%E7%AE%97%E6%B3%95"><span class="toc-number">1.4.</span> <span class="toc-text">Boyer-Moore(BM)算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sunday%E7%AE%97%E6%B3%95"><span class="toc-number">1.5.</span> <span class="toc-text">Sunday算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">2.</span> <span class="toc-text">参考资料</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">字符串匹配算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9A%B4%E5%8A%9B%E5%8C%B9%E9%85%8D"><span class="toc-number">1.1.</span> <span class="toc-text">暴力匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Robin-Karp%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">Robin-Karp算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#KMP%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">KMP算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">2.</span> <span class="toc-text">参考资料</span></a></li></ol>
                 </div>
             
         
@@ -426,12 +427,12 @@
 <tr>
 <td style="text-align:center"><font color="#ef6d3b"><em><strong>Robin-Karp</strong></em></font></td>
 <td style="text-align:center">$O(n+km)$</td>
-<td style="text-align:center"><em>Hash</em>算法很重要，$k$ 是<em>hash hit</em>但不匹配的次数</td>
+<td style="text-align:center"><em>字符串Hash</em>，$k$ 是<em>hash hit</em>但不匹配的次数</td>
 </tr>
 <tr>
 <td style="text-align:center"><font color="#ef6d3b"><em><strong>KMP</strong></em></font></td>
 <td style="text-align:center">$O(n+m)$</td>
-<td style="text-align:center"></td>
+<td style="text-align:center">LPS数组</td>
 </tr>
 <tr>
 <td style="text-align:center"><font color="#ef6d3b"><em><strong>Boyer-Moore</strong></em></font></td>
@@ -461,18 +462,34 @@
 因此越选择精确的<em>Hash</em>算法，<em>Robin-Karp</em>的效率就越高；</p>
 <hr>
 <h3 id="KMP算法">KMP算法</h3>
-<p>KMP的精髓在于，<strong>如何从之前失败的匹配中，提取一些有用信息？</strong></p>
-<img src="http://www.luhao.wiki/images/KMP.png" alt="" width="400">
-<p>如上图，当C和D匹配失败时，暴力法会回到第二个字母D处重新开始对比，这显然是效率低下的；<br>
-想想在$pattern$的$P[j](j &gt; 0)$处匹配失败，意味着什么？</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/21923021">如何更好地理解和掌握 KMP 算法?</a><br>
+<a target="_blank" rel="noopener" href="http://www.btechsmartclass.com/data_structures/knuth-morris-pratt-algorithm.html">Knuth-Morris-Pratt Algorithm</a></p>
+<p>KMP的精髓在于，<strong>如何跳过一些明显不可能的匹配？</strong><br>
+<img src="http://www.luhao.wiki/images/KMP.png" alt="" width="600"></p>
+<p>如上图，当字母d匹配失败时，暴力法会回到字母b处重新开始对比；<br>
+这显然是效率低下的；因为回到字母ab处匹配会更好；<br>
+为什么回到<code>ab</code>处呢？因为<code>ab</code>是$p$的一个前缀！</p>
+<p><strong>LPS数组</strong></p>
 <ul>
-<li>$P[0 : j-1]$一定是一个合法匹配的子串；</li>
+<li><font color="#ef6d3b"><strong>longest prefix and suffix</strong></font>. 最长公共前后缀</li>
 </ul>
-<div class="admonition warning"><p class="admonition-title">FAQ
-</p><p>网上看了一圈资料，发现没几个讲得清楚的...<br></p>
-</div>
-<h3 id="Boyer-Moore-BM-算法">Boyer-Moore(BM)算法</h3>
-<h3 id="Sunday算法">Sunday算法</h3>
+<p>对比<code>abcab</code>，它的LPS就是<code>ab</code>，长度为2；<br>
+这就是为什么，上图中我们要移动到<code>ab</code>处；</p>
+<ul>
+<li>如何计算LPS数组？<br>
+利用了递推的思想，有空详细解释下~</li>
+</ul>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">LPS[m] <span class="comment"># 构建的数组</span></span><br><span class="line">i, j = <span class="number">0</span>, <span class="number">1</span> </span><br><span class="line">LPS[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> j &lt;= m:</span><br><span class="line">    <span class="keyword">if</span> P[i] == P[j]:</span><br><span class="line">        LPS[j] = i + <span class="number">1</span></span><br><span class="line">        i++; j++</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">            LPS[j] = <span class="number">0</span></span><br><span class="line">            j++</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            i = LPS[i-<span class="number">1</span>]</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>复杂度</strong><br>
+时间复杂度$O(m)$，$m$是子串P的长度；</p>
+<p><strong>利用LPS数组做匹配</strong></p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">0</span> <span class="comment"># 父串S下标</span></span><br><span class="line">j = <span class="number">0</span> <span class="comment"># 子串P下标</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> i &lt; <span class="built_in">len</span>(S):</span><br><span class="line">    <span class="keyword">if</span> S[i] == P[j]:</span><br><span class="line">        i++; j++</span><br><span class="line">    <span class="keyword">elif</span> j &gt; <span class="number">0</span>:</span><br><span class="line">        j = LPS[j-<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        i++</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> j = <span class="built_in">len</span>(P):</span><br><span class="line">        <span class="comment"># Match Success</span></span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></tbody></table></figure>
+<p>这一步时间复杂度是len(S)，即$O(n)$<br>
+<font color="#ef6d3b"><strong>KMP算法的复杂度即$O(n+m)$</strong></font></p>
+<!-- ### Boyer-Moore(BM)算法
+
+### Sunday算法 -->
+<hr>
 <h2 id="参考资料">参考资料</h2>
 <blockquote>
 <ul>
@@ -480,7 +497,7 @@
 <li><a href=""></a></li>
 </ul>
 </blockquote>
-
+<!-- flag of hidden posts -->
             </div>
         
         <footer class="article-footer">
@@ -490,25 +507,6 @@
 
 
     
-<nav id="article-nav">
-    
-        <a href="/posts/1KH1TD4/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">
-                
-                    Garen: 基于OpenGL做一款引擎
-                
-            </div>
-        </a>
-    
-    
-        <a href="/posts/48BPQV/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">Sorting: 排序算法</div>
-        </a>
-    
-</nav>
-
 
 
 
