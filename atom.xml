@@ -50,9 +50,9 @@
     <link href="http://luhao.wiki/posts/1RXFW87/"/>
     <id>http://luhao.wiki/posts/1RXFW87/</id>
     <published>2021-10-20T17:51:06.000Z</published>
-    <updated>2021-10-22T18:39:33.332Z</updated>
+    <updated>2021-10-23T12:23:01.542Z</updated>
     
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>linux grep的效率令人称奇!<br>字符串匹配的常用算法与原理；</p></div><hr><h2 id="字符串匹配算法">字符串匹配算法</h2><p><strong>问题描述</strong><br>在字符串(String)中寻找一个合法子串(Pattern)；<br>例如，‘abcdef’的一个合法子串是’abc’，但’ac’就不是</p><p><strong>暴力匹配</strong><br>遍历两个字符串，$O(mn)$；</p><div class="admonition warning"><p class="admonition-title">warning</p><p>不要尝试写代码和图解，侧重算法思想和推导过程！<br>如果一个非CS专业的都能看懂，那才是合格的算法解释；</p></div><hr><h3 id="Robin-Karp算法">Robin-Karp算法</h3><h3 id="KMP算法">KMP算法</h3><!-- !!! warning FAQ    网上看了一圈资料，发现鲜有讲清楚KMP算法和LSP数组的!<br>    撸起袖子后面试试 --><h3 id="Boyer-Moore-BM-算法">Boyer-Moore(BM)算法</h3><!-- ## 参考资料> - []()> - []() -->]]></content>
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>linux grep的效率令人称奇!<br>字符串匹配的常用算法与原理；</p></div><hr><h2 id="字符串匹配算法">字符串匹配算法</h2><p><strong>问题描述</strong><br>在字符串$(String, len=n)$中寻找一个合法子串$(Pattern, len=m)$；<br>例如，<code>abcdef</code>的一个合法子串是<code>abc</code>，但<code>ac</code>就不是</p><div class="admonition warning"><p class="admonition-title">warning</p><p>不要尝试写代码和图解，侧重算法思想和推导过程！<br>如果连一个非CS专业的都能看懂，那才叫棒；</p></div><hr><h3 id="暴力匹配">暴力匹配</h3><p>遍历两个字符串，$O(mn)$；</p><hr><h3 id="Robin-Karp算法">Robin-Karp算法</h3><h3 id="KMP算法">KMP算法</h3><!-- !!! warning FAQ    网上看了一圈资料，发现鲜有讲清楚KMP算法和LSP数组的!<br>    撸起袖子后面试试 --><h3 id="Boyer-Moore-BM-算法">Boyer-Moore(BM)算法</h3><h3 id="Sunday算法">Sunday算法</h3><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
     
     
       
