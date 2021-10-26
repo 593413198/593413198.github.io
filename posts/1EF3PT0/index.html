@@ -25,7 +25,7 @@
 <meta property="og:image" content="http://www.luhao.wiki/images/mipmap.png">
 <meta property="og:image" content="http://www.luhao.wiki/images/texture_vertex.png">
 <meta property="article:published_time" content="2021-10-22T14:50:23.000Z">
-<meta property="article:modified_time" content="2021-10-26T16:02:19.059Z">
+<meta property="article:modified_time" content="2021-10-26T16:16:56.596Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="OpenGL">
 <meta name="twitter:card" content="summary">
@@ -374,10 +374,10 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计643字 
+                            | 字数统计869字 
                           </span>
                           <!-- <span class="post-count"> -->
-                            <!-- | 阅读时长2分钟  -->
+                            <!-- | 阅读时长3分钟  -->
                         <!-- </span> -->
                         
                     </div>
@@ -535,7 +535,27 @@ OpenGL提供了如下几种方式：<br>
 </ul>
 <hr>
 <h2 id="Coding实现">Coding实现</h2>
+<p><strong>Vertex data格式:</strong></p>
+<ul>
+<li>单单Pos和Color已经不能满足要求，我们需要扩充一个uv坐标来用于纹理采样</li>
+</ul>
 <img src="http://www.luhao.wiki/images/texture_vertex.png" alt="" width="700">
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> vertices[] = {</span><br><span class="line">    <span class="comment">// positions          // colors           // texture coords</span></span><br><span class="line">     <span class="number">0.5f</span>,  <span class="number">0.5f</span>, <span class="number">0.0f</span>,   <span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>,   <span class="number">1.0f</span>, <span class="number">1.0f</span>,   <span class="comment">// top right</span></span><br><span class="line">     <span class="number">0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>,   <span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>,   <span class="number">1.0f</span>, <span class="number">0.0f</span>,   <span class="comment">// bottom right</span></span><br><span class="line">    <span class="number">-0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>,   <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>,   <span class="number">0.0f</span>, <span class="number">0.0f</span>,   <span class="comment">// bottom left</span></span><br><span class="line">    <span class="number">-0.5f</span>,  <span class="number">0.5f</span>, <span class="number">0.0f</span>,   <span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>,   <span class="number">0.0f</span>, <span class="number">1.0f</span>    <span class="comment">// top left </span></span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+---
+<p><strong>Vertex Shader:</strong></p>
+<ul>
+<li>根据上面Vertex Data的格式，得出location分别是pos, color, texture：</li>
+</ul>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line">layout (location = <span class="number">0</span>) in vec3 aPos;</span><br><span class="line">layout (location = <span class="number">1</span>) in vec3 aColor;</span><br><span class="line">layout (location = <span class="number">2</span>) in vec2 aTexCoord;</span><br><span class="line"></span><br><span class="line">out vec3 ourColor;</span><br><span class="line">out vec2 TexCoord;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    gl_Position = vec4(aPos, <span class="number">1.0</span>);</span><br><span class="line">    ourColor = aColor;</span><br><span class="line">    TexCoord = aTexCoord;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>Pixel Shader:</strong></p>
+<ul>
+<li>pixel shader只需要输出颜色即可</li>
+</ul>
+<div class="admonition note"><p class="admonition-title">Texture Sampler
+</p><p>如何将texture传给GPU呢？GLSL提供了一个Sampler的东西；<br>
+<strong>看ps中的sampler2D</strong></p>
+</div>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line">out vec4 FragColor;</span><br><span class="line"></span><br><span class="line">in vec3 ourColor;</span><br><span class="line">in vec2 TexCoord;</span><br><span class="line"></span><br><span class="line"><span class="comment">// texture sampler</span></span><br><span class="line">uniform sampler2D texture1;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	FragColor = texture(texture1, TexCoord);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <h2 id="参考资料">参考资料</h2>
 <blockquote>
