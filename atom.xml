@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-10-26T16:16:56.596Z</updated>
+  <updated>2021-10-26T17:29:51.652Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第一次来家的小边牧</title>
+    <link href="http://luhao.wiki/posts/25374YZ/"/>
+    <id>http://luhao.wiki/posts/25374YZ/</id>
+    <published>2021-10-24T15:07:42.000Z</published>
+    <updated>2021-10-26T17:29:51.652Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="新成员介绍">新成员介绍!</h2><img src="http://www.luhao.wiki/images/coffee1.jpg" alt="" width="600"><ul><li>我是谁: <font color="#ef6d3b"><strong>边牧</strong></font></li><li>姓名: <font color="#dd9954"><strong>咖啡</strong></font> (因为咖啡的毛色)</li><li>性别: <font color="#0a62da"><strong>汉子</strong></font></li><li>生日: <font color="#447733"><strong>7月24日</strong></font></li></ul><hr><p>据说边牧是<font color="#bbaa99"><strong>最聪明的犬类</strong></font>，智力相当于8-10岁儿童；<br>想到如今小孩幼儿园开始学编程，准备教一手C++/Pythono，自己等待退休；</p><hr><p><strong>这是睡觉的样子</strong></p><img src="http://www.luhao.wiki/images/coffee2.jpg" alt="" width="1000"><hr><p><strong>这是吃东西的样子</strong></p><img src="http://www.luhao.wiki/images/coffee3.jpg" alt="" width="1000">]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;新成员介绍&quot;&gt;新成员介绍!&lt;/h2&gt;
+&lt;img src=&quot;http://www.luhao.wiki/images/coffee1.jpg&quot; alt=&quot;&quot; width=&quot;600&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;我是谁: &lt;font color=&quot;#ef6d3b&quot;&gt;&lt;stro</summary>
+      
+    
+    
+    
+    <category term="随笔" scheme="http://luhao.wiki/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
+    
+  </entry>
   
   <entry>
     <title>Textures</title>
@@ -569,36 +596,6 @@
     <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
     
     <category term="markdown" scheme="http://luhao.wiki/tags/markdown/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vim: the best editor</title>
-    <link href="http://luhao.wiki/posts/adff27ce/"/>
-    <id>http://luhao.wiki/posts/adff27ce/</id>
-    <published>2021-10-01T07:56:55.000Z</published>
-    <updated>2021-10-01T19:11:28.481Z</updated>
-    
-    <content type="html"><![CDATA[<p><em>As we known, Vim is the best editor in the world!</em></p><div class="admonition note"><p class="admonition-title">提要</p><p>大二开始一门《计算机系统基础》的课程<br>那是第一次接触linux c开发，同样也是vim入坑的开端<br>据说使用Vim的人都会经历如下几个阶段：</p><ul><li><em>1. what a fucking editor!</em></li><li><em>2. what a useful-fucking editor!</em></li><li><em>3. just a tool! (vim script...)</em></li></ul></div><hr><h2 id="1、Vim-Vi-improvment">1、Vim: Vi improvment</h2><p>先从一个stackoverflow经典问题看起：<br><a href="https://stackoverflow.com/questions/11828270/how-do-i-exit-the-vim-editor">How do I exit the Vim editor?</a></p><p>这是回答：<br>Hit the <code>Esc</code> key to enter “Normal mode”. Then you can type : to enter “Command-line mode”. A colon <code>(:)</code> will appear at the bottom of the screen and you can type in one of the following commands. To execute a command, press the Enter key.</p><p><code>:q</code> to quit (short for :quit)<br><code>:q!</code> to quit without saving (short for :quit!)<br><code>:wq</code> to write and quit<br><code>:wq!</code> to write and quit even if file has only read permission (if file does not have write permission: force write)</p><p>到这里，你至少不用窘迫的不知如何退出Vim界面了！</p><ul><li>技巧：所有Vim Operation，都源于英文的缩写，like :q(quit), 因此下面的所有Vim快捷键，我都会尽可能列出其英文含义，已帮助你更快得记住它！</li></ul><h2 id="2、Vim-modes-Vim的模式">2、Vim modes: Vim的模式</h2><p>什么是mode？<br><em>模式，几乎所有的编辑器只有一种模式，即insert 插入</em><br><strong>但是，Vim有起码3种重要的mode：normal, insert, visual</strong></p><ul><li>引自3中一句话：Programming大多数的时间消耗，不是在Writing上，而是review和Editing。</li></ul><h3 id="vim-mode-normal">vim mode: normal</h3><p>如何移动光标?</p><ul><li><code>h</code> - move left ←</li><li><code>j</code> - move down ↓</li><li><code>k</code> - move up ↑</li><li><code>l</code> - move right →</li></ul><p>更高效得，如何以单词为单位移动?</p><ul><li><code>w</code> - move to beginning of next word (<strong>word</strong>)</li><li><code>b</code> - move to previous beginning of word (<strong>back word</strong>)</li><li><code>e</code> - move to end of word (<strong>end word</strong>)</li></ul><p><code>just type 'vim' in terminal, and check these with your hands!</code></p><h3 id="vim-mode-insert">vim mode: insert</h3><p>使用<code>i</code>来进入insert模式，使用Esc来退出insert。</p><ul><li><code>i</code> - insert text before cursor (<strong>insert</strong>)</li><li><code>a</code> - insert text after cursor (<strong>insert after</strong>)</li><li><code>o</code> - Start a new line below cursor, insert text (<strong>??</strong>)</li></ul><h3 id="vim-mode-visual">vim mode: visual</h3><p>你一定猜到了，使用<code>v</code>可以进入visual模式。<br>此时可以批量成段的选择、编辑文本！</p><h2 id="3、Vim-commands-Vim的操作指令">3、Vim commands: Vim的操作指令</h2><p>直到阅读这篇文章前，我都不曾理解vim command的真正要义：<br><a href="https://blog.carbonfive.com/vim-text-objects-the-definitive-guide/">Vim Text Objects: The Definitive Guide</a></p><p><strong>在Vim的眼中，一切内容分为两种：text和objects。</strong><br>试想一下，一串无规律的字符串，它在编辑器眼里是text，这不无道理。<br>但如果是一个word，一个sentence，甚至是argument，那vim会视其为一个text object，以实现个更高效的操作。</p><ul><li><p><code>&lt;number&gt;&lt;command&gt;&lt;text object&gt;</code><br>这构成了几乎vim 90%的操作。</p></li><li><p><code>daw</code> – (<strong>delete a(around) word</strong>)<br>没错，它执行了删除一个单词的操作，并取决于你光标所在的位置。</p></li><li><p><code>diw</code> - (<strong>delete inner word</strong>)<br>inner于around有什么区别？around删除了周围的空白符，但是inner只删除了单词！</p></li><li><p><code>vf)</code> - (<strong>visual(select) until(find) first <code>)</code></strong>)<br>选中直到)的所有字符，并进入visual模式！ （需要稍加理解）</p></li></ul><p>下面罗列了几乎所有的command和obejct，标星的表示常用！</p><h3 id="Command：">Command：</h3><ul><li><code>d</code> - delete ★</li><li><code>y</code> - yank (经典ctrl c) ★</li><li><code>c</code> - change (delete and insert) ★</li><li><code>v</code> - visual (选中并进入visual模式) ★</li><li><code>r</code> - replace (delte and insert)</li></ul><h3 id="Object：">Object：</h3><ul><li><code>w</code> - word ★</li><li><code>s</code> - sentence</li><li><code>p</code> - paragraph (其实对不同于语言的识别不佳)</li><li><code>a</code> - argument ★ (编辑函数很有用)</li><li><code>"</code> - quoted ★ (引号内)</li><li><code>)</code>, <code>]</code>, <code>}</code>, <code>:</code>… 一切皆可</li></ul><h2 id="5、关于Vim的更多">5、关于Vim的更多</h2><p><a href="https://www.zhihu.com/question/58488056/answer/2098302756">知乎：用vim被人说装逼，怎么办?</a><br><a href="https://github.com/593413198/backup/blob/master/vimrc">本人的vimrc配置, 代码高亮、快捷键等</a></p><h2 id="Reference">Reference</h2><blockquote><ul><li><a href="https://stackoverflow.com/questions/11828270/how-do-i-exit-the-vim-editor">1. How do I exit the Vim editor?</a></li><li><a href="https://blog.carbonfive.com/vim-text-objects-the-definitive-guide/">2. Vim Text Objects: The Definitive Guide</a></li><li><a href="https://irian.to/blogs/introduction-to-vim-modes/">3. Introduction to Vim Modes</a></li><li><a href="https://wklken.me/posts/2017/03/25/vim-about-edit.html">4. vim 杂谈 - 关于快速编辑</a></li></ul></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;em&gt;As we known, Vim is the best editor in the world!&lt;/em&gt;&lt;/p&gt;
-&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;提要
-&lt;/p&gt;&lt;p&gt;大二开始一门《</summary>
-      
-    
-    
-    
-    <category term="工具" scheme="http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-    <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
-    
-    <category term="linux" scheme="http://luhao.wiki/tags/linux/"/>
-    
-    <category term="vim" scheme="http://luhao.wiki/tags/vim/"/>
     
   </entry>
   
