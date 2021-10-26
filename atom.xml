@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-10-26T17:11:48.564Z</updated>
+  <updated>2021-10-26T17:21:43.924Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -21,45 +21,16 @@
     <link href="http://luhao.wiki/posts/225B4SA/"/>
     <id>http://luhao.wiki/posts/225B4SA/</id>
     <published>2021-10-24T15:07:42.000Z</published>
-    <updated>2021-10-26T17:11:48.564Z</updated>
+    <updated>2021-10-26T17:21:43.924Z</updated>
     
-    <content type="html"><![CDATA[<img src="http://www.luhao.wiki/images/coffee1.jpg" alt="" width="500"><ul><li>我是谁: 咖啡色 x 边牧</li><li>性别: 汉子</li><li>生日: 7月24日</li></ul>]]></content>
+    <content type="html"><![CDATA[<img src="http://www.luhao.wiki/images/coffee1.jpg" alt="" width="600"><ul><li>我是谁: <font color="#ef6d3b"><strong>边牧</strong></font></li><li>姓名: <font color="#dd9954"><strong>咖啡</strong></font> (因为咖啡的毛色)</li><li>性别: <font color="#0a62da"><strong>汉子</strong></font></li><li>生日: <font color="#447733"><strong>7月24日</strong></font></li></ul><hr><p>据说边牧是<font color="#bbaa99"><strong>最聪明的犬类</strong></font>，智力相当于8-10岁儿童；<br>想到如今小孩幼儿园开始学编程，准备教一手C++/Pythono，自己等待退休；</p><hr><p><strong>这是睡觉的样子</strong></p><img src="http://www.luhao.wiki/images/coffee2.jpg" alt="" width="1000">]]></content>
     
     
       
       
-    <summary type="html">&lt;img src=&quot;http://www.luhao.wiki/images/coffee1.jpg&quot; alt=&quot;&quot; width=&quot;500&quot;&gt;
+    <summary type="html">&lt;img src=&quot;http://www.luhao.wiki/images/coffee1.jpg&quot; alt=&quot;&quot; width=&quot;600&quot;&gt;
 &lt;ul&gt;
-&lt;li&gt;我是谁: 咖啡色 x 边牧&lt;/li&gt;
-&lt;li&gt;性别: 汉子&lt;/li&gt;
-&lt;li&gt;生日: 7月24日&lt;/li&gt;
-&lt;/ul&gt;</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>第一次来新家的小边牧</title>
-    <link href="http://luhao.wiki/posts/225B4SA/"/>
-    <id>http://luhao.wiki/posts/225B4SA/</id>
-    <published>2021-10-24T15:07:42.000Z</published>
-    <updated>2021-10-26T17:07:59.587Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;参考资料&quot;&gt;参考资料&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
+&lt;li&gt;我是谁: &lt;font color=&quot;#ef6d3b&quot;&gt;&lt;strong&gt;边牧&lt;/strong&gt;&lt;/font&gt;&lt;/li&gt;
 </summary>
       
     
@@ -67,6 +38,8 @@
     
     <category term="随笔" scheme="http://luhao.wiki/categories/%E9%9A%8F%E7%AC%94/"/>
     
+    
+    <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
     
   </entry>
   
@@ -593,6 +566,36 @@
     <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
     
     <category term="linux" scheme="http://luhao.wiki/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo: a blog framework</title>
+    <link href="http://luhao.wiki/posts/796558c1/"/>
+    <id>http://luhao.wiki/posts/796558c1/</id>
+    <published>2021-10-01T09:38:21.000Z</published>
+    <updated>2021-10-10T18:09:25.426Z</updated>
+    
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>为什么选择hexo?</p><ul><li><code>Opensource</code></li><li><code>Simple and Fast</code></li><li><code>Good Plugins and Themes</code></li></ul></div><p><em>感谢<a href="https://hexo.io/">Hexo</a>，这是本博客的技术框架</em></p><hr><h2 id="开始hexo">开始hexo</h2><p>这是官网的教程，简略但清晰：<br><a href="https://hexo.io/zh-cn/docs/index.html">Hexo Start</a></p><p>补充几点：</p><ul><li><ol><li>关注version，对dependencies问题引起足够重视<br><code>npm list --depth 0</code> : 查看已安装的版本号<br><code>npm audit fix --force</code> : 强制安装所有依赖项</li></ol></li><li><ol start="2"><li>只需关注极少的几个指令<br><code>hexo init [folder]</code> : 初始化你的hexo目录<br><code>npm install</code> : 自动安装（读取package.json）<br><code>npm new "you title"</code> : 新建一篇文章 （它在你的/source/_posts下）</li></ol><ul><li>如何删除一个blog？去_posts下删除对应md即可<br><code>npm g</code> : (<strong>generate</strong>)生成本地静态文件/public<br><code>npm s</code> : (<strong>server</strong>)启动本地服务器，供预览 <code>localhost:4000</code><br><code>npm d</code> : (<strong>deploy</strong>)发布<br><code>npm clean</code> : 清除本地缓存与/public</li></ul></li></ul><h2 id="关于Themes与plugins">关于Themes与plugins</h2><h3 id="Themes">Themes</h3><ul><li><a href="https://hexo.io/themes/"><code>hexo themes合集</code></a></li><li><a href="https://github.com/zthxxx/hexo-theme-Wikitten">Wikitten</a>是本博客正在用的主题，感谢开发者~</li></ul><h3 id="Plugins">Plugins</h3><h4 id="hexo-generator-json-content"><a href="https://github.com/alexbruno/hexo-generator-json-content"><code>hexo-generator-json-content</code></a></h4><p>如何实现站内搜索？</p><ol><li>将md中所有内容（可配置）读取成json文件，以作为搜索的对象。</li><li><code>insight.js</code>: 实现了关于search和goto-link的逻辑。</li></ol><h4 id="hexo-admonition"><a href="https://github.com/lxl80/hexo-admonition"><code>hexo-admonition</code></a></h4><p>如何实现高亮的提示信息?</p><div class="admonition warning"><p class="admonition-title">warning</p></div><div class="admonition error"><p class="admonition-title">error</p></div><div class="admonition todo"><p class="admonition-title">todo</p><p>4个空格，这是一条todo信息</p></div><div class="admonition info"><p>这是一条不带title的信息</p></div><h4 id="hexo-enhancer"><a href="https://github.com/sisyphsu/hexo-enhancer"><code>hexo-enhancer</code></a></h4><p>实用的功能：根据folder来识别categorieos<br><a href="https://github.com/sisyphsu/hexo-enhancer/issues/18"><code>存在bug：对已存在的category会进行重复归类</code></a></p><h2 id="hexo发布github">hexo发布github</h2><p>这里记录几个坑</p><ol><li><code>_config.yml</code>中deploy使用<code>git</code>，对应repo应该是:<br><code>git@github.com:{user_name}/{respository_name}git</code></li><li>添加github的SSH Keys<br><code>ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</code><br><code>cat ~/.ssh/id_rsa.pub</code><br><code>github - setting - SSH adn GPG Keys</code></li><li>发布到公网website<br><code>/source/CNAME</code> ： 输入自己的网址如www.luhao.wiki<br><code>ping -4 593413198.github.io</code>：获取ipv4<br><a href="https://jobbym.github.io/2018/01/16/GitHub-Pages-Hexo-%E9%85%8D%E7%BD%AE%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/"><code>github + aliyun + hexo 实现私人域名绑定</code></a></li><li>为什么blog avatar使用的icon不显示？<br><code>TODO</code></li><li><code>npm audit fix --force</code>几个高危的报错如何解决？<br><code>TODO</code></li></ol><h2 id="记录一些Bug及其修复">记录一些Bug及其修复</h2><ul><li><code>hexo-renderer-markdown-it-plus</code>自带的<code>Katex</code>与主题自带的<code>MathJex</code>冲突；导致最终渲染的LaTeX始终是两个，还TM有一个是错的…<br>修复: 弃用了it-plus，转投<code>hexo-filter-github-emojis</code>，其实我只需要它们的<code>Emoji</code>功能 <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></li></ul><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href="https://hexo.io/">hexo官网</a></li><li><a href="https://jobbym.github.io/2018/01/16/GitHub-Pages-Hexo-%E9%85%8D%E7%BD%AE%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/"><code>github + aliyun + hexo 实现博客的私人域名绑定</code></a></li></ul></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
+&lt;/p&gt;&lt;p&gt;为什么选择hexo?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Opensource&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Simple and</summary>
+      
+    
+    
+    
+    <category term="工具" scheme="http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
+    
+    <category term="markdown" scheme="http://luhao.wiki/tags/markdown/"/>
     
   </entry>
   
