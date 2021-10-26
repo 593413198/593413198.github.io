@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-10-26T16:16:56.596Z</updated>
+  <updated>2021-10-26T17:07:59.587Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第一次来新家的小边牧</title>
+    <link href="http://luhao.wiki/posts/225B4SA/"/>
+    <id>http://luhao.wiki/posts/225B4SA/</id>
+    <published>2021-10-24T15:07:42.000Z</published>
+    <updated>2021-10-26T17:07:59.587Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;参考资料&quot;&gt;参考资料&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+</summary>
+      
+    
+    
+    
+    <category term="随笔" scheme="http://luhao.wiki/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>第一次来新家的小边牧</title>
+    <link href="http://luhao.wiki/posts/225B4SA/"/>
+    <id>http://luhao.wiki/posts/225B4SA/</id>
+    <published>2021-10-24T15:07:42.000Z</published>
+    <updated>2021-10-26T17:09:47.652Z</updated>
+    
+    <content type="html"><![CDATA[<img src="http://www.luhao.wiki/images/coffee1.jpg" alt="" width="500"><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;img src=&quot;http://www.luhao.wiki/images/coffee1.jpg&quot; alt=&quot;&quot; width=&quot;500&quot;&gt;
+&lt;h2 id=&quot;参考资料&quot;&gt;参考资料&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Textures</title>
@@ -539,66 +593,6 @@
     <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
     
     <category term="linux" scheme="http://luhao.wiki/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo: a blog framework</title>
-    <link href="http://luhao.wiki/posts/796558c1/"/>
-    <id>http://luhao.wiki/posts/796558c1/</id>
-    <published>2021-10-01T09:38:21.000Z</published>
-    <updated>2021-10-10T18:09:25.426Z</updated>
-    
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>为什么选择hexo?</p><ul><li><code>Opensource</code></li><li><code>Simple and Fast</code></li><li><code>Good Plugins and Themes</code></li></ul></div><p><em>感谢<a href="https://hexo.io/">Hexo</a>，这是本博客的技术框架</em></p><hr><h2 id="开始hexo">开始hexo</h2><p>这是官网的教程，简略但清晰：<br><a href="https://hexo.io/zh-cn/docs/index.html">Hexo Start</a></p><p>补充几点：</p><ul><li><ol><li>关注version，对dependencies问题引起足够重视<br><code>npm list --depth 0</code> : 查看已安装的版本号<br><code>npm audit fix --force</code> : 强制安装所有依赖项</li></ol></li><li><ol start="2"><li>只需关注极少的几个指令<br><code>hexo init [folder]</code> : 初始化你的hexo目录<br><code>npm install</code> : 自动安装（读取package.json）<br><code>npm new "you title"</code> : 新建一篇文章 （它在你的/source/_posts下）</li></ol><ul><li>如何删除一个blog？去_posts下删除对应md即可<br><code>npm g</code> : (<strong>generate</strong>)生成本地静态文件/public<br><code>npm s</code> : (<strong>server</strong>)启动本地服务器，供预览 <code>localhost:4000</code><br><code>npm d</code> : (<strong>deploy</strong>)发布<br><code>npm clean</code> : 清除本地缓存与/public</li></ul></li></ul><h2 id="关于Themes与plugins">关于Themes与plugins</h2><h3 id="Themes">Themes</h3><ul><li><a href="https://hexo.io/themes/"><code>hexo themes合集</code></a></li><li><a href="https://github.com/zthxxx/hexo-theme-Wikitten">Wikitten</a>是本博客正在用的主题，感谢开发者~</li></ul><h3 id="Plugins">Plugins</h3><h4 id="hexo-generator-json-content"><a href="https://github.com/alexbruno/hexo-generator-json-content"><code>hexo-generator-json-content</code></a></h4><p>如何实现站内搜索？</p><ol><li>将md中所有内容（可配置）读取成json文件，以作为搜索的对象。</li><li><code>insight.js</code>: 实现了关于search和goto-link的逻辑。</li></ol><h4 id="hexo-admonition"><a href="https://github.com/lxl80/hexo-admonition"><code>hexo-admonition</code></a></h4><p>如何实现高亮的提示信息?</p><div class="admonition warning"><p class="admonition-title">warning</p></div><div class="admonition error"><p class="admonition-title">error</p></div><div class="admonition todo"><p class="admonition-title">todo</p><p>4个空格，这是一条todo信息</p></div><div class="admonition info"><p>这是一条不带title的信息</p></div><h4 id="hexo-enhancer"><a href="https://github.com/sisyphsu/hexo-enhancer"><code>hexo-enhancer</code></a></h4><p>实用的功能：根据folder来识别categorieos<br><a href="https://github.com/sisyphsu/hexo-enhancer/issues/18"><code>存在bug：对已存在的category会进行重复归类</code></a></p><h2 id="hexo发布github">hexo发布github</h2><p>这里记录几个坑</p><ol><li><code>_config.yml</code>中deploy使用<code>git</code>，对应repo应该是:<br><code>git@github.com:{user_name}/{respository_name}git</code></li><li>添加github的SSH Keys<br><code>ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</code><br><code>cat ~/.ssh/id_rsa.pub</code><br><code>github - setting - SSH adn GPG Keys</code></li><li>发布到公网website<br><code>/source/CNAME</code> ： 输入自己的网址如www.luhao.wiki<br><code>ping -4 593413198.github.io</code>：获取ipv4<br><a href="https://jobbym.github.io/2018/01/16/GitHub-Pages-Hexo-%E9%85%8D%E7%BD%AE%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/"><code>github + aliyun + hexo 实现私人域名绑定</code></a></li><li>为什么blog avatar使用的icon不显示？<br><code>TODO</code></li><li><code>npm audit fix --force</code>几个高危的报错如何解决？<br><code>TODO</code></li></ol><h2 id="记录一些Bug及其修复">记录一些Bug及其修复</h2><ul><li><code>hexo-renderer-markdown-it-plus</code>自带的<code>Katex</code>与主题自带的<code>MathJex</code>冲突；导致最终渲染的LaTeX始终是两个，还TM有一个是错的…<br>修复: 弃用了it-plus，转投<code>hexo-filter-github-emojis</code>，其实我只需要它们的<code>Emoji</code>功能 <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></li></ul><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href="https://hexo.io/">hexo官网</a></li><li><a href="https://jobbym.github.io/2018/01/16/GitHub-Pages-Hexo-%E9%85%8D%E7%BD%AE%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/"><code>github + aliyun + hexo 实现博客的私人域名绑定</code></a></li></ul></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
-&lt;/p&gt;&lt;p&gt;为什么选择hexo?&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Opensource&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Simple and</summary>
-      
-    
-    
-    
-    <category term="工具" scheme="http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-    <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
-    
-    <category term="markdown" scheme="http://luhao.wiki/tags/markdown/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vim: the best editor</title>
-    <link href="http://luhao.wiki/posts/adff27ce/"/>
-    <id>http://luhao.wiki/posts/adff27ce/</id>
-    <published>2021-10-01T07:56:55.000Z</published>
-    <updated>2021-10-01T19:11:28.481Z</updated>
-    
-    <content type="html"><![CDATA[<p><em>As we known, Vim is the best editor in the world!</em></p><div class="admonition note"><p class="admonition-title">提要</p><p>大二开始一门《计算机系统基础》的课程<br>那是第一次接触linux c开发，同样也是vim入坑的开端<br>据说使用Vim的人都会经历如下几个阶段：</p><ul><li><em>1. what a fucking editor!</em></li><li><em>2. what a useful-fucking editor!</em></li><li><em>3. just a tool! (vim script...)</em></li></ul></div><hr><h2 id="1、Vim-Vi-improvment">1、Vim: Vi improvment</h2><p>先从一个stackoverflow经典问题看起：<br><a href="https://stackoverflow.com/questions/11828270/how-do-i-exit-the-vim-editor">How do I exit the Vim editor?</a></p><p>这是回答：<br>Hit the <code>Esc</code> key to enter “Normal mode”. Then you can type : to enter “Command-line mode”. A colon <code>(:)</code> will appear at the bottom of the screen and you can type in one of the following commands. To execute a command, press the Enter key.</p><p><code>:q</code> to quit (short for :quit)<br><code>:q!</code> to quit without saving (short for :quit!)<br><code>:wq</code> to write and quit<br><code>:wq!</code> to write and quit even if file has only read permission (if file does not have write permission: force write)</p><p>到这里，你至少不用窘迫的不知如何退出Vim界面了！</p><ul><li>技巧：所有Vim Operation，都源于英文的缩写，like :q(quit), 因此下面的所有Vim快捷键，我都会尽可能列出其英文含义，已帮助你更快得记住它！</li></ul><h2 id="2、Vim-modes-Vim的模式">2、Vim modes: Vim的模式</h2><p>什么是mode？<br><em>模式，几乎所有的编辑器只有一种模式，即insert 插入</em><br><strong>但是，Vim有起码3种重要的mode：normal, insert, visual</strong></p><ul><li>引自3中一句话：Programming大多数的时间消耗，不是在Writing上，而是review和Editing。</li></ul><h3 id="vim-mode-normal">vim mode: normal</h3><p>如何移动光标?</p><ul><li><code>h</code> - move left ←</li><li><code>j</code> - move down ↓</li><li><code>k</code> - move up ↑</li><li><code>l</code> - move right →</li></ul><p>更高效得，如何以单词为单位移动?</p><ul><li><code>w</code> - move to beginning of next word (<strong>word</strong>)</li><li><code>b</code> - move to previous beginning of word (<strong>back word</strong>)</li><li><code>e</code> - move to end of word (<strong>end word</strong>)</li></ul><p><code>just type 'vim' in terminal, and check these with your hands!</code></p><h3 id="vim-mode-insert">vim mode: insert</h3><p>使用<code>i</code>来进入insert模式，使用Esc来退出insert。</p><ul><li><code>i</code> - insert text before cursor (<strong>insert</strong>)</li><li><code>a</code> - insert text after cursor (<strong>insert after</strong>)</li><li><code>o</code> - Start a new line below cursor, insert text (<strong>??</strong>)</li></ul><h3 id="vim-mode-visual">vim mode: visual</h3><p>你一定猜到了，使用<code>v</code>可以进入visual模式。<br>此时可以批量成段的选择、编辑文本！</p><h2 id="3、Vim-commands-Vim的操作指令">3、Vim commands: Vim的操作指令</h2><p>直到阅读这篇文章前，我都不曾理解vim command的真正要义：<br><a href="https://blog.carbonfive.com/vim-text-objects-the-definitive-guide/">Vim Text Objects: The Definitive Guide</a></p><p><strong>在Vim的眼中，一切内容分为两种：text和objects。</strong><br>试想一下，一串无规律的字符串，它在编辑器眼里是text，这不无道理。<br>但如果是一个word，一个sentence，甚至是argument，那vim会视其为一个text object，以实现个更高效的操作。</p><ul><li><p><code>&lt;number&gt;&lt;command&gt;&lt;text object&gt;</code><br>这构成了几乎vim 90%的操作。</p></li><li><p><code>daw</code> – (<strong>delete a(around) word</strong>)<br>没错，它执行了删除一个单词的操作，并取决于你光标所在的位置。</p></li><li><p><code>diw</code> - (<strong>delete inner word</strong>)<br>inner于around有什么区别？around删除了周围的空白符，但是inner只删除了单词！</p></li><li><p><code>vf)</code> - (<strong>visual(select) until(find) first <code>)</code></strong>)<br>选中直到)的所有字符，并进入visual模式！ （需要稍加理解）</p></li></ul><p>下面罗列了几乎所有的command和obejct，标星的表示常用！</p><h3 id="Command：">Command：</h3><ul><li><code>d</code> - delete ★</li><li><code>y</code> - yank (经典ctrl c) ★</li><li><code>c</code> - change (delete and insert) ★</li><li><code>v</code> - visual (选中并进入visual模式) ★</li><li><code>r</code> - replace (delte and insert)</li></ul><h3 id="Object：">Object：</h3><ul><li><code>w</code> - word ★</li><li><code>s</code> - sentence</li><li><code>p</code> - paragraph (其实对不同于语言的识别不佳)</li><li><code>a</code> - argument ★ (编辑函数很有用)</li><li><code>"</code> - quoted ★ (引号内)</li><li><code>)</code>, <code>]</code>, <code>}</code>, <code>:</code>… 一切皆可</li></ul><h2 id="5、关于Vim的更多">5、关于Vim的更多</h2><p><a href="https://www.zhihu.com/question/58488056/answer/2098302756">知乎：用vim被人说装逼，怎么办?</a><br><a href="https://github.com/593413198/backup/blob/master/vimrc">本人的vimrc配置, 代码高亮、快捷键等</a></p><h2 id="Reference">Reference</h2><blockquote><ul><li><a href="https://stackoverflow.com/questions/11828270/how-do-i-exit-the-vim-editor">1. How do I exit the Vim editor?</a></li><li><a href="https://blog.carbonfive.com/vim-text-objects-the-definitive-guide/">2. Vim Text Objects: The Definitive Guide</a></li><li><a href="https://irian.to/blogs/introduction-to-vim-modes/">3. Introduction to Vim Modes</a></li><li><a href="https://wklken.me/posts/2017/03/25/vim-about-edit.html">4. vim 杂谈 - 关于快速编辑</a></li></ul></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;em&gt;As we known, Vim is the best editor in the world!&lt;/em&gt;&lt;/p&gt;
-&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;提要
-&lt;/p&gt;&lt;p&gt;大二开始一门《</summary>
-      
-    
-    
-    
-    <category term="工具" scheme="http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-    <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
-    
-    <category term="linux" scheme="http://luhao.wiki/tags/linux/"/>
-    
-    <category term="vim" scheme="http://luhao.wiki/tags/vim/"/>
     
   </entry>
   
