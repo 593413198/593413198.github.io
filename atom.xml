@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-11-18T15:33:06.103Z</updated>
+  <updated>2021-11-18T16:20:26.480Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://luhao.wiki/posts/S7WXS5/"/>
     <id>http://luhao.wiki/posts/S7WXS5/</id>
     <published>2021-11-18T15:15:17.000Z</published>
-    <updated>2021-11-18T15:33:06.103Z</updated>
+    <updated>2021-11-18T16:20:26.480Z</updated>
     
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>Lighting：平行光、点光等等</p></div><hr><h2 id="Colors">Colors</h2><img src="http://www.luhao.wiki/images/colors.png" alt="" width="500"><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>Lighting：平行光、点光等等</p></div><hr><h2 id="Colors">Colors</h2><ul><li><strong>物体的颜色是如何产生的？</strong></li></ul><p>观察下图: 太阳光包含所有可见色（7种），当照射在物体上时（如红色），<strong>只能反射大部分的红光</strong>，如下图所示:</p><img src="http://www.luhao.wiki/images/colors.png" alt="" width="350"><hr><ul><li><strong>用公式表示简单的反射颜色:</strong></li></ul><p>$reflectColor = lightColor * baseColor$</p><ul><li><strong>RGB颜色表示:</strong></li></ul><p>$red = (1, 0, 0)$<br>$green = (0, 1, 0)$<br>$blue = (0, 0, 1)$</p><p>$black = (0, 0, 0)$<br>$white = (1, 1, 1)$</p><div class="admonition warning"><p class="admonition-title">为什么黑色是0, 白色是1?</p><ol><li><strong>从能量看</strong>：黑色能量最低，白色能量最高 <br></li><li><strong>从反射公式看</strong>：黑色不反射任何颜色(0)，白色会反射任何颜色(1) <br></li></ol></div><hr><h2 id="Phong-lighting-model">Phong lighting model</h2><p>了解了Colors原理，我们学习如何表示现实中的lighting;</p><ul><li>三个组成:<br><img src="http://www.luhao.wiki/images/Phong.png" alt="" width="500"></li></ul><hr><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href="https://learnopengl.com/Lighting/Colors">LearOpenGL-Colors</a></li><li><a href=""></a></li></ul></blockquote>]]></content>
     
     
       
@@ -33,13 +33,16 @@
 &lt;/div&gt;
 &lt;hr&gt;
 &lt;h2 id=&quot;Colors&quot;&gt;Colors&lt;/h2&gt;
-&lt;img src=&quot;h</summary>
+&lt;ul&gt;
+&lt;li&gt;&lt;s</summary>
       
     
     
     
     <category term="OpenGL" scheme="http://luhao.wiki/categories/OpenGL/"/>
     
+    
+    <category term="OpenGL" scheme="http://luhao.wiki/tags/OpenGL/"/>
     
   </entry>
   
