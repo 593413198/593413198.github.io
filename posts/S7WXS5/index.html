@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://www.luhao.wiki/images/specular_pow.png">
 <meta property="og:image" content="http://www.luhao.wiki/images/lighting_demo.png">
 <meta property="article:published_time" content="2021-11-18T15:15:17.000Z">
-<meta property="article:modified_time" content="2021-11-23T16:12:01.630Z">
+<meta property="article:modified_time" content="2021-11-23T16:14:45.028Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="OpenGL">
 <meta name="twitter:card" content="summary">
@@ -371,10 +371,10 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计677字 
+                            | 字数统计784字 
                           </span>
                           <!-- <span class="post-count"> -->
-                            <!-- | 阅读时长2分钟  -->
+                            <!-- | 阅读时长3分钟  -->
                         <!-- </span> -->
                         
                     </div>
@@ -482,11 +482,15 @@ $white = (1, 1, 1)$</p>
 木头和水泥不会对光产生很强的反射，他们几乎没有高光；但水晶和镜子就会显得闪闪发光…<br>
 <strong>它们本质是各种反射属性和数值的组合，我们将它定义为<font color="#ef6d3b"><strong>Materials(材质)</strong></font>；</strong></li>
 </ul>
-<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Material</span> {</span></span><br><span class="line">    vec3 ambient;</span><br><span class="line">    vec3 diffuse;</span><br><span class="line">    vec3 specular;</span><br><span class="line">    <span class="keyword">float</span> shininess;</span><br><span class="line">}; </span><br><span class="line">uniform Material material;</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Material</span> {</span></span><br><span class="line">    vec3 ambient;</span><br><span class="line">    vec3 diffuse;</span><br><span class="line">    vec3 specular;</span><br><span class="line">    <span class="keyword">float</span> shininess; <span class="comment">// pow的指数, 衡量高光区域</span></span><br><span class="line">}; </span><br><span class="line">uniform Material material;</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>对应的，我们也可以维护灯光的简单属性:</li>
 </ul>
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Light</span> {</span></span><br><span class="line">    vec3 position;</span><br><span class="line">  </span><br><span class="line">    vec3 ambient;</span><br><span class="line">    vec3 diffuse;</span><br><span class="line">    vec3 specular;</span><br><span class="line">};</span><br><span class="line">uniform Light light;  </span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>下面看一个使用材质和灯光属性的示例：</li>
+</ul>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lighting properties</span></span><br><span class="line">lightingShader.setVec3(<span class="string">"light.ambient"</span>, <span class="number">0.2f</span>, <span class="number">0.2f</span>, <span class="number">0.2f</span>);</span><br><span class="line">lightingShader.setVec3(<span class="string">"light.diffuse"</span>, <span class="number">0.5f</span>, <span class="number">0.5f</span>, <span class="number">0.5f</span>);</span><br><span class="line">lightingShader.setVec3(<span class="string">"light.specular"</span>, <span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">1.0f</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// material properties</span></span><br><span class="line">lightingShader.setVec3(<span class="string">"material.ambient"</span>, <span class="number">1.0f</span>, <span class="number">0.5f</span>, <span class="number">0.31f</span>);</span><br><span class="line">lightingShader.setVec3(<span class="string">"material.diffuse"</span>, <span class="number">1.0f</span>, <span class="number">0.5f</span>, <span class="number">0.31f</span>);</span><br><span class="line">lightingShader.setVec3(<span class="string">"material.specular"</span>, <span class="number">0.5f</span>, <span class="number">0.5f</span>, <span class="number">0.5f</span>); <span class="comment">// specular lighting doesn't have full effect on this object's material</span></span><br><span class="line">lightingShader.setFloat(<span class="string">"material.shininess"</span>, <span class="number">32.0f</span>);</span><br></pre></td></tr></tbody></table></figure>
 <img src="http://www.luhao.wiki/images/lighting_demo.png" alt="" width="500">
 <hr>
 <h2 id="参考资料">参考资料</h2>
