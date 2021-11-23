@@ -19,8 +19,9 @@
 <meta property="og:image" content="http://www.luhao.wiki/images/colors.png">
 <meta property="og:image" content="http://www.luhao.wiki/images/Phong.png">
 <meta property="og:image" content="http://www.luhao.wiki/images/specular.png">
+<meta property="og:image" content="http://www.luhao.wiki/images/specular_pow.png">
 <meta property="article:published_time" content="2021-11-18T15:15:17.000Z">
-<meta property="article:modified_time" content="2021-11-23T15:22:07.052Z">
+<meta property="article:modified_time" content="2021-11-23T15:32:00.386Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="OpenGL">
 <meta name="twitter:card" content="summary">
@@ -369,7 +370,7 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计421字 
+                            | 字数统计526字 
                           </span>
                           <!-- <span class="post-count"> -->
                             <!-- | 阅读时长1分钟  -->
@@ -436,13 +437,13 @@ $white = (1, 1, 1)$</p>
 </ul>
 <img src="http://www.luhao.wiki/images/Phong.png" alt="" width="">
 <h3 id="Ambient"><em>Ambient</em></h3>
-<p>环境光: 各种复杂光源反射的颜色，通常表现在较暗的环境下;</p>
+<p><strong>环境光: 各种复杂光源反射的颜色，通常表现在较暗的环境下;</strong></p>
 <ul>
 <li>通常会取一个环境光强度(ambientStrength)，乘以光照强度，以计算ambient:</li>
 </ul>
 <p><font color="#ef6d3b"><strong>$color = ambientStrenth * lightColor * ObjectColor$</strong></font></p>
 <h3 id="Diffuse"><em>Diffuse</em></h3>
-<p>漫反射光：直接光照反射的颜色，受光照角度的直接影响；</p>
+<p><strong>漫反射光：直接光照反射的颜色，受光照角度的直接影响；</strong></p>
 <ul>
 <li>
 <p>既然考虑角度，所以引入<font color="#1A9BFF"><strong>normal(法线)</strong></font>的概念：<strong>垂直于顶点所在平面的向量</strong></p>
@@ -456,10 +457,16 @@ $white = (1, 1, 1)$</p>
 </p><p>todo</p>
 </div>
 <h3 id="Specular"><em>Specular</em></h3>
-<p>高光：光泽表面反射的颜色，</p>
-<p>如下图所示，当视角与光的反射角度越来越小时，我们看到的高光也会越来越强烈 （假设这是一面镜子）；</p>
-<img src="http://www.luhao.wiki/images/specular.png" alt="" width="800">
-!!! todo 高光未完待续
+<p><strong>高光：光泽表面反射的颜色，</strong></p>
+<p>如下图所示，当视角与光的反射角度越来越小时，我们看到的高光也会越来越强烈 （假设这是一面镜子）；<br>
+显然：高光强度是受 光入射角 + 面法线 + 视角 共同影响的；</p>
+<img src="http://www.luhao.wiki/images/specular.png" alt="" width="300">
+<p>与Diffuse的计算有一点区别，我们使用pow来让越接近反射光线的区域，反射强度越大；</p>
+<p><font color="#ef6d3b"><strong>$color = pow(max(dot(reflectDir, viewDir), 0.0), 32) * lightColor * ObjectColor$</strong></font></p>
+<p>!!! 32的系数是什么？<br>
+用作pow的系数越大，表示高光影响的范围越小，高光强度也越大；<br><br>
+下图可以看到不同系数的效果；</p>
+<img src="http://www.luhao.wiki/images/specular_pow.png" alt="" width="500">
 <hr>
 <h2 id="参考资料">参考资料</h2>
 <blockquote>
