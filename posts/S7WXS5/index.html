@@ -9,17 +9,18 @@
         <meta name="keywords" content="OpenGL" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="概要 Lighting：平行光、点光等等   Colors  物体的颜色是如何产生的？  观察下图: 太阳光包含所有可见色（7种），当照射在物体上时（如红色），只能反射大部分的红光，如下图所示:    用公式表示简单的反射颜色:  $reflectColor &#x3D; lightColor * ObjectColor$  RGB颜色表示:  $red &#x3D; (1, 0, 0)$ $green &#x3D; (0,">
+    <meta name="description" content="概要 自然界的颜色可以看做是由Ambient, Diffuse, Specular三种组成； 灯光又可以分为: 平行光、点光、聚光灯等等；   Colors  物体的颜色是如何产生的？  观察下图: 太阳光包含所有可见色（7种），当照射在物体上时（如红色），只能反射大部分的红光，如下图所示:    用公式表示简单的反射颜色:  $reflectColor &#x3D; lightColor * Object">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lighting">
 <meta property="og:url" content="http://luhao.wiki/posts/S7WXS5/index.html">
 <meta property="og:site_name" content="Luhao&#39;s Blog">
-<meta property="og:description" content="概要 Lighting：平行光、点光等等   Colors  物体的颜色是如何产生的？  观察下图: 太阳光包含所有可见色（7种），当照射在物体上时（如红色），只能反射大部分的红光，如下图所示:    用公式表示简单的反射颜色:  $reflectColor &#x3D; lightColor * ObjectColor$  RGB颜色表示:  $red &#x3D; (1, 0, 0)$ $green &#x3D; (0,">
+<meta property="og:description" content="概要 自然界的颜色可以看做是由Ambient, Diffuse, Specular三种组成； 灯光又可以分为: 平行光、点光、聚光灯等等；   Colors  物体的颜色是如何产生的？  观察下图: 太阳光包含所有可见色（7种），当照射在物体上时（如红色），只能反射大部分的红光，如下图所示:    用公式表示简单的反射颜色:  $reflectColor &#x3D; lightColor * Object">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://www.luhao.wiki/images/colors.png">
 <meta property="og:image" content="http://www.luhao.wiki/images/Phong.png">
+<meta property="og:image" content="http://www.luhao.wiki/images/specular.png">
 <meta property="article:published_time" content="2021-11-18T15:15:17.000Z">
-<meta property="article:modified_time" content="2021-11-18T16:45:52.745Z">
+<meta property="article:modified_time" content="2021-11-23T15:22:07.052Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="OpenGL">
 <meta name="twitter:card" content="summary">
@@ -368,7 +369,7 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计350字 
+                            | 字数统计421字 
                           </span>
                           <!-- <span class="post-count"> -->
                             <!-- | 阅读时长1分钟  -->
@@ -398,7 +399,8 @@
         
         
             <div class="admonition note"><p class="admonition-title">概要
-</p><p>Lighting：平行光、点光等等</p>
+</p><p>自然界的颜色可以看做是由<strong>Ambient, Diffuse, Specular</strong>三种组成；<br>
+灯光又可以分为: <strong>平行光、点光、聚光灯</strong>等等；</p>
 </div>
 <hr>
 <h2 id="Colors">Colors</h2>
@@ -430,9 +432,9 @@ $white = (1, 1, 1)$</p>
 <h2 id="Phong-lighting-model">Phong lighting model</h2>
 <p>了解了Colors原理，我们学习如何表示现实中的lighting;</p>
 <ul>
-<li>三个组成: ambient + diffuse + specular</li>
+<li>三个组成: <font color="#ef6d3b"><strong>ambient + diffuse + specular</strong></font></li>
 </ul>
-<img src="http://www.luhao.wiki/images/Phong.png" alt="" width="500">
+<img src="http://www.luhao.wiki/images/Phong.png" alt="" width="">
 <h3 id="Ambient"><em>Ambient</em></h3>
 <p>环境光: 各种复杂光源反射的颜色，通常表现在较暗的环境下;</p>
 <ul>
@@ -455,8 +457,9 @@ $white = (1, 1, 1)$</p>
 </div>
 <h3 id="Specular"><em>Specular</em></h3>
 <p>高光：光泽表面反射的颜色，</p>
-<div class="admonition todo"><p class="admonition-title">高光未完待续
-</p></div>
+<p>如下图所示，当视角与光的反射角度越来越小时，我们看到的高光也会越来越强烈 （假设这是一面镜子）；</p>
+<img src="http://www.luhao.wiki/images/specular.png" alt="" width="800">
+!!! todo 高光未完待续
 <hr>
 <h2 id="参考资料">参考资料</h2>
 <blockquote>
