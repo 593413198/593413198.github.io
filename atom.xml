@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-11-27T08:45:00.158Z</updated>
+  <updated>2021-11-27T08:56:28.255Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -17,13 +17,42 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>写作规范文档</title>
+    <link href="http://luhao.wiki/posts/3CXJNY5/"/>
+    <id>http://luhao.wiki/posts/3CXJNY5/</id>
+    <published>2021-11-27T08:56:28.000Z</published>
+    <updated>2021-11-27T08:56:28.255Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;参考资料&quot;&gt;参考资料&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+</summary>
+      
+    
+    
+    
+    <category term="文档" scheme="http://luhao.wiki/categories/%E6%96%87%E6%A1%A3/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Lighting</title>
     <link href="http://luhao.wiki/posts/S7WXS5/"/>
     <id>http://luhao.wiki/posts/S7WXS5/</id>
     <published>2021-11-24T13:45:07.000Z</published>
-    <updated>2021-11-27T08:45:00.158Z</updated>
+    <updated>2021-11-27T08:55:18.333Z</updated>
     
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>lighting主要分为：平行光、点光、聚光灯； <br>本文介绍了每种lighting的原理与实现细节；</p></div><hr><h2 id="Directional-Light">Directional Light</h2><ul><li><font color="#ef6d3b"><strong>平行光：</strong></font>（如太阳光）<ul><li>影响范围无限大</li><li>所有点强度一样，只受方向影响</li></ul></li></ul><img src="http://www.luhao.wiki/images/directionallight.png" alt="" width="500"><ul><li>定义如下：</li></ul><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DirectionalLight</span> {</span></span><br><span class="line">    vec3 direction;</span><br><span class="line">  </span><br><span class="line">    vec3 ambient;</span><br><span class="line">    vec3 diffuse;</span><br><span class="line">    vec3 specular;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">  vec3 lightDir = normalize(-light.direction);</span><br><span class="line">  [...]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><h2 id="Point-Light">Point Light</h2><ul><li><font color="#ef6d3b"><strong>点光：</strong></font> （如电灯泡）<ul><li>影响范围是个球体</li><li>强度随距离衰减</li></ul></li></ul><img src="http://www.luhao.wiki/images/pointlight.png" alt="" width="500"><h2 id="Spot-Light">Spot Light</h2><img src="http://www.luhao.wiki/images/spotlight.png" alt="" width="500"><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>lighting主要分为：平行光、点光、聚光灯； <br>本文介绍了每种lighting的原理与实现细节；</p></div><hr><h2 id="Directional-Light">Directional Light</h2><ul><li><font color="#ef6d3b"><strong>平行光：</strong></font>（如太阳光）<ul><li>影响范围无限大</li><li>所有点强度一样，只受方向影响</li></ul></li></ul><img src="http://www.luhao.wiki/images/directionallight.png" alt="" width="300"><ul><li>定义如下：</li></ul><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DirectionalLight</span> {</span></span><br><span class="line">    vec3 direction;</span><br><span class="line">  </span><br><span class="line">    vec3 ambient;</span><br><span class="line">    vec3 diffuse;</span><br><span class="line">    vec3 specular;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">  vec3 lightDir = normalize(-light.direction);</span><br><span class="line">  [...]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><h2 id="Point-Light">Point Light</h2><ul><li><font color="#ef6d3b"><strong>点光：</strong></font> （如电灯泡）<ul><li>影响范围是个球体</li><li>强度随距离衰减</li></ul></li></ul><img src="http://www.luhao.wiki/images/pointlight.png" alt="" width="300"><h3 id="font-color-ef6d3b-Attenuation-font"><font color="#ef6d3b"><strong>Attenuation</strong></font></h3><p>怎么衡量这种衰减呢？</p><ul><li>linear equation</li></ul><h2 id="Spot-Light">Spot Light</h2><img src="http://www.luhao.wiki/images/spotlight.png" alt="" width="300"><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
     
     
       
@@ -563,35 +592,6 @@
     <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
     
     <category term="Compiler" scheme="http://luhao.wiki/tags/Compiler/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MinGW: windows c/c++</title>
-    <link href="http://luhao.wiki/posts/a57e44ac/"/>
-    <id>http://luhao.wiki/posts/a57e44ac/</id>
-    <published>2021-10-01T16:37:28.000Z</published>
-    <updated>2021-10-02T10:58:58.179Z</updated>
-    
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p><strong>MinGW</strong> <em>(Minimalist GNU/GCC for Windows)</em> 是专为Win32移植的产物<br>换言之，<strong>Linux C</strong>才是主流！</p></div><hr><h2 id="Windows-MinGW环境搭建">Windows MinGW环境搭建</h2><p>首先安利一波<a href="https://www.msys2.org/"><strong>MSYS2</strong>(Minial SYStem 2 )</a><br>它集成了一系列标准Linux工具，当然包含clang和gcc;<br>其实有很多类似的Shell: <code>Cygwin, WSL...</code></p><p><a href="msys2.org">msys2.org</a>给出了详细的安装指南~</p><hr><h2 id="gcc-g-manuals">gcc/g++ manuals</h2><p>这不禁让我想起大学刚接触linux c的开发情景；<br><code>gcc --help</code> : 多使用help or <a href="https://man7.org/linux/man-pages/man1/gcc.1.html">Linux Manul <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></a></p><div class="admonition info"><p class="admonition-title">Syntax</p><p><strong>gcc [-c|-S|-E] [-std=standard] [-Wall] [-o &lt;file&gt;]</strong></p></div><p><code>-c</code>: Compile and assemble, not link ★<br><code>-S</code>: Compile only<br><code>-E</code>: Preprocess only, not compile, assemable or link<br><code>-std</code>: standard, c11, c20 ★<br><code>-Wall</code>: treat all Warnings as Error ★<br><code>-o</code>: output filename<br><code>-O0</code>: Optimization, <a href="https://www.rapidtables.com/code/linux/gcc/gcc-o.html">watch this: gcc -o / -O options</a> ★</p><ul><li><strong>gcc -O不同优化的区别？</strong></li></ul><hr><div class="admonition todo"><p class="admonition-title">todo</p><p>未完待续</p></div><p><img src="http://www.luhao.wiki/images/gcc-O.png" alt=""></p><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href="https://zh.wikipedia.org/wiki/MinGW">MinGW</a></li><li><a href="https://www.msys2.org/">MSYS2</a></li><li><a href="https://man7.org/linux/man-pages/man1/gcc.1.html">gcc manual</a></li><li><a href="https://www.rapidtables.com/code/linux/gcc/gcc-o.html">gcc -o / -O</a></li></ul></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
-&lt;/p&gt;&lt;p&gt;&lt;strong&gt;MinGW&lt;/strong&gt; &lt;em&gt;(Minimalist GNU/GCC for Windows)&lt;/em&gt; 是专为Win32</summary>
-      
-    
-    
-    
-    <category term="C/C++" scheme="http://luhao.wiki/categories/C-C/"/>
-    
-    
-    <category term="C" scheme="http://luhao.wiki/tags/C/"/>
-    
-    <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
-    
-    <category term="linux" scheme="http://luhao.wiki/tags/linux/"/>
     
   </entry>
   
