@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-11-24T14:03:32.056Z</updated>
+  <updated>2021-11-27T08:45:00.158Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -17,13 +17,13 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>lighting</title>
-    <link href="http://luhao.wiki/posts/35GG5BK/"/>
-    <id>http://luhao.wiki/posts/35GG5BK/</id>
+    <title>Lighting</title>
+    <link href="http://luhao.wiki/posts/S7WXS5/"/>
+    <id>http://luhao.wiki/posts/S7WXS5/</id>
     <published>2021-11-24T13:45:07.000Z</published>
-    <updated>2021-11-24T14:03:32.056Z</updated>
+    <updated>2021-11-27T08:45:00.158Z</updated>
     
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>lighting主要分为：平行光、点光、聚光灯； <br>本文介绍了每种lighting的原理与实现细节；</p></div><hr><h2 id="Directional-Light">Directional Light</h2><ul><li><p>平行光，具有如下特征：（如太阳光）</p><ul><li>影响范围无限大</li><li>所有点强度一样，只受方向影响</li></ul></li><li><p>定义如下：</p></li></ul><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DirectionalLight</span> {</span></span><br><span class="line">    vec3 direction;</span><br><span class="line">  </span><br><span class="line">    vec3 ambient;</span><br><span class="line">    vec3 diffuse;</span><br><span class="line">    vec3 specular;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">  vec3 lightDir = normalize(-light.direction);</span><br><span class="line">  [...]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>lighting主要分为：平行光、点光、聚光灯； <br>本文介绍了每种lighting的原理与实现细节；</p></div><hr><h2 id="Directional-Light">Directional Light</h2><ul><li><font color="#ef6d3b"><strong>平行光：</strong></font>（如太阳光）<ul><li>影响范围无限大</li><li>所有点强度一样，只受方向影响</li></ul></li></ul><img src="http://www.luhao.wiki/images/directionallight.png" alt="" width="500"><ul><li>定义如下：</li></ul><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DirectionalLight</span> {</span></span><br><span class="line">    vec3 direction;</span><br><span class="line">  </span><br><span class="line">    vec3 ambient;</span><br><span class="line">    vec3 diffuse;</span><br><span class="line">    vec3 specular;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">  vec3 lightDir = normalize(-light.direction);</span><br><span class="line">  [...]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><h2 id="Point-Light">Point Light</h2><ul><li><font color="#ef6d3b"><strong>点光：</strong></font> （如电灯泡）<ul><li>影响范围是个球体</li><li>强度随距离衰减</li></ul></li></ul><img src="http://www.luhao.wiki/images/pointlight.png" alt="" width="500"><h2 id="Spot-Light">Spot Light</h2><img src="http://www.luhao.wiki/images/spotlight.png" alt="" width="500"><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
     
     
       
