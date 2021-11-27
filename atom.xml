@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-11-27T08:56:28.255Z</updated>
+  <updated>2021-11-27T10:04:31.838Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -21,27 +21,24 @@
     <link href="http://luhao.wiki/posts/3CXJNY5/"/>
     <id>http://luhao.wiki/posts/3CXJNY5/</id>
     <published>2021-11-27T08:56:28.000Z</published>
-    <updated>2021-11-27T08:56:28.255Z</updated>
+    <updated>2021-11-27T10:04:31.838Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p><strong>旨在让文章有统一的风格，以提高写作和阅读的效率</strong>；<br>ps：以下都基本Markdown或html语法</p></div><hr><h2 id="标题">标题</h2><p><code>##</code> 是一级标题；<br><code>###</code> 是二级标题；<br><code>####</code> 并以此递增…；</p><hr><h2 id="提示框">提示框</h2><ul><li>每篇文章开头，需要一个<font color="#ef6d3b"><strong>蓝色框概述文章内容</strong></font>，如下：</li></ul><div class="admonition note"><p class="admonition-title">概要</p><p>这是若干概述文字...</p></div><ul><li>未完成的写作内容，需要一个<font color="#ef6d3b"><strong>TODO框</strong></font>，如下：</li></ul><div class="admonition todo"><p class="admonition-title">TODO</p><p>这是待完成内容...</p></div><ul><li>遗留的问题或扩展内容，<font color="#ef6d3b"><strong>自行使用其他格式</strong></font>，如下：</li></ul><div class="admonition warning"><p class="admonition-title">问题</p><p>这里的为什么取linear？</p></div><hr><h2 id="内容格式">内容格式</h2><style>table th:first-of-type {    width: 20%;}table th:nth-of-type(2) {    width: 50%;}table th:nth-of-type(3) {    width: 20%;}</style><table><thead><tr><th style="text-align:center">内容</th><th style="text-align:left">语法/格式</th><th style="text-align:center">示例</th></tr></thead><tbody><tr><td style="text-align:center">小标题</td><td style="text-align:left"><code>-</code></td><td style="text-align:center"></td></tr><tr><td style="text-align:center">代码</td><td style="text-align:left"><code>(```cpp)</code> 标注语言类型</td><td style="text-align:center"></td></tr><tr><td style="text-align:center">关键词</td><td style="text-align:left"><code>&lt;font color=#ef6d3b&gt;****&lt;/font&gt;</code></td><td style="text-align:center"><font color="#ef6d3b"><strong>关键词</strong></font></td></tr><tr><td style="text-align:center">数学公式</td><td style="text-align:left"><code>&lt;font color=#0288D1&gt;****&lt;/font&gt;</code></td><td style="text-align:center"><font color="#0288D1"><strong>$e^{i \pi} + 1 = 0$</strong></font></td></tr><tr><td style="text-align:center">插入图片</td><td style="text-align:left"><code>&lt;img src="http://www.luhao.wiki/images/xxx.png" width="500"&gt;</code></td><td style="text-align:center"></td></tr><tr><td style="text-align:center">引用资料</td><td style="text-align:left"><code>&gt; - []()</code></td><td style="text-align:center"></td></tr></tbody></table><ul><li><p><strong>小标题</strong></p></li><li><p><strong>代码格式</strong></p></li></ul><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//```python // 这里标记语言类型</span></span><br><span class="line"><span class="function">class <span class="title">A</span><span class="params">(object)</span>:</span></span><br><span class="line"><span class="function">    pass</span></span><br></pre></td></tr></tbody></table></figure><ul><li><p><font color="#ef6d3b"><strong>这是一段关键词</strong></font>…</p></li><li><p><strong>数学公式</strong></p></li></ul><p><font color="#0288D1"><strong>$sin \alpha + sin \beta = 2 sin \frac{\alpha + \beta}{2} cos \frac{\alpha + \beta}{2}$</strong></font></p><ul><li><strong>插入图片</strong><br><img src="http://www.luhao.wiki/images/painter.png" alt="" width="300"></li></ul>]]></content>
     
     
       
       
-    <summary type="html">&lt;h2 id=&quot;参考资料&quot;&gt;参考资料&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-</summary>
+    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
+&lt;/p&gt;&lt;p&gt;&lt;strong&gt;旨在让文章有统一的风格，以提高写作和阅读的效率&lt;/strong&gt;；&lt;br&gt;
+ps：以下都基本Markdown或html语法&lt;/p&gt;</summary>
       
     
     
     
     <category term="文档" scheme="http://luhao.wiki/categories/%E6%96%87%E6%A1%A3/"/>
     
+    
+    <category term="markdown" scheme="http://luhao.wiki/tags/markdown/"/>
     
   </entry>
   
