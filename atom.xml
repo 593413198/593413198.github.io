@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-11-28T17:21:52.162Z</updated>
+  <updated>2021-11-28T17:23:22.402Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://luhao.wiki/posts/1DET1D9/"/>
     <id>http://luhao.wiki/posts/1DET1D9/</id>
     <published>2021-11-28T17:19:24.000Z</published>
-    <updated>2021-11-28T17:21:52.162Z</updated>
+    <updated>2021-11-28T17:23:22.402Z</updated>
     
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>游戏开发离不开实时调试与debug，<font color="#ef6d3b"><strong>imgui</strong></font>提供了强大的功能！</p></div><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>游戏开发离不开实时调试与debug，<font color="#ef6d3b"><strong>imgui</strong></font>提供了强大的功能！</p></div><hr><p>!!! todo Bug</p><p>Garen Master存在一个Bug：<br>当Model中Bind ubo Buffer后，ImgUI的render就无法显示，原因大概是渲染次序的问题？<br>我们希望UI是在最后 一个pass绘制的！</p><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
     
     
       
