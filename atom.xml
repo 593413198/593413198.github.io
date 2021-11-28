@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-11-27T15:33:20.512Z</updated>
+  <updated>2021-11-28T12:01:03.692Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://luhao.wiki/posts/2WF6HFQ/"/>
     <id>http://luhao.wiki/posts/2WF6HFQ/</id>
     <published>2021-11-28T10:52:52.000Z</published>
-    <updated>2021-11-27T15:33:20.512Z</updated>
+    <updated>2021-11-28T12:01:03.692Z</updated>
     
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>实际的游戏开发中，（模型）美术会制作<code>fbx</code>,<code>max</code>等资源给程序使用;<br>因此我们要讨论如何导入，以及如何渲染这些3D模型</p></div><hr><h2 id="3D-Formats">3D Formats</h2><p>美术使用的3D软件很多，如Blender、3DMax、Maya等等；<br>不同软件有自己的3D模型格式（虽然大都提供了互相导入导出），所以了解这些常见的格式很关键；</p><hr><h3 id="OBJ">OBJ</h3><p><font color="#ef6d3b"><strong>.obj</strong></font> 是<em>Wavefront</em>公司推出的跨平台3D模型格式；</p><ul><li>OBJ是纯3D模型，不包含动画（区别FBX）、贴图路径、材质等信息；</li><li>OBJ支持法线和贴图坐标，但需要手动制认贴图；</li><li><a href="https://en.wikipedia.org/wiki/Wavefront_.obj_file">Wikipedia: Wavefront.obj</a></li></ul><hr><h3 id="FBX">FBX</h3><p><font color="#ef6d3b"><strong>.FBX</strong></font> 是<em>MotionBuilder</em>使用的格式，它是一个动画制作平台；</p><ul><li>FBX支持动画、材质、贴图、骨骼、灯光、摄像机等信息；</li><li>FBX支持法线和贴图坐标，可以写入贴图路径；</li><li><a href="https://en.wikipedia.org/wiki/FBX">Wikipedia: FBX</a></li></ul><hr><h3 id="glTF">glTF</h3><p><font color="#ef6d3b"><strong>.gltf</strong></font> 是OpenGL和Vulkan背后的3D图形标准组织Khronos所定义，它具有最标准与精简的格式，可谓之<strong>3D模型的JPG</strong>；</p><ul><li>gltf支持动画、材质、场景、摄像机等几乎所有，甚至可以包含shader程序；</li><li>gltf采用json的格式，因此可读性和兼容性很高；</li><li>gltf可以编译成二进制：bgltf；</li><li><a href="https://en.wikipedia.org/wiki/GlTF">wikipedia: GLTF</a></li></ul><hr><h2 id="Assimp">Assimp</h2><ul><li><a href="http://assimp.org/">Open Asset Import Library</a>: 一款支持多种模型格式导入与加载的标准库</li></ul><p>这是一款</p><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>实际的游戏开发中，（模型）美术会制作<code>fbx</code>,<code>max</code>等资源给程序使用;<br>因此我们要讨论如何导入，以及如何渲染这些3D模型</p></div><hr><h2 id="3D-Formats">3D Formats</h2><p>美术使用的3D软件很多，如Blender、3DMax、Maya等等；<br>不同软件有自己的3D模型格式（虽然大都提供了互相导入导出），所以了解这些常见的格式很关键；</p><hr><h3 id="OBJ">OBJ</h3><p><font color="#ef6d3b"><strong>.obj</strong></font> 是<em>Wavefront</em>公司推出的跨平台3D模型格式；</p><ul><li>OBJ是纯3D模型，不包含动画（区别FBX）、贴图路径、材质等信息；</li><li>OBJ支持法线和贴图坐标，但需要手动制认贴图；</li><li><a href="https://en.wikipedia.org/wiki/Wavefront_.obj_file">Wikipedia: Wavefront.obj</a></li></ul><hr><h3 id="FBX">FBX</h3><p><font color="#ef6d3b"><strong>.FBX</strong></font> 是<em>MotionBuilder</em>使用的格式，它是一个动画制作平台；</p><ul><li>FBX支持动画、材质、贴图、骨骼、灯光、摄像机等信息；</li><li>FBX支持法线和贴图坐标，可以写入贴图路径；</li><li><a href="https://en.wikipedia.org/wiki/FBX">Wikipedia: FBX</a></li></ul><hr><h3 id="glTF">glTF</h3><p><font color="#ef6d3b"><strong>.gltf</strong></font> 是OpenGL和Vulkan背后的3D图形标准组织Khronos所定义，它具有最标准与精简的格式，可谓之<strong>3D模型的JPG</strong>；</p><ul><li>gltf支持动画、材质、场景、摄像机等几乎所有，甚至可以包含shader程序；</li><li>gltf采用json的格式，因此可读性和兼容性很高；</li><li>gltf可以编译成二进制：bgltf；</li><li><a href="https://en.wikipedia.org/wiki/GlTF">wikipedia: GLTF</a></li></ul><hr><h2 id="Assimp">Assimp</h2><ul><li><a href="http://assimp.org/">Open Asset Import Library</a>: 一款支持多种模型格式导入与加载的标准库</li></ul><p>下图是Assimp中一个model的架构：</p><img src="http://www.luhao.wiki/images/assimp.png" alt="" width="500"><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
     
     
       
