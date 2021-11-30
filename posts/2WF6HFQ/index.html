@@ -16,13 +16,14 @@
 <meta property="og:site_name" content="Luhao&#39;s Blog">
 <meta property="og:description" content="概要 实际的游戏开发中，（模型）美术会制作fbx,max等资源给程序使用; 因此我们要讨论如何导入，以及如何渲染这些3D模型   3D Formats 美术使用的3D软件很多，如Blender、3DMax、Maya等等； 不同软件有自己的3D模型格式（虽然大都提供了互相导入导出），所以了解这些常见的格式很关键；  OBJ .obj 是Wavefront公司推出的跨平台3D模型格式；  OBJ是纯3">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://www.luhao.wiki/images/triagnle_rabbit.png">
 <meta property="og:image" content="http://www.luhao.wiki/images/assimp.png">
 <meta property="article:published_time" content="2021-11-28T10:52:52.000Z">
-<meta property="article:modified_time" content="2021-11-30T14:11:01.950Z">
+<meta property="article:modified_time" content="2021-11-30T16:43:46.769Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="OpenGL">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.luhao.wiki/images/assimp.png">
+<meta name="twitter:image" content="http://www.luhao.wiki/images/triagnle_rabbit.png">
     
 
     
@@ -367,10 +368,10 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计464字 
+                            | 字数统计600字 
                           </span>
                           <!-- <span class="post-count"> -->
-                            <!-- | 阅读时长1分钟  -->
+                            <!-- | 阅读时长2分钟  -->
                         <!-- </span> -->
                         
                     </div>
@@ -391,7 +392,7 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#3D-Formats"><span class="toc-number">1.</span> <span class="toc-text">3D Formats</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#OBJ"><span class="toc-number">1.1.</span> <span class="toc-text">OBJ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FBX"><span class="toc-number">1.2.</span> <span class="toc-text">FBX</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#glTF"><span class="toc-number">1.3.</span> <span class="toc-text">glTF</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Assimp"><span class="toc-number">2.</span> <span class="toc-text">Assimp</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB"><span class="toc-number">2.1.</span> <span class="toc-text">问题汇总</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">3.</span> <span class="toc-text">参考资料</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#3D-Formats"><span class="toc-number">1.</span> <span class="toc-text">3D Formats</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#OBJ"><span class="toc-number">1.1.</span> <span class="toc-text">OBJ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FBX"><span class="toc-number">1.2.</span> <span class="toc-text">FBX</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#glTF"><span class="toc-number">1.3.</span> <span class="toc-text">glTF</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mesh"><span class="toc-number">2.</span> <span class="toc-text">Mesh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Assimp"><span class="toc-number">3.</span> <span class="toc-text">Assimp</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#font-color-ef6d3b-Scene-font"><span class="toc-number">3.1.</span> <span class="toc-text">Scene</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#font-color-ef6d3b-RootNode-font"><span class="toc-number">3.2.</span> <span class="toc-text">RootNode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#font-color-ef6d3b-Mesh-font"><span class="toc-number">3.3.</span> <span class="toc-text">Mesh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB"><span class="toc-number">3.4.</span> <span class="toc-text">问题汇总</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a></li></ol>
                 </div>
             
         
@@ -430,6 +431,19 @@
 <li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/GlTF">wikipedia: GLTF</a></li>
 </ul>
 <hr>
+<h2 id="Mesh">Mesh</h2>
+<ul>
+<li><strong>既然Model是由很多Mesh组成</strong>，那么什么是Mesh？</li>
+</ul>
+<p>A mesh is a collection of vertices, edges and faces that define the shape of a 3D object.<br>
+mesh是一些顶点、边、面的组合，它们定义了一个3D物体的形状.</p>
+<ul>
+<li><strong>我们通常用triangle mesh来代表物体</strong>，为什么？</li>
+</ul>
+<p>所有的图形都可以用多个三角形表示，比如一个圆，可以是无数个三角形模拟而成；<br>
+所以三角面越多越复杂，往往意味着模型的面数越高、精度越高；（如下图）</p>
+<img src="http://www.luhao.wiki/images/triagnle_rabbit.png" alt="" width="500">
+<hr>
 <h2 id="Assimp">Assimp</h2>
 <ul>
 <li><a target="_blank" rel="noopener" href="http://assimp.org/">Open Asset Import Library</a>: 一款支持多种模型格式导入与加载的标准库</li>
@@ -437,21 +451,13 @@
 <p>下图是Assimp中一个model的架构：</p>
 <img src="http://www.luhao.wiki/images/assimp.png" alt="" width="800">
 <hr>
-<ul>
-<li>
-<p><font color="#ef6d3b"><strong>Scene</strong></font><br>
-scene包含一个RootNode指针，以及所有的Mesh和Material对象；</p>
-</li>
-<li>
-<p><font color="#ef6d3b"><strong>RootNode</strong></font><br>
-RootNode对象中的Children[]中，递归包含了所有Model的指针；<br>
+<h3 id="font-color-ef6d3b-Scene-font"><font color="#ef6d3b"><strong>Scene</strong></font></h3>
+<p>scene包含一个RootNode指针，以及所有的Mesh和Material对象；</p>
+<h3 id="font-color-ef6d3b-RootNode-font"><font color="#ef6d3b"><strong>RootNode</strong></font></h3>
+<p>RootNode对象中的Children[]中，递归包含了所有Model的指针；<br>
 它还包含了所有的Mesh对象；</p>
-</li>
-<li>
-<p><font color="#ef6d3b"><strong>Mesh</strong></font><br>
-什么是Mesh？它包含了所有Rendering需要的信息：<font color="#1A9BFF"><strong>vertex（顶点）, normal（法线）, texture（贴图）, materials（材质）等…</strong></font></p>
-</li>
-</ul>
+<h3 id="font-color-ef6d3b-Mesh-font"><font color="#ef6d3b"><strong>Mesh</strong></font></h3>
+<p>什么是Mesh？它包含了所有Rendering需要的信息：<font color="#1A9BFF"><strong>vertex（顶点）, normal（法线）, texture（贴图）, materials（材质）等…</strong></font></p>
 <hr>
 <h3 id="问题汇总">问题汇总</h3>
 <ul>
