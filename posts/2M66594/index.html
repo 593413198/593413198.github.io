@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://www.luhao.wiki/images/depthvalue.png">
 <meta property="og:image" content="http://www.luhao.wiki/images/zfighting.png">
 <meta property="article:published_time" content="2021-11-30T14:37:50.000Z">
-<meta property="article:modified_time" content="2021-11-30T16:20:43.633Z">
+<meta property="article:modified_time" content="2021-11-30T16:22:45.562Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="Graphics">
 <meta property="article:tag" content="OpenGL">
@@ -372,7 +372,7 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计604字 
+                            | 字数统计635字 
                           </span>
                           <!-- <span class="post-count"> -->
                             <!-- | 阅读时长2分钟  -->
@@ -396,7 +396,7 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Depth-test-and-Depth-buffer"><span class="toc-number">1.</span> <span class="toc-text">Depth-test and Depth-buffer</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenGL-Code"><span class="toc-number"></span> <span class="toc-text">OpenGL Code</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#glEnable"><span class="toc-number">0.1.</span> <span class="toc-text">glEnable</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#glClear"><span class="toc-number">0.2.</span> <span class="toc-text">glClear</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#glDepthMask"><span class="toc-number">0.3.</span> <span class="toc-text">glDepthMask</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#glDepthFunc"><span class="toc-number">0.4.</span> <span class="toc-text">glDepthFunc</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Depth-precision"><span class="toc-number"></span> <span class="toc-text">Depth precision</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E6%96%B9%E6%A1%88%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">线性方案：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%96%B9%E6%A1%88%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">非线性方案：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Z-fighting"><span class="toc-number"></span> <span class="toc-text">Z-fighting</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">1.</span> <span class="toc-text">解决方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number"></span> <span class="toc-text">参考资料</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Depth-test-and-Depth-buffer"><span class="toc-number">1.</span> <span class="toc-text">Depth-test and Depth-buffer</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenGL-Code"><span class="toc-number"></span> <span class="toc-text">OpenGL Code</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#glEnable"><span class="toc-number">0.1.</span> <span class="toc-text">glEnable</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#glClear"><span class="toc-number">0.2.</span> <span class="toc-text">glClear</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#glDepthMask"><span class="toc-number">0.3.</span> <span class="toc-text">glDepthMask</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#glDepthFunc"><span class="toc-number">0.4.</span> <span class="toc-text">glDepthFunc</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Depth-precision"><span class="toc-number"></span> <span class="toc-text">Depth precision</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E6%96%B9%E6%A1%88%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">线性方案：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%96%B9%E6%A1%88%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">非线性方案：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Debug%E8%BE%93%E5%87%BAz-buffer"><span class="toc-number"></span> <span class="toc-text">Debug输出z-buffer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Z-fighting"><span class="toc-number"></span> <span class="toc-text">Z-fighting</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">1.</span> <span class="toc-text">解决方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number"></span> <span class="toc-text">参考资料</span></a>
                 </div>
             
         
@@ -490,6 +490,14 @@
 <p>不如把$z$取个倒数，这样是不是近处的精度就更大了呢？</p>
 <p><font color="#0288D1"><strong>$$Z = \frac {1 / z - 1 / near} {1 / far - 1 / near}， Z \in [0, 1]$$</strong></font></p>
 <img src="http://www.luhao.wiki/images/depthvalue.png" alt="" width="500">
+<hr>
+<h2 id="Debug输出z-buffer">Debug输出z-buffer</h2>
+<div class="admonition todo"><p class="admonition-title">TODO
+</p><ol>
+<li>调试输出，需要转化到NDC空间，感受下z-buffer的变化 <br></li>
+<li>多截图，多说明</li>
+</ol>
+</div>
 <hr>
 <h2 id="Z-fighting">Z-fighting</h2>
 <p>这是一个常见的artifact：当两个三角面离得足够近（coplane）时，做深度测试时由于精度问题，导致两个三角面的计算结果总是反复横跳的，表现上是奇怪的锯齿花纹：</p>
