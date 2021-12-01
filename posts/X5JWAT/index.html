@@ -9,18 +9,21 @@
         <meta name="keywords" content="Git" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="概要 汇总了自己使用Git时遇到的一些坑!     fatal: unable to access &#39;https:&#x2F;&#x2F;github.com&#x2F;xxx.git&#x2F;&#39;:Failed to connect to github.com port 443: Timed out  stackoverflow 尝试 git config --global --unset https.proxy    Git Err">
+    <meta name="description" content="概要 Git使用指南； 汇总了使用Git时遇到的一些坑!   Git本地操作  🔥 这篇文章讲得非常棒：我用四个命令概括了 GIT 的所有套路  git是指就是三个分支之间的状态转移与维护：  work dir：自己的工作目录 stage：本地暂存区（缓冲） history：本地历史区（永久保存）       fatal: unable to access &#39;https:&#x2F;&#x2F;github.com">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git: 坑爹问题汇总">
 <meta property="og:url" content="http://luhao.wiki/posts/X5JWAT/index.html">
 <meta property="og:site_name" content="Luhao&#39;s Blog">
-<meta property="og:description" content="概要 汇总了自己使用Git时遇到的一些坑!     fatal: unable to access &#39;https:&#x2F;&#x2F;github.com&#x2F;xxx.git&#x2F;&#39;:Failed to connect to github.com port 443: Timed out  stackoverflow 尝试 git config --global --unset https.proxy    Git Err">
+<meta property="og:description" content="概要 Git使用指南； 汇总了使用Git时遇到的一些坑!   Git本地操作  🔥 这篇文章讲得非常棒：我用四个命令概括了 GIT 的所有套路  git是指就是三个分支之间的状态转移与维护：  work dir：自己的工作目录 stage：本地暂存区（缓冲） history：本地历史区（永久保存）       fatal: unable to access &#39;https:&#x2F;&#x2F;github.com">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8">
+<meta property="og:image" content="http://www.luhao.wiki/images/git.png">
 <meta property="article:published_time" content="2021-10-19T15:47:07.000Z">
-<meta property="article:modified_time" content="2021-10-20T17:34:04.282Z">
+<meta property="article:modified_time" content="2021-12-01T16:05:58.365Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8">
     
 
     
@@ -365,7 +368,7 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计54字 
+                            | 字数统计132字 
                           </span>
                           <!-- <span class="post-count"> -->
                             <!-- | 阅读时长1分钟  -->
@@ -389,15 +392,29 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Git%E6%9C%AC%E5%9C%B0%E6%93%8D%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">Git本地操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text"></span></a></li></ol>
                 </div>
             
         
         
             <div class="admonition note"><p class="admonition-title">概要
-</p><p>汇总了自己使用<code>Git</code>时遇到的一些坑!</p>
+</p><p><code>Git</code>使用指南；<br>
+汇总了使用<code>Git</code>时遇到的一些坑!</p>
 </div>
 <hr>
+<h2 id="Git本地操作">Git本地操作</h2>
+<ul>
+<li><span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 这篇文章讲得非常棒：<a target="_blank" rel="noopener" href="https://labuladong.gitee.io/algo/4/33/147/"><strong>我用四个命令概括了 GIT 的所有套路</strong></a></li>
+</ul>
+<p>git是指就是三个分支之间的状态转移与维护：</p>
+<ul>
+<li>work dir：自己的工作目录</li>
+<li>stage：本地暂存区（缓冲）</li>
+<li>history：本地历史区（永久保存）</li>
+</ul>
+<img src="http://www.luhao.wiki/images/git.png" alt="图片来源自网络" width="500">
+<hr>
+<h2 id=""></h2>
 <ul>
 <li>
 <p><code>fatal: unable to access 'https://github.com/xxx.git/':Failed to connect to github.com port 443: Timed out</code></p>
