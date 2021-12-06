@@ -220,7 +220,16 @@
                             &nbsp;
                             OpenGL
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/1KH1TD4/">Garen: 基于OpenGL做一款引擎</a></li>  <li class="file"><a href="/posts/3GZKBFK/">Shaders</a></li>  <li class="file"><a href="/posts/1EF3PT0/">Textures</a></li>  <li class="file"><a href="/posts/SZGATA/">Colors and Materials</a></li>  <li class="file"><a href="/posts/S7WXS5/">Lighting</a></li>  <li class="file"><a href="/posts/2WF6HFQ/">Model and Mesh</a></li>  <li class="file"><a href="/posts/1DET1D9/">ImGui: 便于调试的UI库</a></li>  <li class="file"><a href="/posts/2M66594/">Depth testing</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/1KH1TD4/">Garen: 基于OpenGL做一款引擎</a></li>  <li class="file"><a href="/posts/3GZKBFK/">Shaders</a></li>  <li class="file"><a href="/posts/1EF3PT0/">Textures</a></li>  <li class="file"><a href="/posts/SZGATA/">Colors and Materials</a></li>  <li class="file"><a href="/posts/S7WXS5/">Lighting</a></li>  <li class="file"><a href="/posts/2WF6HFQ/">Model and Mesh</a></li>  <li class="file"><a href="/posts/1DET1D9/">ImGui: 便于调试的UI库</a></li>  <li class="file"><a href="/posts/2M66594/">Depth testing</a></li>  <li class="file"><a href="/posts/2WWCBPR/">实现一个obj渲染器</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Shell/Batch
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/17ZB6M5/">Regex正则表达式入门</a></li>  <li class="file"><a href="/posts/2R1N3XK/">Windows Batch脚本</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -229,7 +238,7 @@
                             &nbsp;
                             工具
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/adff27ce/">vim: the best editor</a></li>  <li class="file"><a href="/posts/796558c1/">hexo: a blog framework</a></li>  <li class="file"><a href="/posts/3P9KQQ1/">Markdown-Snippet: 开发一款VScode插件</a></li>  <li class="file"><a href="/posts/X5JWAT/">Git: 坑爹问题汇总</a></li>  <li class="file"><a href="/posts/1XP0VEX/">正则表达式regex入门</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/adff27ce/">vim: the best editor</a></li>  <li class="file"><a href="/posts/796558c1/">hexo: a blog framework</a></li>  <li class="file"><a href="/posts/3P9KQQ1/">Markdown-Snippet: 开发一款VScode插件</a></li>  <li class="file"><a href="/posts/X5JWAT/">Git: 坑爹问题汇总</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -321,6 +330,206 @@
 </aside>
             
             <section id="main">
+        <article id="post-OpenGL/Shaders" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/OpenGL/">OpenGL</a>
+    </div>
+
+                        <!-- 
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Git/" rel="tag">Git</a>, <a class="tag-link-link" href="/tags/Graphics/" rel="tag">Graphics</a>, <a class="tag-link-link" href="/tags/OpenGL/" rel="tag">OpenGL</a>
+    </div>
+ -->
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/posts/3GZKBFK/">
+            <time datetime="2021-10-20T14:51:51.000Z" itemprop="datePublished">2021-10-20</time>
+        </a>
+    </div>
+
+
+                        <!--  -->
+                            <!-- <i class="fa fa-bar-chart"></i> -->
+                            <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
+                        <!--  -->
+                        <span class="post-count">
+                            | 字数统计1.5k字 
+                          </span>
+                          <!-- <span class="post-count"> -->
+                            <!-- | 阅读时长6分钟  -->
+                        <!-- </span> -->
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/posts/3GZKBFK/">Shaders</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><div class="admonition note"><p class="admonition-title">概要
+</p><p>Shader, 理解为一种GPU Program<br>
+不要尝试用中文翻译它!</p>
+</div>
+<img src="http://www.luhao.wiki/images/shader.png" alt="" width="600">
+<p>
+                
+            
+        
+        
+            <!-- </div>    -->
+            <!-- <div class="article-more-link"> -->
+                <!-- <a href="/posts/3GZKBFK/#more">Read More</a> -->
+            <!-- </div> -->
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-工具/Git-坑爹问题汇总" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+    </div>
+
+                        <!-- 
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Git/" rel="tag">Git</a>
+    </div>
+ -->
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/posts/X5JWAT/">
+            <time datetime="2021-10-19T15:47:07.000Z" itemprop="datePublished">2021-10-19</time>
+        </a>
+    </div>
+
+
+                        <!--  -->
+                            <!-- <i class="fa fa-bar-chart"></i> -->
+                            <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
+                        <!--  -->
+                        <span class="post-count">
+                            | 字数统计217字 
+                          </span>
+                          <!-- <span class="post-count"> -->
+                            <!-- | 阅读时长1分钟  -->
+                        <!-- </span> -->
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/posts/X5JWAT/">Git: 坑爹问题汇总</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><div class="admonition note"><p class="admonition-title">概要
+</p><p><code>Git</code>使用指南；<br>
+汇总了使用<code>Git</code>时遇到的一些坑!</p>
+</div>
+<hr>
+<p>
+                
+            
+        
+        
+            <!-- </div>    -->
+            <!-- <div class="article-more-link"> -->
+                <!-- <a href="/posts/X5JWAT/#more">Read More</a> -->
+            <!-- </div> -->
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-OpenGL/Garen-基于OpenGL做一款引擎" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1121,208 +1330,8 @@
 
 
     
-        <article id="post-文档/专业词汇中英对照表" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E6%96%87%E6%A1%A3/">文档</a>
-    </div>
-
-                        <!-- 
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/Algorithm/" rel="tag">Algorithm</a>, <a class="tag-link-link" href="/tags/OpenGL/" rel="tag">OpenGL</a>
-    </div>
- -->
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/posts/326SNS0/">
-            <time datetime="2021-10-10T08:06:11.000Z" itemprop="datePublished">2021-10-10</time>
-        </a>
-    </div>
-
-
-                        <!--  -->
-                            <!-- <i class="fa fa-bar-chart"></i> -->
-                            <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
-                        <!--  -->
-                        <span class="post-count">
-                            | 字数统计491字 
-                          </span>
-                          <!-- <span class="post-count"> -->
-                            <!-- | 阅读时长1分钟  -->
-                        <!-- </span> -->
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/posts/326SNS0/">专业词汇中英对照表</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p><div class="admonition note"><p class="admonition-title">概要
-</p><p>罗列了常用、令人困惑的英文专有词汇<br>
-可结合站内<strong>右上角的搜索</strong>速查!</p>
-</div>
-<hr>
-<p>
-                
-            
-        
-        
-            <!-- </div>    -->
-            <!-- <div class="article-more-link"> -->
-                <!-- <a href="/posts/326SNS0/#more">Read More</a> -->
-            <!-- </div> -->
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-Compiler/1-memory-register-and-instruction" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Compiler/">Compiler</a>
-    </div>
-
-                        <!-- 
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/C/" rel="tag">C++</a>
-    </div>
- -->
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/posts/2DQASEF/">
-            <time datetime="2021-10-08T02:26:47.000Z" itemprop="datePublished">2021-10-08</time>
-        </a>
-    </div>
-
-
-                        <!--  -->
-                            <!-- <i class="fa fa-bar-chart"></i> -->
-                            <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
-                        <!--  -->
-                        <span class="post-count">
-                            | 字数统计623字 
-                          </span>
-                          <!-- <span class="post-count"> -->
-                            <!-- | 阅读时长3分钟  -->
-                        <!-- </span> -->
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/posts/2DQASEF/">1: memory, register and instruction</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p><div class="admonition note"><p class="admonition-title">概要
-</p><p><strong>CPU、内存、寄存器、指令集</strong>，这些与编译器的实现息息相关<br>
-本文只讨论编译背景下的内容</p>
-</div>
-<div class="admonition warning"><p class="admonition-title">warning</p><p><strong>阅读文档是最快速、最准确的信息渠道</strong><br>
-<p>
-                
-            
-        
-        
-            <!-- </div>    -->
-            <!-- <div class="article-more-link"> -->
-                <!-- <a href="/posts/2DQASEF/#more">Read More</a> -->
-            <!-- </div> -->
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
         <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+        <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
         </nav>
     
 </section>
