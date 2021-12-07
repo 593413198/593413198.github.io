@@ -118,7 +118,7 @@ body,
 body {
   color: #565a5f;
   background: #ebeef1;
-  font: 14px "open sans", "Helvetica Neue", "Microsoft Yahei", Helvetica, Arial, sans-serif;
+  font: 16px "open sans", "Helvetica Neue", "Microsoft Yahei", Helvetica, Arial, sans-serif;
   -webkit-text-size-adjust: 100%;
 }
 a {
@@ -468,9 +468,9 @@ code {
 }
 .nav-icon {
   text-align: center;
-  font-size: 14px;
-  width: 14px;
-  height: 14px;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
   position: relative;
   cursor: pointer;
   height: 40px !important;
@@ -570,7 +570,7 @@ code {
   line-height: 1.6em;
   outline: none !important;
   background: none !important;
-  font: 14px "open sans", "Helvetica Neue", "Microsoft Yahei", Helvetica, Arial, sans-serif;
+  font: 16px "open sans", "Helvetica Neue", "Microsoft Yahei", Helvetica, Arial, sans-serif;
   border: 1px solid #dfe1e2 !important;
 }
 .search-form-input:focus,
@@ -679,7 +679,7 @@ code {
   font-weight: 600;
 }
 #profile .inner .base-info #location {
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 5px;
   color: #9a9ea3;
 }
@@ -724,11 +724,11 @@ code {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font-size: 20px;
+  font-size: 22px;
 }
 #profile .inner .article-info .article-info-block span {
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   text-transform: uppercase;
 }
 #profile .inner .article-info .article-info-block:first-child {
@@ -739,7 +739,7 @@ code {
 }
 #profile .inner .social-links > table td {
   text-align: center;
-  font-size: 24px;
+  font-size: 26px;
 }
 #profile .inner .social-links > table td a {
   position: relative;
@@ -1042,7 +1042,7 @@ div.article-meta-button a:hover {
   position: relative;
 }
 .article-entry blockquote footer {
-  font-size: 14px;
+  font-size: 16px;
   margin: 1.6em 0;
   font-family: "open sans", "Helvetica Neue", "Microsoft Yahei", Helvetica, Arial, sans-serif;
 }
@@ -1581,7 +1581,7 @@ ol.toc {
 .layout-wrap-inner.list-categories ul li,
 .layout-wrap-inner.list-categories ul .category-list-child {
   padding: 10px 0;
-  font-size: 14px;
+  font-size: 16px;
   border-bottom: 1px solid border-color;
 }
 .layout-wrap-inner.list-categories ul li a,
@@ -1753,7 +1753,7 @@ ol.toc {
   padding: 20px 0;
   border-top: 1px solid #dfe1e2;
   color: #565a5f;
-  font-size: 16px;
+  font-size: 18px;
   text-align: center;
 }
 #footer .outer {
@@ -1907,7 +1907,7 @@ ol.toc {
 .widget ul .category-list-child,
 .widget ol .category-list-child {
   padding: 10px 0;
-  font-size: 14px;
+  font-size: 16px;
   border-bottom: 1px solid border-color;
 }
 .widget ul li a,
@@ -2274,9 +2274,9 @@ ol.toc {
   display: block;
   overflow-x: auto;
   padding: 15px 20px;
-  font-size: 14px;
+  font-size: 16px;
   font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
-  line-height: 22.400000000000002px;
+  line-height: 25.6px;
 }
 .highlight table {
   margin: 0;
@@ -2373,7 +2373,7 @@ ol.toc {
   margin: 1.5625em 0;
   padding: 0.6rem;
   overflow: hidden;
-  font-size: 0.64rem;
+  font-size: 0.75rem;
   page-break-inside: avoid;
   border-left: 0.3rem solid #42b983;
   border-radius: 0.3rem;
@@ -2386,11 +2386,11 @@ p.admonition-title {
   margin: -0.6rem -0.6rem 0.8em -0.6rem !important;
   padding: 0.4rem 0.6rem 0.4rem 2.5rem;
   font-weight: 700;
-  background-color: rgba(66,185,131,0.1);
+  background-color: rgba(66,185,131,0.15);
 }
 .admonition-title::before {
   position: absolute;
-  top: 0.9rem;
+  top: 0.65rem;
   left: 1rem;
   width: 12px;
   height: 12px;
@@ -2400,18 +2400,18 @@ p.admonition-title {
 }
 .info>.admonition-title,
 .todo>.admonition-title {
-  background-color: rgba(0,184,212,0.1);
+  background-color: rgba(0,184,212,0.15);
 }
 .warning>.admonition-title,
 .attention>.admonition-title,
 .caution>.admonition-title {
-  background-color: rgba(255,145,0,0.1);
+  background-color: rgba(255,145,0,0.15);
 }
 .failure>.admonition-title,
 .missing>.admonition-title,
 .fail>.admonition-title,
 .error>.admonition-title {
-  background-color: rgba(255,82,82,0.1);
+  background-color: rgba(255,82,82,0.15);
 }
 .admonition.info,
 .admonition.todo {
