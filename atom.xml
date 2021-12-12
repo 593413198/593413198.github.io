@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-12-12T09:53:07.348Z</updated>
+  <updated>2021-12-12T09:54:27.465Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://luhao.wiki/posts/Y3NTTW/"/>
     <id>http://luhao.wiki/posts/Y3NTTW/</id>
     <published>2021-12-12T06:52:20.000Z</published>
-    <updated>2021-12-12T09:53:07.348Z</updated>
+    <updated>2021-12-12T09:54:27.465Z</updated>
     
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>多进程（并发）是现代计算机的基本组成之一；<br>以Python为切入点，学习一些多进程的知识；</p></div><hr><h2 id="1-一篇CSDN博客">1. 一篇CSDN博客</h2><img src="http://www.luhao.wiki/images/csdn_multiprocess.png" alt=""><p>这是我大学操作系统期间写的<a href="https://blog.csdn.net/luhao19980909/article/details/89403233">一篇CSDN博客</a>，看到有3w+访问和700+的收藏，这是我意想不到的；<br>回头看这篇文章，几乎没有专业词汇，而是用类比的方式解释了进程相关的基础知识；<br>摘取片段如下：</p><p>=====================================================<br><code>单CPU</code>：一台单核处理器计算机 =  一个车间；<br><code>多CPU</code>：一台多核处理器计算机 =  一座工厂；</p><p><code>进程</code>：一个车间 = 一个进程； （即一个运行的程序）<br><code>多进程</code>：一座工厂可以同时运行多个车间；<br><code>CPU和进程</code>：<strong>单CPU只能同时运行单个进程，多CPU可以同时运行多个进程</strong>。</p><p><code>线程</code>：车间内一个工人 = 一个线程；<br><code>进程与线程关系</code>：<strong>一个进程可以包括多个线程</strong>。</p><p>=====================================================</p><h3 id="什么是进程-Process">什么是进程 (Process)</h3><p><font color="#ef6d3b"><strong>A process is a program that is running on your computer</strong></font></p><ul><li>单核机器为什么给人<em>可以同时处理一堆程序</em>的错觉？</li></ul><img src="http://www.luhao.wiki/images/single-cpu.png" alt="" width="500"><img src="http://www.luhao.wiki/images/multi-cpu.png" alt="" width="500">]]></content>
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>多进程（并发）是现代计算机的基本组成之一；<br>以Python为切入点，学习一些多进程的知识；</p></div><hr><h2 id="1-一篇CSDN博客">1. 一篇CSDN博客</h2><img src="http://www.luhao.wiki/images/csdn_multiprocess.png" alt=""><p>这是我大学操作系统期间写的<a href="https://blog.csdn.net/luhao19980909/article/details/89403233">一篇CSDN博客</a>，看到有3w+访问和700+的收藏，这是我意想不到的；<br>回头看这篇文章，几乎没有专业词汇，而是用类比的方式解释了进程相关的基础知识；<br>摘取片段如下：</p><p>=====================================================<br><code>单CPU</code>：一台单核处理器计算机 =  一个车间；<br><code>多CPU</code>：一台多核处理器计算机 =  一座工厂；</p><p><code>进程</code>：一个车间 = 一个进程； （即一个运行的程序）<br><code>多进程</code>：一座工厂可以同时运行多个车间；<br><code>CPU和进程</code>：<strong>单CPU只能同时运行单个进程，多CPU可以同时运行多个进程</strong>。</p><p><code>线程</code>：车间内一个工人 = 一个线程；<br><code>进程与线程关系</code>：<strong>一个进程可以包括多个线程</strong>。</p><p>=====================================================</p><h3 id="什么是进程-Process">什么是进程 (Process)</h3><p><font color="#ef6d3b"><strong>A process is a program that is running on your computer</strong></font></p><ul><li>单核机器为什么给人<em>可以同时处理一堆程序</em>的错觉？</li></ul><img src="http://www.luhao.wiki/images/single-cpu.png" alt="单核" width="600"><img src="http://www.luhao.wiki/images/multi-cpu.png" alt="多核" width="600">]]></content>
     
     
       
