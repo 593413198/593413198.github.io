@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-12-07T15:04:45.580Z</updated>
+  <updated>2021-12-12T07:07:52.832Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python多进程之multiprocess</title>
+    <link href="http://luhao.wiki/posts/Y3NTTW/"/>
+    <id>http://luhao.wiki/posts/Y3NTTW/</id>
+    <published>2021-12-12T06:52:20.000Z</published>
+    <updated>2021-12-12T07:07:52.832Z</updated>
+    
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>多进程（并发）是现代计算机的基本组成之一；<br>以Python为切入点，学习一些多进程的知识；</p></div><hr><h2 id="从一篇CSDN博客看起">从一篇CSDN博客看起</h2><img src="http://www.luhao.wiki/images/csdn_multiprocess.png" alt="">]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
+&lt;/p&gt;&lt;p&gt;多进程（并发）是现代计算机的基本组成之一；&lt;br&gt;
+以Python为切入点，学习一些多进程的知识；&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id=</summary>
+      
+    
+    
+    
+    <category term="Python" scheme="http://luhao.wiki/categories/Python/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Windows Batch脚本</title>
@@ -562,33 +589,6 @@ ps：以下都基本Markdown或html语法&lt;/p&gt;</summary>
     
     
     <category term="Graphics" scheme="http://luhao.wiki/tags/Graphics/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于开发理念: Simple is Good</title>
-    <link href="http://luhao.wiki/posts/1ZMZBDW/"/>
-    <id>http://luhao.wiki/posts/1ZMZBDW/</id>
-    <published>2021-10-10T10:03:53.000Z</published>
-    <updated>2021-11-30T16:53:21.226Z</updated>
-    
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>希望这个理念，能够伴随我所有的开发生涯；<br>优秀的开发，是<strong>大道至简，而不是简单问题复杂化</strong></p></div><hr><h2 id="为什么写下这篇文章">为什么写下这篇文章?</h2><p>大学身边有一帮要好的文科朋友，经常会观察到这些现象：<br>理工科出身的同志，喜欢提枪就上，埋头苦干，就算没思路也要把电脑敲的噼里啪啦响；<br>文科出身的同志，喜欢事前构思、冥想，但可能琢磨半天也挤不出几个字；</p><p>如果要双方取长补短的话，<br>我希望程序员的世界，多一些<strong>主观性的理念的东西</strong>，<br>就是在每次敲代码之前，有个尼采一样的诗人在你耳边朗诵一遍：<br><strong>“1.少用宏； 2.做好封装；3.保持代码整洁 …”</strong></p><p>程序员喜欢review，<strong>把问题留给Bug和Review阶段</strong>，<br>但为什么不学文科生，<br>脑海中树立一些宏观的、虚头巴脑的、理念的东西，<br>每次动键盘前，有个“社会主义核心价值观”在脑子里过一遍：<br>虽然玄学了些，但我觉得是个好建议。</p><p>这就是我写这些随笔的原因。</p><hr><h2 id="Simple-is-Good">Simple is Good</h2><ul><li>我尝试用一些观点来论证<strong>why simple is good</strong><ul><li><p>运行更快</p></li><li><p>Bug几率更低</p></li><li><p>维护成本更低</p></li></ul></li></ul><blockquote><p>有两种软件设计方法:<br>第一种是使得软件足够简单以至于<strong>显然没有错误</strong>;<br>第二种是使得软件足够复杂以至于<strong>没有显然的错误</strong>。<br>(最难的是第一种)<br>- Tony Hoare (1980图领奖得主)</p></blockquote><ol><li><p>如果你说如何让一个复杂的功能保持simple？ 试试 <font color="#ef6d3b"><strong>封装</strong></font></p></li><li><p>优化尝尝是一个不断<font color="#ef6d3b"><strong>删除代码</strong></font>的过程</p></li><li><p>simple不是无脑delete，<font color="#ef6d3b"><strong>合理的解耦与拆分</strong></font>也是一种simple</p></li><li><p>你可以<font color="#ef6d3b"><strong>尽可能地控制“少”</strong></font>，但你永远无法<strong>控制“多”</strong>；<br>想象一万个人对同一个需求的不同实现，总是千奇百怪。</p></li></ol><hr><h2 id="Simple-拓展阅读">Simple 拓展阅读</h2><p><span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>  <a href="https://github.com/awerdx520/awesome-programming-books-1/blob/master/clean-code/%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93.pdf">代码整洁之道</a></p><p><span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> <a href="https://www.zhihu.com/question/26483508">知乎: 一百行以下有哪些给力代码？</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
-&lt;/p&gt;&lt;p&gt;希望这个理念，能够伴随我所有的开发生涯；&lt;br&gt;
-优秀的开发，是&lt;strong&gt;大道至简，而不是简单问题复杂化&lt;/strong&gt;&lt;/p&gt;
-&lt;/di</summary>
-      
-    
-    
-    
-    <category term="随笔" scheme="http://luhao.wiki/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-    <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
     
   </entry>
   
