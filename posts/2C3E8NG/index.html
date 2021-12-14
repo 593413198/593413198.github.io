@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://www.luhao.wiki/images/cprofile.png">
 <meta property="article:published_time" content="2021-12-14T15:31:37.000Z">
-<meta property="article:modified_time" content="2021-12-14T16:28:52.360Z">
+<meta property="article:modified_time" content="2021-12-14T16:31:53.862Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
@@ -668,7 +668,7 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计408字 
+                            | 字数统计443字 
                           </span>
                           <!-- <span class="post-count"> -->
                             <!-- | 阅读时长1分钟  -->
@@ -748,7 +748,15 @@
 <li>这是一段官方文档示例</li>
 </ul>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cProfile, pstats, StringIO</span><br><span class="line">pr = cProfile.Profile()</span><br><span class="line">pr.enable()</span><br><span class="line"><span class="comment"># ... do something ...</span></span><br><span class="line">pr.disable()</span><br><span class="line">s = StringIO.StringIO()</span><br><span class="line">sortby = <span class="string">'cumulative'</span></span><br><span class="line">ps = pstats.Stats(pr, stream=s).sort_stats(sortby)</span><br><span class="line">ps.print_stats()</span><br><span class="line"><span class="built_in">print</span> s.getvalue()</span><br></pre></td></tr></tbody></table></figure>
-<img src="http://www.luhao.wiki/images/cprofile.png" alt="" width="500">
+<ul>
+<li>下面是cProfile的结果，很清晰：
+<ul>
+<li><font color="#FF1E10"><strong>totime</strong></font>：函数本身花费时间</li>
+<li><font color="#1A9BFF"><strong>cumtime</strong></font>：函数总计花费时间（包含子函数递归）</li>
+</ul>
+</li>
+</ul>
+<img src="http://www.luhao.wiki/images/cprofile.png" alt="" width="">
 <p>–</p>
 <h2 id="snakeviz">[snakeviz]</h2>
 <hr>
