@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-12-14T14:52:45.249Z</updated>
+  <updated>2021-12-14T16:28:52.360Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -17,23 +17,49 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Python Profile</title>
+    <link href="http://luhao.wiki/posts/2C3E8NG/"/>
+    <id>http://luhao.wiki/posts/2C3E8NG/</id>
+    <published>2021-12-14T15:31:37.000Z</published>
+    <updated>2021-12-14T16:28:52.360Z</updated>
+    
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>众所周知，Python以慢字冠名天下；<br>作为21世纪的word/excel，学会profile python，就能成为人上人（瞎jb）;</p></div><hr><h2 id="How-profiler-works">How profiler works?</h2><ul><li>性能分析的原理是什么？有哪些常用的profile方法呢？</li></ul><h3 id="1-Instrumentation-（插装）">1.Instrumentation （插装）</h3><p>这应该是最容易理解的方式，看下面代码</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">t1 = time.time()</span><br><span class="line"><span class="comment"># do something</span></span><br><span class="line">t2 = time.time()</span><br><span class="line">cost_time = t2 - t1 <span class="comment"># s</span></span><br></pre></td></tr></tbody></table></figure><ul><li><p><font color="#ef6d3b"><strong>插装的本质就是：统计运行时间或次数；</strong></font></p></li><li><p>常见方法：</p><ul><li>1.首尾手动记录时间/次数…</li><li>2.profile工具自动插入源码；</li><li>3.profile工具修改汇编码/中间码；</li></ul></li></ul><div class="admonition warning"><p class="admonition-title">海森堡Bug</p><p>由于修改了源码，插装有概率会使程序发生不一样的结果，尤其是多进程的情况下；</p></div><h3 id="2-Sampling-（采样）">2.Sampling （采样）</h3><p><font color="#ef6d3b"><strong>每隔一段时间中断进程，获取当前堆栈信息，并从统计学上估计每段代码的运行时间；</strong></font></p><ul><li><p><strong>Visual Studio Profiler</strong>就是基于采样实现</p></li><li><p>几乎大部分Profiler都是采样实现，因为它有如下几个有点：</p><ul><li>1.不需要修改代码，不需要重新编译；</li><li>2.可以动态修改中断的interval，控制采样精度和开销的平衡；</li><li>3.对程序的性能影响小，结果可靠；</li></ul></li></ul><hr><h2 id="Python-Profiler">Python Profiler</h2><p>下面介绍几个常用的python profile库：</p><h3 id="1-cProfile">1. <a href="https://docs.python.org/2.7/library/profile.html">cProfile</a></h3><ul><li>这是一段官方文档示例</li></ul><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cProfile, pstats, StringIO</span><br><span class="line">pr = cProfile.Profile()</span><br><span class="line">pr.enable()</span><br><span class="line"><span class="comment"># ... do something ...</span></span><br><span class="line">pr.disable()</span><br><span class="line">s = StringIO.StringIO()</span><br><span class="line">sortby = <span class="string">'cumulative'</span></span><br><span class="line">ps = pstats.Stats(pr, stream=s).sort_stats(sortby)</span><br><span class="line">ps.print_stats()</span><br><span class="line"><span class="built_in">print</span> s.getvalue()</span><br></pre></td></tr></tbody></table></figure><img src="http://www.luhao.wiki/images/cprofile.png" alt="" width="500"><p>–</p><h2 id="snakeviz">[snakeviz]</h2><hr><h2 id="踩坑集合">踩坑集合</h2><ol><li>多进程multiprocess profile</li></ol><hr><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href="https://www.cnblogs.com/zhao-zongsheng/p/13067733.html">CPU性能分析工具原理</a></li><li><a href="https://stackoverflow.com/questions/582336/how-can-you-profile-a-python-script">How can you profile a Python script?</a></li><li><a href="https://dirtysalt.github.io/html/on-python-profiling.html">Python程序性能分析</a></li><li><a href="https://blog.xizhibei.me/2021/01/10/poor-mans-profiler/">穷人的程序性能分析器</a></li></ul></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
+&lt;/p&gt;&lt;p&gt;众所周知，Python以慢字冠名天下；&lt;br&gt;
+作为21世纪的word/excel，学会profile python，就能成为人上人（瞎jb）;&lt;</summary>
+      
+    
+    
+    
+    <category term="Python" scheme="http://luhao.wiki/categories/Python/"/>
+    
+    
+    <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python多进程之multiprocess</title>
     <link href="http://luhao.wiki/posts/Y3NTTW/"/>
     <id>http://luhao.wiki/posts/Y3NTTW/</id>
     <published>2021-12-12T06:52:20.000Z</published>
-    <updated>2021-12-14T14:52:45.249Z</updated>
+    <updated>2021-12-14T15:18:19.713Z</updated>
     
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>多进程（并发）是现代计算机的基本组成之一；<br>以Python为切入点，学习一些多进程的知识；</p></div><hr><h2 id="1-一篇CSDN博客">1. 一篇CSDN博客</h2><img src="http://www.luhao.wiki/images/csdn_multiprocess.png" alt=""><p>这是我大学操作系统期间写的<a href="https://blog.csdn.net/luhao19980909/article/details/89403233">一篇CSDN博客</a>，看到有3w+访问和700+的收藏，这是我意想不到的；<br>回头看这篇文章，几乎没有专业词汇，而是用类比的方式解释了进程相关的基础知识；<br>摘取片段如下：</p><p>=====================================================<br><code>单CPU</code>：一台单核处理器计算机 =  一个车间；<br><code>多CPU</code>：一台多核处理器计算机 =  一座工厂；</p><p><code>进程</code>：一个车间 = 一个进程； （即一个运行的程序）<br><code>多进程</code>：一座工厂可以同时运行多个车间；<br><code>CPU和进程</code>：<strong>单CPU只能同时运行单个进程，多CPU可以同时运行多个进程</strong>。</p><p><code>线程</code>：车间内一个工人 = 一个线程；<br><code>进程与线程关系</code>：<strong>一个进程可以包括多个线程</strong>。</p><p>=====================================================</p><h3 id="什么是进程-Process">什么是进程 (Process)</h3><p><font color="#ef6d3b"><strong>A process is a program that is running on your computer</strong></font></p><ul><li>单核机器为什么给人<em>可以同时处理一堆程序</em> 的错觉？似乎和多核差不多？</li></ul><p>如下图，这些任务其实是依次执行，这叫<font color="#ef6d3b"><strong>并发 (concurrency)</strong></font>；<br><img src="http://www.luhao.wiki/images/single-cpu.png" alt="单核" width="600"></p><p>如下图，对于多CPU机器，很多任务可以同时执行，这叫<font color="#ef6d3b"><strong>并行 (parallelism)</strong></font>；<br><img src="http://www.luhao.wiki/images/multi-cpu.png" alt="多核" width="600"></p><hr><h3 id="进程间通信-Process-Communication">进程间通信 (Process Communication)</h3><p>进程间是互相独立，不共享任何数据的，那么跨进程如何交互呢？</p><ul><li><span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> <a href="https://www.tutorialspoint.com/what-is-interprocess-communication">What is Interprocess Communication?</a></li></ul><div class="admonition todo"><p class="admonition-title">进程通信的例子</p><p>linux grep、windows任务管理器...</p></div><hr><h3 id="什么是线程-thread">什么是线程 (<a href="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/4_Threads.html#:~:text=A%20thread%20is%20a%20basic,out%20at%20any%20given%20time.">thread</a>)</h3><ul><li><span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span><a href="https://stackoverflow.com/questions/200469/what-is-the-difference-between-a-process-and-a-thread">What is the difference between a process and a thread?</a></li></ul><!-- 最直接的区别就是：<font color=#ef6d3b>**进程间不共享内存，但是线程是共享内存的！**</font> --><ul><li>先问一个问题：<font color="#ef6d3b">为什么需要线程，只靠进程不够使用吗？</font></li></ul><div class="admonition warning"><p class="admonition-title">假如OS中只有进程...</p><p>处理input的进程，每当用户敲击键盘，系统就要给出相应处理；<br>想象当你以飞快的速度敲击作输入，而进程又处理不过来呢，电脑是不是就巨卡无比？<br></p></div><ul><li><p>多线程的意义：<strong>某个任务会阻塞，但又不希望影响到别的任务进行下去；</strong></p></li><li><p>如图所示：</p><ul><li><ol><li>线程存在于进程内，且多线程共享进程内存；</li></ol></li><li><ol start="2"><li>多线程间有自己的寄存器和堆栈，互不影响；<br><img src="http://www.luhao.wiki/images/threads.png" alt="" width="300"></li></ol></li></ul></li></ul><img src="http://www.luhao.wiki/images/task_manager.png" alt="" width="500">]]></content>
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>多进程（并发）是现代计算机的基本组成之一；<br>介绍了进程、线程、协程是什么，以及相互关系；</p></div><hr><h2 id="1-一篇CSDN博客">1. 一篇CSDN博客</h2><img src="http://www.luhao.wiki/images/csdn_multiprocess.png" alt=""><p>这是我大学操作系统期间写的<a href="https://blog.csdn.net/luhao19980909/article/details/89403233">一篇CSDN博客</a>，看到有3w+访问和700+的收藏，这是我意想不到的；<br>回头看这篇文章，几乎没有专业词汇，而是用类比的方式解释了进程相关的基础知识；<br>摘取片段如下：</p><p>=====================================================<br><code>单CPU</code>：一台单核处理器计算机 =  一个车间；<br><code>多CPU</code>：一台多核处理器计算机 =  一座工厂；</p><p><code>进程</code>：一个车间 = 一个进程； （即一个运行的程序）<br><code>多进程</code>：一座工厂可以同时运行多个车间；<br><code>CPU和进程</code>：<strong>单CPU只能同时运行单个进程，多CPU可以同时运行多个进程</strong>。</p><p><code>线程</code>：车间内一个工人 = 一个线程；<br><code>进程与线程关系</code>：<strong>一个进程可以包括多个线程</strong>。</p><p>=====================================================</p><h3 id="什么是进程-Process">什么是进程 (Process)</h3><p><font color="#ef6d3b"><strong>A process is a program that is running on your computer</strong></font></p><ul><li>单核机器为什么给人<em>可以同时处理一堆程序</em> 的错觉？似乎和多核差不多？</li></ul><p>如下图，这些任务其实是依次执行，这叫<font color="#ef6d3b"><strong>并发 (concurrency)</strong></font>；<br><img src="http://www.luhao.wiki/images/single-cpu.png" alt="单核" width="500"></p><p>如下图，对于多CPU机器，很多任务可以同时执行，这叫<font color="#ef6d3b"><strong>并行 (parallelism)</strong></font>；<br><img src="http://www.luhao.wiki/images/multi-cpu.png" alt="多核" width="500"></p><hr><h3 id="进程间通信-Process-Communication">进程间通信 (Process Communication)</h3><p>进程间是互相独立，不共享任何数据的，那么跨进程如何交互呢？</p><ul><li><span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> <a href="https://www.tutorialspoint.com/what-is-interprocess-communication">What is Interprocess Communication?</a></li></ul><div class="admonition todo"><p class="admonition-title">进程通信的例子</p><p>linux grep、windows任务管理器...</p></div><hr><h3 id="什么是线程-thread">什么是线程 (<a href="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/4_Threads.html#:~:text=A%20thread%20is%20a%20basic,out%20at%20any%20given%20time.">thread</a>)</h3><ul><li><span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span><a href="https://stackoverflow.com/questions/200469/what-is-the-difference-between-a-process-and-a-thread">What is the difference between a process and a thread?</a></li></ul><!-- 最直接的区别就是：<font color=#ef6d3b>**进程间不共享内存，但是线程是共享内存的！**</font> --><ul><li>先问一个问题：<font color="#ef6d3b">为什么需要线程，只靠进程不够使用吗？</font></li></ul><div class="admonition warning"><p class="admonition-title">假如OS中只有进程...</p><p>处理input的进程，每当用户敲击键盘，系统就要给出相应处理；<br>想象当你以飞快的速度敲击作输入，而进程又处理不过来呢，电脑是不是就巨卡无比？<br></p></div><ul><li><p>多线程的意义：<strong>某个任务会阻塞，但又不希望影响到别的任务进行下去；</strong></p></li><li><p>如图所示：</p><ul><li><ol><li>线程存在于进程内，且多线程共享进程内存；</li></ol></li><li><ol start="2"><li>多线程间有自己的寄存器和堆栈，互不影响；<br><img src="http://www.luhao.wiki/images/threads.png" alt="" width="300"></li></ol></li></ul></li><li><p>下图是windows的任务管理器，可以清楚得看到<font color="#FF1E10"><strong>进程</strong></font>与<font color="#1AAD19"><strong>线程</strong></font>之间的从属关系！</p></li></ul><img src="http://www.luhao.wiki/images/task_manager.png" alt="" width=""><hr><h3 id="什么是协程-coroutinue">什么是协程 (<a href="https://stackoverflow.com/questions/553704/what-is-a-coroutine">coroutinue</a>)</h3><ul><li>通俗讲，协程是对线程的一种更小粒度的划分 （这里就不多介绍了）</li></ul><div class="admonition note"><p class="admonition-title">扩展阅读</p><p><a href="https://www.csl.mtu.edu/cs4411.ck/www/NOTES/non-local-goto/coroutine.html">借助 C setjmp.h 实现简单的协程</a></p></div><hr><h2 id="2-Python">2. Python?</h2><p>写到这里突然扪心自问，这与python有何关系<span class="github-emoji"><span>😅</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f605.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>？<br>本来是使用Python2的<code>multiprocessing</code>和<code>subprocess</code>踩了坑，想写篇文章记录下；<br>但随着白天查阅资料，大多问题已然解决；<span class="github-emoji"><span>💪</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f4aa.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span><br>等以后有缘再来补上吧</p><hr><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href="https://blog.csdn.net/luhao19980909/article/details/89403233">进程和线程的深入理解</a></li><li><a href="https://www.tutorialspoint.com/what-is-interprocess-communication">What is Interprocess Communication?</a></li><li><a href="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/4_Threads.html">Threads</a></li><li><a href="https://stackoverflow.com/questions/200469/what-is-the-difference-between-a-process-and-a-thread">What is the difference between a process and a thread?</a></li><li><a href="https://stackoverflow.com/questions/553704/what-is-a-coroutine">What is a coroutine?</a></li><li><a href="https://www.csl.mtu.edu/cs4411.ck/www/NOTES/non-local-goto/coroutine.html">Building Coroutines</a></li></ul></blockquote>]]></content>
     
     
       
       
     <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
 &lt;/p&gt;&lt;p&gt;多进程（并发）是现代计算机的基本组成之一；&lt;br&gt;
-以Python为切入点，学习一些多进程的知识；&lt;/p&gt;
+介绍了进程、线程、协程是什么，以及相互关系；&lt;/p&gt;
 &lt;/div&gt;
 &lt;hr&gt;
-&lt;h2 id=</summary>
+&lt;h2 id=&quot;</summary>
       
     
     
@@ -564,33 +590,6 @@ ps：以下都基本Markdown或html语法&lt;/p&gt;</summary>
     
     
     <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Transformation: 基本空间变换</title>
-    <link href="http://luhao.wiki/posts/2DBGYFH/"/>
-    <id>http://luhao.wiki/posts/2DBGYFH/</id>
-    <published>2021-10-10T11:53:23.000Z</published>
-    <updated>2021-10-10T17:44:56.409Z</updated>
-    
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p><strong>空间与坐标变换</strong>是Graphics的入门知识；<br>它决定了你怎么把图像画到一个二维平面上；</p></div><hr><h2 id="一：Homogeneous-coordinates">一：Homogeneous coordinates</h2><ul><li><p>齐次坐标</p></li><li><p>这篇回答写的非常透彻<br><a href="https://www.zhihu.com/question/59595799">知乎: 什么是齐次坐标系？为什么要用齐次坐标系？</a></p></li></ul><p>屏幕空间是一个笛卡尔坐标$(x, y)$,<br>但是透视空间下, $(x, y)$可能表示很多个点, 因为忽略了深度<br>所以引入齐次坐标</p><ul><li><p>齐次坐标 &lt;—&gt; 笛卡尔坐标如下:</p><p><strong>$(x, y, w) \Longleftrightarrow (\frac{x}{w}, \frac{y}{w})$</strong></p></li><li><p><strong>假设透视空间的深度取值$w=[0, 1]$</strong></p><ul><li>当$w=1$, 这个点在两个坐标下取值相等，即恰好在屏幕上；<font color="#ef6d3b">(近裁面)</font></li><li>当$w=0$, 这个点在透视空间下的最远处；<font color="#ef6d3b">(远裁面)</font></li></ul></li><li><p>我想到一个通俗但不准确的解释:<br>笛卡尔坐标(2D)是屏幕坐标, 齐次坐标(3D)是屏幕中构建三维世界的坐标</p></li></ul><hr><h2 id="二：Chain-of-Transformations">二：Chain of Transformations</h2><p>网上看到一段绝妙的比喻，它几乎描述了三维到二维投影变换的所有要素!</p><ul><li>想象你拍照片的过程？<ul><li>Find a good place and arrange people. <font color="#ef6d3b">(Model transformation)</font></li><li>Fine a good angle <font color="#ef6d3b">(FOV)</font> to put the camera. <font color="#ef6d3b">(View transformation)</font></li><li>Cheese! <font color="#ef6d3b">(Projection transformation)</font></li><li><font color="#ef6d3b"><strong>MVP</strong></font>, 能帮助你更好的记忆这仨步骤!</li></ul></li></ul><h3 id="1-Model-Transformation"><strong>1. Model Transformation</strong></h3><p>将所有model转化到统一的世界空间下 (world space)</p><h3 id="2-View-Camera-Transformation"><strong>2. View/Camera Transformation</strong></h3><p>再变换到统一的相机空间下 (camera space).</p><h3 id="3-Projection-Transformation"><strong>3. Projection Transformation</strong></h3><p>变换到相机的视角：投影空间</p><ul><li>区分一下透视变换与正交变换:<br><img src="http://www.luhao.wiki/images/transformation.png" width="500"></li></ul><div class="admonition warning"><p class="admonition-title">敲重点</p><p>下面变换都是在<strong>相机坐标系</strong>下；<br>不妨通过<strong>归一化</strong>让其变成一个1x1x1的正方体盒子，即$(x,y,z)$取值范围是$[-1,1]$；<br>为什么？ 因为方便做<strong>Clipping</strong>；</p></div><ul><li>定义一些空间参数:<ul><li><p><strong>Width / Height</strong>: 二维屏幕的宽高</p></li><li><p><strong>Near / Far z value</strong>: 近/远裁面的z值</p></li><li><p><strong>FOV</strong>: 相机能捕捉的角度</p></li></ul></li></ul><h4 id="3-1-Orthographic-Projection">3.1 Orthographic Projection</h4><ul><li><p>正交变换<br><img src="http://www.luhao.wiki/images/proj1.png" alt="" width="500"></p></li><li><p>对于$(x,y)$分别除以宽高做归一;</p></li><li><p>对于$(z)$较复杂，因为要移动到$z_{far}$和$z_{near}$的中间:</p><ul><li>归一的分母是 $\frac{z_{far} - z_{near}}{2}$</li><li>移动???</li></ul></li></ul><div class="admonition todo"><p class="admonition-title">FAQ</p><ol><li>$z$做Scaling为啥取负?<br></li><li>$z$做Translate的值怎么来的?</li></ol></div><p>$$<br>\left[<br>\begin{matrix}<br>\frac{1}{w} &amp; 0 &amp; 0 &amp; 0\\<br>0 &amp; \frac{1}{h} &amp; 0 &amp; 0\\<br>0 &amp; 0 &amp; -\frac{2}{z_{far} - z_{near}} &amp; -\frac{z_{far} + z_{near}}{z_{far} - z_{near}} \\<br>0 &amp; 0 &amp; 0 &amp; 1<br>\end{matrix}<br>\right]<br>$$</p><hr><h4 id="3-2-Perspective-Projection">3.2 Perspective Projection</h4><ul><li>透视变换 (符合人眼直观)<br><img src="http://www.luhao.wiki/images/proj2.png" alt="" width="500"></li></ul><div class="admonition todo"><p class="admonition-title">FAQ</p><p>这里需要严格的推导一下!</p></div><p>$$<br>\left[<br>\begin{matrix}<br>tan^{-1}(\frac{FOV_{x}}{2}) &amp; 0 &amp; 0 &amp; 0\\<br>0 &amp; tan^{-1}(\frac{FOV_{y}}{2}) &amp; 0 &amp; 0\\<br>0 &amp; 0 &amp; -\frac{z_{far} + z_{near}}{z_{far} - z_{near}} &amp; -\frac{2(z_{far}z_{near})}{z_{far} - z_{near}}\\<br>0 &amp; 0 &amp; -1 &amp; 0<br>\end{matrix}<br>\right]<br>$$</p><hr><h2 id="star-Furthermore…"><span class="github-emoji"><span>⭐</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> Furthermore…</h2><ul><li><p>Re-mapping points from $[-1, 1]$ to $[0, 1]$.</p></li><li><p>Rasterizing the triangles to the screen.</p></li><li><p>Sampling , AA …</p></li></ul><hr><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href="https://sites.cs.ucsb.edu/~lingqi/teaching/resources/GAMES101_Lecture_04.pdf">GAMES101-Transformation</a></li><li><a href="http://www.codinglabs.net/article_world_view_projection_matrix.aspx">World, View and Projection Transformation Matrices</a></li></ul></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
-&lt;/p&gt;&lt;p&gt;&lt;strong&gt;空间与坐标变换&lt;/strong&gt;是Graphics的入门知识；&lt;br&gt;
-它决定了你怎么把图像画到一个二维平面上；&lt;/p&gt;
-&lt;/di</summary>
-      
-    
-    
-    
-    <category term="Computer Graphics" scheme="http://luhao.wiki/categories/Computer-Graphics/"/>
-    
-    
-    <category term="Graphics" scheme="http://luhao.wiki/tags/Graphics/"/>
     
   </entry>
   

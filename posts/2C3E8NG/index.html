@@ -3,27 +3,26 @@
 <head>
     <meta charset="utf-8">
     
-    <title>0: Compiler vs Interpreter | Luhao&#39;s Blog</title>
+    <title>Python Profile | Luhao&#39;s Blog</title>
     
     
-        <meta name="keywords" content="C++,Compiler" />
+        <meta name="keywords" content="Git" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="概要 什么是Compiler(编译器)与Interpreter(解释器)  两者的区别与优缺点，并以常用的（高级）语言为例   什么是Compiler？  Compilers are programs that convert high-level language(source code) to machine language code before executing it.  提取一下关键">
+    <meta name="description" content="概要 众所周知，Python以慢字冠名天下； 作为21世纪的word&#x2F;excel，学会profile python，就能成为人上人（瞎jb）;   How profiler works?  性能分析的原理是什么？有哪些常用的profile方法呢？  1.Instrumentation （插装） 这应该是最容易理解的方式，看下面代码 123456import timet1 &#x3D; time.time()">
 <meta property="og:type" content="article">
-<meta property="og:title" content="0: Compiler vs Interpreter">
-<meta property="og:url" content="http://luhao.wiki/posts/208KKE2/index.html">
+<meta property="og:title" content="Python Profile">
+<meta property="og:url" content="http://luhao.wiki/posts/2C3E8NG/index.html">
 <meta property="og:site_name" content="Luhao&#39;s Blog">
-<meta property="og:description" content="概要 什么是Compiler(编译器)与Interpreter(解释器)  两者的区别与优缺点，并以常用的（高级）语言为例   什么是Compiler？  Compilers are programs that convert high-level language(source code) to machine language code before executing it.  提取一下关键">
+<meta property="og:description" content="概要 众所周知，Python以慢字冠名天下； 作为21世纪的word&#x2F;excel，学会profile python，就能成为人上人（瞎jb）;   How profiler works?  性能分析的原理是什么？有哪些常用的profile方法呢？  1.Instrumentation （插装） 这应该是最容易理解的方式，看下面代码 123456import timet1 &#x3D; time.time()">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://www.luhao.wiki/images/compiler.png">
-<meta property="article:published_time" content="2021-10-02T12:15:22.000Z">
-<meta property="article:modified_time" content="2021-10-10T06:59:03.810Z">
+<meta property="og:image" content="http://www.luhao.wiki/images/cprofile.png">
+<meta property="article:published_time" content="2021-12-14T15:31:37.000Z">
+<meta property="article:modified_time" content="2021-12-14T16:28:52.360Z">
 <meta property="article:author" content="Luhao">
-<meta property="article:tag" content="C++">
-<meta property="article:tag" content="Compiler">
+<meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.luhao.wiki/images/compiler.png">
+<meta name="twitter:image" content="http://www.luhao.wiki/images/cprofile.png">
     
 
     
@@ -198,13 +197,13 @@
                          <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/a57e44ac/">MinGW: windows c/c++</a></li>  </ul> 
                     </li> 
                     
-                    <li class="directory open">
+                    <li class="directory">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder-open"></i>
+                            <i class="fa fa-folder"></i>
                             &nbsp;
                             Compiler
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/1ZP02KZ/">fuckc: a mini C-interpreter</a></li>  <li class="file active"><a href="/posts/208KKE2/">0: Compiler vs Interpreter</a></li>  <li class="file"><a href="/posts/2DQASEF/">1: memory, register and instruction</a></li>  <li class="file"><a href="/posts/1KXFP8G/">2: Lexical Analysis</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/1ZP02KZ/">fuckc: a mini C-interpreter</a></li>  <li class="file"><a href="/posts/208KKE2/">0: Compiler vs Interpreter</a></li>  <li class="file"><a href="/posts/2DQASEF/">1: memory, register and instruction</a></li>  <li class="file"><a href="/posts/1KXFP8G/">2: Lexical Analysis</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -225,13 +224,13 @@
                          <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/1KH1TD4/">Garen: 基于OpenGL做一款引擎</a></li>  <li class="file"><a href="/posts/3GZKBFK/">Shaders</a></li>  <li class="file"><a href="/posts/1EF3PT0/">Textures</a></li>  <li class="file"><a href="/posts/SZGATA/">Colors and Materials</a></li>  <li class="file"><a href="/posts/S7WXS5/">Lighting</a></li>  <li class="file"><a href="/posts/2WF6HFQ/">Model and Mesh</a></li>  <li class="file"><a href="/posts/1DET1D9/">ImGui: 便于调试的UI库</a></li>  <li class="file"><a href="/posts/2M66594/">Depth testing</a></li>  <li class="file"><a href="/posts/2WWCBPR/">实现一个obj渲染器</a></li>  </ul> 
                     </li> 
                     
-                    <li class="directory">
+                    <li class="directory open">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
+                            <i class="fa fa-folder-open"></i>
                             &nbsp;
                             Python
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/Y3NTTW/">Python多进程之multiprocess</a></li>  <li class="file"><a href="/posts/2C3E8NG/">Python Profile</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/posts/Y3NTTW/">Python多进程之multiprocess</a></li>  <li class="file active"><a href="/posts/2C3E8NG/">Python Profile</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -636,7 +635,7 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="post-Compiler/0-Compiler-vs-Interpreter" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-Python/Python-Profile" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -646,20 +645,20 @@
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Compiler/">Compiler</a>
+        <a class="article-category-link" href="/categories/Python/">Python</a>
     </div>
 
                         <!-- 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/C/" rel="tag">C++</a>, <a class="tag-link-link" href="/tags/Compiler/" rel="tag">Compiler</a>
+        <a class="tag-link-link" href="/tags/Git/" rel="tag">Git</a>
     </div>
  -->
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/posts/208KKE2/">
-            <time datetime="2021-10-02T12:15:22.000Z" itemprop="datePublished">2021-10-02</time>
+        <a href="/posts/2C3E8NG/">
+            <time datetime="2021-12-14T15:31:37.000Z" itemprop="datePublished">2021-12-14</time>
         </a>
     </div>
 
@@ -669,10 +668,10 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计708字 
+                            | 字数统计408字 
                           </span>
                           <!-- <span class="post-count"> -->
-                            <!-- | 阅读时长2分钟  -->
+                            <!-- | 阅读时长1分钟  -->
                         <!-- </span> -->
                         
                     </div>
@@ -680,7 +679,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            0: Compiler vs Interpreter
+            Python Profile
         </h1>
     
 
@@ -693,147 +692,78 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFCompiler%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">什么是Compiler？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFInterpreter%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">什么是Interpreter？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Compiler%E5%92%8CInterpreter%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.</span> <span class="toc-text">Compiler和Interpreter的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Compiler%E7%9B%B8%E5%85%B3%E8%A1%A5%E5%85%85"><span class="toc-number">4.</span> <span class="toc-text">Compiler相关补充</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C-compiler%E7%9A%84%E5%87%A0%E4%B8%AA%E9%98%B6%E6%AE%B5"><span class="toc-number">4.1.</span> <span class="toc-text">C compiler的几个阶段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MinGW-windows-c-c"><span class="toc-number">4.2.</span> <span class="toc-text">MinGW: windows c&#x2F;c++</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84C%E7%BC%96%E8%AF%91%E5%99%A8%E6%A1%86%E6%9E%B6"><span class="toc-number">5.</span> <span class="toc-text">一个简单的C编译器框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">6.</span> <span class="toc-text">参考资料</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How-profiler-works"><span class="toc-number">1.</span> <span class="toc-text">How profiler works?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Instrumentation-%EF%BC%88%E6%8F%92%E8%A3%85%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">1.Instrumentation （插装）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Sampling-%EF%BC%88%E9%87%87%E6%A0%B7%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">2.Sampling （采样）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-Profiler"><span class="toc-number">2.</span> <span class="toc-text">Python Profiler</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-cProfile"><span class="toc-number">2.1.</span> <span class="toc-text">1. cProfile</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#snakeviz"><span class="toc-number">3.</span> <span class="toc-text">[snakeviz]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B8%A9%E5%9D%91%E9%9B%86%E5%90%88"><span class="toc-number">4.</span> <span class="toc-text">踩坑集合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">5.</span> <span class="toc-text">参考资料</span></a></li></ol>
                 </div>
             
         
         
             <div class="admonition note"><p class="admonition-title">概要
-</p><p>什么是<strong>Compiler(编译器)与Interpreter(解释器) <br></strong>
-两者的<strong>区别与优缺点</strong>，并以常用的（高级）语言为例</p>
+</p><p>众所周知，Python以慢字冠名天下；<br>
+作为21世纪的word/excel，学会profile python，就能成为人上人（瞎jb）;</p>
 </div>
 <hr>
-<h2 id="什么是Compiler？">什么是Compiler？</h2>
+<h2 id="How-profiler-works">How profiler works?</h2>
 <ul>
-<li>Compilers are programs that <strong>convert high-level language(source code) to machine language code</strong> before executing it.</li>
+<li>性能分析的原理是什么？有哪些常用的profile方法呢？</li>
 </ul>
-<p>提取一下关键词：</p>
+<h3 id="1-Instrumentation-（插装）">1.Instrumentation （插装）</h3>
+<p>这应该是最容易理解的方式，看下面代码</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">t1 = time.time()</span><br><span class="line"><span class="comment"># do something</span></span><br><span class="line">t2 = time.time()</span><br><span class="line">cost_time = t2 - t1 <span class="comment"># s</span></span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>
+<p><font color="#ef6d3b"><strong>插装的本质就是：统计运行时间或次数；</strong></font></p>
+</li>
+<li>
+<p>常见方法：</p>
+<ul>
+<li>1.首尾手动记录时间/次数…</li>
+<li>2.profile工具自动插入源码；</li>
+<li>3.profile工具修改汇编码/中间码；</li>
+</ul>
+</li>
+</ul>
+<div class="admonition warning"><p class="admonition-title">海森堡Bug
+</p><p>由于修改了源码，插装有概率会使程序发生不一样的结果，尤其是多进程的情况下；</p>
+</div>
+<h3 id="2-Sampling-（采样）">2.Sampling （采样）</h3>
+<p><font color="#ef6d3b"><strong>每隔一段时间中断进程，获取当前堆栈信息，并从统计学上估计每段代码的运行时间；</strong></font></p>
+<ul>
+<li>
+<p><strong>Visual Studio Profiler</strong>就是基于采样实现</p>
+</li>
+<li>
+<p>几乎大部分Profiler都是采样实现，因为它有如下几个有点：</p>
+<ul>
+<li>1.不需要修改代码，不需要重新编译；</li>
+<li>2.可以动态修改中断的interval，控制采样精度和开销的平衡；</li>
+<li>3.对程序的性能影响小，结果可靠；</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="Python-Profiler">Python Profiler</h2>
+<p>下面介绍几个常用的python profile库：</p>
+<h3 id="1-cProfile">1. <a target="_blank" rel="noopener" href="https://docs.python.org/2.7/library/profile.html">cProfile</a></h3>
+<ul>
+<li>这是一段官方文档示例</li>
+</ul>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cProfile, pstats, StringIO</span><br><span class="line">pr = cProfile.Profile()</span><br><span class="line">pr.enable()</span><br><span class="line"><span class="comment"># ... do something ...</span></span><br><span class="line">pr.disable()</span><br><span class="line">s = StringIO.StringIO()</span><br><span class="line">sortby = <span class="string">'cumulative'</span></span><br><span class="line">ps = pstats.Stats(pr, stream=s).sort_stats(sortby)</span><br><span class="line">ps.print_stats()</span><br><span class="line"><span class="built_in">print</span> s.getvalue()</span><br></pre></td></tr></tbody></table></figure>
+<img src="http://www.luhao.wiki/images/cprofile.png" alt="" width="500">
+<p>–</p>
+<h2 id="snakeviz">[snakeviz]</h2>
+<hr>
+<h2 id="踩坑集合">踩坑集合</h2>
 <ol>
-<li><font color="#ef6d3b"><strong>programs</strong></font><br>
-编译器也是一个程序，也是又某一种Language实现的；<br>
-所以不要将其看得过于抽象！</li>
+<li>多进程multiprocess profile</li>
 </ol>
-</li>
-<li>
-<ol start="2">
-<li><font color="#ef6d3b"><strong>high lanage -&gt; machine language</strong></font><br>
-将高级语言转化为可执行的机器语言，当然中间省略了一些步骤；<br>
-可查阅： <a target="_blank" rel="noopener" href="https://www.javatpoint.com/compilation-process-in-c">The Four Stages of Compiling a C program</a></li>
-</ol>
-</li>
-<li>
-<ol start="3">
-<li><font color="#ef6d3b"><strong>before executing it</strong></font><br>
-这是区别于解释器最大的地方，先全部编译成机器语言，以后要用了随时执行！</li>
-</ol>
-</li>
-</ul>
-<hr>
-<h2 id="什么是Interpreter？">什么是Interpreter？</h2>
-<ul>
-<li>Interpreters are also programs that convert high-level language(source code) to machine language code, but <strong>compile and execute for each line</strong>.</li>
-</ul>
-<p>提取一下关键词：</p>
-<ul>
-<li>1.2点都与Compiler一样，即从高级语言转化到机器语言;</li>
-<li>
-<ol start="3">
-<li><font color="#ef6d3b"><strong>compile and execute for each line</strong></font><br>
-解释器不会产生任何中间代码，一旦编译一行，便开始立即执行；<br>
-你应该发现，python的报错总是出现只有一处，而C++却能同时报好多的warning和erro</li>
-</ol>
-</li>
-</ul>
-<div class="admonition todo"><p class="admonition-title">Self-Reference
-</p><p>什么是自举？<strong>即一个语言能自己解释自己</strong>；<br>
-举个例子：用C语言实现了python，再用python写一个python解释器，那python的编译运行就可以完全脱离C了（这就是<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/PyPy">pypy</a>) <br>
-欢迎移步:  <br>
-<a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000000692678">1.segmentfault: 什么是编程语言的自举?</a>  <br>
-<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/28513473">2.知乎: 编译器的自举原理是什么?</a></p>
-</div>
-<ul>
-<li><strong>突然想到一个哲学问题：<code>到底是先有鸡，还是先有蛋？</code></strong><br>
-鸡生蛋，蛋孵鸡，那么鸡是自举的；<br>
-但凡自举的东西，必然是由某个更低级的东西衍生、创造而来；（女娲造人，但她能造能造人的人（自己）吗？）<br>
-所以第一只鸡（或蛋），必然是野鸡、<s>鸟、或大象</s>进化（或蛋变异）而来；<br>
-证毕。</li>
-</ul>
-<hr>
-<h2 id="Compiler和Interpreter的区别">Compiler和Interpreter的区别</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">左对齐</th>
-<th style="text-align:center">Compiler</th>
-<th style="text-align:center">Interpreter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">步骤</td>
-<td style="text-align:center">先编译后, (再执行)</td>
-<td style="text-align:center">编译与执行一起</td>
-</tr>
-<tr>
-<td style="text-align:center">特点</td>
-<td style="text-align:center">better performance</td>
-<td style="text-align:center">memory efficient</td>
-</tr>
-<tr>
-<td style="text-align:center">运行速度</td>
-<td style="text-align:center">快</td>
-<td style="text-align:center">慢 <a target="_blank" rel="noopener" href="http://www.hildstrom.com/projects/langcomp/index.html">(常见语言的性能对比)</a></td>
-</tr>
-<tr>
-<td style="text-align:center">硬盘</td>
-<td style="text-align:center">大：存储机器码</td>
-<td style="text-align:center">小：不保存任何机器码 <a target="_blank" rel="noopener" href="https://www.edureka.co/community/73116/what-is-the-difference-between-py-and-pyc-files-in-python">(.pyc)</a></td>
-</tr>
-<tr>
-<td style="text-align:center">内存</td>
-<td style="text-align:center">大：生成中间代码</td>
-<td style="text-align:center">小</td>
-</tr>
-<tr>
-<td style="text-align:center">error report</td>
-<td style="text-align:center">所有报错一起出现</td>
-<td style="text-align:center">单行报错即阻碍 (python <code>try</code>)</td>
-</tr>
-<tr>
-<td style="text-align:center">常见语言</td>
-<td style="text-align:center"><code>C, C++, C#, Java, Go</code></td>
-<td style="text-align:center"><code>python, js, lua</code></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="Compiler相关补充">Compiler相关补充</h2>
-<h3 id="C-compiler的几个阶段">C compiler的几个阶段</h3>
-<img src="http://www.luhao.wiki/images/compiler.png" alt="图片来源于网络" width="400" height="400">
-<h3 id="MinGW-windows-c-c"><a target="_blank" rel="noopener" href="http://localhost:4000/posts/a57e44ac/">MinGW: windows c/c++</a></h3>
-<hr>
-<h2 id="一个简单的C编译器框架">一个简单的C编译器框架</h2>
-<ul>
-<li>
-<p><font color="#ef6d3b"><strong>lex()</strong></font>：(C/C++)源代码 -&gt; tokens;</p>
-</li>
-<li>
-<p><font color="#ef6d3b"><strong>syntax()</strong></font>：tokens -&gt; 语法树;</p>
-</li>
-<li>
-<p><font color="#ef6d3b"><strong>eval()</strong></font>： 语法树 -&gt; 目标代码;</p>
-</li>
-</ul>
-<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> token;</span><br><span class="line"><span class="keyword">char</span> *text;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">lex</span><span class="params">()</span> <span class="comment">// 词法分析入口, 解析逐字符</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    token = *text++;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">syntax</span><span class="params">()</span> <span class="comment">// 语法分析入口</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    lex();</span><br><span class="line">    <span class="keyword">while</span> (token) </span><br><span class="line">    {</span><br><span class="line">        lex();</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span> <span class="comment">// 虚拟机入口</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="comment">// read text</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <h2 id="参考资料">参考资料</h2>
 <blockquote>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://www.softwaretestinghelp.com/compiler-vs-interpreter/#Compiler_And_Interpreter_Key_Differences">Compiler Vs Interpreter: What Are The Key Differences</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lemon-le/p/13840014.html">解释器( interpreter ) 与 编译器( compiler ) 的对比</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.javatpoint.com/compilation-process-in-c">The Four Stages of Compiling a C program</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhao-zongsheng/p/13067733.html">CPU性能分析工具原理</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/582336/how-can-you-profile-a-python-script">How can you profile a Python script?</a></li>
+<li><a target="_blank" rel="noopener" href="https://dirtysalt.github.io/html/on-python-profiling.html">Python程序性能分析</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.xizhibei.me/2021/01/10/poor-mans-profiler/">穷人的程序性能分析器</a></li>
 </ul>
 </blockquote>
 
@@ -848,19 +778,10 @@
     
 <nav id="article-nav">
     
-        <a href="/posts/SQMNPS/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">
-                
-                    Graphics: 图形学大纲
-                
-            </div>
-        </a>
     
-    
-        <a href="/posts/1ZP02KZ/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/posts/Y3NTTW/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">fuckc: a mini C-interpreter</div>
+            <div class="article-nav-title">Python多进程之multiprocess</div>
         </a>
     
 </nav>

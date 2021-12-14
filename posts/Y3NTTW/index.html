@@ -9,16 +9,16 @@
         <meta name="keywords" content="linux" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="概要 多进程（并发）是现代计算机的基本组成之一； 以Python为切入点，学习一些多进程的知识；   1. 一篇CSDN博客  这是我大学操作系统期间写的一篇CSDN博客，看到有3w+访问和700+的收藏，这是我意想不到的； 回头看这篇文章，几乎没有专业词汇，而是用类比的方式解释了进程相关的基础知识； 摘取片段如下： &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;">
+    <meta name="description" content="概要 多进程（并发）是现代计算机的基本组成之一； 介绍了进程、线程、协程是什么，以及相互关系；   1. 一篇CSDN博客  这是我大学操作系统期间写的一篇CSDN博客，看到有3w+访问和700+的收藏，这是我意想不到的； 回头看这篇文章，几乎没有专业词汇，而是用类比的方式解释了进程相关的基础知识； 摘取片段如下： &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python多进程之multiprocess">
 <meta property="og:url" content="http://luhao.wiki/posts/Y3NTTW/index.html">
 <meta property="og:site_name" content="Luhao&#39;s Blog">
-<meta property="og:description" content="概要 多进程（并发）是现代计算机的基本组成之一； 以Python为切入点，学习一些多进程的知识；   1. 一篇CSDN博客  这是我大学操作系统期间写的一篇CSDN博客，看到有3w+访问和700+的收藏，这是我意想不到的； 回头看这篇文章，几乎没有专业词汇，而是用类比的方式解释了进程相关的基础知识； 摘取片段如下： &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;">
+<meta property="og:description" content="概要 多进程（并发）是现代计算机的基本组成之一； 介绍了进程、线程、协程是什么，以及相互关系；   1. 一篇CSDN博客  这是我大学操作系统期间写的一篇CSDN博客，看到有3w+访问和700+的收藏，这是我意想不到的； 回头看这篇文章，几乎没有专业词汇，而是用类比的方式解释了进程相关的基础知识； 摘取片段如下： &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://www.luhao.wiki/images/python.png">
 <meta property="article:published_time" content="2021-12-12T06:52:20.000Z">
-<meta property="article:modified_time" content="2021-12-14T14:52:45.249Z">
+<meta property="article:modified_time" content="2021-12-14T15:18:19.713Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
@@ -230,7 +230,7 @@
                             &nbsp;
                             Python
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file active"><a href="/posts/Y3NTTW/">Python多进程之multiprocess</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file active"><a href="/posts/Y3NTTW/">Python多进程之multiprocess</a></li>  <li class="file"><a href="/posts/2C3E8NG/">Python Profile</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -341,6 +341,25 @@
         <h3 class="widget-title"><span>recent</span></h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/posts/2C3E8NG/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/posts/2C3E8NG/" class="title">Python Profile</a></p>
+                            <p class="item-date"><time datetime="2021-12-14T15:31:37.000Z" itemprop="datePublished">2021-12-14</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -608,25 +627,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/posts/3WBT4SZ/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://www.luhao.wiki/images/algorithm.png)" alt="String matching: 字符串匹配" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithm/">Algorithm</a></p>
-                            <p class="item-title"><a href="/posts/3WBT4SZ/" class="title">String matching: 字符串匹配</a></p>
-                            <p class="item-date"><time datetime="2021-10-16T15:51:06.000Z" itemprop="datePublished">2021-10-16</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -668,7 +668,7 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计563字 
+                            | 字数统计743字 
                           </span>
                           <!-- <span class="post-count"> -->
                             <!-- | 阅读时长2分钟  -->
@@ -692,14 +692,14 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%80%E7%AF%87CSDN%E5%8D%9A%E5%AE%A2"><span class="toc-number">1.</span> <span class="toc-text">1. 一篇CSDN博客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%BF%9B%E7%A8%8B-Process"><span class="toc-number">1.1.</span> <span class="toc-text">什么是进程 (Process)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-Process-Communication"><span class="toc-number">1.2.</span> <span class="toc-text">进程间通信 (Process Communication)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B-thread"><span class="toc-number">1.3.</span> <span class="toc-text">什么是线程 (thread)</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%80%E7%AF%87CSDN%E5%8D%9A%E5%AE%A2"><span class="toc-number">1.</span> <span class="toc-text">1. 一篇CSDN博客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%BF%9B%E7%A8%8B-Process"><span class="toc-number">1.1.</span> <span class="toc-text">什么是进程 (Process)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-Process-Communication"><span class="toc-number">1.2.</span> <span class="toc-text">进程间通信 (Process Communication)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B-thread"><span class="toc-number">1.3.</span> <span class="toc-text">什么是线程 (thread)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%8F%E7%A8%8B-coroutinue"><span class="toc-number">1.4.</span> <span class="toc-text">什么是协程 (coroutinue)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Python"><span class="toc-number">2.</span> <span class="toc-text">2. Python?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">3.</span> <span class="toc-text">参考资料</span></a></li></ol>
                 </div>
             
         
         
             <div class="admonition note"><p class="admonition-title">概要
 </p><p>多进程（并发）是现代计算机的基本组成之一；<br>
-以Python为切入点，学习一些多进程的知识；</p>
+介绍了进程、线程、协程是什么，以及相互关系；</p>
 </div>
 <hr>
 <h2 id="1-一篇CSDN博客">1. 一篇CSDN博客</h2>
@@ -722,9 +722,9 @@
 <li>单核机器为什么给人<em>可以同时处理一堆程序</em> 的错觉？似乎和多核差不多？</li>
 </ul>
 <p>如下图，这些任务其实是依次执行，这叫<font color="#ef6d3b"><strong>并发 (concurrency)</strong></font>；<br>
-<img src="http://www.luhao.wiki/images/single-cpu.png" alt="单核" width="600"></p>
+<img src="http://www.luhao.wiki/images/single-cpu.png" alt="单核" width="500"></p>
 <p>如下图，对于多CPU机器，很多任务可以同时执行，这叫<font color="#ef6d3b"><strong>并行 (parallelism)</strong></font>；<br>
-<img src="http://www.luhao.wiki/images/multi-cpu.png" alt="多核" width="600"></p>
+<img src="http://www.luhao.wiki/images/multi-cpu.png" alt="多核" width="500"></p>
 <hr>
 <h3 id="进程间通信-Process-Communication">进程间通信 (Process Communication)</h3>
 <p>进程间是互相独立，不共享任何数据的，那么跨进程如何交互呢？</p>
@@ -767,8 +767,38 @@
 </li>
 </ul>
 </li>
+<li>
+<p>下图是windows的任务管理器，可以清楚得看到<font color="#FF1E10"><strong>进程</strong></font>与<font color="#1AAD19"><strong>线程</strong></font>之间的从属关系！</p>
+</li>
 </ul>
-<img src="http://www.luhao.wiki/images/task_manager.png" alt="" width="500">
+<img src="http://www.luhao.wiki/images/task_manager.png" alt="" width="">
+<hr>
+<h3 id="什么是协程-coroutinue">什么是协程 (<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/553704/what-is-a-coroutine">coroutinue</a>)</h3>
+<ul>
+<li>通俗讲，协程是对线程的一种更小粒度的划分 （这里就不多介绍了）</li>
+</ul>
+<div class="admonition note"><p class="admonition-title">扩展阅读
+</p><p><a target="_blank" rel="noopener" href="https://www.csl.mtu.edu/cs4411.ck/www/NOTES/non-local-goto/coroutine.html">借助 C setjmp.h 实现简单的协程</a></p>
+</div>
+<hr>
+<h2 id="2-Python">2. Python?</h2>
+<p>写到这里突然扪心自问，这与python有何关系<span class="github-emoji"><span>😅</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f605.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>？<br>
+本来是使用Python2的<code>multiprocessing</code>和<code>subprocess</code>踩了坑，想写篇文章记录下；<br>
+但随着白天查阅资料，大多问题已然解决；<span class="github-emoji"><span>💪</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f4aa.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span><br>
+等以后有缘再来补上吧</p>
+<hr>
+<h2 id="参考资料">参考资料</h2>
+<blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/luhao19980909/article/details/89403233">进程和线程的深入理解</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.tutorialspoint.com/what-is-interprocess-communication">What is Interprocess Communication?</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/4_Threads.html">Threads</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/200469/what-is-the-difference-between-a-process-and-a-thread">What is the difference between a process and a thread?</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/553704/what-is-a-coroutine">What is a coroutine?</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.csl.mtu.edu/cs4411.ck/www/NOTES/non-local-goto/coroutine.html">Building Coroutines</a></li>
+</ul>
+</blockquote>
+
             </div>
         
         <footer class="article-footer">
@@ -779,6 +809,15 @@
 
     
 <nav id="article-nav">
+    
+        <a href="/posts/2C3E8NG/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">
+                
+                    Python Profile
+                
+            </div>
+        </a>
     
     
         <a href="/posts/2R1N3XK/" id="article-nav-older" class="article-nav-link-wrap">
