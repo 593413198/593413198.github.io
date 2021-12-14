@@ -9,17 +9,18 @@
         <meta name="keywords" content="Git" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="概要 众所周知，Python以慢字冠名天下； 作为21世纪的word&#x2F;excel，学会profile python，就能成为人上人（瞎jb）;   How profiler works?  性能分析的原理是什么？有哪些常用的profile方法呢？  1.Instrumentation （插装） 这应该是最容易理解的方式，看下面代码 123456import timet1 &#x3D; time.time()">
+    <meta name="description" content="概要 众所周知，Python以慢字冠名天下； 作为21世纪的word&#x2F;excel，学会profile python，就能成为人上人（瞎jb）;   How profiler works?  性能分析的原理是什么？有哪些常用的profile方法呢？  1. Instrumentation （插装） 这应该是最容易理解的方式，看下面代码 123456import timet1 &#x3D; time.time(">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python Profile">
 <meta property="og:url" content="http://luhao.wiki/posts/2C3E8NG/index.html">
 <meta property="og:site_name" content="Luhao&#39;s Blog">
-<meta property="og:description" content="概要 众所周知，Python以慢字冠名天下； 作为21世纪的word&#x2F;excel，学会profile python，就能成为人上人（瞎jb）;   How profiler works?  性能分析的原理是什么？有哪些常用的profile方法呢？  1.Instrumentation （插装） 这应该是最容易理解的方式，看下面代码 123456import timet1 &#x3D; time.time()">
+<meta property="og:description" content="概要 众所周知，Python以慢字冠名天下； 作为21世纪的word&#x2F;excel，学会profile python，就能成为人上人（瞎jb）;   How profiler works?  性能分析的原理是什么？有哪些常用的profile方法呢？  1. Instrumentation （插装） 这应该是最容易理解的方式，看下面代码 123456import timet1 &#x3D; time.time(">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://www.luhao.wiki/images/cprofile.png">
 <meta property="og:image" content="http://www.luhao.wiki/images/snakeviz.png">
+<meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8">
 <meta property="article:published_time" content="2021-12-14T15:31:37.000Z">
-<meta property="article:modified_time" content="2021-12-14T16:38:57.009Z">
+<meta property="article:modified_time" content="2021-12-14T17:13:05.200Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
@@ -669,10 +670,10 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计444字 
+                            | 字数统计564字 
                           </span>
                           <!-- <span class="post-count"> -->
-                            <!-- | 阅读时长1分钟  -->
+                            <!-- | 阅读时长2分钟  -->
                         <!-- </span> -->
                         
                     </div>
@@ -693,7 +694,7 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How-profiler-works"><span class="toc-number">1.</span> <span class="toc-text">How profiler works?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Instrumentation-%EF%BC%88%E6%8F%92%E8%A3%85%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">1.Instrumentation （插装）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Sampling-%EF%BC%88%E9%87%87%E6%A0%B7%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">2.Sampling （采样）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-Profiler"><span class="toc-number">2.</span> <span class="toc-text">Python Profiler</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-cProfile"><span class="toc-number">2.1.</span> <span class="toc-text">1. cProfile</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-snakeviz"><span class="toc-number">3.</span> <span class="toc-text">2. snakeviz</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B8%A9%E5%9D%91%E9%9B%86%E5%90%88"><span class="toc-number">4.</span> <span class="toc-text">踩坑集合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">5.</span> <span class="toc-text">参考资料</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How-profiler-works"><span class="toc-number">1.</span> <span class="toc-text">How profiler works?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Instrumentation-%EF%BC%88%E6%8F%92%E8%A3%85%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">1. Instrumentation （插装）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Sampling-%EF%BC%88%E9%87%87%E6%A0%B7%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">2. Sampling （采样）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-Profiler"><span class="toc-number">2.</span> <span class="toc-text">Python Profiler</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-cProfile"><span class="toc-number">2.1.</span> <span class="toc-text">1. cProfile</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-snakeviz"><span class="toc-number">3.</span> <span class="toc-text">2. snakeviz</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B8%A9%E5%9D%91%E9%9B%86%E5%90%88"><span class="toc-number">4.</span> <span class="toc-text">踩坑集合</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-python%E5%A4%9A%E8%BF%9B%E7%A8%8Bprofile"><span class="toc-number">4.0.1.</span> <span class="toc-text">1.python多进程profile</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">5.</span> <span class="toc-text">参考资料</span></a></li></ol>
                 </div>
             
         
@@ -707,7 +708,7 @@
 <ul>
 <li>性能分析的原理是什么？有哪些常用的profile方法呢？</li>
 </ul>
-<h3 id="1-Instrumentation-（插装）">1.Instrumentation （插装）</h3>
+<h3 id="1-Instrumentation-（插装）"><a href="">1. Instrumentation （插装）</a></h3>
 <p>这应该是最容易理解的方式，看下面代码</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">t1 = time.time()</span><br><span class="line"><span class="comment"># do something</span></span><br><span class="line">t2 = time.time()</span><br><span class="line">cost_time = t2 - t1 <span class="comment"># s</span></span><br></pre></td></tr></tbody></table></figure>
 <ul>
@@ -726,7 +727,7 @@
 <div class="admonition warning"><p class="admonition-title">海森堡Bug
 </p><p>由于修改了源码，插装有概率会使程序发生不一样的结果，尤其是多进程的情况下；</p>
 </div>
-<h3 id="2-Sampling-（采样）">2.Sampling （采样）</h3>
+<h3 id="2-Sampling-（采样）"><a href="">2. Sampling （采样）</a></h3>
 <p><font color="#ef6d3b"><strong>每隔一段时间中断进程，获取当前堆栈信息，并从统计学上估计每段代码的运行时间；</strong></font></p>
 <ul>
 <li>
@@ -760,12 +761,30 @@
 <img src="http://www.luhao.wiki/images/cprofile.png" alt="" width="">
 <hr>
 <h2 id="2-snakeviz"><a target="_blank" rel="noopener" href="https://jiffyclub.github.io/snakeviz/">2. snakeviz</a></h2>
-<img src="http://www.luhao.wiki/images/snakeviz.png" alt="" width="500">
+<p>snakeviz其实是解析了cProfile的结果，做了个网页端的可视化界面；</p>
+<img src="http://www.luhao.wiki/images/snakeviz.png" alt="" width="">
+<ul>
+<li><strong>snakeviz使用步骤：</strong></li>
+</ul>
+<ol>
+<li>
+<p>先使用cProfile生成prof文件：<br>
+<code>python -m cProfile -o res.prof demo.py</code></p>
+</li>
+<li>
+<p>再解析prof生成网页：<br>
+<code>snakeviz res.prof</code></p>
+</li>
+<li>
+<p>得到如上精美的profiler火焰图；</p>
+</li>
+</ol>
 <hr>
 <h2 id="踩坑集合">踩坑集合</h2>
-<ol>
-<li>多进程multiprocess profile</li>
-</ol>
+<h4 id="1-python多进程profile">1.python多进程profile</h4>
+<p>不要把cProfile放在父进程，不然profile结果只有<code>acquire</code>；<br>
+这是因为父进程只起了调度和fork的作用，得在起的进程中去profile；<br>
+<span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/57617496/90-of-the-time-is-spent-on-method-acquire-of-thread-lock-objects">90% of the time is spent on method ‘acquire’ of ‘thread.lock’ objects</a></p>
 <hr>
 <h2 id="参考资料">参考资料</h2>
 <blockquote>
