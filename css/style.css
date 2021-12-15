@@ -132,7 +132,7 @@ code {
   margin: 0 2px;
   color: #e96900;
   padding: 3px 5px;
-  font-size: 0.8em;
+  font-size: 1.1em;
   border-radius: 2px;
   font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
   background-color: #f8f8f8;
@@ -263,7 +263,7 @@ code {
 }
 .article-entry h4,
 .widget h4 {
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 .article-entry h5,
 .widget h5 {
@@ -840,7 +840,7 @@ article {
   line-height: 1.3em;
 }
 a.article-title:visited {
-  color: #565a5f;
+  color: #38b7ea;
 }
 a.article-title:hover {
   color: #38b7ea;
@@ -2033,7 +2033,6 @@ ol.toc {
 #recent-post li .item-inner a,
 #recent-post li .item-inner .item-category {
   font-size: 13px;
-  text-transform: uppercase;
 }
 #recent-post li .item-inner a a,
 #recent-post li .item-inner .item-category a {
