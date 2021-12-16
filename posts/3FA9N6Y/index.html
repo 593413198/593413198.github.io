@@ -9,16 +9,16 @@
         <meta name="keywords" content="linux" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="概要 Linux命令行入坑, 见识了如gcc, apt, pip之流的优雅输出； 这篇博客想仿照之，借Python实现一些优美的输出与交互；   优雅交互赏析 1. npm  参考资料">
+    <meta name="description" content="概要 Linux命令行入坑, 见识了如gcc, apt, pip之流的优雅输出； 这篇博客想仿照之，借Python实现一些优美的输出与交互；   优雅交互赏析 😄 本想搞一些Linux下的截图，但是手头电脑没装虚拟机，先用Windows的凑合: 1. npm  2. VScode Extension  3. pip  4. ipython   何为优雅?   彩色文字区分 如SUCCEED，ER">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用Python实现优美的命令行交互">
 <meta property="og:url" content="http://luhao.wiki/posts/3FA9N6Y/index.html">
 <meta property="og:site_name" content="Luhao&#39;s Blog">
-<meta property="og:description" content="概要 Linux命令行入坑, 见识了如gcc, apt, pip之流的优雅输出； 这篇博客想仿照之，借Python实现一些优美的输出与交互；   优雅交互赏析 1. npm  参考资料">
+<meta property="og:description" content="概要 Linux命令行入坑, 见识了如gcc, apt, pip之流的优雅输出； 这篇博客想仿照之，借Python实现一些优美的输出与交互；   优雅交互赏析 😄 本想搞一些Linux下的截图，但是手头电脑没装虚拟机，先用Windows的凑合: 1. npm  2. VScode Extension  3. pip  4. ipython   何为优雅?   彩色文字区分 如SUCCEED，ER">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://www.luhao.wiki/images/python.png">
 <meta property="article:published_time" content="2021-12-16T14:17:59.000Z">
-<meta property="article:modified_time" content="2021-12-16T14:32:11.122Z">
+<meta property="article:modified_time" content="2021-12-16T14:48:50.254Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
@@ -664,7 +664,7 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计56字 
+                            | 字数统计191字 
                           </span>
                           <!-- <span class="post-count"> -->
                             <!-- | 阅读时长1分钟  -->
@@ -688,7 +688,7 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E9%9B%85%E4%BA%A4%E4%BA%92%E8%B5%8F%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">优雅交互赏析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-npm"><span class="toc-number">1.1.</span> <span class="toc-text">1. npm</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">2.</span> <span class="toc-text">参考资料</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E9%9B%85%E4%BA%A4%E4%BA%92%E8%B5%8F%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">优雅交互赏析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-npm"><span class="toc-number">1.1.</span> <span class="toc-text">1. npm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-VScode-Extension"><span class="toc-number">1.2.</span> <span class="toc-text">2. VScode Extension</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-pip"><span class="toc-number">1.3.</span> <span class="toc-text">3. pip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-ipython"><span class="toc-number">1.4.</span> <span class="toc-text">4. ipython</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%95%E4%B8%BA%E4%BC%98%E9%9B%85"><span class="toc-number">1.5.</span> <span class="toc-text">何为优雅?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%A9%E8%89%B2%E7%BB%88%E7%AB%AF%E8%BE%93%E5%87%BA"><span class="toc-number">2.</span> <span class="toc-text">彩色终端输出</span></a></li></ol>
                 </div>
             
         
@@ -699,15 +699,33 @@
 </div>
 <hr>
 <h2 id="优雅交互赏析">优雅交互赏析</h2>
+<p><span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 本想搞一些Linux下的截图，但是手头电脑没装虚拟机，先用Windows的凑合:</p>
 <h3 id="1-npm"><a target="_blank" rel="noopener" href="https://www.npmjs.com/">1. npm</a></h3>
-<img src="http://www.luhao.wiki/images/npm.png" alt="" width="500">
-<h2 id="参考资料">参考资料</h2>
-<blockquote>
+<img src="http://www.luhao.wiki/images/npm.png" alt="" width="">
+<h3 id="2-VScode-Extension"><a target="_blank" rel="noopener" href="https://code.visualstudio.com/api/get-started/your-first-extension">2. VScode Extension</a></h3>
+<img src="http://www.luhao.wiki/images/ts.png" alt="" width="">
+<h3 id="3-pip"><a target="_blank" rel="noopener" href="https://pip.pypa.io/en/stable/">3. pip</a></h3>
+<img src="http://www.luhao.wiki/images/pip.png" alt="" width="">
+<h3 id="4-ipython"><a href="">4. ipython</a></h3>
+<img src="http://www.luhao.wiki/images/ipython.png" alt="" width="">
+<hr>
+<h3 id="何为优雅">何为优雅?</h3>
 <ul>
-<li><a href=""></a></li>
-<li><a href=""></a></li>
+<li>
+<p><font color="#ef6d3b"><strong>彩色文字区分</strong></font><br>
+如<font color="#1AAD19"><strong>SUCCEED</strong></font>，<font color="#FF1E10"><strong>ERROR</strong></font>，都应该有专门的色彩，起到警示和强调的作用;</p>
+</li>
+<li>
+<p><font color="#ef6d3b"><strong>进度条</strong></font>:<br>
+对于耗时较长的程序，应该打印一个<font color="#1A9BFF"><strong>进度条</strong></font>，让用户对完成进度有一个直观的概念；</p>
+</li>
+<li>
+<p><font color="#ef6d3b"><strong>条例清晰的LOG</strong></font><br>
+每一个指令，都该包含指引(<code>-h</code>)、运行中和运行结果的Log提示；</p>
+</li>
 </ul>
-</blockquote>
+<hr>
+<h2 id="彩色终端输出">彩色终端输出</h2>
 
             </div>
         

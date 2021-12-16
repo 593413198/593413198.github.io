@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-12-16T14:32:11.122Z</updated>
+  <updated>2021-12-16T14:48:50.254Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://luhao.wiki/posts/3FA9N6Y/"/>
     <id>http://luhao.wiki/posts/3FA9N6Y/</id>
     <published>2021-12-16T14:17:59.000Z</published>
-    <updated>2021-12-16T14:32:11.122Z</updated>
+    <updated>2021-12-16T14:48:50.254Z</updated>
     
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p><code>Linux</code>命令行入坑, 见识了如<code>gcc</code>, <code>apt</code>, <code>pip</code>之流的优雅输出；<br>这篇博客想仿照之，借Python实现一些优美的输出与交互；</p></div><hr><h2 id="优雅交互赏析">优雅交互赏析</h2><h3 id="1-npm"><a href="https://www.npmjs.com/">1. npm</a></h3><img src="http://www.luhao.wiki/images/npm.png" alt="" width="500"><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p><code>Linux</code>命令行入坑, 见识了如<code>gcc</code>, <code>apt</code>, <code>pip</code>之流的优雅输出；<br>这篇博客想仿照之，借Python实现一些优美的输出与交互；</p></div><hr><h2 id="优雅交互赏析">优雅交互赏析</h2><p><span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 本想搞一些Linux下的截图，但是手头电脑没装虚拟机，先用Windows的凑合:</p><h3 id="1-npm"><a href="https://www.npmjs.com/">1. npm</a></h3><img src="http://www.luhao.wiki/images/npm.png" alt="" width=""><h3 id="2-VScode-Extension"><a href="https://code.visualstudio.com/api/get-started/your-first-extension">2. VScode Extension</a></h3><img src="http://www.luhao.wiki/images/ts.png" alt="" width=""><h3 id="3-pip"><a href="https://pip.pypa.io/en/stable/">3. pip</a></h3><img src="http://www.luhao.wiki/images/pip.png" alt="" width=""><h3 id="4-ipython"><a href="">4. ipython</a></h3><img src="http://www.luhao.wiki/images/ipython.png" alt="" width=""><hr><h3 id="何为优雅">何为优雅?</h3><ul><li><p><font color="#ef6d3b"><strong>彩色文字区分</strong></font><br>如<font color="#1AAD19"><strong>SUCCEED</strong></font>，<font color="#FF1E10"><strong>ERROR</strong></font>，都应该有专门的色彩，起到警示和强调的作用;</p></li><li><p><font color="#ef6d3b"><strong>进度条</strong></font>:<br>对于耗时较长的程序，应该打印一个<font color="#1A9BFF"><strong>进度条</strong></font>，让用户对完成进度有一个直观的概念；</p></li><li><p><font color="#ef6d3b"><strong>条例清晰的LOG</strong></font><br>每一个指令，都该包含指引(<code>-h</code>)、运行中和运行结果的Log提示；</p></li></ul><hr><h2 id="彩色终端输出">彩色终端输出</h2>]]></content>
     
     
       
