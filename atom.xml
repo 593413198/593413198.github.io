@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-12-15T14:03:49.692Z</updated>
+  <updated>2021-12-16T14:32:11.122Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用Python实现优美的命令行交互</title>
+    <link href="http://luhao.wiki/posts/3FA9N6Y/"/>
+    <id>http://luhao.wiki/posts/3FA9N6Y/</id>
+    <published>2021-12-16T14:17:59.000Z</published>
+    <updated>2021-12-16T14:32:11.122Z</updated>
+    
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p><code>Linux</code>命令行入坑, 见识了如<code>gcc</code>, <code>apt</code>, <code>pip</code>之流的优雅输出；<br>这篇博客想仿照之，借Python实现一些优美的输出与交互；</p></div><hr><h2 id="优雅交互赏析">优雅交互赏析</h2><h3 id="1-npm"><a href="https://www.npmjs.com/">1. npm</a></h3><img src="http://www.luhao.wiki/images/npm.png" alt="" width="500"><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
+&lt;/p&gt;&lt;p&gt;&lt;code&gt;Linux&lt;/code&gt;命令行入坑, 见识了如&lt;code&gt;gcc&lt;/code&gt;, &lt;code&gt;apt&lt;/code&gt;, &lt;code&gt;pi</summary>
+      
+    
+    
+    
+    <category term="Python" scheme="http://luhao.wiki/categories/Python/"/>
+    
+    
+    <category term="linux" scheme="http://luhao.wiki/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Python Profile</title>
@@ -564,34 +589,6 @@ ps：以下都基本Markdown或html语法&lt;/p&gt;</summary>
     <category term="Graphics" scheme="http://luhao.wiki/tags/Graphics/"/>
     
     <category term="Algorithm" scheme="http://luhao.wiki/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2: Lexical Analysis</title>
-    <link href="http://luhao.wiki/posts/1KXFP8G/"/>
-    <id>http://luhao.wiki/posts/1KXFP8G/</id>
-    <published>2021-10-13T14:43:25.000Z</published>
-    <updated>2021-10-14T14:30:05.151Z</updated>
-    
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>词法分析（Lexical Analysis）原理及coding实现; <br></p></div><hr><h2 id="什么是词法分析">什么是词法分析?</h2><ul><li><font color="#ef6d3b"><strong>将Characters转化为Tokens的过程!</strong></font></li></ul><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"int a = 100;"</span></span><br><span class="line"><span class="comment">// 这是一段c代码的source code, 但它仅仅是一段字符串而已</span></span><br><span class="line"><span class="comment">// Lex的作用是，输出如下可以喂给语法分析器的Tokens:</span></span><br><span class="line"><span class="string">"int"</span> <span class="string">"a"</span> <span class="string">"="</span> <span class="string">"100"</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure><img src="http://www.luhao.wiki/images/lexical.png" width="500"><ul><li><a href="https://github.com/westes/flex">flex: 一个开源词法分析器</a></li></ul><div class="admonition warning"><p class="admonition-title"> BUT</p><p><span class="github-emoji"><span>💪</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f4aa.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> <span class="github-emoji"><span>💪</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f4aa.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 我们要实现自己的词法分析器!</p></div><hr><h2 id="有哪些Tokens">有哪些Tokens?</h2><table><thead><tr><th style="text-align:center">Tokens</th><th style="text-align:center">注意点</th><th style="text-align:center">示例</th></tr></thead><tbody><tr><td style="text-align:center">数字(number)</td><td style="text-align:center">十进制、十六进制等</td><td style="text-align:center"><code>66</code>, <code>0xff</code></td></tr><tr><td style="text-align:center">字符串(string)</td><td style="text-align:center">一般以<code>"</code>引号识别</td><td style="text-align:center"><code>"string"</code></td></tr><tr><td style="text-align:center">关键字(symbol)</td><td style="text-align:center">查阅C文档</td><td style="text-align:center"><code>int</code>, <code>while</code></td></tr><tr><td style="text-align:center">标识符(identifer)</td><td style="text-align:center">定义的变量名</td><td style="text-align:center"><code>int a</code>中的<code>a</code></td></tr><tr><td style="text-align:center">注释(comment)</td><td style="text-align:center">C有两+种注释</td><td style="text-align:center"><code>//</code>, <code>/* */</code></td></tr><tr><td style="text-align:center">宏(macro)</td><td style="text-align:center">有点复杂</td><td style="text-align:center"><code>#define A</code>, <code>#include &lt;stdio.h&gt;</code></td></tr><tr><td style="text-align:center">其他</td><td style="text-align:center">换行、退格等</td><td style="text-align:center"><code>\n</code>, <code>\t\</code></td></tr></tbody></table><ul><li><font color="#ef6d3b"><strong>下面依次实现他们</strong></font></li></ul><div class="admonition todo"><p class="admonition-title">Tokens解析</p></div><hr><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
-&lt;/p&gt;&lt;p&gt;词法分析（Lexical Analysis）原理及coding实现; &lt;br&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;什么是词法分析&quot;&gt;</summary>
-      
-    
-    
-    
-    <category term="Compiler" scheme="http://luhao.wiki/categories/Compiler/"/>
-    
-    
-    <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
     
   </entry>
   
