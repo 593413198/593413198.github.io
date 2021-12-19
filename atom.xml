@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-12-17T14:14:33.257Z</updated>
+  <updated>2021-12-19T16:20:58.841Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>常用工具汇总</title>
+    <link href="http://luhao.wiki/posts/1HJYAHQ/"/>
+    <id>http://luhao.wiki/posts/1HJYAHQ/</id>
+    <published>2021-12-18T16:06:30.000Z</published>
+    <updated>2021-12-19T16:20:58.841Z</updated>
+    
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>这里记录了一些能够提高开发和日常使用效率的工具;</p></div><hr><h2 id="Listary"><a href="https://www.listary.com/">Listary</a></h2><ul><li><p><font color="#ef6d3b"><strong>全局搜索文件</strong></font></p></li><li><p>同类工具有: everything</p></li></ul><h2 id="Snipaste"><a href="https://www.snipaste.com/">Snipaste</a></h2><ul><li><p><font color="#ef6d3b"><strong>截图软件, 能够悬停在桌面上</strong></font></p></li><li><p>同类工具有: Win10()</p></li></ul><h2 id="ShareX"><a href="https://getsharex.com/">ShareX</a></h2><ul><li><p><font color="#ef6d3b"><strong>截图/录屏软件, 含MP4/GIF等格式</strong></font></p></li><li><p>同类工具有: Win10(Win+G)</p></li></ul><h2 id="Beyond-Compare"><a href="https://www.scootersoftware.com/">Beyond Compare</a></h2><ul><li><p><font color="#ef6d3b"><strong>代码比对看diff工具，支持内嵌git、svn等</strong></font></p></li><li><p>同类工具:</p></li></ul><h2 id="Wall-Engine"><a href="https://store.steampowered.com/app/431960/Wallpaper_Engine/">Wall Engine</a></h2><ul><li><p><font color="#ef6d3b"><strong>桌面壁纸大全，有好看的风景和小姐姐</strong></font></p></li><li><p>同类工具：360壁纸大全？</p></li></ul><h2 id="VirtualBox"><a href="https://www.virtualbox.org/">VirtualBox</a></h2><ul><li><p><font color="#ef6d3b"><strong>虚拟机，装Linux、MacOS必备</strong></font></p></li><li><p>同类工具：VMWare</p></li></ul><h2 id="XMind"><a href="https://www.xmind.net/">XMind</a></h2><ul><li><p><font color="#ef6d3b"><strong>思维导图</strong></font></p></li><li><p>同类工具：</p></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
+&lt;/p&gt;&lt;p&gt;这里记录了一些能够提高开发和日常使用效率的工具;&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;Listary&quot;&gt;&lt;a href=&quot;https:</summary>
+      
+    
+    
+    
+    <category term="工具" scheme="http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
+    
+    <category term="linux" scheme="http://luhao.wiki/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>用Python实现优美的命令行交互</title>
@@ -559,34 +589,6 @@ ps：以下都基本Markdown或html语法&lt;/p&gt;</summary>
     <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
     
     <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
-    
-    <category term="Algorithm" scheme="http://luhao.wiki/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Occlusion: 可见性与剔除</title>
-    <link href="http://luhao.wiki/posts/2AR5BC4/"/>
-    <id>http://luhao.wiki/posts/2AR5BC4/</id>
-    <published>2021-10-14T14:10:29.000Z</published>
-    <updated>2021-10-17T06:59:55.588Z</updated>
-    
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p><strong>光栅化</strong>决定如何将三维场景画到二维屏幕上；<br>但以什么样的顺序绘制？（<strong>Visibility</strong>）<br>是否所有的物体都要绘制到屏幕上? （<strong>Occlusion</strong>）<br></p></div><hr><h2 id="Occlusion">Occlusion</h2><ul><li><p><font color="#ef6d3b"><strong>一叶障目，不见泰山</strong></font></p></li><li><p>想象你的视线，远处的物体总被近处的遮挡，这就是Occlusion!</p></li><li><p>将“看不见”的物体剔除掉，是图形学优化的重要方向之一!</p></li></ul><hr><h2 id="Painter’s-Algorithm">Painter’s Algorithm</h2><ul><li><font color="#ef6d3b"><strong>画家算法：由远到近绘制物体，远处总被近处的遮挡；</strong></font><br>因此又称<em><strong>Depth-sort Algorithm</strong></em>;</li></ul><img src="http://www.luhao.wiki/images/painter.png" alt="" width="500"><ul><li><font color="#ef6d3b"><strong>算法分析</strong></font>:<ul><li>需要对n个物体排序: $O(nlogn)$的复杂度，对$n$面数;</li><li>不能处理多面重叠的情形;</li></ul></li></ul><img src="http://www.luhao.wiki/images/painter_bounds.png" alt="" width="150"><hr><h2 id="Z-Buffer">Z-Buffer</h2><ul><li>对于每个三角形面片中每个Pixel$(x,y,z$），不断取其$z_{min}$，并赋值位z-buffer上该pixel的值</li></ul><figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># init zbuffer for +∞</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (each tri T):</span><br><span class="line">    <span class="keyword">for</span> (each pixel (x,y,z) <span class="keyword">in</span> T):</span><br><span class="line">        <span class="keyword">if</span> (z &lt; zbuffer[x][y]):</span><br><span class="line">            framebuffer[x][y] = rgb; <span class="comment"># also as color buffer</span></span><br><span class="line">            zbuffer[x][y] = z; <span class="comment"># also as depth buffer</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># occlusion now!</span></span><br></pre></td></tr></tbody></table></figure><ul><li><font color="#ef6d3b"><strong>算法分析</strong></font>:<ul><li>省略了排序，因此是$O(n)$的复杂度，对$n$面数；</li><li>不能处理两个三角形，存在深度值z相同的pixel的情形；（虽然这种情况很少发生，因为是float32）</li></ul></li></ul><h3 id="什么是framebuffer与zbuffer">什么是<em>framebuffer</em>与<em>zbuffer</em>?</h3><ul><li>通俗的说，它们都是一块内存（<em><strong>RAM</strong></em>）;<ul><li><font color="#ef6d3b"><em><strong>framebuffer</strong></em></font>：存储rgb的颜色值</li><li><font color="#ef6d3b"><em><strong>z-buffer (depth-buffer)</strong></em></font>：存储深度信息</li></ul></li></ul><h3 id="图解z-buffer的生成过程">图解z-buffer的生成过程</h3><ul><li>可以看出，计算z-buffer就是一个不断取$min$的过程！<br><img src="http://www.luhao.wiki/images/zbuffer.png" alt="" width="500"></li></ul><div class="admonition todo"><p class="admonition-title">TODO</p><p>补充一张Nsight抓帧的frame-buffer, depth-buffer截图~</p></div><hr><h2 id="Futhermore…">Futhermore…</h2><ul><li><p>常用的culling方案</p></li><li><p>hlod</p></li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
-&lt;/p&gt;&lt;p&gt;&lt;strong&gt;光栅化&lt;/strong&gt;决定如何将三维场景画到二维屏幕上；&lt;br&gt;
-但以什么样的顺序绘制？（&lt;strong&gt;Visibility&lt;</summary>
-      
-    
-    
-    
-    <category term="Computer Graphics" scheme="http://luhao.wiki/categories/Computer-Graphics/"/>
-    
-    
-    <category term="Graphics" scheme="http://luhao.wiki/tags/Graphics/"/>
     
     <category term="Algorithm" scheme="http://luhao.wiki/tags/Algorithm/"/>
     
