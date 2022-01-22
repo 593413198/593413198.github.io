@@ -6,22 +6,20 @@
     <title>TypeScript Personal Manual | Luhao&#39;s Blog</title>
     
     
-        <meta name="keywords" content="Git,markdown" />
+        <meta name="keywords" content="TypeScript Personal Manual" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="什么是TypeScript?  在此之前，先看看什么是JavaScript? JavaScript 中文介绍 What is JavaScript?    Typed JavaScript at Any Scale. 添加了类型系统的 JavaScript，适用于任何规模的项目。  TypeScript基本特性？  Staticlly Typed 这是TypeScript区别于JavaScrip">
+    <meta name="description" content="Note什么是TypeScript?  在此之前，先看看什么是JavaScript? JavaScript 中文介绍 | What is JavaScript? TypeScript其实就是Typed JavaScript at Any Scale.    一、TypeScript基本特性    特性 解释 Coding     Staticlly Typed 静态类型 let foo &#x3D; 1;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TypeScript Personal Manual">
 <meta property="og:url" content="http://luhao.wiki/posts/2BHC26P/index.html">
 <meta property="og:site_name" content="Luhao&#39;s Blog">
-<meta property="og:description" content="什么是TypeScript?  在此之前，先看看什么是JavaScript? JavaScript 中文介绍 What is JavaScript?    Typed JavaScript at Any Scale. 添加了类型系统的 JavaScript，适用于任何规模的项目。  TypeScript基本特性？  Staticlly Typed 这是TypeScript区别于JavaScrip">
+<meta property="og:description" content="Note什么是TypeScript?  在此之前，先看看什么是JavaScript? JavaScript 中文介绍 | What is JavaScript? TypeScript其实就是Typed JavaScript at Any Scale.    一、TypeScript基本特性    特性 解释 Coding     Staticlly Typed 静态类型 let foo &#x3D; 1;">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://www.luhao.wiki/images/ts_icon.png">
 <meta property="article:published_time" content="2022-01-03T14:55:04.000Z">
-<meta property="article:modified_time" content="2022-01-22T16:27:31.204Z">
+<meta property="article:modified_time" content="2022-01-22T17:25:32.372Z">
 <meta property="article:author" content="Luhao">
-<meta property="article:tag" content="Git">
-<meta property="article:tag" content="markdown">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://www.luhao.wiki/images/ts_icon.png">
     
@@ -654,12 +652,7 @@
         <a class="article-category-link" href="/categories/TypeScript/">TypeScript</a>
     </div>
 
-                        <!-- 
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/Git/" rel="tag">Git</a>, <a class="tag-link-link" href="/tags/markdown/" rel="tag">markdown</a>
-    </div>
- -->
+                        <!--  -->
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
@@ -674,7 +667,7 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计281字 
+                            | 字数统计293字 
                           </span>
                           <!-- <span class="post-count"> -->
                             <!-- | 阅读时长1分钟  -->
@@ -698,59 +691,118 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFTypeScript"><span class="toc-number">1.</span> <span class="toc-text">什么是TypeScript?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TypeScript%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">TypeScript基本特性？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TypeScript%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-number">2.</span> <span class="toc-text">TypeScript开发环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TypeScript%E9%A1%B9%E7%9B%AE"><span class="toc-number">3.</span> <span class="toc-text">TypeScript项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%A5%BD%E7%9A%84TypeScript%E6%95%99%E7%A8%8B"><span class="toc-number">4.</span> <span class="toc-text">一些好的TypeScript教程</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">什么是TypeScript?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81TypeScript%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7"><span class="toc-number">2.</span> <span class="toc-text">一、TypeScript基本特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81import%E4%B8%8Eexport%E8%AF%AD%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">二、import与export语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F%EF%BC%9Avar%E3%80%81let%E3%80%81const"><span class="toc-number">4.</span> <span class="toc-text">三、声明变量：var、let、const</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%A3%B0%E6%98%8E%E5%87%BD%E6%95%B0-function"><span class="toc-number">5.</span> <span class="toc-text">四、声明函数: function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%A3%B0%E6%98%8E%E7%B1%BB-class"><span class="toc-number">6.</span> <span class="toc-text">五、声明类: class</span></a></li></ol>
                 </div>
             
         
         
-            <hr>
-<h2 id="什么是TypeScript">什么是TypeScript?</h2>
+            <div class="admonition note"><p class="admonition-title">Note</p><h2>什么是TypeScript?</h2>
 <ul>
-<li>在此之前，先看看什么是<strong>JavaScript</strong>?<br>
-<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Introduction">JavaScript 中文介绍</a><br>
+<li>在此之前，先看看什么是<strong>JavaScript</strong>?
+<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Introduction">JavaScript 中文介绍</a> |
 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript">What is JavaScript?</a></li>
+<li><strong>TypeScript</strong>其实就是<code>Typed JavaScript at Any Scale.</code></li>
+</ul>
+</div>
+<hr>
+<h2 id="一、TypeScript基本特性">一、TypeScript基本特性</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">特性</th>
+<th style="text-align:left">解释</th>
+<th style="text-align:left">Coding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><font color="#ef6d3b"><strong>Staticlly Typed</strong></font></td>
+<td style="text-align:left">静态类型</td>
+<td style="text-align:left"><code>let foo = 1; foo.split(' ');</code> =&gt; 编译报错</td>
+</tr>
+<tr>
+<td style="text-align:left"><font color="#ef6d3b"><strong>Weakly Typed</strong></font></td>
+<td style="text-align:left">允许隐式类型转化</td>
+<td style="text-align:left"><code>console.log(1 + '1');</code> =&gt; 打印11</td>
+</tr>
+<tr>
+<td style="text-align:left"><font color="#ef6d3b"><strong>Type Annotations</strong></font></td>
+<td style="text-align:left">允许类型注释</td>
+<td style="text-align:left"><code>let foo: string = '1';</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="二、import与export语法">二、import与export语法</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">使用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>import * as path from 'path</code></td>
+<td style="text-align:left">commonjs模块</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>import fs = require('fs')</code></td>
+<td style="text-align:left">commonjs模块, export=xx</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>const xx = require('xx)</code></td>
+<td style="text-align:left">无类型声明</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.atomist.com/typescript-imports/"><font size="3"><strong>Typescript: Imports</strong></font></a></li>
 </ul>
 <hr>
-<blockquote>
-<p>Typed JavaScript at Any Scale.<br>
-添加了类型系统的 JavaScript，适用于任何规模的项目。</p>
-</blockquote>
-<h3 id="TypeScript基本特性？">TypeScript基本特性？</h3>
+<h2 id="三、声明变量：var、let、const">三、声明变量：var、let、const</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">使用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><font color="#ef6d3b"><strong>var</strong></font></td>
+<td style="text-align:center">全局作用域</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color="#ef6d3b"><strong>let</strong></font></td>
+<td style="text-align:center">块作用域</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color="#ef6d3b"><strong>const</strong></font></td>
+<td style="text-align:center">块作用域、只读</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li><font color="#ef6d3b"><strong>Staticlly Typed</strong></font><br>
-这是TypeScript区别于JavaScript的最大特点，TS在编译阶段，便确认每个变量的类型；<br>
-下面这段代码，在编译阶段就会报错：</li>
-</ul>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo = <span class="number">1</span>;</span><br><span class="line">foo.split(<span class="string">' '</span>);</span><br><span class="line"><span class="comment">// 但对于JavaScript，上述代码只有运行时才报错；</span></span><br></pre></td></tr></tbody></table></figure>
-<ul>
-<li><font color="#ef6d3b"><strong>Weakly Typed</strong></font><br>
-允许存在隐式类型转化，如下代码是允许的：</li>
-</ul>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> + <span class="string">'1'</span>);</span><br><span class="line"><span class="comment">// 终端打印出'11'</span></span><br></pre></td></tr></tbody></table></figure>
-<ul>
-<li>
-<p><font color="#ef6d3b"><strong>Compatibility with JavaScript</strong></font><br>
-严格按照<code>ECMAScript</code>标准，因此完全兼容JavaScript</p>
-</li>
-<li>
-<p><font color="#ef6d3b"><strong>Type annotations</strong></font><br>
-允许使用类型标注；<br>
-动态类型写起来很爽，Debug起来火葬场！(<code>python2</code>)</p>
-</li>
-</ul>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo: number = <span class="number">1</span>;</span><br><span class="line"><span class="comment">// 定义一个number类型的变量</span></span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<h2 id="TypeScript开发环境">TypeScript开发环境</h2>
-<p><code>npm install -g typescript</code>: 安装TypeScript<br>
-<code>tsc demo.ts</code>: 编译一个ts文件, 得到一个.js文件<br>
-<code>node demo.js</code>: 编译生成的js文件</p>
-<hr>
-<h2 id="TypeScript项目">TypeScript项目</h2>
-<ul>
-<li>这是我开发的一个VScode插件： <a target="_blank" rel="noopener" href="https://github.com/593413198/VScode-Markdown-Snippet"><strong>VScode-Markdown-Snippet</strong></a></li>
+<li><a target="_blank" rel="noopener" href="https://www.tutorialsteacher.com/typescript/typescript-variable"><font size="3"><strong>Typescript: var, let, const</strong></font></a></li>
 </ul>
 <hr>
-<h2 id="一些好的TypeScript教程">一些好的TypeScript教程</h2>
+<h2 id="四、声明函数-function">四、声明函数: function</h2>
+<ul>
+<li>下面是一个求和函数的示例：</li>
+</ul>
+<figure class="highlight ts"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a: <span class="built_in">number</span>, b: <span class="built_in">number</span></span>): <span class="title">number</span> </span>{</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>下面也是一个合法的函数声明:<br>
+<code>let add = function(a: number, b: number): number {...}</code></li>
+</ul>
+<hr>
+<h2 id="五、声明类-class">五、声明类: class</h2>
+<ul>
+<li>下面是一个类声明的示例：</li>
+</ul>
+<figure class="highlight ts"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>{</span><br><span class="line">  <span class="comment">// 成员变量, 可用readonly, 不可用const</span></span><br><span class="line">  <span class="attr">x</span>: <span class="built_in">number</span>;</span><br><span class="line">  y: <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 构造函数</span></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">x = <span class="number">0</span>, y = <span class="number">0</span></span>)</span> {</span><br><span class="line">    <span class="built_in">this</span>.x = x;</span><br><span class="line">    <span class="built_in">this</span>.y = y;</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 成员方法</span></span><br><span class="line">  getScale(): <span class="built_in">number</span> {</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.x + <span class="built_in">this</span>.y;</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实例化一个类</span></span><br><span class="line"><span class="keyword">var</span> point = <span class="keyword">new</span> Point(<span class="number">1</span>, <span class="number">2</span>)</span><br></pre></td></tr></tbody></table></figure>
+<hr>
 <blockquote>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://www.typescriptlang.org/">TypeScript官网</a></li>
