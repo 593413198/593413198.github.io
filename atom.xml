@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2021-12-17T14:14:33.257Z</updated>
+  <updated>2022-01-22T16:27:31.204Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>TypeScript Personal Manual</title>
+    <link href="http://luhao.wiki/posts/2BHC26P/"/>
+    <id>http://luhao.wiki/posts/2BHC26P/</id>
+    <published>2022-01-03T14:55:04.000Z</published>
+    <updated>2022-01-22T16:27:31.204Z</updated>
+    
+    <content type="html"><![CDATA[<hr><h2 id="什么是TypeScript">什么是TypeScript?</h2><ul><li>在此之前，先看看什么是<strong>JavaScript</strong>?<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Introduction">JavaScript 中文介绍</a><br><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript">What is JavaScript?</a></li></ul><hr><blockquote><p>Typed JavaScript at Any Scale.<br>添加了类型系统的 JavaScript，适用于任何规模的项目。</p></blockquote><h3 id="TypeScript基本特性？">TypeScript基本特性？</h3><ul><li><font color="#ef6d3b"><strong>Staticlly Typed</strong></font><br>这是TypeScript区别于JavaScript的最大特点，TS在编译阶段，便确认每个变量的类型；<br>下面这段代码，在编译阶段就会报错：</li></ul><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo = <span class="number">1</span>;</span><br><span class="line">foo.split(<span class="string">' '</span>);</span><br><span class="line"><span class="comment">// 但对于JavaScript，上述代码只有运行时才报错；</span></span><br></pre></td></tr></tbody></table></figure><ul><li><font color="#ef6d3b"><strong>Weakly Typed</strong></font><br>允许存在隐式类型转化，如下代码是允许的：</li></ul><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> + <span class="string">'1'</span>);</span><br><span class="line"><span class="comment">// 终端打印出'11'</span></span><br></pre></td></tr></tbody></table></figure><ul><li><p><font color="#ef6d3b"><strong>Compatibility with JavaScript</strong></font><br>严格按照<code>ECMAScript</code>标准，因此完全兼容JavaScript</p></li><li><p><font color="#ef6d3b"><strong>Type annotations</strong></font><br>允许使用类型标注；<br>动态类型写起来很爽，Debug起来火葬场！(<code>python2</code>)</p></li></ul><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo: number = <span class="number">1</span>;</span><br><span class="line"><span class="comment">// 定义一个number类型的变量</span></span><br></pre></td></tr></tbody></table></figure><hr><h2 id="TypeScript开发环境">TypeScript开发环境</h2><p><code>npm install -g typescript</code>: 安装TypeScript<br><code>tsc demo.ts</code>: 编译一个ts文件, 得到一个.js文件<br><code>node demo.js</code>: 编译生成的js文件</p><hr><h2 id="TypeScript项目">TypeScript项目</h2><ul><li>这是我开发的一个VScode插件： <a href="https://github.com/593413198/VScode-Markdown-Snippet"><strong>VScode-Markdown-Snippet</strong></a></li></ul><hr><h2 id="一些好的TypeScript教程">一些好的TypeScript教程</h2><blockquote><ul><li><a href="https://www.typescriptlang.org/">TypeScript官网</a></li><li><a href="https://ts.xcatliu.com/">一个中文的TypeScript入门教程</a></li></ul></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;hr&gt;
+&lt;h2 id=&quot;什么是TypeScript&quot;&gt;什么是TypeScript?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;在此之前，先看看什么是&lt;strong&gt;JavaScript&lt;/strong&gt;?&lt;br&gt;
+&lt;a href=&quot;https://developer.mozilla.org/</summary>
+      
+    
+    
+    
+    <category term="TypeScript" scheme="http://luhao.wiki/categories/TypeScript/"/>
+    
+    
+    <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
+    
+    <category term="markdown" scheme="http://luhao.wiki/tags/markdown/"/>
+    
+  </entry>
   
   <entry>
     <title>用Python实现优美的命令行交互</title>
@@ -557,38 +587,6 @@ ps：以下都基本Markdown或html语法&lt;/p&gt;</summary>
     
     
     <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
-    
-    <category term="Algorithm" scheme="http://luhao.wiki/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Algorithm: 算法大纲</title>
-    <link href="http://luhao.wiki/posts/2Y252XS/"/>
-    <id>http://luhao.wiki/posts/2Y252XS/</id>
-    <published>2021-10-15T14:00:14.000Z</published>
-    <updated>2021-10-22T18:44:06.679Z</updated>
-    
-    <content type="html"><![CDATA[<div class="admonition warning"><p class="admonition-title">提示</p><p>常见算法的原理与实现!<br>这是大学时写的...</p></div><h2 id="常用算法的C-Python实现">常用算法的C++/Python实现</h2><p><strong><span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> <a href="https://github.com/593413198/Algorithm">Github</a></strong></p><p><strong>开始时间：</strong><br><code>2019/4/30 (大学)</code></p><p><strong>搭建环境：</strong><br><code>Ubuntu 18.04.1  gcc 7.3.0  python 3.6</code><br><code>Now: Windows MinGW</code></p><p><strong>目录如下：</strong></p><ul><li><p><a href="https://www.luhao.wiki/posts/2X2CDR4/">Sort Algorithm</a></p><ul><li>Bubble Sort</li><li>Insert Sort</li><li>Select Sort</li><li>Merge Sort ★</li><li>Quick Sort ★</li></ul></li><li><p><a href="https://www.luhao.wiki/posts/1RXFW87/">String Matching</a></p><ul><li>Robin-Karp</li><li>KMP ★</li><li>BM</li></ul></li><li><p>Backtrack</p><ul><li>8-Queens</li><li>01-Bag</li><li>TSP ★</li></ul></li><li><p>Graph</p><ul><li>graph_matrix</li><li>graph_link</li><li>BFS ★</li><li>DFS ★</li></ul></li></ul><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href="http://www.btechsmartclass.com/data_structures/introduction-to-algorithms.html">Algorithms</a></li><li><a href="https://www.luhao.wiki/posts/2Y252XS/">算法导论（无链接）</a></li></ul></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;admonition warning&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;提示
-&lt;/p&gt;&lt;p&gt;常见算法的原理与实现!&lt;br&gt;
-这是大学时写的...&lt;/p&gt;
-&lt;/div&gt;
-&lt;h2 id=&quot;常用算法的C-Python实现&quot;&gt;常用算法的C+</summary>
-      
-    
-    
-    
-    <category term="Algorithm" scheme="http://luhao.wiki/categories/Algorithm/"/>
-    
-    
-    <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
-    
-    <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
     
     <category term="Algorithm" scheme="http://luhao.wiki/tags/Algorithm/"/>
     
