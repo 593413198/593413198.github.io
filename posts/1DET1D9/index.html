@@ -9,16 +9,16 @@
         <meta name="keywords" content="Git" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="概要 游戏开发离不开实时调试与debug，imgui提供了强大的功能！   Github Page 🔥 Dear ImgUI  便于移植，仅依赖于cpp和h头文件 跨平台，gl&#x2F;vulkan，pc&#x2F;android&#x2F;ios都支持 Demo强大，容易上手    Bug待修  Bug Assimp加载模型后imgui就不显示了  Garen Master复现： 当Model中Bind ubo Buff">
+    <meta name="description" content="概要 游戏开发离不开实时调试与debug，imgui提供了强大的功能！   Github Page 🔥 Dear ImgUI  便于移植，仅依赖于cpp和h头文件 跨平台，gl&#x2F;vulkan，pc&#x2F;android&#x2F;ios都支持 Demo强大，容易上手    Bug待修  Bug Assimp加载模型后imgui就不显示了    Garen Master复现： 当Model中Bind ubo Bu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ImGui: 便于调试的UI库">
 <meta property="og:url" content="http://luhao.wiki/posts/1DET1D9/index.html">
 <meta property="og:site_name" content="Luhao&#39;s Blog">
-<meta property="og:description" content="概要 游戏开发离不开实时调试与debug，imgui提供了强大的功能！   Github Page 🔥 Dear ImgUI  便于移植，仅依赖于cpp和h头文件 跨平台，gl&#x2F;vulkan，pc&#x2F;android&#x2F;ios都支持 Demo强大，容易上手    Bug待修  Bug Assimp加载模型后imgui就不显示了  Garen Master复现： 当Model中Bind ubo Buff">
+<meta property="og:description" content="概要 游戏开发离不开实时调试与debug，imgui提供了强大的功能！   Github Page 🔥 Dear ImgUI  便于移植，仅依赖于cpp和h头文件 跨平台，gl&#x2F;vulkan，pc&#x2F;android&#x2F;ios都支持 Demo强大，容易上手    Bug待修  Bug Assimp加载模型后imgui就不显示了    Garen Master复现： 当Model中Bind ubo Bu">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://www.luhao.wiki/images/imgui+.png">
 <meta property="article:published_time" content="2021-11-28T17:19:24.000Z">
-<meta property="article:modified_time" content="2021-12-07T15:12:14.458Z">
+<meta property="article:modified_time" content="2022-04-23T15:45:21.228Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
@@ -713,17 +713,21 @@
 <li>跨平台，gl/vulkan，pc/android/ios都支持</li>
 <li>Demo强大，容易上手</li>
 </ul>
-<img src="http://www.luhao.wiki/images/imgui.png" alt="" width="700">
+<img src="http://www.luhao.wiki/images/imgui.png" alt="" width="">
 <hr>
 <h2 id="Bug待修">Bug待修</h2>
 <div class="admonition todo"><p class="admonition-title"> Bug
 </p><p>Assimp加载模型后imgui就不显示了</p>
 </div>
+<ul>
+<li>
 <p>Garen Master复现：<br>
 当Model中Bind ubo Buffer后，ImgUI的render就无法显示，原因大概是渲染次序的问题？<br>
 我们希望UI是在最后 一个pass绘制的！</p>
-<ul>
-<li>git rev.</li>
+</li>
+<li>
+<p>git rev.</p>
+</li>
 </ul>
 <figure class="highlight bat"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SHA-<span class="number">1</span>: <span class="number">3</span>b2342a12883fb2ab5a5c0898b32cdf1ac621112</span><br><span class="line"></span><br><span class="line">* MOD：这是一个错误版本</span><br><span class="line">imgUI+加载模型后，会显示不出imgui，不知道咋修</span><br></pre></td></tr></tbody></table></figure>
 
