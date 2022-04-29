@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2022-04-29T17:12:13.798Z</updated>
+  <updated>2022-04-25T07:34:58.659Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -15,33 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>借助Shadowrocket搭建VPN</title>
-    <link href="http://luhao.wiki/posts/21MYSRN/"/>
-    <id>http://luhao.wiki/posts/21MYSRN/</id>
-    <published>2022-04-29T17:12:13.000Z</published>
-    <updated>2022-04-29T17:12:13.798Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;参考资料&quot;&gt;参考资料&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-</summary>
-      
-    
-    
-    
-    
-  </entry>
   
   <entry>
     <title>《直击本质》书摘</title>
@@ -65,6 +38,34 @@
     
     <category term="随笔" scheme="http://luhao.wiki/categories/%E9%9A%8F%E7%AC%94/"/>
     
+    
+  </entry>
+  
+  <entry>
+    <title>VPN搭建一条龙</title>
+    <link href="http://luhao.wiki/posts/2R7AP5Z/"/>
+    <id>http://luhao.wiki/posts/2R7AP5Z/</id>
+    <published>2022-03-12T17:28:31.000Z</published>
+    <updated>2022-04-29T17:46:32.466Z</updated>
+    
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>Windows/Mac/IOS/Android通用的VPN搭建教程，收费的<br></p></div><hr><h3 id="1-Shadowrocket安装">1. Shadowrocket安装</h3><ul><li>美区<em>App Store</em>利用 <font color="#ef6d3b"><strong>$2.99</strong></font> 购买 shadowrocket app</li></ul><p><a href="https://shadowsockshelp.github.io/Shadowsocks/apple-id.html"><span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 注册美区 Apple ID 帐号的终极指南</a><br><a href=""></a></p><ul><li>美区app如何充值？移步万能的淘宝，搜索AppStore美区礼品卡，买$3的就行</li></ul><h3 id="2-shadowsocket配置">2. shadowsocket配置</h3><ul><li>认准这个网站 <a href="https://v2ww.com/#/dashboard"><strong>https://v2ww.com</strong></a></li></ul><p>里面有详细的Shadowrocket配置教程，和梯子价格清单，<span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>建议购买月<font color="#ef6d3b"><strong>￥9.9</strong></font> 的10GB套餐</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
+&lt;/p&gt;&lt;p&gt;Windows/Mac/IOS/Android通用的VPN搭建教程，收费的&lt;br&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;1-Shado</summary>
+      
+    
+    
+    
+    <category term="工具" scheme="http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
     
   </entry>
   

@@ -322,7 +322,7 @@ code {
 .article-entry dl,
 .widget dl {
   margin: 0 20px;
-  line-height: 1.6em;
+  line-height: 1.8em;
 }
 .article-entry ul ul,
 .widget ul ul,
@@ -567,7 +567,7 @@ code {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   height: auto !important;
-  line-height: 1.6em;
+  line-height: 1.8em;
   outline: none !important;
   background: none !important;
   font: 16px "open sans", "Helvetica Neue", "Microsoft Yahei", Helvetica, Arial, sans-serif;
@@ -918,7 +918,7 @@ div.article-meta-button a:hover {
 .article-entry {
   color: #565a5f;
   padding: 0 20px;
-  line-height: 1.6em;
+  line-height: 1.8em;
 }
 .article-entry:before,
 .article-entry:after {
@@ -930,8 +930,8 @@ div.article-meta-button a:hover {
 }
 .article-entry p,
 .article-entry table {
-  line-height: 1.6em;
-  margin: 1.6em 0;
+  line-height: 1.8em;
+  margin: 1.8em 0;
 }
 .article-entry h1,
 .article-entry h2,
@@ -989,8 +989,8 @@ div.article-meta-button a:hover {
 .article-entry ul,
 .article-entry ol,
 .article-entry dl {
-  margin-top: 1.6em;
-  margin-bottom: 1.6em;
+  margin-top: 1.8em;
+  margin-bottom: 1.8em;
 }
 .article-entry ul li.task-list,
 .article-entry ol li.task-list,
@@ -1043,7 +1043,7 @@ div.article-meta-button a:hover {
 }
 .article-entry blockquote footer {
   font-size: 16px;
-  margin: 1.6em 0;
+  margin: 1.8em 0;
   font-family: "open sans", "Helvetica Neue", "Microsoft Yahei", Helvetica, Arial, sans-serif;
 }
 .article-entry blockquote footer cite:before {
@@ -1108,9 +1108,9 @@ div .article-more-link {
 }
 .article-footer {
   font-size: 0.85em;
-  line-height: 1.6em;
+  line-height: 1.8em;
   border-top: 1px solid #dfe1e2;
-  padding-top: 1.6em;
+  padding-top: 1.8em;
   margin: 0 20px 20px;
 }
 .article-footer:before,
@@ -1222,7 +1222,7 @@ div .article-more-link {
   font-size: 1.5em;
   margin-top: 0.5em;
   color: #565a5f;
-  line-height: 1.6em;
+  line-height: 1.8em;
 }
 .article-share-box {
   position: absolute;
@@ -1317,7 +1317,7 @@ div .article-more-link {
   background: #000;
   position: relative;
   text-align: center;
-  margin: 1.6em 0;
+  margin: 1.8em 0;
 }
 .article-gallery .gallery-item {
   display: none;
@@ -1767,7 +1767,7 @@ ol.toc {
   text-decoration: underline;
 }
 #footer-info {
-  line-height: 1.6em;
+  line-height: 1.8em;
   font-size: 0.85em;
 }
 @media screen and (min-width: 1200px) {
@@ -1787,7 +1787,7 @@ ol.toc {
   }
 }
 .widget {
-  line-height: 1.6em;
+  line-height: 1.8em;
   word-wrap: break-word;
   font-size: 0.9em;
 }
@@ -2275,7 +2275,7 @@ ol.toc {
   padding: 15px 20px;
   font-size: 16px;
   font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
-  line-height: 25.6px;
+  line-height: 28.8px;
 }
 .highlight table {
   margin: 0;
@@ -2293,10 +2293,10 @@ ol.toc {
   padding-right: 20px;
 }
 .article-entry .highlight {
-  margin: 1.6em 0;
+  margin: 0.2em 0;
 }
 .article-entry .highlight .line {
-  height: 1.6em;
+  height: 1.4em;
 }
 .highlight {
   color: #000;
