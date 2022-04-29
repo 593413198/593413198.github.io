@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2022-04-25T07:34:58.659Z</updated>
+  <updated>2022-04-29T17:12:13.798Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>借助Shadowrocket搭建VPN</title>
+    <link href="http://luhao.wiki/posts/21MYSRN/"/>
+    <id>http://luhao.wiki/posts/21MYSRN/</id>
+    <published>2022-04-29T17:12:13.000Z</published>
+    <updated>2022-04-29T17:12:13.798Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;参考资料&quot;&gt;参考资料&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>《直击本质》书摘</title>
@@ -46,9 +73,9 @@
     <link href="http://luhao.wiki/posts/160HQCD/"/>
     <id>http://luhao.wiki/posts/160HQCD/</id>
     <published>2022-02-20T14:21:16.000Z</published>
-    <updated>2022-04-29T16:53:06.668Z</updated>
+    <updated>2022-04-29T17:11:04.159Z</updated>
     
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>方舟:生存进化是一款开放世界游戏；<br><a href="https://www.zhihu.com/question/31049440">如何评价游戏「方舟：生存进化」(ARK: Survival Evolved) ？</a></p></div><hr><h2 id="DLC介绍">DLC介绍</h2><ul><li><p>游戏包含付费DLC和免费DLC, 按照时间顺序:</p></li><li><p>付费DLC</p><ul><li><strong>孤岛（The Island）★</strong></li><li>焦土（Scorched Earth）</li><li>畸变（Aberration）</li><li>灭绝（Extinction）</li><li>创世纪一二（Genesis）</li></ul></li><li><p>免费DLC</p><ul><li>中心岛（The Center）</li><li><strong>仙境（Ragnarok）★</strong></li><li>瓦尔盖罗（Valguero）</li><li>水晶岛（Crystal Isies）</li><li>迷失岛（Lost Island）</li></ul></li></ul><h2 id="实用MOD">实用MOD</h2><table><thead><tr><th style="text-align:center">MODs</th><th style="text-align:center">作用</th></tr></thead><tbody><tr><td style="text-align:center">Awesome SpyGlass</td><td style="text-align:center">A+镜，观察恐龙的等级、晕眩度、加点等</td></tr><tr><td style="text-align:center">Ultra Stacks</td><td style="text-align:center">可以堆叠物品，节省背包的容量！</td></tr><tr><td style="text-align:center">Automatic Death Recovery</td><td style="text-align:center">死亡物品不掉路！</td></tr><tr><td style="text-align:center">Pet Finder</td><td style="text-align:center">恐龙丢了用这个找！</td></tr><tr><td style="text-align:center">Kraken’s Better Dinos</td><td style="text-align:center">修改刷新恐龙的等级、比例</td></tr><tr><td style="text-align:center">Upgrade Station</td><td style="text-align:center">可以升级鞍具、工具的工作台！</td></tr><tr><td style="text-align:center">Baby Premium Care</td><td style="text-align:center">100%留痕药、飞龙奶等！</td></tr></tbody></table><h2 id="游戏配置（备忘）">游戏配置（备忘）</h2><img src="http://www.luhao.wiki/images/ark_setting.png" alt="" width=""><h2 id="游戏资源推荐">游戏资源推荐</h2><ul><li><a href="https://www.bilibili.com/video/BV1KK4y1Y7rL?spm_id_from=333.337.search-card.all.click">B站 老司机hot《方舟生存进化》</a></li><li><a href="https://ark.fandom.com/wiki/ARK_Survival_Evolved_Wiki">ARK Wiki</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>方舟:生存进化是一款开放世界游戏；<br><a href="https://www.zhihu.com/question/31049440">如何评价游戏「方舟：生存进化」(ARK: Survival Evolved) ？</a></p></div><hr><h2 id="说几句">说几句</h2><p>这个游戏晕死我了，两个月来玩了200小时，主要是孤岛和焦土DLC。<br>基本玩两小时就恶心发晕，我就是个菜鸡。<br>玩了100小时才知道这游戏有主线和BOSS，不过感觉没啥意思。<br>觉得最大乐趣是探图、建家、抓恐龙，并乐此不疲，像是虚拟世界的一个家园，一片净土吧…</p><h2 id="DLC介绍">DLC介绍</h2><ul><li><p>游戏包含付费DLC和免费DLC, 按照时间顺序:</p></li><li><p>付费DLC</p><ul><li><strong>孤岛（The Island）★</strong></li><li>焦土（Scorched Earth）</li><li>畸变（Aberration）</li><li>灭绝（Extinction）</li><li>创世纪一二（Genesis）</li></ul></li><li><p>免费DLC</p><ul><li>中心岛（The Center）</li><li><strong>仙境（Ragnarok）★</strong></li><li>瓦尔盖罗（Valguero）</li><li>水晶岛（Crystal Isies）</li><li>迷失岛（Lost Island）</li></ul></li></ul><h2 id="实用MOD">实用MOD</h2><table><thead><tr><th style="text-align:center">MODs</th><th style="text-align:left">作用</th></tr></thead><tbody><tr><td style="text-align:center"><strong>Awesome SpyGlass</strong></td><td style="text-align:left">A+镜，观察恐龙的等级、晕眩度、加点等</td></tr><tr><td style="text-align:center"><strong>Ultra Stacks</strong></td><td style="text-align:left">可以堆叠物品，节省背包的容量！</td></tr><tr><td style="text-align:center"><strong>Automatic Death Recovery</strong></td><td style="text-align:left">死亡物品不掉路！</td></tr><tr><td style="text-align:center"><strong>Pet Finder</strong></td><td style="text-align:left">恐龙丢了用这个找！</td></tr><tr><td style="text-align:center"><strong>Kraken’s Better Dinos</strong></td><td style="text-align:left">修改刷新恐龙的等级、比例</td></tr><tr><td style="text-align:center"><strong>Upgrade Station</strong></td><td style="text-align:left">可以升级鞍具、工具的工作台！</td></tr><tr><td style="text-align:center"><strong>Baby Premium Care</strong></td><td style="text-align:left">100%留痕药、飞龙奶等！</td></tr></tbody></table><h2 id="游戏配置（备忘）">游戏配置（备忘）</h2><img src="http://www.luhao.wiki/images/ark_setting.png" alt="" width=""><h2 id="游戏资源推荐">游戏资源推荐</h2><ul><li><a href="https://www.bilibili.com/video/BV1KK4y1Y7rL?spm_id_from=333.337.search-card.all.click">B站 老司机hot《方舟生存进化》</a></li><li><a href="https://ark.fandom.com/wiki/ARK_Survival_Evolved_Wiki">ARK Wiki</a></li></ul>]]></content>
     
     
       
@@ -538,39 +565,6 @@ ps：以下都基本Markdown或html语法&lt;/p&gt;</summary>
     
     
     <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Garen: 基于OpenGL做一款引擎</title>
-    <link href="http://luhao.wiki/posts/1KH1TD4/"/>
-    <id>http://luhao.wiki/posts/1KH1TD4/</id>
-    <published>2021-10-17T14:17:10.000Z</published>
-    <updated>2021-12-07T15:39:54.415Z</updated>
-    
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>我TM想做一款游戏引擎！</p></div><hr><h2 id="Introduction">Introduction</h2><ul><li><p>Github page: <a href="https://github.com/593413198/Garen"><span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span><strong>Garen</strong></a></p></li><li><p>基于OpenGL开发的一个<s>微型引擎</s>，取名自LOL中的盖伦，希望其<font color="#ef6d3b"><strong>simple but strong</strong></font>.</p></li><li><p>Maybe <font color="#ef6d3b"><strong>重复造轮子</strong></font>，因为这也是我提高C++ Coding的重要方式.</p></li></ul><hr><h2 id="Dependence">Dependence</h2><ul><li><a href="https://www.glfw.org/download.html"><em><strong>GLFW</strong></em></a></li><li><a href="https://glad.dav1d.de/"><em><strong>glad</strong></em></a></li></ul><hr><h2 id="release">release</h2><h3 id="v1-0-0"><a href="https://github.com/593413198/Garen/releases/tag/v1.0.0">v1.0.0</a></h3><ul><li>main loop of engine</li><li>draw: 绘制基本图形</li><li>input: 输入</li><li>gvector: 矩阵库</li></ul><h3 id="v1-0-1"><a href="https://github.com/593413198/Garen/releases/tag/v1.0.1">v1.0.1</a></h3><ul><li>gshader: 读取和编译shader</li><li>./shader: 存放vs, ps</li></ul><h3 id="v-1-0-2">v.1.0.2</h3><ul><li>texture: 纹理贴图的支持</li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
-&lt;/p&gt;&lt;p&gt;我TM想做一款游戏引擎！&lt;/p&gt;
-&lt;/div&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;Introduction&quot;&gt;Introduction&lt;/h2&gt;
-&lt;ul&gt;</summary>
-      
-    
-    
-    
-    <category term="OpenGL" scheme="http://luhao.wiki/categories/OpenGL/"/>
-    
-    
-    <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
-    
-    <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
-    
-    <category term="OpenGL" scheme="http://luhao.wiki/tags/OpenGL/"/>
     
   </entry>
   
