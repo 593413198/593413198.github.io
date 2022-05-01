@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2022-05-01T15:39:48.474Z</updated>
+  <updated>2022-05-01T15:46:15.005Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://luhao.wiki/posts/26K20JR/"/>
     <id>http://luhao.wiki/posts/26K20JR/</id>
     <published>2022-05-01T15:37:08.000Z</published>
-    <updated>2022-05-01T15:39:48.474Z</updated>
+    <updated>2022-05-01T15:46:15.005Z</updated>
     
     <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="c733ca1e473b5d261dcd58de1ee412caf5bf96b763a2c1941099c32234d48c68">b3dc07a81f6459d120ce338ccca55046a1921bf861d8229323be8f628e362c65</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
     
