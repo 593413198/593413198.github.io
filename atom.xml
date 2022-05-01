@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2022-05-01T15:40:08.208Z</updated>
+  <updated>2022-05-01T15:39:48.474Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -15,23 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>2022年5月1日</title>
-    <link href="http://luhao.wiki/posts/26K20JR/"/>
-    <id>http://luhao.wiki/posts/26K20JR/</id>
-    <published>2022-05-01T15:37:08.000Z</published>
-    <updated>2022-05-01T15:40:08.208Z</updated>
-    
-    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="c733ca1e473b5d261dcd58de1ee412caf5bf96b763a2c1941099c32234d48c68">b3dc07a81f6459d120ce338ccca55046a1921bf861d8229323be8f628e362c65</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-    
-    
-    <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
-    
-    
-    
-    
-  </entry>
   
   <entry>
     <title>2022年5月1日</title>
@@ -550,6 +533,35 @@ ps：以下都基本Markdown或html语法&lt;/p&gt;</summary>
     <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
     
     <category term="OpenGL" scheme="http://luhao.wiki/tags/OpenGL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git: 坑爹问题汇总</title>
+    <link href="http://luhao.wiki/posts/X5JWAT/"/>
+    <id>http://luhao.wiki/posts/X5JWAT/</id>
+    <published>2021-10-19T15:47:07.000Z</published>
+    <updated>2021-12-07T15:27:34.597Z</updated>
+    
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p><code>Git</code>使用指南；<br>汇总了使用<code>Git</code>时遇到的一些坑!</p></div><hr><h2 id="Git本地操作">Git本地操作</h2><ul><li><span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 这篇文章讲得非常棒：<a href="https://labuladong.gitee.io/algo/4/33/147/"><strong>我用四个命令概括了 GIT 的所有套路</strong></a></li></ul><p>Git本质是：<strong>三个分支之间的状态转移与维护</strong>：</p><ul><li><font color="#ef6d3b"><strong>work dir</strong></font>：自己的工作目录</li><li><font color="#ef6d3b"><strong>stage</strong></font>：本地暂存区（缓冲）</li><li><font color="#ef6d3b"><strong>history</strong></font>：本地历史区（永久保存）</li></ul><img src="http://www.luhao.wiki/images/git.png" alt="图片来源自网络" width="500"><h3 id="常用Git操作">常用Git操作</h3><ul><li><span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> <a href="https://git-scm.com/docs/git"><strong>Git Manual</strong></a></li></ul><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 直接看文档吧</span><br><span class="line">git [--version] [--help] [-C &lt;path&gt;] [-c &lt;name&gt;=&lt;value&gt;]</span><br><span class="line">    [--exec-path[=&lt;path&gt;]] [--html-path] [--man-path] [--info-path]</span><br><span class="line">    [-p|--paginate|-P|--no-pager] [--no-replace-objects] [--bare]</span><br><span class="line">    [--git-dir=&lt;path&gt;] [--work-tree=&lt;path&gt;] [--namespace=&lt;name&gt;]</span><br><span class="line">    [--super-prefix=&lt;path&gt;] [--config-env=&lt;name&gt;=&lt;envvar&gt;]</span><br><span class="line">    &lt;command&gt; [&lt;args&gt;]</span><br></pre></td></tr></tbody></table></figure><hr><h2 id="Git常见问题">Git常见问题</h2><ul><li><p>fatal: unable to access <a href="https://github.com/xxx.git/:Failed">https://github.com/xxx.git/:Failed</a> to connect to <a href="http://github.com">github.com</a> port 443: Timed out</p><ul><li><a href="https://stackoverflow.com/questions/18356502/github-failed-to-connect-to-github-443-windows-failed-to-connect-to-github">stackoverflow</a></li><li>尝试 <code>git config --global --unset https.proxy</code></li></ul></li><li><p>Git Error: OpenSSL SSL_read: Connection was reset, errno 10054</p><ul><li>…</li></ul></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
+&lt;/p&gt;&lt;p&gt;&lt;code&gt;Git&lt;/code&gt;使用指南；&lt;br&gt;
+汇总了使用&lt;code&gt;Git&lt;/code&gt;时遇到的一些坑!&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;</summary>
+      
+    
+    
+    
+    <category term="工具" scheme="http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
     
   </entry>
   
