@@ -235,9 +235,9 @@
     <category term="文档" scheme="http://luhao.wiki/categories/%E6%96%87%E6%A1%A3/"/>
     
     
-    <category term="linux" scheme="http://luhao.wiki/tags/linux/"/>
-    
     <category term="Git" scheme="http://luhao.wiki/tags/Git/"/>
+    
+    <category term="linux" scheme="http://luhao.wiki/tags/linux/"/>
     
   </entry>
   
