@@ -3,25 +3,21 @@
 <head>
     <meta charset="utf-8">
     
-    <title>TypeScript Personal Manual | Luhao&#39;s Blog</title><meta name="robots" content="noindex">
+    <title>Luhao&#39;s Blog</title>
     
     
-        <meta name="keywords" content="TypeScript Personal Manual" />
+        <meta name="keywords" content="Luhao&#39;s Blog" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Note什么是TypeScript?  在此之前，先看看什么是JavaScript? JavaScript 中文介绍 | What is JavaScript? TypeScript其实就是Typed JavaScript at Any Scale.    一、TypeScript基本特性    特性 解释 Coding     Staticlly Typed 静态类型 let foo &#x3D; 1;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="TypeScript Personal Manual">
-<meta property="og:url" content="http://luhao.wiki/posts/2BHC26P/index.html">
+    <meta name="description" content="Just for Learing">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Luhao&#39;s Blog">
+<meta property="og:url" content="http://luhao.wiki/page/5/index.html">
 <meta property="og:site_name" content="Luhao&#39;s Blog">
-<meta property="og:description" content="Note什么是TypeScript?  在此之前，先看看什么是JavaScript? JavaScript 中文介绍 | What is JavaScript? TypeScript其实就是Typed JavaScript at Any Scale.    一、TypeScript基本特性    特性 解释 Coding     Staticlly Typed 静态类型 let foo &#x3D; 1;">
+<meta property="og:description" content="Just for Learing">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://www.luhao.wiki/images/ts_icon.png">
-<meta property="article:published_time" content="2022-01-03T14:55:04.000Z">
-<meta property="article:modified_time" content="2022-05-01T15:28:41.907Z">
 <meta property="article:author" content="Luhao">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.luhao.wiki/images/ts_icon.png">
     
 
     
@@ -648,7 +644,8 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="post-TypeScript/TypeScript-Personal-Manual" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main">
+        <article id="post-文档/博客开发计划" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -658,15 +655,20 @@
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        
+        <a class="article-category-link" href="/categories/%E6%96%87%E6%A1%A3/">文档</a>
     </div>
 
-                        <!--  -->
+                        <!-- 
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/markdown/" rel="tag">markdown</a>
+    </div>
+ -->
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/posts/2BHC26P/">
-            <time datetime="2022-01-03T14:55:04.000Z" itemprop="datePublished">2022-01-03</time>
+        <a href="/posts/2VY467R/">
+            <time datetime="2021-09-30T02:43:35.000Z" itemprop="datePublished">2021-09-30</time>
         </a>
     </div>
 
@@ -676,7 +678,7 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计293字 
+                            | 字数统计485字 
                           </span>
                           <!-- <span class="post-count"> -->
                             <!-- | 阅读时长1分钟  -->
@@ -686,8 +688,8 @@
                 
                 
     
-        <h1 class="article-title" itemprop="name">
-            TypeScript Personal Manual
+        <h1 itemprop="name">
+            <a class="article-title" href="/posts/2VY467R/">博客开发计划</a>
         </h1>
     
 
@@ -698,128 +700,35 @@
         
         
             
-                <div id="toc" class="toc-article">
-                <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">什么是TypeScript?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81TypeScript%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7"><span class="toc-number">2.</span> <span class="toc-text">一、TypeScript基本特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81import%E4%B8%8Eexport%E8%AF%AD%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">二、import与export语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F%EF%BC%9Avar%E3%80%81let%E3%80%81const"><span class="toc-number">4.</span> <span class="toc-text">三、声明变量：var、let、const</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%A3%B0%E6%98%8E%E5%87%BD%E6%95%B0-function"><span class="toc-number">5.</span> <span class="toc-text">四、声明函数: function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%A3%B0%E6%98%8E%E7%B1%BB-class"><span class="toc-number">6.</span> <span class="toc-text">五、声明类: class</span></a></li></ol>
-                </div>
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><div class="admonition todo"><p class="admonition-title">一些规划
+</p><p>折腾了几日，发现<code>css web</code>的前端开发很是有趣！<br>
+发现了很多有意思的开源插件，~~<em>顺手修复了不少bug</em>~~ <br>
+目前<code>v1.0</code>的外观和功能仍差强人意，同志仍需努力！</p>
+<p>
+                
             
         
         
-            <div class="admonition note"><p class="admonition-title">Note</p><h2>什么是TypeScript?</h2>
-<ul>
-<li>在此之前，先看看什么是<strong>JavaScript</strong>?
-<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Introduction">JavaScript 中文介绍</a> |
-<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript">What is JavaScript?</a></li>
-<li><strong>TypeScript</strong>其实就是<code>Typed JavaScript at Any Scale.</code></li>
-</ul>
-</div>
-<hr>
-<h2 id="一、TypeScript基本特性">一、TypeScript基本特性</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">特性</th>
-<th style="text-align:left">解释</th>
-<th style="text-align:left">Coding</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><font color="#ef6d3b"><strong>Staticlly Typed</strong></font></td>
-<td style="text-align:left">静态类型</td>
-<td style="text-align:left"><code>let foo = 1; foo.split(' ');</code> =&gt; 编译报错</td>
-</tr>
-<tr>
-<td style="text-align:left"><font color="#ef6d3b"><strong>Weakly Typed</strong></font></td>
-<td style="text-align:left">允许隐式类型转化</td>
-<td style="text-align:left"><code>console.log(1 + '1');</code> =&gt; 打印11</td>
-</tr>
-<tr>
-<td style="text-align:left"><font color="#ef6d3b"><strong>Type Annotations</strong></font></td>
-<td style="text-align:left">允许类型注释</td>
-<td style="text-align:left"><code>let foo: string = '1';</code></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="二、import与export语法">二、import与export语法</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left"></th>
-<th style="text-align:left">使用场景</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>import * as path from 'path</code></td>
-<td style="text-align:left">commonjs模块</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>import fs = require('fs')</code></td>
-<td style="text-align:left">commonjs模块, export=xx</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>const xx = require('xx)</code></td>
-<td style="text-align:left">无类型声明</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://blog.atomist.com/typescript-imports/"><font size="3"><strong>Typescript: Imports</strong></font></a></li>
-</ul>
-<hr>
-<h2 id="三、声明变量：var、let、const">三、声明变量：var、let、const</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:center"></th>
-<th style="text-align:center">使用场景</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><font color="#ef6d3b"><strong>var</strong></font></td>
-<td style="text-align:center">全局作用域</td>
-</tr>
-<tr>
-<td style="text-align:center"><font color="#ef6d3b"><strong>let</strong></font></td>
-<td style="text-align:center">块作用域</td>
-</tr>
-<tr>
-<td style="text-align:center"><font color="#ef6d3b"><strong>const</strong></font></td>
-<td style="text-align:center">块作用域、只读</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.tutorialsteacher.com/typescript/typescript-variable"><font size="3"><strong>Typescript: var, let, const</strong></font></a></li>
-</ul>
-<hr>
-<h2 id="四、声明函数-function">四、声明函数: function</h2>
-<ul>
-<li>下面是一个求和函数的示例：</li>
-</ul>
-<figure class="highlight ts"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a: <span class="built_in">number</span>, b: <span class="built_in">number</span></span>): <span class="title">number</span> </span>{</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<ul>
-<li>下面也是一个合法的函数声明:<br>
-<code>let add = function(a: number, b: number): number {...}</code></li>
-</ul>
-<hr>
-<h2 id="五、声明类-class">五、声明类: class</h2>
-<ul>
-<li>下面是一个类声明的示例：</li>
-</ul>
-<figure class="highlight ts"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>{</span><br><span class="line">  <span class="comment">// 成员变量, 可用readonly, 不可用const</span></span><br><span class="line">  <span class="attr">x</span>: <span class="built_in">number</span>;</span><br><span class="line">  y: <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 构造函数</span></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">x = <span class="number">0</span>, y = <span class="number">0</span></span>)</span> {</span><br><span class="line">    <span class="built_in">this</span>.x = x;</span><br><span class="line">    <span class="built_in">this</span>.y = y;</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 成员方法</span></span><br><span class="line">  getScale(): <span class="built_in">number</span> {</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.x + <span class="built_in">this</span>.y;</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实例化一个类</span></span><br><span class="line"><span class="keyword">var</span> point = <span class="keyword">new</span> Point(<span class="number">1</span>, <span class="number">2</span>)</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<blockquote>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.typescriptlang.org/">TypeScript官网</a></li>
-<li><a target="_blank" rel="noopener" href="https://ts.xcatliu.com/">一个中文的TypeScript入门教程</a></li>
-</ul>
-</blockquote>
-<!-- flag of hidden posts -->
-            </div>
+            <!-- </div>    -->
+            <!-- <div class="article-more-link"> -->
+                <!-- <a href="/posts/2VY467R/#more">Read More</a> -->
+            <!-- </div> -->
         
         <footer class="article-footer">
         </footer>
@@ -827,21 +736,15 @@
 </article>
 
 
-    
 
 
 
 
     
+        <nav id="page-nav">
+        <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+        </nav>
     
-
-
-
-
-<!-- baidu url auto push script -->
-<script type="text/javascript">
-    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
-</script>     
 </section>
         </div>
         <footer id="footer">
