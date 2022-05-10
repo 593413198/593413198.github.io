@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://www.luhao.wiki/images/algorithm.png">
 <meta property="article:published_time" content="2021-10-16T12:43:21.000Z">
-<meta property="article:modified_time" content="2021-12-07T15:47:52.010Z">
+<meta property="article:modified_time" content="2022-05-10T15:54:24.749Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="Algorithm">
@@ -683,7 +683,7 @@
                             <!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span>次数</span>     -->
                         <!--  -->
                         <span class="post-count">
-                            | 字数统计1.8k字 
+                            | 字数统计1.9k字 
                           </span>
                           <!-- <span class="post-count"> -->
                             <!-- | 阅读时长7分钟  -->
@@ -730,6 +730,52 @@
 <p><strong>内排序In-place</strong>：所有排序操作都在内存中完成；</p>
 <p><strong>外排序Out-place</strong>：由于数据太大，因此把数据放在磁盘中，而排序通过磁盘和内存的数据传输才能进行；</p>
 <p><strong>1.3 算法总结</strong><img src="https://img-blog.csdnimg.cn/20190419171130152.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2x1aGFvMTk5ODA5MDk=,size_16,color_FFFFFF,t_70" alt="算法分析与对比"></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">排序算法</th>
+<th style="text-align:center">时间复杂度</th>
+<th style="text-align:center">空间复杂度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">冒泡排序</td>
+<td style="text-align:center">O(n2)</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:center">选择排序</td>
+<td style="text-align:center">O(n2)</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:center">插入排序</td>
+<td style="text-align:center">O(n2)</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:center">归并排序</td>
+<td style="text-align:center">O(nlogn)</td>
+<td style="text-align:center">O(n)</td>
+</tr>
+<tr>
+<td style="text-align:center">快速排序</td>
+<td style="text-align:center">O(nlogn)</td>
+<td style="text-align:center">O(logn)</td>
+</tr>
+<tr>
+<td style="text-align:center">堆排序</td>
+<td style="text-align:center">O(nlogn)</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:center">捅排序</td>
+<td style="text-align:center">O(n+k)</td>
+<td style="text-align:center">O(n+k)</td>
+</tr>
+</tbody>
+</table>
 <h3 id="1、冒泡排序（Bubble-Sort）"><strong>1、冒泡排序（Bubble Sort）</strong></h3>
 <p>相邻两个元素比较大小，一次外循环比较(n-1)次；<br>
 如跑完第一次循环，最大的元素被移到最后一位；<br>
