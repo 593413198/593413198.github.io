@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2022-05-10T18:02:47.221Z</updated>
+  <updated>2022-05-31T15:59:13.487Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux运维汇总</title>
+    <link href="http://luhao.wiki/posts/38JCRS8/"/>
+    <id>http://luhao.wiki/posts/38JCRS8/</id>
+    <published>2022-05-31T15:57:22.000Z</published>
+    <updated>2022-05-31T15:59:13.487Z</updated>
+    
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">: </p><p>汇总一些常用的Linux运维指令、踩坑等</p></div>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;: 
+&lt;/p&gt;&lt;p&gt;汇总一些常用的Linux运维指令、踩坑等&lt;/p&gt;
+&lt;/div&gt;
+</summary>
+      
+    
+    
+    
+    <category term="文档" scheme="http://luhao.wiki/categories/%E6%96%87%E6%A1%A3/"/>
+    
+    
+    <category term="linux" scheme="http://luhao.wiki/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>2022年5月10日</title>
@@ -511,35 +538,6 @@ ps：以下都基本Markdown或html语法&lt;/p&gt;</summary>
     <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
 &lt;/p&gt;&lt;p&gt;自然界的颜色可以看做是由&lt;strong&gt;Ambient, Diffuse, Specular&lt;/strong&gt;三种组成；&lt;br&gt;
 不同的材质（Ma</summary>
-      
-    
-    
-    
-    <category term="OpenGL" scheme="http://luhao.wiki/categories/OpenGL/"/>
-    
-    
-    <category term="OpenGL" scheme="http://luhao.wiki/tags/OpenGL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Textures</title>
-    <link href="http://luhao.wiki/posts/1EF3PT0/"/>
-    <id>http://luhao.wiki/posts/1EF3PT0/</id>
-    <published>2021-10-22T14:50:23.000Z</published>
-    <updated>2021-12-07T15:22:24.714Z</updated>
-    
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><p>Textures 纹理，让游戏中的物体拥有丰富的色彩表现；<br>其本质是，如何将顶点坐标映射到uv坐标；</p></div><hr><h2 id="What-is-texture">What is texture?</h2><ul><li><p><font color="#ef6d3b"><strong>A texture is a 2D image (even 1D/3D exist) to add detail to objects;</strong></font></p></li><li><p><font color="#ef6d3b"><strong>Texture coord.</strong></font><br>纹理坐标，又称$uv$坐标，是$[0,1]$的浮点数；<br>对于下图我们尝试如下定义$uv$坐标：</p></li></ul><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> texCoords[] = {</span><br><span class="line">    <span class="number">0.0f</span>, <span class="number">0.0f</span>,  <span class="comment">// lower-left corner  </span></span><br><span class="line">    <span class="number">1.0f</span>, <span class="number">0.0f</span>,  <span class="comment">// lower-right corner</span></span><br><span class="line">    <span class="number">0.5f</span>, <span class="number">1.0f</span>   <span class="comment">// top-center corner</span></span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure><img src="http://www.luhao.wiki/images/texture.png" alt="" width="300"><hr><h2 id="Texture-Wrapping">Texture Wrapping</h2><p>对于超过$(0,0)$和$(1,1)$的uv坐标，我们如何去填充呢？<br>OpenGL提供了如下几种方式：<br><img src="http://www.luhao.wiki/images/texture_wrapping.png" alt="" width="700"></p><hr><h2 id="Texture-Filtering">Texture Filtering</h2><ul><li><font color="#ef6d3b"><strong>Determine the texture mapped uv (using the nearby pixels…)</strong></font></li></ul><p>想象CPU传来的$uv$坐标是$(0.3, 0.3)$，纹理尺寸是$64 * 64$；<br>通过计算$0.3*64$，我们得到应该采样$(19.2, 19.2)$；<br>那么问题来了，像素是一块一块采样的，$19.2$到底采哪里呢？</p><ul><li>如下两种情形必然会出现错误：<ul><li><ol><li><strong>纹理大于模型表面</strong>：多对少，错位与丢失像素；</li></ol></li><li><ol start="2"><li><strong>纹理小于模型表面</strong>：少对多，马赛克；</li></ol></li></ul></li></ul><div class="admonition note"><p class="admonition-title">note</p><p>想象一张图片，经过缩小，会看不清；经过放大，会出现马赛克；就是这个意思</p></div><br><p><strong>OpenGL给了如下两种基本方案:</strong></p><h3 id="1-nearest-neighbor-filtering">1. nearest-neighbor filtering</h3><ul><li>选取离周围4个pixel最近的一个；<br><img src="http://www.luhao.wiki/images/nearest_neighbour.png" alt="" width="200"></li></ul><h3 id="2-bilinear-filtering">2. bilinear filtering</h3><ul><li><p>取周围4个pixel取均值；<br><img src="http://www.luhao.wiki/images/linear.png" alt="" width="200"></p></li><li><p>两种filtering效果对比：<br><img src="http://www.luhao.wiki/images/filtering.png" alt="" width="500"></p></li></ul><h3 id="3-trilinear-filtering">3. trilinear filtering</h3><ul><li>由于bilinear是在同一个Mipmap level做平滑，因此tri-filtering考虑了最接近的两层Mipmap level，并对最后结果做一次线性平滑；</li></ul><h3 id="4-anisotropic-filtering">4. <a href="https://en.wikipedia.org/wiki/Anisotropic_filtering">anisotropic filtering</a></h3><ul><li>前面是基于Texture与模型表面平行下，如果两者形成角度，就会有如下Artifacts；</li><li>4X AF表示需要多采样4倍的pixel；16X同理；</li></ul><p><strong>想象一下，当图片倾斜与平面，我们需要采样更多的点来涂满这个区域!</strong></p><img src="http://www.luhao.wiki/images/anisotropic.png" alt="" width="700"><div class="admonition todo"><p class="admonition-title">FAQ</p><ol><li>这里要扣一下原理与Coding!<br></li><li>AF都用硬件做了，但可以尝试用Pixel Shader模拟下玩玩</li></ol></div><h3 id="5-Performance-★">5. Performance ★</h3><ul><li>采样的像素数越多，性能开销越大~</li></ul><table><thead><tr><th style="text-align:center">Filering</th><th style="text-align:center">Samples</th></tr></thead><tbody><tr><td style="text-align:center">nearest-neighbor</td><td style="text-align:center">1</td></tr><tr><td style="text-align:center">bilinear</td><td style="text-align:center">4</td></tr><tr><td style="text-align:center">trilinear</td><td style="text-align:center">8</td></tr><tr><td style="text-align:center">AF 4X</td><td style="text-align:center">32</td></tr><tr><td style="text-align:center">AF 16X</td><td style="text-align:center">128</td></tr></tbody></table><hr><h2 id="Mipmaps">Mipmaps</h2><p>想象三维空间成千上万的物体，如果远处的与近处拥有一样大小精度的纹理（贴图），是不是很浪费呢？（远处的成像后未必看得清楚）<br>并且，大纹理映射到小物体，更导致一些列<font color="#ef6d3b"><strong>Artifacts</strong></font>；</p><ul><li><font color="#ef6d3b"><strong>a collection of texture images where each subsequent texture is twice as small compared to the previous one.</strong></font></li></ul><img src="http://www.luhao.wiki/images/mipmap.png" alt="" width="300"><ul><li><code>glGenerateMipmaps</code>: 帮助我们为一张Texture创建对应的Mipmap；</li></ul><hr><h2 id="Coding实现">Coding实现</h2><p><strong>Vertex data格式:</strong></p><ul><li>单单Pos和Color已经不能满足要求，我们需要扩充一个uv坐标来用于纹理采样</li></ul><img src="http://www.luhao.wiki/images/texture_vertex.png" alt="" width="700"><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> vertices[] = {</span><br><span class="line">    <span class="comment">// positions          // colors           // texture coords</span></span><br><span class="line">     <span class="number">0.5f</span>,  <span class="number">0.5f</span>, <span class="number">0.0f</span>,   <span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>,   <span class="number">1.0f</span>, <span class="number">1.0f</span>,   <span class="comment">// top right</span></span><br><span class="line">     <span class="number">0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>,   <span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>,   <span class="number">1.0f</span>, <span class="number">0.0f</span>,   <span class="comment">// bottom right</span></span><br><span class="line">    <span class="number">-0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>,   <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>,   <span class="number">0.0f</span>, <span class="number">0.0f</span>,   <span class="comment">// bottom left</span></span><br><span class="line">    <span class="number">-0.5f</span>,  <span class="number">0.5f</span>, <span class="number">0.0f</span>,   <span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>,   <span class="number">0.0f</span>, <span class="number">1.0f</span>    <span class="comment">// top left </span></span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>---<p><strong>Vertex Shader:</strong></p><ul><li>根据上面Vertex Data的格式，得出location分别是pos, color, texture：</li></ul><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line">layout (location = <span class="number">0</span>) in vec3 aPos;</span><br><span class="line">layout (location = <span class="number">1</span>) in vec3 aColor;</span><br><span class="line">layout (location = <span class="number">2</span>) in vec2 aTexCoord;</span><br><span class="line"></span><br><span class="line">out vec3 ourColor;</span><br><span class="line">out vec2 TexCoord;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    gl_Position = vec4(aPos, <span class="number">1.0</span>);</span><br><span class="line">    ourColor = aColor;</span><br><span class="line">    TexCoord = aTexCoord;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p><strong>Pixel Shader:</strong></p><ul><li>pixel shader只需要输出颜色即可</li></ul><div class="admonition note"><p class="admonition-title">Texture Sampler</p><p>如何将texture传给GPU呢？GLSL提供了一个Sampler的东西；<br><strong>看ps中的sampler2D</strong></p></div><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line">out vec4 FragColor;</span><br><span class="line"></span><br><span class="line">in vec3 ourColor;</span><br><span class="line">in vec2 TexCoord;</span><br><span class="line"></span><br><span class="line"><span class="comment">// texture sampler</span></span><br><span class="line">uniform sampler2D texture1;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">FragColor = texture(texture1, TexCoord);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><hr><h2 id="参考资料">参考资料</h2><blockquote><ul><li><a href="https://www.cnblogs.com/cxrs/archive/2009/10/18/justaprogramer.html">纹理过滤模式中的Bilinear、Trilinear以及Anistropic Filtering</a></li><li><a href=""></a></li></ul></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
-&lt;/p&gt;&lt;p&gt;Textures 纹理，让游戏中的物体拥有丰富的色彩表现；&lt;br&gt;
-其本质是，如何将顶点坐标映射到uv坐标；&lt;/p&gt;
-&lt;/div&gt;
-&lt;hr&gt;
-&lt;h</summary>
       
     
     
