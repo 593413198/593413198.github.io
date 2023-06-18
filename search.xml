@@ -8,7 +8,7 @@
       <link href="/posts/2SJSNFV/"/>
       <url>/posts/2SJSNFV/</url>
       
-        <content type="html"><![CDATA[<h3 id="必要组件">必要组件</h3><ul><li>zsh ： <a href="/posts/2N8EPP4/">【Shell】oh-my-zsh</a></li><li>Node.js：  <a href="/posts/1T7TWH8/">Node.js</a></li><li>hexo：  <a href="/posts/16FHVSZ/">Hexo：轻量的博客框架</a></li></ul><h2 id="迁移服务">迁移服务</h2><ul><li>hexo 个人日志</li><li>apache 文件服务器</li><li>crontab</li></ul><h3 id="迁移ssh私钥和公钥">迁移ssh私钥和公钥</h3><ul><li>直接拷贝 <code>id_rsa</code> 和 <code>id_rsa.pub</code> 到新机器的对应目录下</li><li><code>ssh-add id_rsa</code></li><li>如果遇到报错，执行 <code>chmod 400 ~/.ssh/id_rsa</code></li></ul>]]></content>
+        <content type="html"><![CDATA[<h3 id="必要组件">必要组件</h3><ul><li>zsh ： <a href="/posts/2N8EPP4/">【Shell】oh-my-zsh</a></li><li>Node.js：  <a href="/posts/1T7TWH8/">Node.js</a></li><li>hexo：  <a href="/posts/16FHVSZ/">Hexo：轻量的博客框架</a></li></ul><h3 id="迁移服务">迁移服务</h3><ul><li>hexo 个人日志</li><li>apache 文件服务器  <font color="#FF1E10"><em><strong>todo</strong></em></font></li><li>crontab  <font color="#FF1E10"><em><strong>todo</strong></em></font></li></ul><h3 id="迁移ssh私钥和公钥">迁移ssh私钥和公钥</h3><ul><li>直接拷贝 <code>id_rsa</code> 和 <code>id_rsa.pub</code> 到新机器的对应目录下</li><li><code>ssh-add id_rsa</code></li><li>如果遇到报错，执行 <code>chmod 400 ~/.ssh/id_rsa</code></li></ul>]]></content>
       
       
       <categories>
