@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>汇编（二）：基础寄存器 | Luhao&#39;s Blog</title>
+  <meta name="description" content="约定如下原则：  ax与AX都代表同一寄存器，不区分大小写 0xAA、0xaa、AAH都代表十六进制的写法 本文汇编基于Intel vs. AT&amp;T syntax  什么是寄存器?  寄存器是cpu中负责数据存储的电子器件 它的传输速度最快，大于l1、l2 cache，远大于RAM和磁盘 一个16位的寄存器，可以存储2字节的数据，最大可表示0~65536范围的数据 寄存器一般用约定俗成的命">
+<meta property="og:type" content="article">
+<meta property="og:title" content="汇编（二）：基础寄存器">
+<meta property="og:url" content="http://luhao.wiki/posts/14G1VW3/index.html">
+<meta property="og:site_name" content="Luhao&#39;s Blog">
+<meta property="og:description" content="约定如下原则：  ax与AX都代表同一寄存器，不区分大小写 0xAA、0xaa、AAH都代表十六进制的写法 本文汇编基于Intel vs. AT&amp;T syntax  什么是寄存器?  寄存器是cpu中负责数据存储的电子器件 它的传输速度最快，大于l1、l2 cache，远大于RAM和磁盘 一个16位的寄存器，可以存储2字节的数据，最大可表示0~65536范围的数据 寄存器一般用约定俗成的命">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://luhao.wiki/images/register01.png">
+<meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png?v8">
+<meta property="og:image" content="http://luhao.wiki/images/stack01.png">
+<meta property="article:published_time" content="2023-03-04T03:27:04.000Z">
+<meta property="article:modified_time" content="2023-06-18T13:12:53.660Z">
+<meta property="article:author" content="Luhao">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://luhao.wiki/images/register01.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://luhao.wiki/posts/14G1VW3/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Luhao&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="images\avatar.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://www.luhao.wiki" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">luhao</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        </li>
+      </ul>
+      
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">
+        <i style="color:#9400D3" class="icon icon-stackexchange"></i>
+        公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p> 文章数量：<b><font color=#1A9BFF>96</font></b> </p> 最后修改：2023.6.15<br> <p><font color=#750000>读书要杂, 文档要勤, 业务要精</font></p> <p><font color=#750000>思维方式 x 热情 x 能力</font></p> <p><font color=#750000>Plan➜Do➜Check➜Improve</font></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-folder-open"></i>
+      分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/">3D Engine</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/3D-Engine/">3D Engine</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Algorithm/">Algorithm</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/C/">C++</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/">Graphics</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/Graphics/">Graphics</a><span class="category-list-count">12</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Linux/">Linux</a><span class="category-list-count">13</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/">Node.js</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/Node-js/">Node.js</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Python/">Python</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/">VSCode</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/VSCode/">VSCode</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">14</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">6</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-archives-fill"></i>
+      归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  <!-- 
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">什么是寄存器?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">通用寄存器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AE%B5%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text">段寄存器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">4.</span> <span class="toc-text">栈寄存器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E8%81%94%E6%B1%87%E7%BC%96"><span class="toc-number">5.</span> <span class="toc-text">内联汇编</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E7%85%A7%E8%A1%A8"><span class="toc-number">6.</span> <span class="toc-text">对照表</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+ -->
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-汇编/基础寄存器" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      汇编（二）：基础寄存器
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/posts/14G1VW3/" class="article-date">
+	  <time datetime="2023-03-04T03:27:04.000Z" itemprop="datePublished">2023-03-04</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E6%B1%87%E7%BC%96/">汇编</a>►<a class="article-category-link" href="/categories/%E6%B1%87%E7%BC%96/%E6%B1%87%E7%BC%96/">汇编</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/C/" rel="tag">C++</a>, <a class="article-tag-link-link" href="/tags/Python/" rel="tag">Python</a>, <a class="article-tag-link-link" href="/tags/linux/" rel="tag">linux</a>
+  </span>
+
+
+        
+
+        <!-- <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/14G1VW3/#comments" class="article-comment-link">评论</a></span> -->
+        
+	
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p><em>约定如下原则：</em></p>
+<ul>
+<li>ax与AX都代表同一寄存器，不区分大小写</li>
+<li>0xAA、0xaa、AAH都代表十六进制的写法</li>
+<li>本文汇编基于<a target="_blank" rel="noopener" href="https://www.cs.mcgill.ca/~cs573/winter2001/AttLinux_syntax.htm#:~:text=Notable%20differences%20between%20the%20two,Intel%20register%20operands%20are%20undelimited.">Intel vs. AT&amp;T syntax</a></li>
+</ul>
+<h2 id="什么是寄存器">什么是寄存器?</h2>
+<ul>
+<li>寄存器是cpu中负责数据存储的电子器件</li>
+<li>它的<strong>传输速度最快</strong>，大于l1、l2 cache，远大于RAM和磁盘</li>
+<li>一个16位的寄存器，可以存储2字节的数据，最大可表示0~65536范围的数据</li>
+<li>寄存器一般用约定俗成的命名，来区分其具体用途</li>
+</ul>
+<h2 id="通用寄存器">通用寄存器</h2>
+<ul>
+<li>存储<font color="#ef6d3b"><strong>一般性数据</strong></font>的寄存器，如<code>AX, BX, CX, DX</code>…</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">汇编</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>mov ax, 18</code></td>
+<td style="text-align:center">将18写入寄存器ax</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>mov ax, bx</code></td>
+<td style="text-align:center">将bx的数据写入ax</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>add ax, bx</code></td>
+<td style="text-align:center">将ax,bx的值相加，并写入ax</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>sub ax, bx</code></td>
+<td style="text-align:center">将ax,bx的值相减，并写入ax</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>寄存器数据溢出时，会自动舍弃最高位，例如：
+<ul>
+<li>8位寄存器：ax(0xff), bx(0x01)</li>
+<li>执行<code>add ax, bx</code>后, ax中的值为 0x00</li>
+</ul>
+</li>
+</ul>
+<h2 id="段寄存器">段寄存器</h2>
+<ul>
+<li>
+<p>根据 <a href="https://luhao.wiki/posts/3AJJP5S/">《汇编（一）：计算机架构入门》</a>：物理地址 = 段地址 * 16 + 偏移地址</p>
+</li>
+<li>
+<p>因此，<strong><code>CS</code>存储代码段的段地址，<code>EIP</code>存储代码段的偏移地址!</strong></p>
+<ul>
+<li>代码执行地址为：(CS) * 16 + (EIP)，且每次执行一行后，EIP会根据指令长度偏移若干字节</li>
+<li>计算机每次运行，会根据如上计算出的物理地址，取出对应的指令去运行</li>
+</ul>
+</li>
+<li>
+<p>详解下图过程：</p>
+<ul>
+<li>1.取出<code>CS</code>,<code>EIP</code>的值，并放入地址加法器，得到结果是<code>0x20000</code></li>
+<li>2.将物理地址<code>0x20000</code>送上地址总线</li>
+<li>3.读取到该处指令为<code>mov ax, 0123H</code>，并送入数据总线</li>
+<li>4.CPU ALU获取到该指令，将其执行（涉及<code>AX, BX</code>的读写）</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/register01.png" alt=""></p>
+<ul>
+<li>
+<p><strong><code>DS</code>存储要访问数据的段地址</strong></p>
+<ul>
+<li>当我们要将<code>al</code>中的数据写入<code>0x1000</code>的内存时：</li>
+<li><code>mov bx, 0x1000</code></li>
+<li><code>mov ds, bx</code>: 将bx值写入到ds，注意，不支持直接往ds寄存器写数据!</li>
+<li><code>mov [0], al</code>: [0]代表读取以ds为段地址，以0为偏移的内存地址上的值</li>
+</ul>
+</li>
+<li>
+<p><font color="#ef6d3b"><strong><code>[ax]</code></strong></font>的特殊用法<span class="github-emoji"><span>⭐</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> :<br>
+表示以寄存器ax上的值，为偏移地址（段地址在<code>ds</code>中），此时去对应物理地址寻值</p>
+</li>
+</ul>
+<h2 id="栈寄存器">栈寄存器</h2>
+<ul>
+<li>
+<p>什么栈（stack）？<br>
+后进先出的操作规则：<code>LIFO(Last in First out)</code>，就像往枪膛里填子弹</p>
+</li>
+<li>
+<p>程序在运行时，会将一段连续的内存空间划分为栈，这里的操作原则符合<code>LIFO</code></p>
+</li>
+<li>
+<p><strong><code>SS</code>存放栈顶的地址，<code>SP</code>存放栈的偏移地址</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">汇编</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>push ax</code></td>
+<td style="text-align:center">将ax值写入栈顶，即写到<code>SS+SP</code>，并将SP位置下移</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>pop ax</code></td>
+<td style="text-align:center">将栈顶值写入ax，并将SP位置上移</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/images/stack01.png" alt=""></p>
+<ul>
+<li>什么是<code>Stack Overflow?</code><br>
+因为程序中的系统调用，都是用堆栈实现的，但默认分配的大小为固定的；<br>
+当你写如下一个Python无限递归时，就会因堆栈溢出而导致<code>RuntimeError</code>而程序退出</li>
+</ul>
+<pre><code class="language-python">def f(n):
+    return f(n-1)
+
+f(100)
+# RuntimeError: maximum recursion depth exceeded
+</code></pre>
+<h2 id="内联汇编">内联汇编</h2>
+<div class="admonition error"><p class="admonition-title">TODO
+</p><ul>
+<li>关于 <strong>内联汇编（inline asm）</strong> 可以单独开一篇学习之</li>
+<li><a target="_blank" rel="noopener" href="http://www.ibiblio.org/gferg/ldp/GCC-Inline-Assembly-HOWTO.html">GCC-Inline-Assembly-HOWTO</a></li>
+<li><a target="_blank" rel="noopener" href="https://akaedu.github.io/book/ch19s05.html">C内联汇编</a></li>
+</ul>
+</div>
+<p>写汇编经常遇到 <strong><code>movq %0, %%rsp</code></strong> 的写法，其中的 <code>%0</code> 是什么含义?</p>
+<p>它一般用于 C++内联汇编：</p>
+<pre><code class="language-c++">int a=10, b;
+asm ("movl %1, %%eax; 
+     movl %%eax, %0;"
+     : "=r"(b)        /* output */
+     : "r"(a)         /* input */
+     : "%eax"         /* clobbered register */
+    );       
+</code></pre>
+<ul>
+<li><code>"=r"(b)</code> 表示把 <code>%0</code> 寄存器的值输出给 变量b</li>
+<li><code>"r"(a)"</code> 表示分配一个寄存器 <code>%1</code> 保存变量a 的值</li>
+</ul>
+<p>因此这段代码的作用是：将a赋值给b</p>
+<p><strong>进阶示例:</strong></p>
+<p>下面这段代码，能够切换到指定的堆栈（sp），并执行对应的函数调用（entry arg）</p>
+<pre><code class="language-c++">static inline void stack_switch_call(void *sp, void *entry, uintptr_t arg) {
+  asm volatile (
+#if __x86_64__
+    "movq %0, %%rsp; movq %2, %%rdi; jmp *%1"
+      : : "b"((uintptr_t)sp), "d"(entry), "a"(arg) : "memory"
+#else
+    "movl %0, %%esp; movl %2, 4(%0); jmp *%1"
+      : : "b"((uintptr_t)sp - 8), "d"(entry), "a"(arg) : "memory"
+#endif
+  );
+}
+</code></pre>
+<p><strong>输出修饰符:</strong></p>
+<ul>
+<li>a: 使用 eax/ax/al 寄存器；</li>
+<li>b: 使用 ebx/bx/bl 寄存器；</li>
+<li>c: 使用 ecx/cx/cl 寄存器；</li>
+<li>d: 使用 edx/dx/dl 寄存器；</li>
+<li>r: 使用任何可用的通用寄存器；m: 使用变量的内存位置；</li>
+</ul>
+<p>这段代码一共使用了3个寄存器：</p>
+<ul>
+<li><code>"b"((uintptr_t)sp)</code>: 使用 ebx 寄存器（%0）保存 sp 的值;</li>
+<li><code>"d"(entry)</code>: 使用 edx 寄存器（%1） 保存 entry 的值;</li>
+<li><code>"a"(arg)</code>: 使用 eax 寄存器（%2） 保存 arg 的值;</li>
+</ul>
+<p>此时再去理解汇编代码，其作用是：</p>
+<ul>
+<li><code>movq %0, %%rsp</code>: 将 sp 的值传递给 rsp寄存器（函数堆栈）;</li>
+<li><code>movq %2, %%rdi</code>: 将 args 的值传递给 rdi寄存器（传递参数）;</li>
+<li><code>jmp *%1"</code>: 跳转去执行 entry 函数;</li>
+</ul>
+<h2 id="对照表">对照表</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">寄存器</th>
+<th style="text-align:right">作用</th>
+<th style="text-align:center">英文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><code>AX</code>, <code>BX</code>, <code>CX</code></td>
+<td style="text-align:right">通用寄存器</td>
+<td style="text-align:center">Register</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>CS</code></td>
+<td style="text-align:right">（代码段）段寄存器</td>
+<td style="text-align:center">Code-Segment</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>(E)IP</code></td>
+<td style="text-align:right">（代码段偏移）寄存器</td>
+<td style="text-align:center">(Extend)Instruction-Pointer</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>DS</code></td>
+<td style="text-align:right">（数据段）段寄存器</td>
+<td style="text-align:center">Data-Segment</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>SS</code></td>
+<td style="text-align:right">（栈顶）段寄存器</td>
+<td style="text-align:center">Stack-Segment</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>SP</code></td>
+<td style="text-align:right">（栈顶偏移）段寄存器</td>
+<td style="text-align:center">Stack-Segment</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <div class="article-footer">
+      <!-- <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://luhao.wiki/posts/14G1VW3/" title="汇编（二）：基础寄存器" target="_blank" rel="external">http://luhao.wiki/posts/14G1VW3/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote> -->
+
+
+<!-- <div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://www.luhao.wiki" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://www.luhao.wiki" target="_blank"><span class="text-dark">luhao</span><small class="ml-1x"></small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div> -->
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/posts/1QNHHCN/" title="汇编（三）：基础AT&amp;T汇编"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/posts/3RBTN4W/" title="汇编（一）：计算机架构入门"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	<!-- Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>. -->
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+
+<div id="go-top"></div>
+<style type="text/css">
+#go-top {
+ width:40px;height:36px;
+ background-color:#DDA0DD;
+ position:relative;
+ border-radius:2px;
+ position:fixed;right:10px;bottom:60px;
+ cursor:pointer;display:none;
+}
+#go-top:after {
+ content:" ";
+ position:absolute;left:14px;top:14px;
+ border-top:2px solid #fff;border-right:2px solid #fff;
+ width:12px;height:12px;
+ transform:rotate(-45deg);
+}
+#go-top:hover {
+ background-color:#8A2BE2;
+}
+</style>
+<script>
+$(function () {
+  var top=$("#go-top");
+  $(window).scroll(function () {
+    ($(window).scrollTop() > 300) ? top.show(300) : top.hide(200);
+    $("#go-top").click(function () {
+      $('body,html').animate({scrollTop:0});
+      return false();
+    })
+  });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/prettify.js"></script>
+<script type="text/javascript">
+    $(window).load(function(){
+        $('pre').addClass('prettyprint').attr('style', 'overflow:auto;');
+        $('pre').addClass('prettyprint linenums');
+        prettyPrint();
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

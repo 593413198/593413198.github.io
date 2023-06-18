@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>【Python】编码之encoding | Luhao&#39;s Blog</title>
+  <meta name="description" content="ASCII, gb2312, unicode, utf-8">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Python】编码之encoding">
+<meta property="og:url" content="http://luhao.wiki/posts/3RHEW9J/index.html">
+<meta property="og:site_name" content="Luhao&#39;s Blog">
+<meta property="og:description" content="ASCII, gb2312, unicode, utf-8">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-05-03T16:05:10.000Z">
+<meta property="article:modified_time" content="2023-06-18T13:12:53.656Z">
+<meta property="article:author" content="Luhao">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://luhao.wiki/posts/3RHEW9J/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Luhao&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="images\avatar.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://www.luhao.wiki" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">luhao</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        </li>
+      </ul>
+      
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">
+        <i style="color:#9400D3" class="icon icon-stackexchange"></i>
+        公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p> 文章数量：<b><font color=#1A9BFF>96</font></b> </p> 最后修改：2023.6.15<br> <p><font color=#750000>读书要杂, 文档要勤, 业务要精</font></p> <p><font color=#750000>思维方式 x 热情 x 能力</font></p> <p><font color=#750000>Plan➜Do➜Check➜Improve</font></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-folder-open"></i>
+      分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/">3D Engine</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/3D-Engine/">3D Engine</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Algorithm/">Algorithm</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/C/">C++</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/">Graphics</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/Graphics/">Graphics</a><span class="category-list-count">12</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Linux/">Linux</a><span class="category-list-count">13</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/">Node.js</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/Node-js/">Node.js</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Python/">Python</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/">VSCode</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/VSCode/">VSCode</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">14</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">6</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-archives-fill"></i>
+      归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  <!-- 
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ASCII"><span class="toc-number">1.</span> <span class="toc-text">ASCII</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GB2312"><span class="toc-number">2.</span> <span class="toc-text">GB2312</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unicode"><span class="toc-number">3.</span> <span class="toc-text">Unicode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UTF-8-%E2%AD%90"><span class="toc-number">4.</span> <span class="toc-text">UTF-8 ⭐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BOM%E5%A4%B4"><span class="toc-number">5.</span> <span class="toc-text">BOM头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Escape"><span class="toc-number">6.</span> <span class="toc-text">Escape</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python%E4%B8%8E%E7%BC%96%E7%A0%81"><span class="toc-number">7.</span> <span class="toc-text">Python与编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%84%E6%96%99"><span class="toc-number">8.</span> <span class="toc-text">资料</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+ -->
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Python/Python编码之encoding" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【Python】编码之encoding
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/posts/3RHEW9J/" class="article-date">
+	  <time datetime="2023-05-03T16:05:10.000Z" itemprop="datePublished">2023-05-04</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Python/">Python</a>►<a class="article-category-link" href="/categories/Python/Python/">Python</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Python/" rel="tag">Python</a>
+  </span>
+
+
+        
+
+        <!-- <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/3RHEW9J/#comments" class="article-comment-link">评论</a></span> -->
+        
+	
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p><code>ASCII, gb2312, unicode, utf-8</code><span id="more"></span></p>
+<div class="admonition note"><p class="admonition-title">Human use text. Computer speak bytes
+</p><p>不论什么字符, 在计算机中都是按照bytes存储. <br>
+区别仅在于 <strong>encoding</strong> 和  <strong>decoding</strong> 的规则.</p>
+<ul>
+<li>encoding: text -&gt; bytes</li>
+<li>decoding: bytes -&gt; text</li>
+</ul>
+</div>
+<h2 id="ASCII">ASCII</h2>
+<p><em><strong>A</strong>merican <strong>S</strong>tandard <strong>C</strong>ode for <strong>I</strong>nformation <strong>I</strong>nterchange</em>  （since 1963） /ˈæski/</p>
+<p>ASCII 使用 <em><strong>7 bits</strong></em> 来表示计算机键盘上的所有字符.<br>
+一共定义了 128 个字符, 描述范围是 0 ~ 127.</p>
+<ul>
+<li>95 x printable ch. : a-z, A-Z, 0-9…</li>
+<li>33 x control ch. : EOF, LF</li>
+</ul>
+<div class="admonition warning"><p class="admonition-title">为什么 ascii 是 7bit 而不是 8bit?
+</p><ul>
+<li>第8个bit</li>
+<li>要么用于校验位: <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C%E4%BD%8D">Parity bit 奇偶检验位</a><br></li>
+<li>要么用于扩展 ascii 到 256个: <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Extended_ASCII">Extended ASCII</a></li>
+</ul>
+</div>
+<blockquote>
+<p>ANSI: 泛指最早每种国家语言各自实现的 ascii 扩展编码方式，各个编码互相之间不兼容</p>
+</blockquote>
+<h2 id="GB2312">GB2312</h2>
+<p><em><strong>G</strong>uo <strong>B</strong>iao <strong>2312</strong> 号标准</em> （since 1981）</p>
+<p>由于 1个byte 的ascii不能表示中文, <strong>GB2312将编码拓展到 2个byte.</strong><br>
+但是 GB2312 只收录了 7000多个 中文汉字, 不包含 生僻字、繁体字和日韩文字, 后来推广到 <strong>GBK</strong>（Guo Biao Kuozhan） 得以收录完毕.</p>
+<h2 id="Unicode">Unicode</h2>
+<p>GB2312 是显示中文的编码, 不同国际不同语言都维护了这样的编码, 管理起来就很混乱 （如 <code>\ux8\ue2</code>在中文和俄文编码中的含义就不同）.<br>
+Unicode 通过构建一个全世界通用的字符集解决了此问题.</p>
+<p>具体的Unicode编码需要查表: <a target="_blank" rel="noopener" href="http://www.metools.info/code/utf8235.html">Unicode, UTF-8, ASCII 在线转码的网站</a></p>
+<h2 id="UTF-8-⭐">UTF-8 ⭐</h2>
+<p><em><strong>U</strong>nicode <strong>T</strong>ransformation <strong>F</strong>ormat-<strong>8</strong>.</em></p>
+<p>UTF-8 是 Unicode 的一种编码方案, 它是不定长的（1~4字节）, 可以显示 ascii、中文、繁体及其他文字.</p>
+<p><strong>encoding 规则如下:</strong></p>
+<ul>
+<li>单字节符号 (ascii): 第一个bit 为0, 后7位即 ascii码, 这与 Unicode/GB2312 都是兼容的.</li>
+<li>n字节符号 (如 汉字): 第一个byte 的 前n个bit 为1, 第 n+1个bit 为0, 后面byte的前两位一律为10, 剩下的都是Unicode编码.</li>
+</ul>
+<p><strong>decoding 规则如下:</strong></p>
+<ul>
+<li>若第一个bit是0, 则为单字节的ascii.</li>
+<li>若第一个bit是1, 则连续多少个1, 就表示占用多少个字节.</li>
+</ul>
+<p><strong>根据Unicode范围决定字节数:</strong></p>
+<pre><code>1 byte: 0000 ~ 007F: 0*******
+2 byte: 0080 ~ 07FF: 110***** 10******
+3 byte: 0800 ~ FFFF: 1110**** 10****** 10******
+4 byte: 0001 0000 ~ 0010 FFFF: 11110*** 10****** 10****** 10******
+</code></pre>
+<p><strong>以汉字 “鲁” 为例, 解释 UTF-7的编码规则:</strong></p>
+<p>“鲁”的unicode编码是 <code>0x9C81</code>, 二进制为 <code>1001 1100 1000 0001</code>.<br>
+首先查上表得知占用 3字节, 因此选择 <code>1110**** 10****** 10******</code>.<br>
+从后往前依次填入 Unicode, 不足的补0:<br>
+得到: <code>11101001 10110010 10000001</code>，十进制为 <code>0xE9B281</code></p>
+<div class="admonition note"><p class="admonition-title">Python编码问题
+</p><ul>
+<li>为什么首行添加 <code># -*- coding: utf-8 -*-</code>?</li>
+<li>因为Python默认编码是 ascii, 如果文件中包含如中文, 会报错: <code>SyntaxError: Non-ASCII character '\xa3' in file ...</code>, 即 超过 127的ascii范围导致解码失败</li>
+</ul>
+</div>
+<h2 id="BOM头">BOM头</h2>
+<p><em><strong>B</strong>yte-<strong>O</strong>rder <strong>M</strong>ark</em></p>
+<p>文本文件如何确定自己的编码方式?</p>
+<p>通过开头几个字节即BOM来辨别, 同时包含大小端信息</p>
+<ul>
+<li><code>FE FF</code>: 大端</li>
+<li><code>FF FE</code>: 小端</li>
+<li><code>EF BB BF</code>: UTF-8</li>
+<li>…</li>
+</ul>
+<p>下面这段 python2 程序:</p>
+<pre><code class="language-python">a = u'El Niño'
+a.encoding('utf-16')
+# '\xff\xfeE\x00l\x00 \x00N\x00i\x00\xf1\x00o\x00'
+# fffe 即代表 小端存储
+</code></pre>
+<h2 id="Escape">Escape</h2>
+<p>Escape通常用来打印彩色输出等.</p>
+<ul>
+<li>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6">wikipedia: Escape Character</a></p>
+</li>
+<li>
+<p><a href="/posts/1MJH73F/">站内博客: Python之优雅输出</a></p>
+</li>
+</ul>
+<h2 id="Python与编码">Python与编码</h2>
+<p>传送门: <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/json.html">json Python3.11</a></p>
+<ul>
+<li>与编码打交道最多的是 <code>json</code>库
+<ul>
+<li>Python2 中允许传一个参数为 <code>encoding</code></li>
+<li>Python3 干掉了这个参数, 需要手动编码</li>
+</ul>
+</li>
+</ul>
+<p>有一个 <code>ensure_ascii</code>参数, 默认是True, 它允许对 ascii 不进行额外的编码.</p>
+<p>工作中遇到过一个小bug, request请求得到的unicode编码为: <code>\\u6789...</code>, 问题出在多了一个斜杠, 原因是重复的<code>json.dumps</code>, 需要避免</p>
+<h2 id="资料">资料</h2>
+<ul>
+<li>
+<p><a target="_blank" rel="noopener" href="http://www.metools.info/code/utf8235.html">Unicode, UTF-8, ASCII 在线转码的网站</a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/19212306/whats-the-difference-between-ascii-and-unicode">Stackoverflow: What’s the difference between ASCII and Unicode?</a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html">阮一峰: 字符编码笔记 ASCII，Unicode 和 UTF-8</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <!-- <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://luhao.wiki/posts/3RHEW9J/" title="【Python】编码之encoding" target="_blank" rel="external">http://luhao.wiki/posts/3RHEW9J/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote> -->
+
+
+<!-- <div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://www.luhao.wiki" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://www.luhao.wiki" target="_blank"><span class="text-dark">luhao</span><small class="ml-1x"></small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div> -->
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/posts/36E2965/" title="【引擎】渲染系统"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/posts/17VRF1W/" title="【日志】2023年5月"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	<!-- Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>. -->
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+
+<div id="go-top"></div>
+<style type="text/css">
+#go-top {
+ width:40px;height:36px;
+ background-color:#DDA0DD;
+ position:relative;
+ border-radius:2px;
+ position:fixed;right:10px;bottom:60px;
+ cursor:pointer;display:none;
+}
+#go-top:after {
+ content:" ";
+ position:absolute;left:14px;top:14px;
+ border-top:2px solid #fff;border-right:2px solid #fff;
+ width:12px;height:12px;
+ transform:rotate(-45deg);
+}
+#go-top:hover {
+ background-color:#8A2BE2;
+}
+</style>
+<script>
+$(function () {
+  var top=$("#go-top");
+  $(window).scroll(function () {
+    ($(window).scrollTop() > 300) ? top.show(300) : top.hide(200);
+    $("#go-top").click(function () {
+      $('body,html').animate({scrollTop:0});
+      return false();
+    })
+  });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/prettify.js"></script>
+<script type="text/javascript">
+    $(window).load(function(){
+        $('pre').addClass('prettyprint').attr('style', 'overflow:auto;');
+        $('pre').addClass('prettyprint linenums');
+        prettyPrint();
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>【Linux】命令行大全 | Luhao&#39;s Blog</title>
+  <meta name="description" content="记录常用的Linux指令、踩坑经历">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Linux】命令行大全">
+<meta property="og:url" content="http://luhao.wiki/posts/2G7VBZ2/index.html">
+<meta property="og:site_name" content="Luhao&#39;s Blog">
+<meta property="og:description" content="记录常用的Linux指令、踩坑经历">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-31T15:57:22.000Z">
+<meta property="article:modified_time" content="2023-06-18T13:12:53.656Z">
+<meta property="article:author" content="Luhao">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="vim">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://luhao.wiki/posts/2G7VBZ2/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Luhao&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="images\avatar.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://www.luhao.wiki" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">luhao</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        </li>
+      </ul>
+      
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">
+        <i style="color:#9400D3" class="icon icon-stackexchange"></i>
+        公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p> 文章数量：<b><font color=#1A9BFF>96</font></b> </p> 最后修改：2023.6.15<br> <p><font color=#750000>读书要杂, 文档要勤, 业务要精</font></p> <p><font color=#750000>思维方式 x 热情 x 能力</font></p> <p><font color=#750000>Plan➜Do➜Check➜Improve</font></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-folder-open"></i>
+      分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/">3D Engine</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/3D-Engine/">3D Engine</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Algorithm/">Algorithm</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/C/">C++</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/">Graphics</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/Graphics/">Graphics</a><span class="category-list-count">12</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Linux/">Linux</a><span class="category-list-count">13</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/">Node.js</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/Node-js/">Node.js</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Python/">Python</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/">VSCode</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/VSCode/">VSCode</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">14</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">6</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-archives-fill"></i>
+      归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  <!-- 
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-number">1.</span> <span class="toc-text">索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">2.</span> <span class="toc-text">重定向</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%A6%E5%8F%B7"><span class="toc-number">2.1.</span> <span class="toc-text">符号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%BD%E7%95%A5"><span class="toc-number">2.2.</span> <span class="toc-text">忽略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pipe%E7%AE%A1%E9%81%93"><span class="toc-number">2.3.</span> <span class="toc-text">pipe管道</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#here-document"><span class="toc-number">2.4.</span> <span class="toc-text">here document</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xargs"><span class="toc-number">3.</span> <span class="toc-text">xargs</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#xargs-d"><span class="toc-number">3.1.</span> <span class="toc-text">xargs -d</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xargs-find"><span class="toc-number">3.2.</span> <span class="toc-text">xargs + find</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D"><span class="toc-number">4.</span> <span class="toc-text">匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#font-color-1A9BFF-grep-font"><span class="toc-number">4.1.</span> <span class="toc-text">grep</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#font-color-1A9BFF-find-font"><span class="toc-number">4.2.</span> <span class="toc-text">find</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%9C%AC"><span class="toc-number">5.</span> <span class="toc-text">文本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#port%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8"><span class="toc-number">5.1.</span> <span class="toc-text">port端口占用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sed-stream-editor"><span class="toc-number">5.2.</span> <span class="toc-text">sed: stream editor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scp-%E4%B8%8A%E4%BC%A0-%E4%B8%8B%E8%BD%BD"><span class="toc-number">5.3.</span> <span class="toc-text">scp 上传&#x2F;下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#disk-%E7%A1%AC%E7%9B%98"><span class="toc-number">5.4.</span> <span class="toc-text">disk 硬盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nohup%E5%90%8E%E5%8F%B0%E6%8C%82%E8%B5%B7"><span class="toc-number">5.5.</span> <span class="toc-text">nohup后台挂起</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Compression-%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8E%8B"><span class="toc-number">5.6.</span> <span class="toc-text">Compression 压缩解压</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shell%E8%84%9A%E6%9C%AC"><span class="toc-number">5.7.</span> <span class="toc-text">shell脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ps-kill-pkill-%E8%BF%9B%E7%A8%8B%E7%9B%B8%E5%85%B3"><span class="toc-number">5.8.</span> <span class="toc-text">ps, kill, pkill 进程相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E4%BA%91%E7%A1%AC%E7%9B%98"><span class="toc-number">5.9.</span> <span class="toc-text">挂载云硬盘</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+ -->
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Linux/Linux命令行大全" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【Linux】命令行大全
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/posts/2G7VBZ2/" class="article-date">
+	  <time datetime="2022-05-31T15:57:22.000Z" itemprop="datePublished">2022-05-31</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>►<a class="article-category-link" href="/categories/Linux/Linux/">Linux</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Python/" rel="tag">Python</a>, <a class="article-tag-link-link" href="/tags/linux/" rel="tag">linux</a>, <a class="article-tag-link-link" href="/tags/vim/" rel="tag">vim</a>
+  </span>
+
+
+        
+
+        <!-- <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/2G7VBZ2/#comments" class="article-comment-link">评论</a></span> -->
+        
+	
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>记录常用的Linux指令、踩坑经历<span id="more"></span></p>
+<div class="admonition warning"><p class="admonition-title">概要
+</p><ul>
+<li>查阅 man 手册是最根本的办法，但某些用法要牢记!</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md#%E5%86%B7%E9%97%A8%E4%BD%86%E6%9C%89%E7%94%A8">The art of command line</a></li>
+<li><a target="_blank" rel="noopener" href="https://explainshell.com/">explain shell，解释任意指令</a></li>
+</ul>
+</div>
+<h2 id="索引">索引</h2>
+<ul>
+<li><code>&gt;</code>, <code>&lt;</code>, <code>\|</code></li>
+<li>grep</li>
+<li>find</li>
+<li>regex, glob</li>
+<li>head, tail</li>
+<li>less</li>
+<li>xargs</li>
+</ul>
+<h2 id="重定向">重定向</h2>
+<p>Linux 的宗旨是 <code>everythin is file</code>，对于进程、IO、设备等，都是以文件的形式存在，这些文件都可以用文件描述符（<code>file descriptor</code>）来表示。<br>
+Linux 默认有三个文件描述符，你可以始终默认它们是存在的：</p>
+<ul>
+<li>stdin（0）：可以理解为键盘设备的输入信号</li>
+<li>stdout（1）：标准输出</li>
+<li>stderr（2）：标准错误</li>
+</ul>
+<h3 id="符号">符号</h3>
+<div class="admonition note"><p class="admonition-title">重定向操作的格式:
+</p><ul>
+<li>shell命令 + 重定向符号 + &lt;文件、文件描述符、设备&gt;</li>
+</ul>
+</div>
+<ul>
+<li>
+<p>“<font color="#FF1E10"><strong>&gt;</strong></font>” 默认重定向 stdout，会覆盖原内容<br>
+<code>cmd &gt; file</code>，等价于 <code>cmd 1 &gt; file</code></p>
+</li>
+<li>
+<p>“<font color="#FF1E10"><strong>&gt;&gt;</strong></font>” 是追加，不会覆盖</p>
+</li>
+<li>
+<p>“<font color="#FF1E10"><strong>&lt;</strong></font>” 重定向 stdin，可以从输入设备、文件内读取<br>
+<code>wc -l &lt; file</code>，会统计文件的行数</p>
+</li>
+<li>
+<p>“<font color="#FF1E10"><strong>&gt;&amp;</strong></font>” 符号实现 stdout、stderr 之间的重新绑定。</p>
+<ul>
+<li><code>cmd 1&gt;&amp;2</code>，会将所有 stdout 输出到 stderr</li>
+</ul>
+</li>
+</ul>
+<h3 id="忽略">忽略</h3>
+<p><code>/dev/null</code> 是linux下的一个device，相当于黑洞，任何输出重定向到这里都会被吞掉（即忽略）。</p>
+<p><code>cmd &gt; /dev/null</code>，会忽略所有的stdout，但会保留stderr，想要忽略任何输出，可以使用 <code>cmd 1&gt;/dev/null 2&gt;&amp;1</code></p>
+<h3 id="pipe管道">pipe管道</h3>
+<p>管道（“<font color="#FF1E10"><strong>|</strong></font>”） 和 “<font color="#FF1E10"><strong>&gt;</strong></font>” 的区别在于，它仅仅支持将一个（前面）指令的 stdout 传递给 下一个指令。</p>
+<p><code>cat file | grep luhao</code>，即将file的内容传递给grep，以匹配luhao字段</p>
+<div class="admonition note"><p class="admonition-title">理解pipe：将上一个指令的stdout，重定向到下一个指令的stdin
+</p><ul>
+<li>阅读材料：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pengliangcheng/p/5211786.html">linux管道和重定向区别</a></li>
+</ul>
+</div>
+<h3 id="here-document">here document</h3>
+<pre><code class="language-bash">command &lt;&lt; EOF
+    document
+EOF
+</code></pre>
+<p><code>here document</code> 是 linux 一种特殊的重定向方式，它会将两个<code>EOF</code>之间的字符重定向给 command（或者一个程序）。<br>
+一种常见的用法是，结合 <code>cat</code> 实现多行字符的输出。</p>
+<h2 id="xargs">xargs</h2>
+<p>前面说到 <u class="black">管道</u> 可以在两个指令间传递信息，但很遗憾的是一些指令并不支持管道，例如 <code>echo</code>。<br>
+这个时候就需要 <code>xargs</code> （<em>eXtended ARGuments</em>）发挥作用！</p>
+<blockquote>
+<p>xargs [-options] [command]<br>
+xargs 本质是 将stdin转化为command的参数（结合管道使用）</p>
+</blockquote>
+<ul>
+<li>
+<p><code>$ xargs find -name</code><br>
+回车后会等待用户输入，<u class="black">然后按下 <code>ctrl+d</code></u>，会执行 <code>find -name [input]</code></p>
+</li>
+<li>
+<p><code>$ echo "test" | xargs mkdir</code><br>
+实际上等价于 <code>mkdir test</code>，如果不加xargs会报错</p>
+</li>
+</ul>
+<h3 id="xargs-d">xargs -d</h3>
+<p>xargs默认根据 “空格” 进行分割，可以用参数 <code>-d</code> 调整其分割策略</p>
+<ul>
+<li>
+<p><code>echo "one two three" | xargs mkdir</code><br>
+实际会创建名为<code>one</code>, <code>two</code>, <code>three</code>的三个目录</p>
+</li>
+<li>
+<p><code>echo -e "a\tb\t\c" | xargs -d "\t"</code><br>
+即按照<code>\t</code>分割，实际输出<code>a b c</code></p>
+</li>
+</ul>
+<div class="admonition note"><p class="admonition-title">NOTE</p><ul>
+<li><code>-p</code>：解析完参数，请求用户确认 <font color="#FF1E10"><strong>（当你不确定时请用 <code>-p</code>）</strong></font></li>
+<li><code>-t</code>：打印出参数，直接执行</li>
+</ul>
+</div>
+<h3 id="xargs-find">xargs + find</h3>
+<p>这两个指令搭配好为例无穷，举个例子，搜索目录下所有 <code>*.txt</code> 中是否包含 <code>luhao</code> 的字符：</p>
+<ul>
+<li><code>find . -name "*.txt" | xargs grep "abc"</code> ✔</li>
+<li><code>find . -name "*.txt" | grep "abc"</code> ❌</li>
+</ul>
+<p>再例如，删除所有以 <code>test</code> 开头的文件：（<code>-print0</code>是处理文件名含空格）</p>
+<ul>
+<li><code>find . -name "test* -print0" | xargs -0 rm</code></li>
+</ul>
+<p>高级应用，统计所有 <code>.cpp</code> 文件的代码行数：</p>
+<ul>
+<li><code>find ./source -type f -name "*.cpp" | xargs  wc -l</code></li>
+</ul>
+<div class="admonition warning"><p class="admonition-title">管道和xargs区别?
+</p><ul>
+<li>管道 将上一个stdout一股脑丢到stdin执行</li>
+<li>xargs 会将上一个stdout根据空格等分离，再一个一个丢进来执行</li>
+</ul>
+</div>
+<h2 id="匹配">匹配</h2>
+<p>linux下有两种匹配规则，分别是 RE正则表达式 和 Glob通配符。<br>
+<code>Glob</code>一般在shell指令下使用较多，因为较多的指令不支持正则表达式。例如 <code>ls</code>、<code>find</code>、<code>sed</code>…</p>
+<ul>
+<li>
+<p><a href="/posts/3SAT4K7/">regex 正则表达式</a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://tldp.org/LDP/abs/html/globbingref.html">glob 通配符</a></p>
+</li>
+</ul>
+<p>linux关于匹配的指令也有多种，使用最多的是 <code>find</code>、<code>grep</code>… 推荐查阅man手册来学习</p>
+<h3 id="font-color-1A9BFF-grep-font"><a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/grep.1.html"><font color="#1A9BFF"><strong>grep</strong></font></a></h3>
+<p>grep 会将匹配的部分高亮输出到 stdout，需要牢记如下几个参数：</p>
+<ul>
+<li><code>-i</code>：ignore-case</li>
+<li><code>-o</code>：only-matching，只打印完全匹配的部分</li>
+<li><code>-v</code>：invert-match，只输出“不匹配”</li>
+</ul>
+<h3 id="font-color-1A9BFF-find-font"><a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/find.1.html"><font color="#1A9BFF"><strong>find</strong></font></a></h3>
+<blockquote>
+<p>TODO：用到时候再来学习</p>
+</blockquote>
+<h2 id="文本">文本</h2>
+<p><code>linux cat</code> 指令会将文件所有的内容输出到 stdout，当文件很大的时候会占用很大的缓冲区，并造成卡顿和等待。因此学会如下几个指令：</p>
+<ul>
+<li><code>less</code>：打印部分，借助vim指令上下滚动</li>
+<li><code>head</code>：打印头部</li>
+<li><code>tail</code>：打印尾部</li>
+</ul>
+<p>可选参数常用的有两种：</p>
+<ul>
+<li><code>-f</code>：follow模式，当文件增长时会刷新stdout</li>
+<li><code>-n</code>：打印指定的行数</li>
+</ul>
+<div class="admonition note"><p class="admonition-title">监测日志时，使用 tail -f *.log | grep xxx 非常有帮助
+</p></div>
+<hr>
+<hr>
+<p>分割线，下面内容要整理重写</p>
+<hr>
+<hr>
+<h3 id="port端口占用">port端口占用</h3>
+<ul>
+<li>
+<p>Unix:<br>
+<code>lsof</code>: 打印所有端口的占用情况<br>
+<code>lsof -i:4000</code>: 查看占用4000端口的进程</p>
+</li>
+<li>
+<p>Windows:<br>
+<code>netstat -ano | findstr :6000</code>: 查看占用6000端口的进程<br>
+<code>taskkill /PID 12345 /F</code>: 杀死进程12345, /F表示强制关闭</p>
+</li>
+</ul>
+<h3 id="sed-stream-editor">sed: stream editor</h3>
+<ol start="0">
+<li><code>sed -i</code>: 直接替换源文件</li>
+<li><code>sed '4a newline' [file]</code>: 第4行新增</li>
+<li><code>sed '1,5s/a/b/' [file]</code>: 1~5行的a替换为b</li>
+<li><code>$</code>: 表示末行</li>
+</ol>
+<h3 id="scp-上传-下载">scp 上传/下载</h3>
+<ol>
+<li><code>scp [local file] root@xx.xx.xx:/root</code>: 上传到服务器</li>
+<li><code>scp root@xx.xx.xx:/root/ [local_path]</code>: 从服务器下载到本地</li>
+<li><code>scp -r</code>: 文件夹操作</li>
+<li><code>scp -P 32200 ...</code>: 带端口的scp</li>
+</ol>
+<h3 id="disk-硬盘">disk 硬盘</h3>
+<ul>
+<li><code>df -lh</code>: 查看磁盘剩余空间</li>
+<li><code>du -lh</code>: 查看含目录的大小</li>
+<li><code>rm -f *</code>: 删除目录下所有文件</li>
+<li><code>l --color</code>: 彩色格式显示</li>
+<li><code>ll</code>: 显示详细信息, 如最后修改时间</li>
+<li><code>ls | wc -l</code>: 统计当前文件数, wc表示<code>word count</code>, <code>-l</code>是行数</li>
+</ul>
+<h3 id="nohup后台挂起">nohup后台挂起</h3>
+<p>看这篇cnblog就够了: <a target="_blank" rel="noopener" href="https://www.cnblogs.com/yunwangjun-python-520/p/10713564.html">nohup和&amp;后台运行</a></p>
+<h3 id="Compression-压缩解压">Compression 压缩解压</h3>
+<ul>
+<li>zip</li>
+</ul>
+<ol>
+<li><code>unar xx.zip</code>: 可以自动解码中文</li>
+<li><code>vim xx.zip</code>: 查看zip压缩文件结构</li>
+</ol>
+<ul>
+<li>tar</li>
+</ul>
+<pre><code class="language-shell"># .gz ------------------
+tar -czf x.gz [file]
+tar -xzvf x.gz
+# .bz2 ------------------
+tar -cjf x.bz2 [file]
+tar -xjvf x.bz2
+# .rar ------------------
+rar a x.rar [file]
+unrar e x.rar
+# .zip ------------------
+zip x.zip [file]
+unzip x.zip
+</code></pre>
+<h3 id="shell脚本">shell脚本</h3>
+<ul>
+<li>如何写一个自己的脚本?</li>
+</ul>
+<ol>
+<li><code>xxx.sh</code>: 如/luhao/bin/demo.sh</li>
+<li><code>ln -s /luhao/bin/demo.sh /usr/bin/demo</code>: 加入环境变量, 可以直接demo访问</li>
+</ol>
+<ul>
+<li>自定义start, end, restart</li>
+</ul>
+<pre><code class="language-shell">function start() {
+}
+
+case "$1" in
+    start)
+	start
+	;;
+    *)
+esac
+</code></pre>
+<h3 id="ps-kill-pkill-进程相关">ps, kill, pkill 进程相关</h3>
+<ul>
+<li><code>ps -e</code>: 所有进程</li>
+<li><code>ps -u</code>: 按用户打印进程</li>
+<li><code>ps -x</code>: 没有终端的进程, 后台python应用需要！</li>
+<li><code>kill -9 [pid]</code>: 杀死对应pid的进程</li>
+<li><code>pkill -f [pattern]</code>: 杀死制定名称的进程</li>
+</ul>
+<h3 id="挂载云硬盘">挂载云硬盘</h3>
+<ol>
+<li><code>fdisk -l</code>: 查看新磁盘名称, 如<code>/dev/vdb</code></li>
+<li><code>mount -t ext4 /dev/vdb /data</code>: 将<code>/dev/vdb</code>挂载到<code>/data</code>目录</li>
+<li><code>df -lh</code>: 查看对应硬盘</li>
+</ol>
+
+      
+    </div>
+    <div class="article-footer">
+      <!-- <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://luhao.wiki/posts/2G7VBZ2/" title="【Linux】命令行大全" target="_blank" rel="external">http://luhao.wiki/posts/2G7VBZ2/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote> -->
+
+
+<!-- <div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://www.luhao.wiki" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://www.luhao.wiki" target="_blank"><span class="text-dark">luhao</span><small class="ml-1x"></small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div> -->
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/posts/2N6K1PK/" title="C++ 汇总"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/posts/3819NVV/" title="《直击本质》书摘"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	<!-- Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>. -->
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+
+<div id="go-top"></div>
+<style type="text/css">
+#go-top {
+ width:40px;height:36px;
+ background-color:#DDA0DD;
+ position:relative;
+ border-radius:2px;
+ position:fixed;right:10px;bottom:60px;
+ cursor:pointer;display:none;
+}
+#go-top:after {
+ content:" ";
+ position:absolute;left:14px;top:14px;
+ border-top:2px solid #fff;border-right:2px solid #fff;
+ width:12px;height:12px;
+ transform:rotate(-45deg);
+}
+#go-top:hover {
+ background-color:#8A2BE2;
+}
+</style>
+<script>
+$(function () {
+  var top=$("#go-top");
+  $(window).scroll(function () {
+    ($(window).scrollTop() > 300) ? top.show(300) : top.hide(200);
+    $("#go-top").click(function () {
+      $('body,html').animate({scrollTop:0});
+      return false();
+    })
+  });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/prettify.js"></script>
+<script type="text/javascript">
+    $(window).load(function(){
+        $('pre').addClass('prettyprint').attr('style', 'overflow:auto;');
+        $('pre').addClass('prettyprint linenums');
+        prettyPrint();
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

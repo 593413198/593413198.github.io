@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>【C++】编码规范 | Luhao&#39;s Blog</title>
+  <meta name="description" content="Linux kernel coding style 🔥 聊聊 C++ 的优雅写法  Names and Order of Includes 当一个cpp存在非常多的 include 时，请合理地对其进行排序。这个编码规范在很多语言都值得引起注意，如 python、JS&#x2F;TS。 顺序逻辑如下，不同模块间请用一行空格隔开：  self header C header C++ header libr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【C++】编码规范">
+<meta property="og:url" content="http://luhao.wiki/posts/WTFJWR/index.html">
+<meta property="og:site_name" content="Luhao&#39;s Blog">
+<meta property="og:description" content="Linux kernel coding style 🔥 聊聊 C++ 的优雅写法  Names and Order of Includes 当一个cpp存在非常多的 include 时，请合理地对其进行排序。这个编码规范在很多语言都值得引起注意，如 python、JS&#x2F;TS。 顺序逻辑如下，不同模块间请用一行空格隔开：  self header C header C++ header libr">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8">
+<meta property="article:published_time" content="2023-02-23T14:05:16.000Z">
+<meta property="article:modified_time" content="2023-06-18T13:12:53.652Z">
+<meta property="article:author" content="Luhao">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://luhao.wiki/posts/WTFJWR/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Luhao&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="images\avatar.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://www.luhao.wiki" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">luhao</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        </li>
+      </ul>
+      
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">
+        <i style="color:#9400D3" class="icon icon-stackexchange"></i>
+        公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p> 文章数量：<b><font color=#1A9BFF>96</font></b> </p> 最后修改：2023.6.15<br> <p><font color=#750000>读书要杂, 文档要勤, 业务要精</font></p> <p><font color=#750000>思维方式 x 热情 x 能力</font></p> <p><font color=#750000>Plan➜Do➜Check➜Improve</font></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-folder-open"></i>
+      分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/">3D Engine</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/3D-Engine/">3D Engine</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Algorithm/">Algorithm</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/C/">C++</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/">Graphics</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/Graphics/">Graphics</a><span class="category-list-count">12</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Linux/">Linux</a><span class="category-list-count">13</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/">Node.js</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/Node-js/">Node.js</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Python/">Python</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/">VSCode</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/VSCode/">VSCode</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">14</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">6</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-archives-fill"></i>
+      归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  <!-- 
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Names-and-Order-of-Includes"><span class="toc-number">1.</span> <span class="toc-text">Names and Order of Includes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Preincrement-and-Predecrement"><span class="toc-number">2.</span> <span class="toc-text">Preincrement and Predecrement</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%89%B2%E7%BA%BF"><span class="toc-number"></span> <span class="toc-text">分割线</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BC%A9%E8%BF%9B"><span class="toc-number">1.</span> <span class="toc-text">1. 缩进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8D%95%E8%A1%8C%E9%95%BF%E5%BA%A6"><span class="toc-number">2.</span> <span class="toc-text">2. 单行长度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%A4%A7%E6%8B%AC%E5%8F%B7"><span class="toc-number">3.</span> <span class="toc-text">3. 大括号 {}</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%A9%BA%E6%A0%BC"><span class="toc-number">4.</span> <span class="toc-text">4. 空格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%91%BD%E5%90%8D"><span class="toc-number">5.</span> <span class="toc-text">5. 命名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%87%BD%E6%95%B0%E8%A7%84%E8%8C%83"><span class="toc-number">6.</span> <span class="toc-text">6. 函数规范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E6%B3%A8%E9%87%8A"><span class="toc-number">7.</span> <span class="toc-text">7. 注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E5%AE%8F%E5%AE%9A%E4%B9%89"><span class="toc-number">8.</span> <span class="toc-text">8. 宏定义</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+ -->
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-C++/C++编码规范" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【C++】编码规范
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/posts/WTFJWR/" class="article-date">
+	  <time datetime="2023-02-23T14:05:16.000Z" itemprop="datePublished">2023-02-23</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/C/">C++</a>►<a class="article-category-link" href="/categories/C/C/">C++</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/C/" rel="tag">C++</a>, <a class="article-tag-link-link" href="/tags/Python/" rel="tag">Python</a>, <a class="article-tag-link-link" href="/tags/linux/" rel="tag">linux</a>
+  </span>
+
+
+        
+
+        <!-- <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/WTFJWR/#comments" class="article-comment-link">评论</a></span> -->
+        
+	
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <ul>
+<li><a target="_blank" rel="noopener" href="https://www.kernel.org/doc/html/v6.0/process/coding-style.html">Linux kernel coding style</a></li>
+<li><a target="_blank" rel="noopener" href="https://bot-man-jl.github.io/articles/?post=2020/Conventional-Cpp#references"><span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 聊聊 C++ 的优雅写法</a></li>
+</ul>
+<h3 id="Names-and-Order-of-Includes"><a target="_blank" rel="noopener" href="https://google.github.io/styleguide/cppguide.html#Names_and_Order_of_Includes">Names and Order of Includes</a></h3>
+<p>当一个<code>cpp</code>存在非常多的 <code>include</code> 时，请合理地对其进行排序。这个编码规范在很多语言都值得引起注意，如 <code>python</code>、<code>JS/TS</code>。</p>
+<p>顺序逻辑如下，不同模块间请用一行空格隔开：</p>
+<ul>
+<li><code>self</code> header</li>
+<li><code>C</code> header</li>
+<li><code>C++</code> header</li>
+<li>libraries</li>
+<li>project</li>
+</ul>
+<h3 id="Preincrement-and-Predecrement"><a target="_blank" rel="noopener" href="https://google.github.io/styleguide/cppguide.html#Preincrement_and_Predecrement">Preincrement and Predecrement</a></h3>
+<p>使用 <code>++i/--i</code> 代替 <code>i++/i--</code>，因为后者会产生一个临时变量的开销。</p>
+<hr>
+<hr>
+<h2 id="分割线">分割线</h2>
+<hr>
+<h3 id="1-缩进">1. 缩进</h3>
+<ul>
+<li>
+<p>Linux指定缩进为 8 个空格</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://peps.python.org/pep-0008/">python pep8</a> 使用 4 空格缩进 ✔</li>
+<li>一些 C/C++ 开源框架式用 2 空格缩进: <a target="_blank" rel="noopener" href="https://github.com/google/leveldb">leveldb</a></li>
+</ul>
+</li>
+<li>
+<p>当缩进层数较多（n&gt;=3），应该考虑代码的设计问题！👍</p>
+</li>
+</ul>
+<h3 id="2-单行长度">2. 单行长度</h3>
+<ul>
+<li>限制在80字符内，利用<code>\</code>换行 （可以借助VSCode提示监督）</li>
+</ul>
+<h3 id="3-大括号">3. 大括号 {}</h3>
+<ul>
+<li>对于函数定义，大括号单独换行</li>
+</ul>
+<pre><code class="language-c">int function(int x)
+{
+    return x;
+}
+</code></pre>
+<h3 id="4-空格">4. 空格</h3>
+<ul>
+<li>对于二元、三元运算符，左右都留空</li>
+</ul>
+<pre><code class="language-c">int a = b + c;
+</code></pre>
+<ul>
+<li>对于一元运算符，右侧不留空</li>
+</ul>
+<pre><code class="language-c">s = sizeof(struct file);
+</code></pre>
+<h3 id="5-命名">5. 命名</h3>
+<ul>
+<li>全局变量，使用详细的命名
+<ul>
+<li><code>g_info</code> ❌</li>
+<li><code>g_send_msg_info</code> ✔</li>
+</ul>
+</li>
+<li>局部变量，力求短小精悍
+<ul>
+<li><code>is_decoration_always_open</code> ❌</li>
+<li><code>is_open</code> ✔</li>
+</ul>
+</li>
+<li>避免种族歧视的命名 ⚠
+<ul>
+<li><code>master -&gt; primary</code></li>
+<li><code>blacklist -&gt; denylist</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="6-函数规范">6. 函数规范</h3>
+<ul>
+<li>声明函数原型时，需要包含变量名（尽管编译器允许只写变量类型）</li>
+</ul>
+<pre><code class="language-c">__init void * __must_check action(enum magic value, size_t size, u8 count,
+                                  char *fmt, ...) __printf(4, 5) __malloc;
+</code></pre>
+<ul>
+<li><code>.h</code>的函数声明包含默认参数的，<code>.cpp</code>中使用注释注明</li>
+</ul>
+<pre><code class="language-c">// a.h
+void action(size_t a, size_t b = 10);
+
+// a.cpp
+void action(size_t a, size_t b /* = 10 */) {
+    // todo
+}
+</code></pre>
+<h3 id="7-注释">7. 注释</h3>
+<ul>
+<li><strong>注释是解释<code>What</code>，而不是解释<code>How</code></strong>
+<ul>
+<li>What -&gt; 注释</li>
+<li>How -&gt; 文档、Readme</li>
+</ul>
+</li>
+<li>多行注释的格式如下：</li>
+</ul>
+<pre><code class="language-c">/*
+ * This is the preferred style for multi-line
+ * comments in the Linux kernel source code.
+ * Please use it consistently.
+ *
+ * Description:  A column of asterisks on the left side,
+ * with beginning and ending almost-blank lines.
+ */
+</code></pre>
+<h3 id="8-宏定义">8. 宏定义</h3>
+<ul>
+<li>常量的宏定义，应该大写</li>
+<li>宏定义 如果使用操作符，务必使用括号扩起</li>
+</ul>
+<pre><code class="language-c">#define CONSTANT 0x4000
+#define CONSTEXP (CONSTANT | 3)
+</code></pre>
+<ul>
+<li>函数的宏定义，应该小写</li>
+<li><s>跨行函数，应该使用<code>do-while</code> ❓</s></li>
+</ul>
+<pre><code class="language-c">#define macrofun(a, b, c)                       \
+        do {                                    \
+                if (a == 5)                     \
+                        do_this(b, c);          \
+        } while (0)
+</code></pre>
+
+      
+    </div>
+    <div class="article-footer">
+      <!-- <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://luhao.wiki/posts/WTFJWR/" title="【C++】编码规范" target="_blank" rel="external">http://luhao.wiki/posts/WTFJWR/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote> -->
+
+
+<!-- <div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://www.luhao.wiki" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://www.luhao.wiki" target="_blank"><span class="text-dark">luhao</span><small class="ml-1x"></small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div> -->
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/posts/3RBTN4W/" title="汇编（一）：计算机架构入门"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/posts/2KDTR1T/" title="Forward Lighting的技术优化"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	<!-- Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>. -->
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+
+<div id="go-top"></div>
+<style type="text/css">
+#go-top {
+ width:40px;height:36px;
+ background-color:#DDA0DD;
+ position:relative;
+ border-radius:2px;
+ position:fixed;right:10px;bottom:60px;
+ cursor:pointer;display:none;
+}
+#go-top:after {
+ content:" ";
+ position:absolute;left:14px;top:14px;
+ border-top:2px solid #fff;border-right:2px solid #fff;
+ width:12px;height:12px;
+ transform:rotate(-45deg);
+}
+#go-top:hover {
+ background-color:#8A2BE2;
+}
+</style>
+<script>
+$(function () {
+  var top=$("#go-top");
+  $(window).scroll(function () {
+    ($(window).scrollTop() > 300) ? top.show(300) : top.hide(200);
+    $("#go-top").click(function () {
+      $('body,html').animate({scrollTop:0});
+      return false();
+    })
+  });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/prettify.js"></script>
+<script type="text/javascript">
+    $(window).load(function(){
+        $('pre').addClass('prettyprint').attr('style', 'overflow:auto;');
+        $('pre').addClass('prettyprint linenums');
+        prettyPrint();
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

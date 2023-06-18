@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>【GAMES101】Transformation | Luhao&#39;s Blog</title>
+  <meta name="description" content="向量与线代、空间变换、投影">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【GAMES101】Transformation">
+<meta property="og:url" content="http://luhao.wiki/posts/30P8RVY/index.html">
+<meta property="og:site_name" content="Luhao&#39;s Blog">
+<meta property="og:description" content="向量与线代、空间变换、投影">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://luhao.wiki/images/dot.png">
+<meta property="og:image" content="http://luhao.wiki/images/product.png">
+<meta property="og:image" content="http://luhao.wiki/images/product-tri.png">
+<meta property="og:image" content="http://luhao.wiki/images/left-hand-axis.png">
+<meta property="og:image" content="http://luhao.wiki/images/matrix-multiply.png">
+<meta property="og:image" content="http://luhao.wiki/images/roll-pitch-yaw.png">
+<meta property="og:image" content="http://luhao.wiki/images/transformation.png">
+<meta property="article:published_time" content="2023-05-12T17:55:34.000Z">
+<meta property="article:modified_time" content="2023-06-18T13:12:53.656Z">
+<meta property="article:author" content="Luhao">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://luhao.wiki/images/dot.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://luhao.wiki/posts/30P8RVY/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Luhao&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="images\avatar.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://www.luhao.wiki" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">luhao</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        </li>
+      </ul>
+      
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">
+        <i style="color:#9400D3" class="icon icon-stackexchange"></i>
+        公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p> 文章数量：<b><font color=#1A9BFF>96</font></b> </p> 最后修改：2023.6.15<br> <p><font color=#750000>读书要杂, 文档要勤, 业务要精</font></p> <p><font color=#750000>思维方式 x 热情 x 能力</font></p> <p><font color=#750000>Plan➜Do➜Check➜Improve</font></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-folder-open"></i>
+      分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/">3D Engine</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/3D-Engine/">3D Engine</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Algorithm/">Algorithm</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/C/">C++</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/">Graphics</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/Graphics/">Graphics</a><span class="category-list-count">12</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Linux/">Linux</a><span class="category-list-count">13</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/">Node.js</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/Node-js/">Node.js</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Python/">Python</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/">VSCode</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/VSCode/">VSCode</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">14</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">6</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-archives-fill"></i>
+      归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  <!-- 
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%B9%E4%B9%98"><span class="toc-number">1.</span> <span class="toc-text">点乘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%89%E4%B9%98"><span class="toc-number">2.</span> <span class="toc-text">叉乘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E4%BA%A4%E5%B7%A6%E6%89%8B%EF%BC%88%E5%8F%B3%E6%89%8B%EF%BC%89%E7%B3%BB"><span class="toc-number">3.</span> <span class="toc-text">正交左手（右手）系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5"><span class="toc-number">4.</span> <span class="toc-text">矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2"><span class="toc-number">5.</span> <span class="toc-text">线性变换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%A9%E6%94%BE"><span class="toc-number">5.1.</span> <span class="toc-text">缩放</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84"><span class="toc-number">5.2.</span> <span class="toc-text">反射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%8B%E8%BD%AC"><span class="toc-number">5.3.</span> <span class="toc-text">旋转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B3%E7%A7%BB"><span class="toc-number">5.4.</span> <span class="toc-text">平移</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%BD%90%E6%AC%A1%E5%9D%90%E6%A0%87%E7%B3%BB-Homogeneous-coord"><span class="toc-number">6.</span> <span class="toc-text">齐次坐标系 (Homogeneous coord.)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B3%E7%A7%BB%E5%8F%98%E6%8D%A2"><span class="toc-number">6.1.</span> <span class="toc-text">平移变换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#w-%E7%BB%B4%E5%BA%A6"><span class="toc-number">6.2.</span> <span class="toc-text">$w$ 维度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#x-y-w-T-%E5%87%A0%E4%BD%95%E6%84%8F%E4%B9%89"><span class="toc-number">6.3.</span> <span class="toc-text">$(x, y, w)^{T}$几何意义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">6.4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AC%A7%E6%8B%89%E8%A7%92"><span class="toc-number">6.5.</span> <span class="toc-text">欧拉角</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MVP%E5%8F%98%E6%8D%A2"><span class="toc-number">7.</span> <span class="toc-text">MVP变换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Model-%E5%8F%98%E6%8D%A2"><span class="toc-number">7.1.</span> <span class="toc-text">Model 变换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#View-%E5%8F%98%E6%8D%A2"><span class="toc-number">7.2.</span> <span class="toc-text">View 变换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Projection-%E5%8F%98%E6%8D%A2"><span class="toc-number">7.3.</span> <span class="toc-text">Projection 变换</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+ -->
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Graphics/GAMES101-Transformation" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【GAMES101】Transformation
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/posts/30P8RVY/" class="article-date">
+	  <time datetime="2023-05-12T17:55:34.000Z" itemprop="datePublished">2023-05-13</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Graphics/">Graphics</a>►<a class="article-category-link" href="/categories/Graphics/Graphics/">Graphics</a>
+  </span>
+
+        
+
+        
+
+        <!-- <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/30P8RVY/#comments" class="article-comment-link">评论</a></span> -->
+        
+	
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>向量与线代、空间变换、投影<span id="more"></span></p>
+<h2 id="点乘">点乘</h2>
+<ul>
+<li>
+<p>$\vec {a} \cdot \vec {b} = |\vec {a}| |\vec {b}| cos \theta$</p>
+</li>
+<li>
+<p>几何意义：$\vec {a}$ 在 $\vec {b}$ 方向上的投影与 $\vec {b}$ 的乘积</p>
+</li>
+<li>
+<p><img src="/images/dot.png" alt=""></p>
+</li>
+<li>
+<p><strong>图形学应用</strong></p>
+<ul>
+<li>衡量两个向量是否接近：值越大越相近</li>
+<li>判定两个向量是否同向：正值同向、0为垂直、负值反向</li>
+</ul>
+</li>
+</ul>
+<h2 id="叉乘">叉乘</h2>
+<ul>
+<li>
+<p>几何意义：$\vec {a}$ 和 $\vec {b}$ 围成平行四边形的面积</p>
+</li>
+<li>
+<p>$\vec {a} \times \vec {b}$ 垂直于两个向量所在的平面</p>
+</li>
+<li>
+<p>方向：右手螺旋定理</p>
+<ul>
+<li>四个手指顺着 $\vec {a}$ 指向 $\vec {b}$ 的方向，则大拇指表示 $\vec {a} \times \vec {b}$ 的方向</li>
+</ul>
+</li>
+<li>
+<p><img src="/images/product.png" alt=""></p>
+</li>
+<li>
+<p><strong>图形学应用</strong></p>
+<ul>
+<li>判定左右：$\vec {a} \times \vec {b}$ 叉乘为正，说明 $\vec {a}$ 在 $\vec {b}$ 的右侧</li>
+<li>判定内外：
+<ul>
+<li>需要三次左右判定，如可以通过 $\vec {AP} \times \vec {AB}$ 得到 $P$ 在 $\vec {AB}$ 的左侧</li>
+<li><img src="/images/product-tri.png" alt=""></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="正交左手（右手）系">正交左手（右手）系</h2>
+<p>可以通过 “叉乘” 定义一个正交坐标系</p>
+<ul>
+<li>
+<p>$|\vec {x}| = |\vec {y}| = |\vec {z}| = 1$</p>
+</li>
+<li>
+<p>$\vec {x} \cdot \vec {y} = \vec {x} \cdot \vec {z} = \vec {y} \cdot \vec {z} = 0$</p>
+</li>
+<li>
+<p>$\vec {y} = \vec {z} \times \vec {x}$ （左手系 or 右手系）</p>
+</li>
+</ul>
+<p><img src="/images/left-hand-axis.png" alt=""></p>
+<h2 id="矩阵">矩阵</h2>
+<ul>
+<li>$(M \times N)$: 表示 $M$ 行 $N$ 列的矩阵</li>
+</ul>
+<p>$(M \times N) (N \times P) = (M \times P)$</p>
+<p><img src="/images/matrix-multiply.png" alt=""></p>
+<h2 id="线性变换">线性变换</h2>
+<h3 id="缩放">缩放</h3>
+<p>以 $x$,$y$ 分别缩放 $a$,$b$ 为例：</p>
+<ul>
+<li>$x’ = ax$</li>
+<li>$y’ = by$</li>
+</ul>
+<p>$<br>
+\left[\begin{matrix}<br>
+x’\\y’<br>
+\end{matrix}\right]<br>
+=<br>
+\left[\begin{matrix}<br>
+a &amp; 0\\0 &amp; b<br>
+\end{matrix}\right]<br>
+\left[\begin{matrix}<br>
+x\\y<br>
+\end{matrix}\right]<br>
+$</p>
+<h3 id="反射">反射</h3>
+<p>以绕y轴反射为例：</p>
+<ul>
+<li>$x’ = -x$</li>
+<li>$y’ = y$</li>
+</ul>
+<p>$<br>
+\left[\begin{matrix}<br>
+x’\\y’<br>
+\end{matrix}\right]<br>
+=<br>
+\left[\begin{matrix}<br>
+-1 &amp; 0\\0 &amp; 1<br>
+\end{matrix}\right]<br>
+\left[\begin{matrix}<br>
+x\\y<br>
+\end{matrix}\right]<br>
+$</p>
+<h3 id="旋转">旋转</h3>
+<p>以绕坐标原点旋转 $\theta$ 角为例：</p>
+<p>$<br>
+\left[\begin{matrix}<br>
+x’\\y’<br>
+\end{matrix}\right]<br>
+=<br>
+\left[\begin{matrix}<br>
+cos\theta &amp; -sin\theta\\sin\theta &amp; cos\theta<br>
+\end{matrix}\right]<br>
+\left[\begin{matrix}<br>
+x\\y<br>
+\end{matrix}\right]<br>
+$</p>
+<h3 id="平移">平移</h3>
+<p>尝试了一波，发现没法用一个 $2\times2$ 的矩阵表示二维的平移变换？<br>
+（后续为了解决此问题，引入了第三维度 $w$）</p>
+<h2 id="齐次坐标系-Homogeneous-coord">齐次坐标系 (<em>Homogeneous coord.</em>)</h2>
+<div class="admonition warning"><p class="admonition-title">为什么引入 齐次坐标系?
+</p><ul>
+<li>考虑用 $M_{2 \times 2}$ 叠加平移变换</li>
+<li>$x' = x + p$</li>
+<li>$y' = y + q$</li>
+<li>二维变换下，$x' = M_{2 \times 2} \quad x$ 无法作常量的平移变换</li>
+<li>只能写成 ： $\left[\begin{matrix}x'\\y'\end{matrix}\right] =\left[\begin{matrix}a &amp; b\\c &amp; d\end{matrix}\right]\left[\begin{matrix}x\\y\end{matrix}\right] +\left[\begin{matrix}p\\q\end{matrix}\right]$</li>
+</ul>
+</div>
+<h3 id="平移变换">平移变换</h3>
+<ul>
+<li>$<br>
+\left[\begin{matrix}<br>
+x’\\<br>
+y’\\<br>
+w’<br>
+\end{matrix}\right]<br>
+=<br>
+\left[\begin{matrix}<br>
+1 &amp; 0 &amp; p\\<br>
+0 &amp; 1 &amp; q\\<br>
+0 &amp; 0 &amp; 1<br>
+\end{matrix}\right]<br>
+\left[\begin{matrix}<br>
+x\\<br>
+y\\<br>
+1<br>
+\end{matrix}\right]<br>
+=<br>
+\left[\begin{matrix}<br>
+x+p\\<br>
+y+q\\<br>
+1<br>
+\end{matrix}\right]<br>
+$</li>
+</ul>
+<h3 id="w-维度">$w$ 维度</h3>
+<ul>
+<li>
+<p>区分 点 和 向量</p>
+<ul>
+<li>点：$(x, y, 1)^{T}$</li>
+<li>向量：$(x, y, 0)^{T}$</li>
+</ul>
+</li>
+<li>
+<p>区分 二维运算</p>
+<ul>
+<li>向量 +/- 向量：$w$ 维度为0，得到向量</li>
+<li>点 - 点：$w$ 维度为0，得到向量</li>
+<li>点 + 向量：$w$ 维度为1，得到点</li>
+<li>点 + 点：$w$ 维度为0，得到点</li>
+</ul>
+</li>
+</ul>
+<h3 id="x-y-w-T-几何意义">$(x, y, w)^{T}$几何意义</h3>
+<ul>
+<li>$w = 0$：表示向量</li>
+<li>$w ≠ 0$：表示点 $(\frac{x}{w}, \frac{y}{w}, 1)$</li>
+</ul>
+<h3 id="总结">总结</h3>
+<p>此时可以表示 Scale、Rotation、Translation 三种线性变换：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Matrix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Scale</td>
+<td style="text-align:center">$\left[\begin{matrix}s_{x} &amp; 0 &amp; 0\\0 &amp; s_{y} &amp; 0\\0 &amp; 0 &amp; 1\end{matrix}\right]$</td>
+</tr>
+<tr>
+<td style="text-align:center">Rotation</td>
+<td style="text-align:center">$\left[\begin{matrix}cos\theta &amp; -sin\theta &amp; 0\\sin\theta &amp; cos\theta &amp; 0\\0 &amp; 0 &amp; 1\end{matrix}\right]$</td>
+</tr>
+<tr>
+<td style="text-align:center">Translation</td>
+<td style="text-align:center">$\left[\begin{matrix}1 &amp; 0 &amp; t_{x}\\0 &amp; 1 &amp; t_{y}\\0 &amp; 0 &amp; 1\end{matrix}\right]$</td>
+</tr>
+</tbody>
+</table>
+<p>另外，可以用 $M^{-1}$ 表示逆变换（反向操作，逆函数）</p>
+<h3 id="欧拉角">欧拉角</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/47736315/answer/236284413">知乎: 如何通俗地解释欧拉角？</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Euler_angles">Wikipedia: Eular angles</a></li>
+</ul>
+<p>欧拉角使用三个角度来描述刚体在 $xyz$ 坐标系中的旋转，这三个角度分别表示绕 “三个轴” 旋转的角度，不同顺序会产生不同的结果</p>
+<p>也可以用 roll, pitch, yaw 来表示欧拉角，如图所示<br>
+<img src="/images/roll-pitch-yaw.png" alt=""></p>
+<ul>
+<li>旋转所绕的轴有两种划分
+<ul>
+<li>世界坐标系（静止）：$xyz$</li>
+<li>局部坐标系（动态）：$XYZ$</li>
+</ul>
+</li>
+</ul>
+<div class="admonition warning"><p class="admonition-title">TODO
+</p><ul>
+<li>万向节死锁这部分没完全弄懂</li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Gimbal_lock">万向节死锁</a></li>
+</ul>
+</div>
+<h2 id="MVP变换">MVP变换</h2>
+<ul>
+<li>首先前面提到过 $(x, y, z, w)^{T}$ 表示三维的信息
+<ul>
+<li>$w = 0$: 表示向量 $(x, y, z)$</li>
+<li>$w ≠ 0$：表示点 $(\frac{x}{w}, \frac{y}{w}, \frac{z}{w})$</li>
+</ul>
+</li>
+</ul>
+<p>三维空间的点，最终展现到二维屏幕上，需要经过一些列的空间变换，可以概括为 <font color="#ef6d3b"><strong>“MVP”</strong></font></p>
+<p>MVP 变换可以想象为一个拍照的过程：</p>
+<h3 id="Model-变换">Model 变换</h3>
+<blockquote>
+<p>“将人群和景色放到一个合适的位置”</p>
+</blockquote>
+<p>将所有模型移动到统一的世界坐标下（world space）</p>
+<p>局部坐标 -&gt; 世界坐标</p>
+<h3 id="View-变换">View 变换</h3>
+<blockquote>
+<p>“找一个合适的相机角度”</p>
+</blockquote>
+<ul>
+<li>如何描述相机的信息?
+<ul>
+<li>坐标：$\vec e = (x_{e}, y_{e}, z_{e})$</li>
+<li>相机朝向 Look-at：$g$</li>
+<li>相机上方向 Up：$t$</li>
+</ul>
+</li>
+</ul>
+<p>通过一个 View矩阵 $M_{view}$ 将所有模型转换到 view空间，只需要 平移变换 + 旋转变换：<br>
+即 $M_{view} = R_{view} T_{view}$</p>
+<p><strong>先平移 $T_{view}$</strong></p>
+<p>平移变换是为了将相机移到中心原点，因此矩阵很好得到：</p>
+<p>$<br>
+\left[\begin{matrix}<br>
+x’\\y’\\z’\\w’<br>
+\end{matrix}\right]<br>
+=<br>
+\left[\begin{matrix}<br>
+1 &amp; 0 &amp; 0 &amp; -x_{e}\\0 &amp; 1 &amp; 0 &amp; -y_{e}\\0 &amp; 0 &amp; 1 &amp; -z_{e}\\0 &amp; 0 &amp; 0 &amp; 1 \\<br>
+\end{matrix}\right]<br>
+\left[\begin{matrix}<br>
+x\\y\\z\\w<br>
+\end{matrix}\right]<br>
+=<br>
+\left[\begin{matrix}<br>
+x - x_{e}w\\y - y_{e}w\\z - z_{e}w\\w<br>
+\end{matrix}\right]<br>
+=<br>
+\left[\begin{matrix}<br>
+x - x_{e}\\y - y_{e}\\z - z_{e}\\1<br>
+\end{matrix}\right]<br>
+$</p>
+<p><strong>后旋转 $R_{view}$</strong></p>
+<p>拆解开来，需要作如下三个轴的旋转：</p>
+<ul>
+<li>$g$ 旋转到 $- \vec Z$</li>
+<li>$t$ 旋转到 $\vec Y$</li>
+<li>$g \times t$ 旋转到 $\vec X$</li>
+</ul>
+<p>将 “局部轴旋转到$XYZ$轴” 很困难，因此可以求逆变换：“将$XYZ$轴旋转到局部轴”</p>
+<ul>
+<li>将 $\vec X (1, 0, 0)$ 变换到 $(x_{g \times t}, y_{g \times t}, z_{g \times t})$</li>
+<li>将 $\vec Y (0, 1, 0)$ 变换到 $(x_{t}, y_{t}, z_{t})$</li>
+<li>将 $\vec Z (0, 0, 1)$ 变换到 $(x_{-g}, y_{-g}, z_{-g})$</li>
+</ul>
+<p>将这三个特殊值代入，可以解出 $R_{view}^{-1}$ 矩阵为：</p>
+<p>$<br>
+R_{view}^{-1}=<br>
+\left[\begin{matrix}<br>
+x_{g \times t} &amp; x_{t} &amp; x_{-g} &amp; 0\\<br>
+y_{g \times t} &amp; y_{t} &amp; y_{-g} &amp; 0\\<br>
+z_{g \times t} &amp; z_{t} &amp; z_{-g} &amp; 0\\<br>
+0 &amp; 0 &amp; 0 &amp; 1 \\<br>
+\end{matrix}\right]<br>
+$</p>
+<p>根据转置矩阵得到 $R_{view}$：</p>
+<p>$<br>
+R_{view}=<br>
+\left[\begin{matrix}<br>
+x_{g \times t} &amp; y_{g \times t} &amp; z_{g \times t} &amp; 0\\<br>
+x_{t} &amp; y_{t} &amp; z_{t} &amp; 0\\<br>
+x_{-g} &amp; y_{-g} &amp; z_{-g} &amp; 0\\<br>
+0 &amp; 0 &amp; 0 &amp; 1 \\<br>
+\end{matrix}\right]<br>
+$</p>
+<div class="admonition note"><p class="admonition-title">逆向思维
+</p><ul>
+<li>“求逆” 是线性代数解决问题的常见思路</li>
+</ul>
+</div>
+<h3 id="Projection-变换">Projection 变换</h3>
+<blockquote>
+<p>“按下快门！拍照”</p>
+</blockquote>
+<p>投影变换是最重要的部分，因为它塑造了 “立体感”，它分为两种：</p>
+<ul>
+<li>Perspective Projection: 近大远小，符合人眼</li>
+<li>Orthographic Projection：远近一致</li>
+<li><img src="/images/transformation.png" alt=""></li>
+</ul>
+<p><strong>正交投影</strong></p>
+<div class="admonition warning"><p class="admonition-title">疑问?
+</p><ul>
+<li>正交投影 为什么把任何立方体投影到一个(-1, 1)的正方体?</li>
+</ul>
+</div>
+<p><strong>透视投影</strong></p>
+<div class="admonition todo"><p class="admonition-title">TODO</p><ul>
+<li>这部分有点复杂，教程中利用 “相似三角形” 和 “特殊值法” 求出了矩阵，有空补一下</li>
+</ul>
+</div>
+
+      
+    </div>
+    <div class="article-footer">
+      <!-- <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://luhao.wiki/posts/30P8RVY/" title="【GAMES101】Transformation" target="_blank" rel="external">http://luhao.wiki/posts/30P8RVY/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote> -->
+
+
+<!-- <div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://www.luhao.wiki" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://www.luhao.wiki" target="_blank"><span class="text-dark">luhao</span><small class="ml-1x"></small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div> -->
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/posts/120QJ0A/" title="PDCA 闭环思维"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/posts/3CKYSDZ/" title="【C99】setjmp.h"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	<!-- Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>. -->
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+
+<div id="go-top"></div>
+<style type="text/css">
+#go-top {
+ width:40px;height:36px;
+ background-color:#DDA0DD;
+ position:relative;
+ border-radius:2px;
+ position:fixed;right:10px;bottom:60px;
+ cursor:pointer;display:none;
+}
+#go-top:after {
+ content:" ";
+ position:absolute;left:14px;top:14px;
+ border-top:2px solid #fff;border-right:2px solid #fff;
+ width:12px;height:12px;
+ transform:rotate(-45deg);
+}
+#go-top:hover {
+ background-color:#8A2BE2;
+}
+</style>
+<script>
+$(function () {
+  var top=$("#go-top");
+  $(window).scroll(function () {
+    ($(window).scrollTop() > 300) ? top.show(300) : top.hide(200);
+    $("#go-top").click(function () {
+      $('body,html').animate({scrollTop:0});
+      return false();
+    })
+  });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/prettify.js"></script>
+<script type="text/javascript">
+    $(window).load(function(){
+        $('pre').addClass('prettyprint').attr('style', 'overflow:auto;');
+        $('pre').addClass('prettyprint linenums');
+        prettyPrint();
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

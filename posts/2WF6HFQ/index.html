@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Model and Mesh | Luhao&#39;s Blog</title>
+  <meta name="description" content="概要 实际的游戏开发中，（模型）美术会制作fbx,max等资源给程序使用; 因此我们要讨论如何导入，以及如何渲染这些3D模型   3D Formats 美术使用的3D软件很多，如Blender、3DMax、Maya等等； 不同软件有自己的3D模型格式（虽然大都提供了互相导入导出），所以了解这些常见的格式很关键；    格式 特点     FBX 含动画、材质、骨骼等   glTF 含动画、材质、骨">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Model and Mesh">
+<meta property="og:url" content="http://luhao.wiki/posts/2WF6HFQ/index.html">
+<meta property="og:site_name" content="Luhao&#39;s Blog">
+<meta property="og:description" content="概要 实际的游戏开发中，（模型）美术会制作fbx,max等资源给程序使用; 因此我们要讨论如何导入，以及如何渲染这些3D模型   3D Formats 美术使用的3D软件很多，如Blender、3DMax、Maya等等； 不同软件有自己的3D模型格式（虽然大都提供了互相导入导出），所以了解这些常见的格式很关键；    格式 特点     FBX 含动画、材质、骨骼等   glTF 含动画、材质、骨">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8">
+<meta property="og:image" content="http://luhao.wiki/images/triagnle_rabbit.png">
+<meta property="og:image" content="http://luhao.wiki/images/assimp.png">
+<meta property="article:published_time" content="2021-11-28T10:52:52.000Z">
+<meta property="article:modified_time" content="2023-06-18T13:12:53.656Z">
+<meta property="article:author" content="Luhao">
+<meta property="article:tag" content="Graphics">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="OpenGL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://luhao.wiki/posts/2WF6HFQ/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Luhao&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="images\avatar.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://www.luhao.wiki" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">luhao</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        </li>
+      </ul>
+      
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">
+        <i style="color:#9400D3" class="icon icon-stackexchange"></i>
+        公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p> 文章数量：<b><font color=#1A9BFF>96</font></b> </p> 最后修改：2023.6.15<br> <p><font color=#750000>读书要杂, 文档要勤, 业务要精</font></p> <p><font color=#750000>思维方式 x 热情 x 能力</font></p> <p><font color=#750000>Plan➜Do➜Check➜Improve</font></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-folder-open"></i>
+      分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/">3D Engine</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/3D-Engine/">3D Engine</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Algorithm/">Algorithm</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/C/">C++</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/">Graphics</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/Graphics/">Graphics</a><span class="category-list-count">12</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Linux/">Linux</a><span class="category-list-count">13</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/">Node.js</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/Node-js/">Node.js</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Python/">Python</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/">VSCode</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/VSCode/">VSCode</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">14</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">6</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-archives-fill"></i>
+      归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  <!-- 
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#3D-Formats"><span class="toc-number">1.</span> <span class="toc-text">3D Formats</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FBX"><span class="toc-number">1.1.</span> <span class="toc-text">FBX</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#glTF"><span class="toc-number">1.2.</span> <span class="toc-text">glTF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OBJ"><span class="toc-number">1.3.</span> <span class="toc-text">OBJ</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mesh"><span class="toc-number">2.</span> <span class="toc-text">Mesh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Assimp"><span class="toc-number">3.</span> <span class="toc-text">Assimp</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#font-color-ef6d3b-Scene-font"><span class="toc-number">3.1.</span> <span class="toc-text">Scene</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#font-color-ef6d3b-RootNode-font"><span class="toc-number">3.2.</span> <span class="toc-text">RootNode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#font-color-ef6d3b-Mesh-font"><span class="toc-number">3.3.</span> <span class="toc-text">Mesh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB"><span class="toc-number">3.4.</span> <span class="toc-text">问题汇总</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+ -->
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Graphics/Model-and-Mesh" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Model and Mesh
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/posts/2WF6HFQ/" class="article-date">
+	  <time datetime="2021-11-28T10:52:52.000Z" itemprop="datePublished">2021-11-28</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Graphics/">Graphics</a>►<a class="article-category-link" href="/categories/Graphics/Graphics/">Graphics</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Graphics/" rel="tag">Graphics</a>, <a class="article-tag-link-link" href="/tags/OpenGL/" rel="tag">OpenGL</a>, <a class="article-tag-link-link" href="/tags/Python/" rel="tag">Python</a>
+  </span>
+
+
+        
+
+        <!-- <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/2WF6HFQ/#comments" class="article-comment-link">评论</a></span> -->
+        
+	
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <div class="admonition note"><p class="admonition-title">概要
+</p><p>实际的游戏开发中，（模型）美术会制作<code>fbx</code>,<code>max</code>等资源给程序使用;
+因此我们要讨论如何导入，以及如何渲染这些3D模型</p>
+</div>
+<hr>
+<h2 id="3D-Formats">3D Formats</h2>
+<p>美术使用的3D软件很多，如Blender、3DMax、Maya等等；<br>
+不同软件有自己的3D模型格式（虽然大都提供了互相导入导出），所以了解这些常见的格式很关键；</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">格式</th>
+<th style="text-align:center">特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">FBX</td>
+<td style="text-align:center">含动画、材质、骨骼等</td>
+</tr>
+<tr>
+<td style="text-align:center">glTF</td>
+<td style="text-align:center">含动画、材质、骨骼等几乎所有信息</td>
+</tr>
+<tr>
+<td style="text-align:center">OBJ</td>
+<td style="text-align:center">仅模型和材质信息</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="FBX">FBX</h3>
+<p><font color="#ef6d3b"><strong>.FBX</strong></font> 是<em>MotionBuilder</em>使用的格式，它是一个动画制作平台；</p>
+<ul>
+<li>FBX支持动画、材质、贴图、骨骼、灯光、摄像机等信息；</li>
+<li>FBX支持法线和贴图坐标，可以写入贴图路径；</li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/FBX">Wikipedia: FBX</a></li>
+</ul>
+<hr>
+<h3 id="glTF">glTF</h3>
+<p><font color="#ef6d3b"><strong>.gltf</strong></font> 是OpenGL和Vulkan背后的3D图形标准组织Khronos所定义，它具有最标准与精简的格式，可谓<strong>3D模型的JPG</strong>；</p>
+<ul>
+<li>gltf支持动画、材质、场景、摄像机等几乎所有，甚至可以包含shader程序；</li>
+<li>gltf采用json的格式，因此可读性和兼容性很高；</li>
+<li>gltf可以编译成二进制：bgltf；</li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/GlTF">wikipedia: GLTF</a></li>
+</ul>
+<hr>
+<h3 id="OBJ">OBJ</h3>
+<p><font color="#ef6d3b"><strong>.obj</strong></font> 是<em>Wavefront</em>公司推出的跨平台3D模型格式；</p>
+<ul>
+<li>OBJ是纯3D模型，不包含动画（区别FBX）、贴图路径、材质等信息；</li>
+<li>OBJ支持法线和贴图坐标，但需要手动制认贴图；</li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Wavefront_.obj_file">Wikipedia: Wavefront.obj</a></li>
+</ul>
+<p>这是一篇介绍OBJ的好文章: <span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> <a target="_blank" rel="noopener" href="http://www.opengl-tutorial.org/beginners-tutorials/tutorial-7-model-loading/">Tutorial 7 : Model loading</a></p>
+<ul>
+<li><font color="#ef6d3b"><strong>OBJ格式分析</strong></font></li>
+</ul>
+<p>这是一个简单的Cube的obj文件:</p>
+<pre><code class="language-python"># Desc xxx 这里都是注释
+
+mtllib cube.mtl # mathlib或usemtl记录了使用的材质
+
+# v是vertex
+v 1.000000 -1.000000 -1.000000
+v 1.000000 -1.000000 1.000000
+...
+
+# vt是texture uv
+vt 0.748573 0.750412
+vt 0.749279 0.501284
+...
+
+# vn是normal
+vn 0.000000 0.000000 -1.000000
+vn -1.000000 -0.000000 -0.000000
+...
+
+# f是face, 描述每个三角面的v/vt/vn
+s off
+f 5/1/1 1/2/1 4/3/1
+f 5/1/1 4/3/1 8/4/1
+</code></pre>
+<p><font color="#ef6d3b"><strong>f（face）怎么理解</strong></font></p>
+<ul>
+<li>假设对于某一行：<code>f 8/11/7 7/12/7 6/10/7</code>：
+<ul>
+<li><code>8/11/7</code>是三角面的第一个点；</li>
+<li><code>7/12/7</code>是三角面的第二个点；</li>
+<li><code>6/10/7</code>是三角面的第三个点；</li>
+</ul>
+</li>
+<li>对于每个三角面：
+<ul>
+<li><code>8</code>是指第8个vertex，找对应的<code>v</code>；</li>
+<li><code>11</code>是指第11个vertex texture uv，找对应的<code>vt</code>；</li>
+<li><code>7</code>是指第7个vertex normal，找对应的<code>vn</code>；</li>
+</ul>
+</li>
+<li>以上利用了索引（indices）的思想，本质是用时间换空间，节省了内存！</li>
+</ul>
+<div class="admonition warning"><p class="admonition-title">动手尝试
+</p><p>这么看下来，是不是自己也可以写一个<code>obj</code>的解析器了呢？</p>
+</div>
+<hr>
+<h2 id="Mesh">Mesh</h2>
+<ul>
+<li><strong>既然Model是由很多Mesh组成</strong>，那么什么是Mesh？</li>
+</ul>
+<p><font color="#ef6d3b">A mesh is a collection of vertices, edges and faces that define the shape of a 3D object.</font><br>
+mesh是一些顶点、边、面的组合，它们定义了一个3D物体的形状.</p>
+<ul>
+<li><strong>我们通常用triangle mesh来代表物体</strong>，为什么？</li>
+</ul>
+<p><font color="#ef6d3b">几乎任何图形都可以用多个三角形表示</font>，比如一个圆，可以是无数个三角形模拟而成；<br>
+所以三角面越多越复杂，往往意味着模型的面数越高、精度越高；（如下图）</p>
+<p><img src="/images/triagnle_rabbit.png" alt=""></p>
+<hr>
+<h2 id="Assimp">Assimp</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://assimp.org/">Open Asset Import Library</a>: 一款支持多种模型格式导入与加载的标准库</li>
+</ul>
+<p>下图是Assimp中一个model的架构：</p>
+<p><img src="/images/assimp.png" alt=""></p>
+<hr>
+<h3 id="font-color-ef6d3b-Scene-font"><font color="#ef6d3b"><strong>Scene</strong></font></h3>
+<p>scene包含一个RootNode指针，以及所有的Mesh和Material对象；</p>
+<h3 id="font-color-ef6d3b-RootNode-font"><font color="#ef6d3b"><strong>RootNode</strong></font></h3>
+<p>RootNode对象中的Children[]中，递归包含了所有Model的指针；<br>
+它还包含了所有的Mesh对象；</p>
+<h3 id="font-color-ef6d3b-Mesh-font"><font color="#ef6d3b"><strong>Mesh</strong></font></h3>
+<p>什么是Mesh？它包含了所有Rendering需要的信息：<font color="#1A9BFF"><strong>vertex（顶点）, normal（法线）, texture（贴图）, materials（材质）等…</strong></font></p>
+<hr>
+<h3 id="问题汇总">问题汇总</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.4k8k.xyz/article/qq_36383623/85303483">“由于找不到assimp-vc140-mt.dll，无法继续执行代码。重新安装程序可能会解决此问题。”</a></li>
+</ul>
+<h2 id="参考资料">参考资料</h2>
+<blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Category:3D_graphics_file_formats">3D graphics file formats</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.quora.com/What-is-a-mesh-in-OpenGL">What is a mesh</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.opengl-tutorial.org/beginners-tutorials/tutorial-7-model-loading/">Tutorial 7 : Model loading</a></li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    <div class="article-footer">
+      <!-- <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://luhao.wiki/posts/2WF6HFQ/" title="Model and Mesh" target="_blank" rel="external">http://luhao.wiki/posts/2WF6HFQ/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote> -->
+
+
+<!-- <div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://www.luhao.wiki" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://www.luhao.wiki" target="_blank"><span class="text-dark">luhao</span><small class="ml-1x"></small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div> -->
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/posts/2M66594/" title="Depth testing"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/posts/25J1JRS/" title="博客写作规范"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	<!-- Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>. -->
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+
+<div id="go-top"></div>
+<style type="text/css">
+#go-top {
+ width:40px;height:36px;
+ background-color:#DDA0DD;
+ position:relative;
+ border-radius:2px;
+ position:fixed;right:10px;bottom:60px;
+ cursor:pointer;display:none;
+}
+#go-top:after {
+ content:" ";
+ position:absolute;left:14px;top:14px;
+ border-top:2px solid #fff;border-right:2px solid #fff;
+ width:12px;height:12px;
+ transform:rotate(-45deg);
+}
+#go-top:hover {
+ background-color:#8A2BE2;
+}
+</style>
+<script>
+$(function () {
+  var top=$("#go-top");
+  $(window).scroll(function () {
+    ($(window).scrollTop() > 300) ? top.show(300) : top.hide(200);
+    $("#go-top").click(function () {
+      $('body,html').animate({scrollTop:0});
+      return false();
+    })
+  });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/prettify.js"></script>
+<script type="text/javascript">
+    $(window).load(function(){
+        $('pre').addClass('prettyprint').attr('style', 'overflow:auto;');
+        $('pre').addClass('prettyprint linenums');
+        prettyPrint();
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

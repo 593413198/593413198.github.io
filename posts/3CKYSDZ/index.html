@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>【C99】setjmp.h | Luhao&#39;s Blog</title>
+  <meta name="description" content="学习setjmpC标准库, 实现轻量级协程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【C99】setjmp.h">
+<meta property="og:url" content="http://luhao.wiki/posts/3CKYSDZ/index.html">
+<meta property="og:site_name" content="Luhao&#39;s Blog">
+<meta property="og:description" content="学习setjmpC标准库, 实现轻量级协程">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-05-10T03:40:54.000Z">
+<meta property="article:modified_time" content="2023-06-18T13:12:53.652Z">
+<meta property="article:author" content="Luhao">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://luhao.wiki/posts/3CKYSDZ/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Luhao&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="images\avatar.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://www.luhao.wiki" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">luhao</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        </li>
+      </ul>
+      
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">
+        <i style="color:#9400D3" class="icon icon-stackexchange"></i>
+        公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p> 文章数量：<b><font color=#1A9BFF>96</font></b> </p> 最后修改：2023.6.15<br> <p><font color=#750000>读书要杂, 文档要勤, 业务要精</font></p> <p><font color=#750000>思维方式 x 热情 x 能力</font></p> <p><font color=#750000>Plan➜Do➜Check➜Improve</font></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-folder-open"></i>
+      分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/">3D Engine</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/3D-Engine/">3D Engine</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Algorithm/">Algorithm</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/C/">C++</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/">Graphics</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/Graphics/">Graphics</a><span class="category-list-count">12</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Linux/">Linux</a><span class="category-list-count">13</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/">Node.js</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/Node-js/">Node.js</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Python/">Python</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/">VSCode</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/VSCode/">VSCode</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">14</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">6</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-archives-fill"></i>
+      归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  <!-- 
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#man-setjmp"><span class="toc-number">1.</span> <span class="toc-text">man setjmp</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#what"><span class="toc-number">1.1.</span> <span class="toc-text">what</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#how"><span class="toc-number">1.2.</span> <span class="toc-text">how</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="toc-number">1.3.</span> <span class="toc-text">注意点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#code-example"><span class="toc-number">2.</span> <span class="toc-text">code example</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#setjmp-%E5%AE%9E%E7%8E%B0%E5%8D%8F%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">setjmp 实现协程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E8%A6%81%E6%B1%82"><span class="toc-number">3.1.</span> <span class="toc-text">实验要求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-number">4.</span> <span class="toc-text">实现</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+ -->
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-C++/C99-setjmp-h" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【C99】setjmp.h
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/posts/3CKYSDZ/" class="article-date">
+	  <time datetime="2023-05-10T03:40:54.000Z" itemprop="datePublished">2023-05-10</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/C/">C++</a>►<a class="article-category-link" href="/categories/C/C/">C++</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/C/" rel="tag">C++</a>, <a class="article-tag-link-link" href="/tags/Python/" rel="tag">Python</a>, <a class="article-tag-link-link" href="/tags/linux/" rel="tag">linux</a>
+  </span>
+
+
+        
+
+        <!-- <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/3CKYSDZ/#comments" class="article-comment-link">评论</a></span> -->
+        
+	
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>学习<code>setjmp</code>C标准库, 实现轻量级协程<span id="more"></span></p>
+<div class="admonition note"><p class="admonition-title">写在最前面
+</p><p><em><strong><code>setjmp</code></strong></em> 是C99的一个标准库, 其实现了 <em><strong><code>non-local jumps</code></strong></em>, 本次学习路线是:</p>
+<ul>
+<li>阅读手册、文档 ✔: <a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man3/longjmp.3.html">man(3)</a>, <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Setjmp.h">wikipedia</a></li>
+<li>阅读代码示例 ✔: <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Setjmp.h#Example_usage">wikipedia: Example usage</a></li>
+<li>coding: <a target="_blank" rel="noopener" href="http://jyywiki.cn/OS/2022/labs/M2">M2: 协程库 (libco)</a></li>
+<li>可选: 阅读 <code>setjmp.h</code> 的源码</li>
+</ul>
+</div>
+<h2 id="man-setjmp">man setjmp</h2>
+<h3 id="what">what</h3>
+<p>准确说是 <code>man 3 setjmp</code>, <code>3</code> 的含义是 <em><code>Linux Programmer's Manual</code></em>.<br>
+先看其基本的定义:</p>
+<blockquote>
+<p><em>setjmp, sigsetjmp, longjmp, siglongjmp  - performing a nonlocal goto</em></p>
+</blockquote>
+<p>也就是说, <code>setjmp</code>的作用是执行一个 nonlocal goto;<br>
+为什么说 nonlocal?<br>
+举个例子, 看下面的 C 代码, main函数 中尝试借助goto跳转到 func函数内部, 编译会报错<br>
+<font color="#ef6d3b">因为 goto 只能实现函数堆栈内部的跳转，即 local jump!</font></p>
+<pre><code class="language-c">void func() {
+outer:
+    printf("into func...");
+}
+
+int main() {
+inner:
+    // ... 
+    goto outer; // error: label "outer" used but not defined
+    goto inner; // ok
+    // ...
+}
+</code></pre>
+<h3 id="how">how</h3>
+<p>继续阅读 Description 部分:</p>
+<blockquote>
+<p><em>The setjmp() function dynamically establishes the target to which control will later be transferred, and longjmp() performs the transfer of execution</em></p>
+</blockquote>
+<p>直译过来就是说，<code>setjmp()</code> 扮演的是定义 label 作用，<code>longjmp</code> 扮演的是goto跳转作用</p>
+<p>继续看这两个函数体的定义:</p>
+<pre><code class="language-c">int setjmp(jmp_buf env);
+void longjmp(jmp_buf env, int val);
+</code></pre>
+<p><code>setjmp</code> 接收一个 <code>jmp_buf env</code> 的参数, 看看手册是如何解释 env 的:</p>
+<blockquote>
+<p><em>The setjmp() function saves various information about the calling environment (typically, the stack pointer, the instruction pointer, possibly the values of other registers and the signal mask) in the buffer env for later use by longjmp()</em></p>
+</blockquote>
+<p>写的很直白了， <code>env</code> 保存了调用处的局部环境，例如 栈指针、pc指针…<br>
+（这块如果看不懂，需要恶补汇编知识，建议阅读：<a href="/posts/1QNHHCN/">汇编（三）：基础AT&amp;T汇编</a>）<br>
+<code>setjmp</code> 负责写入env，<code>longjmp</code> 会读取env并恢复调用时的环境，这样就达到了 <code>nonlocal goto</code> 的作用</p>
+<p>ok基本看明白了，但是还有一个 <code>int val</code> 的参数，作用是什么？</p>
+<ul>
+<li>这里我觉得 man手册 没说清楚，自己总结下吧
+<ul>
+<li>如果是 <code>setjmp</code> 的直接调用：返回 0</li>
+<li>如果是 <code>longjmp</code> 的跳转调用：返回 一个非0 的 参数</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note"><p class="admonition-title">setjmp的两次返回值
+</p><ul>
+<li>这里很抽象，需要结合代码理解</li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/1692814/exception-handling-in-c-what-is-the-use-of-setjmp-returning-0">StackOverflow: What is the use of setjmp() returning 0?</a></li>
+</ul>
+</div>
+<h3 id="注意点">注意点</h3>
+<p>阅读 man手册 的 Caveats 部分，有两点注意事项:</p>
+<ul>
+<li>如果 调用 <code>setjmp</code> 的函数 在 <code>longjmp</code> 调用之前返回，那么行为不确定.</li>
+<li>如果 在多线程 中使用 <code>nonlocal env</code>，那么行为不确定.</li>
+</ul>
+<p>这两点在实际开发中暂时不会遇到，先列在这里吧</p>
+<h2 id="code-example">code example</h2>
+<p>talk is cheap, show me the code：这部分开始讨论代码</p>
+<p>下面的代码展示了 <code>setjmp / longjmp</code> 的基本使用:</p>
+<p>核心：记住 <code>setjmp</code> 处会被call两次</p>
+<ul>
+<li>第一次是用户自己调用的</li>
+<li>第二次是 <code>longjmp call</code> 回来的</li>
+</ul>
+<pre><code class="language-c++">// https://en.wikipedia.org/wiki/Setjmp.h
+#include &lt;stdio.h&gt;
+#include &lt;setjmp.h&gt;
+
+jmp_buf env;
+int longjmp_ret = 8;         // paramater pass to longjmp
+
+void second() {
+    printf("second 1\n");    // √
+    longjmp(env, longjmp_ret);
+    printf("second 2\n");    // ×
+}
+
+void first() {
+    printf("first 1\n");     // √
+    second();
+    printf("first 2\n");     // ×
+}
+
+int main() {
+    int val = setjmp(env);
+    if (!val) {
+        printf("setjmp return: %d\n", val);
+        first();               // when setjmp executed, setjmp returns 0
+    }
+    else {                     // when longjmp returns, setjmp returns 1
+        printf("setjmp return: %d\n", val);
+        printf("main :: else\n"); 
+    }
+    return 0;
+}
+// setjmp return: 0
+// first 1
+// second 1
+// setjmp return: 8
+// main :: else
+</code></pre>
+<h2 id="setjmp-实现协程"><code>setjmp</code> 实现协程</h2>
+<h3 id="实验要求">实验要求</h3>
+<p>看到这里觉得自己很牛逼了，觉得都会了，是骡子是马，上实验遛遛：<br>
+这里 NJU 操作系统的实验，利用 setjmp 实现一个轻量级的协程: <a target="_blank" rel="noopener" href="http://jyywiki.cn/OS/2022/labs/M2">M2: 协程库 (libco)</a></p>
+<p>首先你要理解什么是 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Coroutine">协程</a> （Python Generator 就是一种协程）</p>
+<p>其次实现实验里给出的 api:</p>
+<ul>
+<li><code>co_start</code>: 创建一个新的协程，并返回一个指向struct co的指针（类似于 pthread_create）</li>
+<li><code>co_wait(co)</code>: 表示当前协程需要等待，直到co协程的返回才能继续执行（类似于 pthread_join）</li>
+<li><code>co_yield()</code>: 将当前协程“切换”出去，随机选择下一个线程执行</li>
+</ul>
+<pre><code class="language-c++">// co.h
+struct co* co_start(const char *name, void (*func)(void *), void *arg);
+void co_yield();
+void co_wait(struct co *co);
+</code></pre>
+<p><strong>如下是一个使用的例子：</strong></p>
+<pre><code class="language-c++">#include &lt;stdio.h&gt;
+#include "co.h"
+
+int count = 1; // 协程之间共享
+
+void entry(void *arg) {
+  for (int i = 0; i &lt; 5; i++) {
+    printf("%s[%d] ", (const char *)arg, count++);
+    co_yield();
+  }
+}
+
+int main() {
+  struct co *co1 = co_start("co1", entry, "a");
+  struct co *co2 = co_start("co2", entry, "b");
+  co_wait(co1);
+  co_wait(co2);
+  printf("Done\n");
+}
+</code></pre>
+<div class="admonition error"><p class="admonition-title">TODO
+</p><ul>
+<li>为什么这里 <code>count++</code> 不会有线程安全问题?</li>
+</ul>
+</div>
+<p>其中co1和co2这两个协程共享 <code>count</code> 变量，因此输出是：<br>
+<code>b[1] a[2] b[3] b[4] a[5] b[6] b[7] a[8] a[9] a[10] Done</code></p>
+<p><strong>一个小小的调试技巧:</strong></p>
+<p>当你不希望某些调试用的输出，出现在正式环境，可以借助宏重写 printf:<br>
+（其中 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/cpp/preprocessor/variadic-macros?view=msvc-170"><code>__VA_ARGS__</code></a> 用来表示不定数量的参数）</p>
+<pre><code class="language-c++">#ifdef DEBUG_MODE
+  #define debug(...) printf(__VA_ARGS__)
+#else
+  #define debug(...)
+#endif
+</code></pre>
+<p>编译时增加 <code>-DDEBUG_MODE</code> 的编译选项，即可打开 <code>DEBUG_MODE</code> 宏，即实现了输出控制</p>
+<p><strong>VSCode 调试 C++:</strong></p>
+<p>因为一直 <code>VSCode Remote-SSH</code> 在服务器上写代码，不适合用 VS、Clion 等现代IDE调试，gdb这种又贼难用，所以配了一下VSCode调试的环境，看 <a href="/posts/3HCBFZ8/">这篇博客</a>；</p>
+<p>限制还是有的：1. 只适合小型的 c/c++ 项目，2. 依赖太多三方库等文件时，<code>launch.json</code>不太好写</p>
+<h2 id="实现">实现</h2>
+<p>首先将协程的状态分为几类:</p>
+<pre><code class="language-c++">enum co_status {
+  CO_NEW     = 1, // 新创建
+  CO_RUNNING = 2, // 已经执行
+  CO_WAITING = 3, // 在 co_wait 上等待
+  CO_DEAD    = 4, // 已经结束
+};
+</code></pre>
+<p>状态的划分很重要，因为 <code>co_yield</code> 会选取下一个幸运儿进行调度执行，选择标准就是协程的状态；<br>
+理想情况下，选取一个 <code>CO_WAITING</code> 状态的协程继续执行，正在执行的协程状态是 <code>CO_RUNNING</code>，且同时有且只能有一个 <code>CO_RUNNING</code>…</p>
+<p>那么选取下一个协程时，有两种情形要处理：</p>
+<ul>
+<li>有 <code>CO_WAITING</code>：直接切换</li>
+<li>无 <code>CO_WAITING</code>：怎么办?
+<ul>
+<li>继续执行？显然违背了 <code>yield</code> 的原理</li>
+<li>正确做法是切回到 <code>main</code>（可以将 <code>main</code> 理解为一个主协程）</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <!-- <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://luhao.wiki/posts/3CKYSDZ/" title="【C99】setjmp.h" target="_blank" rel="external">http://luhao.wiki/posts/3CKYSDZ/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote> -->
+
+
+<!-- <div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://www.luhao.wiki" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://www.luhao.wiki" target="_blank"><span class="text-dark">luhao</span><small class="ml-1x"></small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div> -->
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/posts/30P8RVY/" title="【GAMES101】Transformation"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/posts/14ZY2JK/" title="【OS】多线程之互斥算法"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	<!-- Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>. -->
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+
+<div id="go-top"></div>
+<style type="text/css">
+#go-top {
+ width:40px;height:36px;
+ background-color:#DDA0DD;
+ position:relative;
+ border-radius:2px;
+ position:fixed;right:10px;bottom:60px;
+ cursor:pointer;display:none;
+}
+#go-top:after {
+ content:" ";
+ position:absolute;left:14px;top:14px;
+ border-top:2px solid #fff;border-right:2px solid #fff;
+ width:12px;height:12px;
+ transform:rotate(-45deg);
+}
+#go-top:hover {
+ background-color:#8A2BE2;
+}
+</style>
+<script>
+$(function () {
+  var top=$("#go-top");
+  $(window).scroll(function () {
+    ($(window).scrollTop() > 300) ? top.show(300) : top.hide(200);
+    $("#go-top").click(function () {
+      $('body,html').animate({scrollTop:0});
+      return false();
+    })
+  });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/prettify.js"></script>
+<script type="text/javascript">
+    $(window).load(function(){
+        $('pre').addClass('prettyprint').attr('style', 'overflow:auto;');
+        $('pre').addClass('prettyprint linenums');
+        prettyPrint();
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

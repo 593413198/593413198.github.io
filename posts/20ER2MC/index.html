@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>【问题求解】Recursion | Luhao&#39;s Blog</title>
+  <meta name="description" content="TODO 理论: 英文教材 《Chapter 2 Recursion: The Mirrors》 Leetcode: 递归专题 | 递归blog Recursion | Devide-and-Conquer | DP   Recursion &#x3D; Mirrors  Recursion breaks a problem into smaller identical problems.  想象两面镜子正">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【问题求解】Recursion">
+<meta property="og:url" content="http://luhao.wiki/posts/20ER2MC/index.html">
+<meta property="og:site_name" content="Luhao&#39;s Blog">
+<meta property="og:description" content="TODO 理论: 英文教材 《Chapter 2 Recursion: The Mirrors》 Leetcode: 递归专题 | 递归blog Recursion | Devide-and-Conquer | DP   Recursion &#x3D; Mirrors  Recursion breaks a problem into smaller identical problems.  想象两面镜子正">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-04T14:29:58.000Z">
+<meta property="article:modified_time" content="2023-06-18T13:12:53.652Z">
+<meta property="article:author" content="Luhao">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://luhao.wiki/posts/20ER2MC/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Luhao&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="images\avatar.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://www.luhao.wiki" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">luhao</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        </li>
+      </ul>
+      
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">
+        <i style="color:#9400D3" class="icon icon-stackexchange"></i>
+        公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p> 文章数量：<b><font color=#1A9BFF>96</font></b> </p> 最后修改：2023.6.15<br> <p><font color=#750000>读书要杂, 文档要勤, 业务要精</font></p> <p><font color=#750000>思维方式 x 热情 x 能力</font></p> <p><font color=#750000>Plan➜Do➜Check➜Improve</font></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-folder-open"></i>
+      分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/">3D Engine</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/3D-Engine/">3D Engine</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Algorithm/">Algorithm</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/C/">C++</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/">Graphics</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/Graphics/">Graphics</a><span class="category-list-count">12</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Linux/">Linux</a><span class="category-list-count">13</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/">Node.js</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/Node-js/">Node.js</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Python/">Python</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/">VSCode</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/VSCode/">VSCode</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">14</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">6</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-archives-fill"></i>
+      归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  <!-- 
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Recursion-Mirrors"><span class="toc-number">1.</span> <span class="toc-text">Recursion &#x3D; Mirrors</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#How-to-search-a-word"><span class="toc-number">1.1.</span> <span class="toc-text">How to search a word</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-x-Features-%E2%AD%90"><span class="toc-number">1.2.</span> <span class="toc-text">2 x Features ⭐</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Recursion-Problems"><span class="toc-number">2.</span> <span class="toc-text">Recursion Problems</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Factorial-N"><span class="toc-number">2.1.</span> <span class="toc-text">Factorial N</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#String-Backward"><span class="toc-number">2.2.</span> <span class="toc-text">String Backward</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Binary-Search"><span class="toc-number">2.3.</span> <span class="toc-text">Binary Search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Find-Largest"><span class="toc-number">2.4.</span> <span class="toc-text">Find Largest</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Find-k-th-Largest"><span class="toc-number">2.5.</span> <span class="toc-text">Find $k_{th}$ Largest</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Combination-of-C-k-n"><span class="toc-number">2.6.</span> <span class="toc-text">Combination of $C^{k}_{n}$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hanoi-Tower-%E2%AD%90"><span class="toc-number">2.7.</span> <span class="toc-text">Hanoi Tower ⭐</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Recursion-Complexity-%E2%8F%B3"><span class="toc-number">3.</span> <span class="toc-text">Recursion Complexity ⏳</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Leetcode-%E9%80%92%E5%BD%92%E4%B8%93%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">Leetcode 递归专题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#509-Fibonacci-Number"><span class="toc-number">4.1.</span> <span class="toc-text">509. Fibonacci Number</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%92%E5%BD%92"><span class="toc-number">4.1.1.</span> <span class="toc-text">递归</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%92%E5%BD%92-%E7%BC%93%E5%AD%98"><span class="toc-number">4.1.2.</span> <span class="toc-text">递归 -&gt; 缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E4%BC%98%E5%8C%96"><span class="toc-number">4.1.3.</span> <span class="toc-text">进一步优化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#206-Reverse-Linked-List"><span class="toc-number">4.2.</span> <span class="toc-text">206. Reverse Linked List</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%92%E5%BD%92-2"><span class="toc-number">4.2.1.</span> <span class="toc-text">递归</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88"><span class="toc-number">4.2.2.</span> <span class="toc-text">双指针</span></a></li></ol></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+ -->
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Algorithm/Recursion" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【问题求解】Recursion
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/posts/20ER2MC/" class="article-date">
+	  <time datetime="2023-04-04T14:29:58.000Z" itemprop="datePublished">2023-04-04</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Algorithm/">Algorithm</a>►<a class="article-category-link" href="/categories/Algorithm/Algorithm/">Algorithm</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/C/" rel="tag">C++</a>, <a class="article-tag-link-link" href="/tags/Python/" rel="tag">Python</a>
+  </span>
+
+
+        
+
+        <!-- <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/20ER2MC/#comments" class="article-comment-link">评论</a></span> -->
+        
+	
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <div class="admonition todo"><p class="admonition-title">TODO</p><ol>
+<li>理论: 英文教材 《Chapter 2 Recursion: The Mirrors》</li>
+<li>Leetcode: <a target="_blank" rel="noopener" href="https://leetcode.cn/tag/recursion/problemset/">递归专题</a> | <a target="_blank" rel="noopener" href="https://leetcode.cn/circle/article/OqbWl5/">递归blog</a></li>
+<li>Recursion | Devide-and-Conquer | DP</li>
+</ol>
+</div>
+<h2 id="Recursion-Mirrors">Recursion = Mirrors</h2>
+<ul>
+<li><em><strong>Recursion breaks a problem into smaller identical problems.</strong></em></li>
+</ul>
+<p>想象两面镜子正对着放在一起, 其中会无限产生倒映, 并且越来越小以至于肉眼看不见.<br>
+递归的本质, 就是将问题逐渐拆分成更小规模的问题, 以至于能被简单解决.</p>
+<h3 id="How-to-search-a-word">How to search a word</h3>
+<p>书中以 “在英文字典查词 <code>vademecum</code>” 为例, 阐述了两种方法:</p>
+<ul>
+<li>
+<p><strong>Sequential search</strong><br>
+从字典第一个单词开始, 按顺序逐个查询…</p>
+</li>
+<li>
+<p><strong>Binary search</strong><br>
+翻到字典一半位置, 根据首字母确定在前半部还是后半部, 然后接着翻到一半位置, 循环下去…<br>
+直到翻到只剩一页, 就停止循环, 在此页查找</p>
+</li>
+</ul>
+<p>这就是一个经典的递归思想.</p>
+<h3 id="2-x-Features-⭐">2 x Features ⭐</h3>
+<p>递归思想解决问题, 符合如下2个特征:</p>
+<ul>
+<li><strong><code>base-CASE</code></strong>: 递归会终止于一个简单的问题</li>
+<li><strong><code>降维</code></strong>: 每次递归都会调用自身, 并解决一个规模更小的问题</li>
+</ul>
+<h2 id="Recursion-Problems">Recursion Problems</h2>
+<h3 id="Factorial-N">Factorial N</h3>
+<p>先以阶乘为例, 阐述上面的特征:</p>
+<p>$factorial(n) = n \times (n-1) \times (n-2) \times … \times 1$</p>
+<ul>
+<li>$f(1) = 1$
+<ul>
+<li>这是一个base case, 因为它是最小的正整数, 是终止条件</li>
+</ul>
+</li>
+<li>$f(n) = f(n-1) \times n$
+<ul>
+<li>每次通过调用自身缩小了问题规模</li>
+</ul>
+</li>
+</ul>
+<p>python程序如下:</p>
+<pre><code class="language-python">def fact(n):
+    if n == 1:
+        return 1
+    return n * fact(n - 1)
+</code></pre>
+<h3 id="String-Backward">String Backward</h3>
+<p><strong>字符串倒置问题</strong>, 这是递归中稍难的问题, 因为没有返回值, 它不再像 Factorial那样直观<br>
+以此为例, 阐述解决递归问题的思路：</p>
+<ul>
+<li><strong>找到<code>base-CASE</code></strong>: 长度为1的字符串, 倒置即是本身</li>
+<li><strong>找到降维方式</strong>:
+<ul>
+<li>已知n-1字符的倒置, 如何求n字符的倒置?</li>
+<li>即S[n] + S[1…N-1]</li>
+</ul>
+</li>
+</ul>
+<p>python程序如下:</p>
+<pre><code class="language-python">def write_backward(s):
+    if len(s) == 1:
+        print s
+    else:
+        print s[-1]
+        write_backward(s[:-1])
+</code></pre>
+<h3 id="Binary-Search">Binary Search</h3>
+<p><strong>二分查找</strong>, 这是计算机最经典的问题, 生活中也经常用到这个类思想.<br>
+任何情境下的二分问题,只需要想清楚如下2点:</p>
+<ul>
+<li>什么是<code>base-CASE</code>? 它确保二分能停止</li>
+<li>选左半边? 还是选右半边?</li>
+</ul>
+<p>例如对一个有序数组作二分查找:</p>
+<ul>
+<li><code>base-CASE</code>: array[i] == target 或者 left &gt;= right</li>
+<li>选择: 根据大小关系很容易选</li>
+</ul>
+<p>python程序如下:</p>
+<pre><code class="language-c">int binarySearch(const int&amp; Array[], int left, int right, int target) 
+{
+    if (left &gt; right)
+        return -1; // not found
+    int mid = (left + right) / 2;
+    if (Array[mid] == target)
+        return mid; // find it
+    else if (Array[mid] &lt; target)
+        // find right
+        return binarySearch(Arrary, mid, right, target)
+    else
+        // find left
+        return binarySearch(Arrary, left, mid, target)
+}
+</code></pre>
+<h3 id="Find-Largest">Find Largest</h3>
+<p>二分查找每一半的最大值</p>
+<pre><code class="language-python">def findLargest(arr):
+    if len(arr) == 1:
+        return arr[0]
+    mid = len(arr) / 2
+    return max(arr[:mid], arr[mid:])
+</code></pre>
+<h3 id="Find-k-th-Largest">Find $k_{th}$ Largest</h3>
+<h3 id="Combination-of-C-k-n">Combination of $C^{k}_{n}$</h3>
+<h3 id="Hanoi-Tower-⭐">Hanoi Tower ⭐</h3>
+<p>这有个 <a target="_blank" rel="noopener" href="https://www.mathsisfun.com/games/towerofhanoi.html">网站演示demo</a></p>
+<div class="admonition warning"><p class="admonition-title">WARNING</p><p>这些算法待实现, 存在一定难度, 尤其是汉诺塔</p>
+</div>
+<h2 id="Recursion-Complexity-⏳">Recursion Complexity ⏳</h2>
+<p>递归算法的效率往往不高, 因为任何编程语言的函数调用开销都较大.<br>
+可以通过使用迭代避免, 以Faborial为例:</p>
+<pre><code class="language-python">def fact(n):
+    ans = 1
+    for i in range(1, n+1):
+        ans * = i
+    return ans
+</code></pre>
+<h2 id="Leetcode-递归专题">Leetcode <a target="_blank" rel="noopener" href="https://leetcode.cn/tag/recursion/problemset/">递归专题</a></h2>
+<p>这里选取了几个最经典的算法题:</p>
+<ul>
+<li>斐波那契</li>
+<li>反转链表</li>
+</ul>
+<h3 id="509-Fibonacci-Number"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/fibonacci-number/">509. Fibonacci Number</a></h3>
+<blockquote>
+<p>F(0) = 0, F(1) = 1<br>
+F(n) = F(n - 1) + F(n - 2), for n &gt; 1.<br>
+计算F(n), 0&lt;=n&lt;=30</p>
+</blockquote>
+<h4 id="递归">递归</h4>
+<pre><code class="language-c++">int fib(int n) {
+    return n &lt; 2 ? n : fib(n - 1) + fib(n - 2);
+}
+</code></pre>
+<p>尝试用主定理分析一波复杂度:<br>
+$T(n) = 2 T(n)$</p>
+<p>等比数列求和得到复杂度: $O(2^n)$, 空间复杂度: $O(1)$</p>
+<p>尝试优化一下:<br>
+<code>fib(n-1)</code>和<code>fib(n-2)</code>中间有很多是重复的运算, 可以作一个存储</p>
+<h4 id="递归-缓存">递归 -&gt; 缓存</h4>
+<pre><code class="language-c++">int fib(int n) {
+    // n &lt;= 30
+    int cache[31] = {0, 1};
+    for (int i=2; i&lt;=n; i++)
+        cache[i] = cache[i-1] + cache[i-2];
+    return cache[n];
+}
+</code></pre>
+<p>通过数组存储, 避免了重复计算, 这里复杂度很容易分析:<br>
+时间$O(n)$, 空间也是$O(n)$</p>
+<h4 id="进一步优化">进一步优化</h4>
+<p>那么是否有办法优化掉$O(n)$的空间呢?<br>
+尝试使用多个局部变量即可<br>
+即a, b, c, 三者分别代表$fib(n)$, $fib(n-1)$, $fib(n-2)$:</p>
+<pre><code class="language-c++">int fib(int n) {
+    if (n &lt; 2) return n;
+    int a = 1,  b = 0;
+    int c = a + b;
+    for (int i=3; i&lt;=n; i++)
+    {
+        b = a;
+        a = c;
+        c = a + b;
+    }
+    return c;
+}
+</code></pre>
+<p>他是复杂度为:<br>
+时间$O(n)$, 空间$O(1)$</p>
+<h3 id="206-Reverse-Linked-List"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reverse-linked-list/">206. Reverse Linked List</a></h3>
+<blockquote>
+<p>反转链表, 并返回链表head</p>
+</blockquote>
+<h4 id="递归-2">递归</h4>
+<p>先尝试递归的解法, 按照递归的两个特性尝试理解:</p>
+<ul>
+<li><code>base-CASE</code>: 链表长度为1, 此时反转即本身</li>
+<li><code>降维</code>: 长度为n的链表, 反转为 $R_{n}$ + $R^{'}_{1 - (n-1)}$</li>
+</ul>
+<p>实现的技术细节不是很直观, 因为利用了递归中函数调用的栈特性<br>
+如下 <code>next_node</code> 其实会一直调用下去, 直到最后一个尾节点, 然后才会执行<code>head-&gt;next-&gt;next=head</code>那两行代码.<br>
+即真实执行的顺序, 是<strong>从尾部到头部</strong> !<br>
+这个leetcode题解有动画演示, <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reverse-linked-list/solution/fan-zhuan-lian-biao-shuang-zhi-zhen-di-gui-yao-mo-/">跳转链接</a></p>
+<pre><code class="language-c++">ListNode* reverseList(ListNode* head) {
+    if (head == nullptr || head-&gt;next == nullptr){
+        return head;
+    }
+    ListNode* next_node = reverseList(head-&gt;next);
+    head-&gt;next-&gt;next = head;
+    head-&gt;next = nullptr;
+    return next_node;
+}
+</code></pre>
+<p>照例分析复杂度: 时间$O(n)$, 空间$O(1)$</p>
+<h4 id="双指针">双指针</h4>
+<p>其实是单指针的方法, 利用<code>head-&gt;next</code>来更新节点, <code>cur</code>当做指针移动:<br>
+这个leetcode题解有动画演示, <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reverse-linked-list/solution/fan-zhuan-lian-biao-shuang-zhi-zhen-di-gui-yao-mo-/">跳转链接</a></p>
+<pre><code class="language-c++">ListNode* reverseList(ListNode* head) {
+    ListNode* cur = head;
+    while (head &amp;&amp; head-&gt;next)
+    {
+        ListNode* next_next = head-&gt;next-&gt;next;
+        head-&gt;next-&gt;next = cur;
+        cur = head-&gt;next;
+        head-&gt;next = next_next;
+    }
+    return cur;
+}
+</code></pre>
+<p>复杂度和递归的方案一致</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <!-- <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://luhao.wiki/posts/20ER2MC/" title="【问题求解】Recursion" target="_blank" rel="external">http://luhao.wiki/posts/20ER2MC/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote> -->
+
+
+<!-- <div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://www.luhao.wiki" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://www.luhao.wiki" target="_blank"><span class="text-dark">luhao</span><small class="ml-1x"></small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div> -->
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/posts/3AGXVNM/" title="【OS】实现指令pstree"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/posts/3HZHSCW/" title="问题求解与算法"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	<!-- Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>. -->
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+
+<div id="go-top"></div>
+<style type="text/css">
+#go-top {
+ width:40px;height:36px;
+ background-color:#DDA0DD;
+ position:relative;
+ border-radius:2px;
+ position:fixed;right:10px;bottom:60px;
+ cursor:pointer;display:none;
+}
+#go-top:after {
+ content:" ";
+ position:absolute;left:14px;top:14px;
+ border-top:2px solid #fff;border-right:2px solid #fff;
+ width:12px;height:12px;
+ transform:rotate(-45deg);
+}
+#go-top:hover {
+ background-color:#8A2BE2;
+}
+</style>
+<script>
+$(function () {
+  var top=$("#go-top");
+  $(window).scroll(function () {
+    ($(window).scrollTop() > 300) ? top.show(300) : top.hide(200);
+    $("#go-top").click(function () {
+      $('body,html').animate({scrollTop:0});
+      return false();
+    })
+  });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/prettify.js"></script>
+<script type="text/javascript">
+    $(window).load(function(){
+        $('pre').addClass('prettyprint').attr('style', 'overflow:auto;');
+        $('pre').addClass('prettyprint linenums');
+        prettyPrint();
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

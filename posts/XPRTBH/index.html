@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>中英文档 | Luhao&#39;s Blog</title>
+  <meta name="description" content="NOTE 罗列了常用、令人困惑的英文专有词汇，可结合站内 右上角的搜索 速查! 本篇已停更一段时间，尽量使用 “英语阅读，中文写作” 的方式   好的翻译多重要?   先祭出CS领域的经典垃圾翻译:  socket: 套接字 robust: 鲁棒性 handle: 句柄    再看看什么经典优秀翻译:  context: 上下文 (通俗) process&#x2F;thread: 进程&#x2F;线程 (进行中的程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="中英文档">
+<meta property="og:url" content="http://luhao.wiki/posts/XPRTBH/index.html">
+<meta property="og:site_name" content="Luhao&#39;s Blog">
+<meta property="og:description" content="NOTE 罗列了常用、令人困惑的英文专有词汇，可结合站内 右上角的搜索 速查! 本篇已停更一段时间，尽量使用 “英语阅读，中文写作” 的方式   好的翻译多重要?   先祭出CS领域的经典垃圾翻译:  socket: 套接字 robust: 鲁棒性 handle: 句柄    再看看什么经典优秀翻译:  context: 上下文 (通俗) process&#x2F;thread: 进程&#x2F;线程 (进行中的程序">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8">
+<meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8">
+<meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8">
+<meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8">
+<meta property="article:published_time" content="2021-10-10T08:06:11.000Z">
+<meta property="article:modified_time" content="2023-06-18T13:12:53.660Z">
+<meta property="article:author" content="Luhao">
+<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="OpenGL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://luhao.wiki/posts/XPRTBH/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Luhao&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="images\avatar.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://www.luhao.wiki" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">luhao</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        </li>
+      </ul>
+      
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">
+        <i style="color:#9400D3" class="icon icon-stackexchange"></i>
+        公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p> 文章数量：<b><font color=#1A9BFF>96</font></b> </p> 最后修改：2023.6.15<br> <p><font color=#750000>读书要杂, 文档要勤, 业务要精</font></p> <p><font color=#750000>思维方式 x 热情 x 能力</font></p> <p><font color=#750000>Plan➜Do➜Check➜Improve</font></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-folder-open"></i>
+      分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/">3D Engine</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/3D-Engine/">3D Engine</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Algorithm/">Algorithm</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/C/">C++</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/">Graphics</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/Graphics/">Graphics</a><span class="category-list-count">12</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Linux/">Linux</a><span class="category-list-count">13</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/">Node.js</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/Node-js/">Node.js</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Python/">Python</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/">VSCode</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/VSCode/">VSCode</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">14</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">6</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-archives-fill"></i>
+      归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  <!-- 
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%BD%E7%9A%84%E7%BF%BB%E8%AF%91%E5%A4%9A%E9%87%8D%E8%A6%81"><span class="toc-number">1.</span> <span class="toc-text">好的翻译多重要?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E8%8B%B1%E5%AF%B9%E7%85%A7"><span class="toc-number">2.</span> <span class="toc-text">中英对照</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+ -->
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-工具/中英文档" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      中英文档
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/posts/XPRTBH/" class="article-date">
+	  <time datetime="2021-10-10T08:06:11.000Z" itemprop="datePublished">2021-10-10</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>►<a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7/%E5%B7%A5%E5%85%B7/">工具</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Algorithm/" rel="tag">Algorithm</a>, <a class="article-tag-link-link" href="/tags/OpenGL/" rel="tag">OpenGL</a>, <a class="article-tag-link-link" href="/tags/linux/" rel="tag">linux</a>
+  </span>
+
+
+        
+
+        <!-- <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/XPRTBH/#comments" class="article-comment-link">评论</a></span> -->
+        
+	
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <div class="admonition note"><p class="admonition-title">NOTE</p><ul>
+<li>罗列了常用、令人困惑的英文专有词汇，可结合站内 <strong>右上角的搜索</strong> 速查!</li>
+<li>本篇已停更一段时间，尽量使用 <font color="#ef6d3b"><strong>“英语阅读，中文写作”</strong></font> 的方式</li>
+</ul>
+</div>
+<h2 id="好的翻译多重要">好的翻译多重要?</h2>
+<ul>
+<li>
+<p>先祭出CS领域的经典垃圾翻译:</p>
+<ul>
+<li><strong>socket</strong>: 套接字</li>
+<li><strong>robust</strong>: 鲁棒性</li>
+<li><strong>handle</strong>: 句柄</li>
+</ul>
+</li>
+<li>
+<p>再看看什么经典优秀翻译:</p>
+<ul>
+<li><strong>context</strong>: 上下文 (通俗)</li>
+<li><strong>process/thread</strong>: 进程/线程 (进行中的程序)</li>
+<li><strong>garbage collection</strong>: 垃圾回收 (直译就够了)</li>
+</ul>
+</li>
+<li>
+<p>欢迎移步知乎话题:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/22950899">为什么handle会被翻译成句柄？</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/27192923">哪些专业名词翻译得特别烂？</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="中英对照">中英对照</h2>
+<div class="admonition warning"><p class="admonition-title">关于对照表
+</p><p>1.Wikipedia的解释准确且全面，但可能不易理解；</p>
+<p>2.某些社区(如知乎、博客)会有一些精彩而巧妙的理解，因此贴出来；</p>
+<p>3.个人备注栏，添加了一些自己的理解；</p>
+<ol start="4">
+<li><span class="github-emoji"><span>❌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>意味着远离中文!</li>
+</ol>
+</div>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">英文</th>
+<th style="text-align:center">中文</th>
+<th style="text-align:center">官方</th>
+<th style="text-align:left">个人备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">socket</td>
+<td style="text-align:center">套接字</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Network_socket">Wikipedia</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">robust</td>
+<td style="text-align:center">鲁棒性</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Robustness">Wikipedia</a></td>
+<td style="text-align:left">功能健壮, 具有高扩展性</td>
+</tr>
+<tr>
+<td style="text-align:center">handle</td>
+<td style="text-align:center">句柄</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Handle_(computing)">Wikipedia</a></td>
+<td style="text-align:left">对一段资源的引用, 像pointer?</td>
+</tr>
+<tr>
+<td style="text-align:center">Cartesian coord.</td>
+<td style="text-align:center">笛卡尔坐标系</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cartesian_coordinate_system">Wikipedia</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">Homogeneous coord.</td>
+<td style="text-align:center">齐次坐标系</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/59595799">知乎</a></td>
+<td style="text-align:left">n+1维表示n维 <a target="_blank" rel="noopener" href="http://localhost:4000/posts/1513JCX/">我的博客</a></td>
+</tr>
+<tr>
+<td style="text-align:center">Viewport</td>
+<td style="text-align:center">屏幕</td>
+<td style="text-align:center"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">Projection</td>
+<td style="text-align:center">投影</td>
+<td style="text-align:center"></td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://localhost:4000/posts/1513JCX/">我的博客</a></td>
+</tr>
+<tr>
+<td style="text-align:center">Orthographic</td>
+<td style="text-align:center">正交</td>
+<td style="text-align:center"></td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://localhost:4000/posts/1513JCX/">我的博客</a></td>
+</tr>
+<tr>
+<td style="text-align:center">Perspective</td>
+<td style="text-align:center">透视</td>
+<td style="text-align:center"></td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://localhost:4000/posts/1513JCX/">我的博客</a></td>
+</tr>
+<tr>
+<td style="text-align:center">rasterization</td>
+<td style="text-align:center">光栅化</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Rasterisation">Wikipedia</a></td>
+<td style="text-align:left">三维场景渲染到二维屏幕</td>
+</tr>
+<tr>
+<td style="text-align:center">anti-aliasing</td>
+<td style="text-align:center">抗锯齿(AA)</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Anti-aliasing">Wikipedia</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">framebuffer</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Framebuffer">Wikipedia</a></td>
+<td style="text-align:left">GPU memory to store</td>
+</tr>
+<tr>
+<td style="text-align:center">Z-Buffer/Depth-Buffer</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Z-buffering">Wikipedia</a></td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.luhao.wiki/posts/2AR5BC4/">我的博客</a></td>
+</tr>
+<tr>
+<td style="text-align:center">painter’s algorithm</td>
+<td style="text-align:center">画家算法</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Painter%27s_algorithm">Wikipedia</a></td>
+<td style="text-align:left">由远到近排序后绘制，近的覆盖远的</td>
+</tr>
+<tr>
+<td style="text-align:center">NDC</td>
+<td style="text-align:center">Normalized Device Coordinates</td>
+<td style="text-align:center"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">VBO</td>
+<td style="text-align:center">vertex buffer object</td>
+<td style="text-align:center"><a href="...">Wikipedia</a></td>
+<td style="text-align:left"><a href="...">我的博客</a></td>
+</tr>
+<tr>
+<td style="text-align:center">VAO</td>
+<td style="text-align:center">vertex array object</td>
+<td style="text-align:center"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">EBO</td>
+<td style="text-align:center">element buffer objects</td>
+<td style="text-align:center"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">vs</td>
+<td style="text-align:center">vertex shader</td>
+<td style="text-align:center"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">ps(fs)</td>
+<td style="text-align:center">pixel (fragment) shader</td>
+<td style="text-align:center"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">uv</td>
+<td style="text-align:center">纹理坐标</td>
+<td style="text-align:center"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">Texture filtering</td>
+<td style="text-align:center">纹理过滤</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Texture_filtering">Wikipedia</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">Artifacts</td>
+<td style="text-align:center"><span class="github-emoji"><span>❌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Visual_artifact">Wikipedia</a></td>
+<td style="text-align:left">凡是不接近真实的图形表现</td>
+</tr>
+<tr>
+<td style="text-align:center">Mipmap</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://learnopengl.com/Getting-started/Textures">LearnOpenGL</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">Phong lighting model</td>
+<td style="text-align:center"><span class="github-emoji"><span>❌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Phong_reflection_model">Wikipedia</a></td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.luhao.wiki/posts/SZGATA/">Colors and Materials</a></td>
+</tr>
+<tr>
+<td style="text-align:center">Ambient</td>
+<td style="text-align:center">环境光</td>
+<td style="text-align:center"></td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.luhao.wiki/posts/SZGATA/">Colors and Materials</a></td>
+</tr>
+<tr>
+<td style="text-align:center">Diffuse</td>
+<td style="text-align:center">漫反射光</td>
+<td style="text-align:center"></td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.luhao.wiki/posts/SZGATA/">Colors and Materials</a></td>
+</tr>
+<tr>
+<td style="text-align:center">Specular</td>
+<td style="text-align:center">高光</td>
+<td style="text-align:center"></td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.luhao.wiki/posts/SZGATA/">Colors and Materials</a></td>
+</tr>
+<tr>
+<td style="text-align:center">Lightmap</td>
+<td style="text-align:center"><span class="github-emoji"><span>❌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></td>
+<td style="text-align:center"></td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.luhao.wiki/posts/SZGATA/">Colors and Materials</a></td>
+</tr>
+<tr>
+<td style="text-align:center">directional light</td>
+<td style="text-align:center">平行光</td>
+<td style="text-align:center"></td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.luhao.wiki/posts/S7WXS5/">Lighting</a></td>
+</tr>
+<tr>
+<td style="text-align:center">point light</td>
+<td style="text-align:center">点光</td>
+<td style="text-align:center"></td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.luhao.wiki/posts/S7WXS5/">Lighting</a></td>
+</tr>
+<tr>
+<td style="text-align:center">spot light</td>
+<td style="text-align:center">聚光灯</td>
+<td style="text-align:center"></td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.luhao.wiki/posts/S7WXS5/">Lighting</a></td>
+</tr>
+<tr>
+<td style="text-align:center">hover</td>
+<td style="text-align:center">鼠标悬停态</td>
+<td style="text-align:center"></td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.runoob.com/cssref/sel-hover.html">CSS hover</a></td>
+</tr>
+<tr>
+<td style="text-align:center">Assembly-Language</td>
+<td style="text-align:center">汇编</td>
+<td style="text-align:center"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">AT&amp;T Syntax</td>
+<td style="text-align:center">AT&amp;T汇编格式</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://www.cs.mcgill.ca/~cs573/winter2001/AttLinux_syntax.htm#:~:text=Notable%20differences%20between%20the%20two,Intel%20register%20operands%20are%20undelimited.">Syntax versus</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">Intel Syntax</td>
+<td style="text-align:center">Intel汇编格式</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://www.cs.mcgill.ca/~cs573/winter2001/AttLinux_syntax.htm#:~:text=Notable%20differences%20between%20the%20two,Intel%20register%20operands%20are%20undelimited.">Syntax versus</a></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<p>| socket |  | <a href="...">Wikipedia</a> | |</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <!-- <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://luhao.wiki/posts/XPRTBH/" title="中英文档" target="_blank" rel="external">http://luhao.wiki/posts/XPRTBH/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote> -->
+
+
+<!-- <div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://www.luhao.wiki" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://www.luhao.wiki" target="_blank"><span class="text-dark">luhao</span><small class="ml-1x"></small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div> -->
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/posts/1ZMZBDW/" title="关于开发理念: Simple is Good"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/posts/3YE7XY8/" title="TypeScript数据类型"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	<!-- Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>. -->
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+
+<div id="go-top"></div>
+<style type="text/css">
+#go-top {
+ width:40px;height:36px;
+ background-color:#DDA0DD;
+ position:relative;
+ border-radius:2px;
+ position:fixed;right:10px;bottom:60px;
+ cursor:pointer;display:none;
+}
+#go-top:after {
+ content:" ";
+ position:absolute;left:14px;top:14px;
+ border-top:2px solid #fff;border-right:2px solid #fff;
+ width:12px;height:12px;
+ transform:rotate(-45deg);
+}
+#go-top:hover {
+ background-color:#8A2BE2;
+}
+</style>
+<script>
+$(function () {
+  var top=$("#go-top");
+  $(window).scroll(function () {
+    ($(window).scrollTop() > 300) ? top.show(300) : top.hide(200);
+    $("#go-top").click(function () {
+      $('body,html').animate({scrollTop:0});
+      return false();
+    })
+  });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/prettify.js"></script>
+<script type="text/javascript">
+    $(window).load(function(){
+        $('pre').addClass('prettyprint').attr('style', 'overflow:auto;');
+        $('pre').addClass('prettyprint linenums');
+        prettyPrint();
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

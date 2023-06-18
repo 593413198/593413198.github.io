@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>【硬件】GPU架构 | Luhao&#39;s Blog</title>
+  <meta name="description" content="GPU 与 显卡 的关系 GPU 是 显卡最核心的部件, 除了GPU, 显卡还有散热器、通讯元件等电子设备 目前的 GPU 厂家主要有两个：  NVIDIA: 英伟达, 主要是GTX, RTX系列, 俗称N卡 AMD: 主要是Radeon系列, 俗称A卡  摩尔定律 Moore’s Law 是由 Intel 的创始人摩尔提出: CPU的性能每隔 18个月 就会提升一倍（同时成本也会相应地降低一倍）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【硬件】GPU架构">
+<meta property="og:url" content="http://luhao.wiki/posts/3Z9MX8B/index.html">
+<meta property="og:site_name" content="Luhao&#39;s Blog">
+<meta property="og:description" content="GPU 与 显卡 的关系 GPU 是 显卡最核心的部件, 除了GPU, 显卡还有散热器、通讯元件等电子设备 目前的 GPU 厂家主要有两个：  NVIDIA: 英伟达, 主要是GTX, RTX系列, 俗称N卡 AMD: 主要是Radeon系列, 俗称A卡  摩尔定律 Moore’s Law 是由 Intel 的创始人摩尔提出: CPU的性能每隔 18个月 就会提升一倍（同时成本也会相应地降低一倍）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://luhao.wiki/images/cpu-gpu.png">
+<meta property="og:image" content="http://luhao.wiki/images/gpu-tesla.png">
+<meta property="og:image" content="http://luhao.wiki/images/gpu-tpc.png">
+<meta property="og:image" content="http://luhao.wiki/images/gpu-ifelse.png">
+<meta property="og:image" content="http://luhao.wiki/images/gpu-fermi.png">
+<meta property="article:published_time" content="2023-05-05T18:06:42.000Z">
+<meta property="article:modified_time" content="2023-06-18T13:12:53.652Z">
+<meta property="article:author" content="Luhao">
+<meta property="article:tag" content="Graphics">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://luhao.wiki/images/cpu-gpu.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://luhao.wiki/posts/3Z9MX8B/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Luhao&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="images\avatar.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://www.luhao.wiki" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">luhao</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        </li>
+      </ul>
+      
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">
+        <i style="color:#9400D3" class="icon icon-stackexchange"></i>
+        公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p> 文章数量：<b><font color=#1A9BFF>96</font></b> </p> 最后修改：2023.6.15<br> <p><font color=#750000>读书要杂, 文档要勤, 业务要精</font></p> <p><font color=#750000>思维方式 x 热情 x 能力</font></p> <p><font color=#750000>Plan➜Do➜Check➜Improve</font></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-folder-open"></i>
+      分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/">3D Engine</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/3D-Engine/">3D Engine</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Algorithm/">Algorithm</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/C/">C++</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/">Graphics</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/Graphics/">Graphics</a><span class="category-list-count">12</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Linux/">Linux</a><span class="category-list-count">13</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/">Node.js</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/Node-js/">Node.js</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Python/">Python</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/">VSCode</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/VSCode/">VSCode</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">14</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">6</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-archives-fill"></i>
+      归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  <!-- 
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#GPU-%E4%B8%8E-%E6%98%BE%E5%8D%A1-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.</span> <span class="toc-text">GPU 与 显卡 的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%A9%E5%B0%94%E5%AE%9A%E5%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">摩尔定律</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU-%E5%92%8C-GPU-%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB"><span class="toc-number">3.</span> <span class="toc-text">CPU 和 GPU 的主要区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GPU-%E6%9E%B6%E6%9E%84%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2"><span class="toc-number">4.</span> <span class="toc-text">GPU 架构发展历史</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-Tesla-%E6%9E%B6%E6%9E%84"><span class="toc-number">4.1.</span> <span class="toc-text">0. Tesla 架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Fermi-%E6%9E%B6%E6%9E%84"><span class="toc-number">4.2.</span> <span class="toc-text">1. Fermi 架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Kepler-%E6%9E%B6%E6%9E%84"><span class="toc-number">4.3.</span> <span class="toc-text">2. Kepler 架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%9E%B6%E6%9E%84"><span class="toc-number">4.4.</span> <span class="toc-text">其他架构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%9E%B6%E6%9E%84"><span class="toc-number">5.</span> <span class="toc-text">移动端架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="toc-number">6.</span> <span class="toc-text">写在最后</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+ -->
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-3D Engine/GPU架构" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【硬件】GPU架构
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/posts/3Z9MX8B/" class="article-date">
+	  <time datetime="2023-05-05T18:06:42.000Z" itemprop="datePublished">2023-05-06</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/3D-Engine/">3D Engine</a>►<a class="article-category-link" href="/categories/3D-Engine/3D-Engine/">3D Engine</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Graphics/" rel="tag">Graphics</a>
+  </span>
+
+
+        
+
+        <!-- <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/3Z9MX8B/#comments" class="article-comment-link">评论</a></span> -->
+        
+	
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="GPU-与-显卡-的关系">GPU 与 显卡 的关系</h2>
+<p>GPU 是 显卡最核心的部件, 除了GPU, 显卡还有散热器、通讯元件等电子设备</p>
+<p>目前的 GPU 厂家主要有两个：</p>
+<ul>
+<li><code>NVIDIA</code>: 英伟达, 主要是GTX, RTX系列, 俗称<code>N卡</code></li>
+<li><code>AMD</code>: 主要是Radeon系列, 俗称<code>A卡</code></li>
+</ul>
+<h2 id="摩尔定律">摩尔定律</h2>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%91%A9%E5%B0%94%E5%AE%9A%E5%BE%8B">Moore’s Law</a> 是由 Intel 的创始人摩尔提出:<br>
+<strong>CPU的性能每隔 18个月 就会提升一倍（同时成本也会相应地降低一倍）</strong></p>
+<p>但是 GPU 的性能发展历史打破了这一定律, 下图是 CPU/GPU 的性能提升对比图:</p>
+<p><img src="/images/cpu-gpu.png" alt=""><br>
+<br></p>
+<h2 id="CPU-和-GPU-的主要区别">CPU 和 GPU 的主要区别</h2>
+<ul>
+<li>
+<p>参考阅读:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cherryservers.com/blog/gpu-vs-cpu-what-are-the-key-differences">GPU vs CPU: What Are The Key Differences?</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/biglucky/p/4223565.html">CPU 和 GPU 的设计区别</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.eet-china.com/mp/a180440.html">深入GPU硬件架构及运行机制</a></li>
+</ul>
+</li>
+<li>
+<p>一个通俗的比喻:</p>
+<ul>
+<li>CPU是几个大学教授, 单打独斗能力强</li>
+<li>GPU是成千个小学生, 擅长大规模并发计算</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">CPU</th>
+<th style="text-align:center">GPU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Short for</td>
+<td style="text-align:center"><em>Central Processing Unit</em></td>
+<td style="text-align:center"><em>Graphics Processing Unit</em></td>
+</tr>
+<tr>
+<td style="text-align:center">Cores</td>
+<td style="text-align:center">6大核 (i5 10600kf)</td>
+<td style="text-align:center">4864小核 (RTX 3060Ti)</td>
+</tr>
+<tr>
+<td style="text-align:center">Memory</td>
+<td style="text-align:center">Performance, Capacity</td>
+<td style="text-align:center">Bandwidth</td>
+</tr>
+<tr>
+<td style="text-align:center">Arch.</td>
+<td style="text-align:center">SIMD</td>
+<td style="text-align:center">SIMT</td>
+</tr>
+<tr>
+<td style="text-align:center">Application</td>
+<td style="text-align:center">Operation System</td>
+<td style="text-align:center">Graphcis, AI</td>
+</tr>
+</tbody>
+</table>
+<h2 id="GPU-架构发展历史">GPU 架构发展历史</h2>
+<h3 id="0-Tesla-架构"><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Tesla_(microarchitecture)">0. Tesla 架构</a></h3>
+<div class="admonition note"><p class="admonition-title">Tesla 虽然是 GPU最简单的架构, 但是写这文章时, 大概只理解了不到两成（很多概念太抽象了）, 希望伴随职业生涯的学习能不断加深对硬件的理解
+</p></div>
+<p>Tesla 是第一个面市的 GPU 架构, 但是经典永不过时<br>
+这篇知乎写的很好, 作者把GPU比作一个外包公司: <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/403354366">【GPU】Tesla架构（一）：初识GPU架构</a></p>
+<p><img src="/images/gpu-tesla.png" alt=""></p>
+<p>通过几个核心器件来分析:</p>
+<ul>
+<li>
+<p><strong>Host interface</strong><br>
+GPU 所有工作的包工头, 负责派发任务</p>
+</li>
+<li>
+<p><strong>Input assembler</strong><br>
+将 CPU 传递的顶点数据组装后, 传给 Vertex work distribution</p>
+</li>
+<li>
+<p><strong>Vertex、Pixel、Compute work distribution</strong><br>
+分别负责 顶点、片元、shader的三大任务</p>
+</li>
+<li>
+<p><strong>TPC</strong> （<em><strong>T</strong>exture <strong>P</strong>rocessing <strong>C</strong>lusters</em>）<br>
+包含一个纹理单元 和 两个负责计算的SM（<em><strong>S</strong>treaming <strong>M</strong>ultiprocessor</em>）</p>
+</li>
+</ul>
+<p><font color="#ef6d3b"><strong>理解核心的 TPC ⭐</strong></font>（架构如下图）</p>
+<p>将 GPU 看作一家大的外包企业, 那么 TPC 就是其一个个小的子公司, 它的核心部门如下:</p>
+<ul>
+<li>
+<p><strong>SMC</strong> （<em><strong>SM</strong> <strong>C</strong>ontroller</em>）<br>
+SMC 是负责将总部的各种任务拆分打包成 Warp, 并交给下面的小部门（SM）处理。可以看做该部门的负责人, 既要对接外界资源, 又要管理内部的任务分配, 需要实现负载均衡</p>
+</li>
+<li>
+<p><strong>Texture Unit</strong><br>
+todo</p>
+</li>
+<li>
+<p><strong>SM</strong>（<em><strong>S</strong>treaming <strong>M</strong>ultiprocessor</em>）<br>
+SM 是真正负责干活的小部门, 内部划分如下:</p>
+<ul>
+<li><strong>I cache</strong>: 指令cache, 将 SMC 传递来的指令缓存下来再分批执行</li>
+<li><strong>C cache</strong>: 常量cache与共享内存</li>
+<li><strong>MT Issue</strong>: 多线程主管, 负责内部进程的调度, 是GPU高并行的关键</li>
+<li><strong>SP</strong>（<em><strong>S</strong>treaming <strong>P</strong>rocessor</em>）:负责执行基本的浮点、整型计算</li>
+<li><strong>SFU</strong>（<em><strong>S</strong>pecial <strong>F</strong>unction <strong>U</strong>nit</em>）: 执行更复杂的计算, 如超越函数、插值Lerp等.</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/gpu-tpc.png" alt=""></p>
+<p><strong>接下来尝试理解GPU的高度并行 ⭐</strong></p>
+<p>当 SMC 拿到 多条二进制GPU指令后, 会以 32个线程为单位 分发给手下的 SM, 它们就称为一个 Warp, 这就是 **SIMT（Single-Instruction, MultipleThread）**架构</p>
+<p>真正的并行单位是 Warp.</p>
+<p>理想情况下, 每个线程执行相同的指令（想象所有 pixel走的分支L逻辑一致）, 这时候几乎是 100% 并行的（取决于指令数 和 core数量）</p>
+<p>但是实际 shader 运算中, 会出现 <code>if</code> 等分支语句, 导致不同线程的执行分支也不同, 如图展示了一个 Warp 中不同线程进入不同分支情况:</p>
+<p><img src="/images/gpu-ifelse.png" alt=""></p>
+<h3 id="1-Fermi-架构"><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Fermi_(microarchitecture)">1. Fermi 架构</a></h3>
+<p>Fermi架构 相对于 Tesla架构 的优化主要在如下几点:</p>
+<ul>
+<li>
+<ol>
+<li>晶体管硬件的发展, 可以堆更对的 SM 和运算单元</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>固定管线的一些列操作（视口、裁减、光栅化、剔除等）逐步在硬件上细化</li>
+</ol>
+</li>
+</ul>
+<p>推荐阅读 知乎: <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/451179968">【GPU】Fermi架构（二）: 三角形的异世界之旅</a>, 它以三角形的视角描述了 cpu -&gt; gpu -&gt; 各种着色器经历的计算过程</p>
+<img src="/images/gpu-fermi.png" width="370">
+<h3 id="2-Kepler-架构"><a href="">2. Kepler 架构</a></h3>
+<p>Kepler架构的核心是低功耗, 因为物理器件温度过高时, 会导致降频促使性能下降（尤其是移动端）</p>
+<h3 id="其他架构">其他架构</h3>
+<p>Maxwell, Pascal, Turing这三个架构先不介绍了, 超出理解能力了…</p>
+<h2 id="移动端架构">移动端架构</h2>
+<p>区别于桌面端的架构, 移动端GPU受限于电池的短板, 需要避免高带宽导致的高电耗</p>
+<p>当前主流的移动端 GPU架构（如PowerVR, Adreno, Mali…）, 都是基于块的渲染 <strong>（Tile Based Rendering, TBR）</strong>; 作为对比, 桌面端的GPU架构都是 <strong>（Immediate Mode Renderers, IMR）</strong></p>
+<p>什么是一个 Tile? 假设一个屏幕分辨率是 2k（2560 x 1440）, 它将每 16x16 划分为一个 Tile, 每个Tile内有自己的缓存, 绘制时也是逐 Tile绘制</p>
+<h2 id="写在最后">写在最后</h2>
+<p>开这篇文章是为了普及一些GPU硬件的知识, 因为学习软件汇编时必然也会接触 CPU硬件架构.<br>
+但是GPU硬件很多概念根本看不懂, 很抽象, 权当科普吧…<br>
+过一段时间再回来头, 希望会好点</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <!-- <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://luhao.wiki/posts/3Z9MX8B/" title="【硬件】GPU架构" target="_blank" rel="external">http://luhao.wiki/posts/3Z9MX8B/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote> -->
+
+
+<!-- <div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://www.luhao.wiki" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://www.luhao.wiki" target="_blank"><span class="text-dark">luhao</span><small class="ml-1x"></small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div> -->
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/posts/14ZY2JK/" title="【OS】多线程之互斥算法"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/posts/36E2965/" title="【引擎】渲染系统"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	<!-- Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>. -->
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+
+<div id="go-top"></div>
+<style type="text/css">
+#go-top {
+ width:40px;height:36px;
+ background-color:#DDA0DD;
+ position:relative;
+ border-radius:2px;
+ position:fixed;right:10px;bottom:60px;
+ cursor:pointer;display:none;
+}
+#go-top:after {
+ content:" ";
+ position:absolute;left:14px;top:14px;
+ border-top:2px solid #fff;border-right:2px solid #fff;
+ width:12px;height:12px;
+ transform:rotate(-45deg);
+}
+#go-top:hover {
+ background-color:#8A2BE2;
+}
+</style>
+<script>
+$(function () {
+  var top=$("#go-top");
+  $(window).scroll(function () {
+    ($(window).scrollTop() > 300) ? top.show(300) : top.hide(200);
+    $("#go-top").click(function () {
+      $('body,html').animate({scrollTop:0});
+      return false();
+    })
+  });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/prettify.js"></script>
+<script type="text/javascript">
+    $(window).load(function(){
+        $('pre').addClass('prettyprint').attr('style', 'overflow:auto;');
+        $('pre').addClass('prettyprint linenums');
+        prettyPrint();
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

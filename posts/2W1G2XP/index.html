@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>【Algorithm】Graphs | Luhao&#39;s Blog</title>
+  <meta name="description" content="备注  这篇是大学于CSDN所写，移植过来   图算法的总结和实现 1.0 图的表示  图通常用两种数据结构表示：邻接矩阵-&gt;稠密图、邻接链表-&gt;稀疏图 对于图 G &#x3D; (V, E) ，V是点集，E是边集，|V| |E|分别表示点、边的数目  稀疏图：边数很少的图 稠密图：边数接近|V|^2的图（一个图边数最多是点数的平方，只考虑单边图）    邻接矩阵  维护一个n*n的数组，n是图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Algorithm】Graphs">
+<meta property="og:url" content="http://luhao.wiki/posts/2W1G2XP/index.html">
+<meta property="og:site_name" content="Luhao&#39;s Blog">
+<meta property="og:description" content="备注  这篇是大学于CSDN所写，移植过来   图算法的总结和实现 1.0 图的表示  图通常用两种数据结构表示：邻接矩阵-&gt;稠密图、邻接链表-&gt;稀疏图 对于图 G &#x3D; (V, E) ，V是点集，E是边集，|V| |E|分别表示点、边的数目  稀疏图：边数很少的图 稠密图：边数接近|V|^2的图（一个图边数最多是点数的平方，只考虑单边图）    邻接矩阵  维护一个n*n的数组，n是图">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://luhao.wiki/images/graph-1.png">
+<meta property="og:image" content="http://luhao.wiki/images/graph-2.png">
+<meta property="article:published_time" content="2019-07-24T05:23:40.000Z">
+<meta property="article:modified_time" content="2023-06-18T13:12:53.652Z">
+<meta property="article:author" content="Luhao">
+<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://luhao.wiki/images/graph-1.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://luhao.wiki/posts/2W1G2XP/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Luhao&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="images\avatar.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://www.luhao.wiki" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">luhao</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        </li>
+      </ul>
+      
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">
+        <i style="color:#9400D3" class="icon icon-stackexchange"></i>
+        公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p> 文章数量：<b><font color=#1A9BFF>96</font></b> </p> 最后修改：2023.6.15<br> <p><font color=#750000>读书要杂, 文档要勤, 业务要精</font></p> <p><font color=#750000>思维方式 x 热情 x 能力</font></p> <p><font color=#750000>Plan➜Do➜Check➜Improve</font></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-folder-open"></i>
+      分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/">3D Engine</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/3D-Engine/">3D Engine</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Algorithm/">Algorithm</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/C/">C++</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/">Graphics</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/Graphics/">Graphics</a><span class="category-list-count">12</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Linux/">Linux</a><span class="category-list-count">13</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/">Node.js</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/Node-js/">Node.js</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Python/">Python</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/">VSCode</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/VSCode/">VSCode</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">14</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">6</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-archives-fill"></i>
+      归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  <!-- 
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E7%AE%97%E6%B3%95%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.</span> <span class="toc-text">图算法的总结和实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-0-%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-number">1.1.</span> <span class="toc-text">1.0 图的表示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%9B%BE%E7%9A%84%E5%AE%BD%E6%90%9C%E5%92%8C%E6%B7%B1%E6%90%9C"><span class="toc-number">1.2.</span> <span class="toc-text">1.1 图的宽搜和深搜</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%9B%BE%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">1.2 图的最短路径算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Dijkstra%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.1.</span> <span class="toc-text">Dijkstra算法</span></a></li></ol></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+ -->
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Algorithm/图论与搜索" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【Algorithm】Graphs
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/posts/2W1G2XP/" class="article-date">
+	  <time datetime="2019-07-24T05:23:40.000Z" itemprop="datePublished">2019-07-24</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Algorithm/">Algorithm</a>►<a class="article-category-link" href="/categories/Algorithm/Algorithm/">Algorithm</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Algorithm/" rel="tag">Algorithm</a>, <a class="article-tag-link-link" href="/tags/Python/" rel="tag">Python</a>
+  </span>
+
+
+        
+
+        <!-- <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/2W1G2XP/#comments" class="article-comment-link">评论</a></span> -->
+        
+	
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <div class="admonition note"><p class="admonition-title">备注
+</p><ul>
+<li>这篇是大学于CSDN所写，移植过来</li>
+</ul>
+</div>
+<h2 id="图算法的总结和实现">图算法的总结和实现</h2>
+<h3 id="1-0-图的表示">1.0 图的表示</h3>
+<ul>
+<li>图通常用两种数据结构表示：<strong>邻接矩阵</strong>-&gt;稠密图、<strong>邻接链表</strong>-&gt;稀疏图</li>
+<li>对于图 G = (V, E) ，V是点集，E是边集，|V| |E|分别表示点、边的数目
+<ul>
+<li>稀疏图：边数很少的图</li>
+<li>稠密图：边数接近|V|^2的图（一个图边数最多是点数的平方，只考虑单边图）</li>
+</ul>
+</li>
+</ul>
+<p><strong>邻接矩阵</strong></p>
+<ul>
+<li>维护一个n*n的数组，n是图的点数|V|</li>
+<li>根据图的性质，数组对角线都为0，上下半角都对称</li>
+<li>矩阵存储的特点，不论边数|E|多大，永远都开|V|*|V|大小的数组<br>
+<img src="/images/graph-1.png" alt=""></li>
+</ul>
+<blockquote>
+<p>因为矩阵的大小取决于|V|，所以当边数足够多的时候，采用邻接矩阵表示对空间的利用率最高</p>
+</blockquote>
+<br>
+<p><strong>邻接链表</strong></p>
+<ul>
+<li>每个节点维护一个链表，储存所有与它邻接的点</li>
+<li>所有链表的头部储存在一个数组中</li>
+<li>数组空间O(|V|)，链表空间是O(|E|)、最坏空间是O(|V|^2)<br>
+<img src="/images/graph-2.png" alt=""></li>
+</ul>
+<blockquote>
+<p>因为链表大小取决于|E|，所以当边数足够小时，采用邻接链表表示</p>
+</blockquote>
+<p><strong>python代码如下：</strong></p>
+<pre><code class="language-python">class Graph():
+    '''
+    无向图，点下标从0开始
+    G[x][y] = 1 存在边xy ; G[x][y] = 0 不存在边xy '''
+    def __init__(self,n):
+        # 声明一个有n个点的图G
+        self.n = n # |V|点数
+        self.node = [i for i in range(n)] # 所有点
+        self.G = [[0]*n for i in range(n)] # 邻接矩阵
+        self.d = [0]*n  # 记录宽搜中每个点到起点的距离
+        self.order = [] # 记录深搜的顺序
+
+    def add(self,x,y,w=0):
+        # 添加一条(x,y)的无向边
+        # 不输入边权重的情况默认为1
+        self.G[x][y] = 1 if not w else w
+        self.G[y][x] = 1 if not w else w
+
+    def remove(self,x,y):
+        # 删除一条(x,y)的无向边
+        self.G[x][y] = 0
+        self.G[y][x] = 0
+
+    def neighbour(self,x):
+        # 返回与x邻接的点
+        # rtype: 列表
+        ans = []
+        for i in range(self.n):
+            if self.G[x][i]:
+                ans.append(i)
+        return ans
+            
+    def isEdge(self,x,y):
+        # 判断点x,y是否邻接
+        return self.G[x][y]
+</code></pre>
+<br>
+<h3 id="1-1-图的宽搜和深搜">1.1 图的宽搜和深搜</h3>
+<ul>
+<li><strong>BFS：广度优先搜索</strong>
+<ul>
+<li>采用优先队列，先将起点x入队列</li>
+<li>不断从队列中取出元素，访问其所有的邻点，再将其中未访问过的邻点加入队列</li>
+<li>当队列空时搜索结束</li>
+</ul>
+</li>
+<li><strong>DFS：深度优先搜索</strong>
+<ul>
+<li>深搜的顺序不是唯一的；从任一节点开始都可以</li>
+<li>对某一节点，只要找到一个邻点，就对邻点继续搜索邻点的邻点</li>
+<li>理论上的深搜，是对所有节点执行一次上一步骤，这样保证了所有节点都能被搜索完，实际操作中可以维护一个set来记录已经访问过的节点</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-c">    以1为起点的BFS路径: 1 2 5 3 4
+    以1为起点的DFS路径: 1 2 3 4 5
+</code></pre>
+<p><strong>python代码如下:</strong></p>
+<pre><code class="language-python"># 广度优先搜索
+def BFS(self,x):
+        # 从点x开始宽搜
+        vis = [0]*self.n # 记录节点是否搜索过
+        Q = [x]
+        while Q:
+            v = Q.pop(0)
+            vis[v] = 1
+            for i in self.neighbour(v): # neighbour表示v的邻点的集合
+                if not vis[i]:
+                    Q.append(i)
+                    self.d[i] = self.d[v] + 1
+                    vis[i] = 1
+</code></pre>
+<pre><code class="language-python"># 深度优先搜索
+def DFS(self,x):
+        # 从点x开始深搜
+        vis = [0]*self.n  # 记录节点是否搜索过
+        def dfs(node):
+            vis[node] = 1
+            self.order.append(node)
+            for i in self.neighbour(node):
+                 if not vis[i]:
+                    dfs(i)
+        dfs(x)
+        for i in self.node:
+            if not vis[i]:
+                dfs(i)
+</code></pre>
+<h3 id="1-2-图的最短路径算法">1.2 图的最短路径算法</h3>
+<ul>
+<li><strong>单源最短路径问题</strong>：求出某一节点到其他所有节点的最短距离
+<ul>
+<li>Dijkstra算法</li>
+<li>Bellman-Ford算法</li>
+</ul>
+</li>
+<li><strong>所有节点对最短路径问题</strong>：求出每个节点到其他所有节点的最短距离
+<ul>
+<li>Floyd算法<br>
+<br></li>
+</ul>
+</li>
+</ul>
+<h4 id="Dijkstra算法">Dijkstra算法</h4>
+<ul>
+<li>给定某一起点x，计算它到所有节点的最短距离
+<ul>
+<li>dist[v] 记录起点到点v的最短距离，即最终返回结果</li>
+<li>S 一个集合，存放已经处理过的节点</li>
+<li>初始状态：令起点的dist为0，它的邻点的dist就是两点距离，其他节点的dist赋为无穷大</li>
+<li>循环过程：不断取当前dist最小的节点v出来，对它的邻点i做<strong>松弛</strong>操作，当前最小节点视为已处理节点，放入集合S
+<ul>
+<li><strong>松弛</strong>： <code>if dist[i] &gt; dist[v] + G[i][v]  { dist[i] = dist [v] + G[i][v] }</code></li>
+</ul>
+</li>
+<li>终止状态：所有节点都已放入S，即都处理完毕</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python"># dijkstra算法的python实现
+def dijkstra(self,x):
+        # dijkstra算法求x到所有节点的最短路径,采用贪心策略
+        dist = [99999]*self.n
+        S = set([x]) # 记录已经找到最短路径的节点
+        for i in self.neighbour(x):
+            dist[i] = self.G[x][i]
+        dist[x] = 0
+        while len(S) != self.n:
+            # 找到当前距离最小的点，这里用到最下优先队列
+            MIN = 99999
+            MIN_i = 0
+            for i in range(self.n):
+                if dist[i] &lt; MIN and i not in S:
+                    MIN = dist[i]
+                    MIN_i = i
+            # 松弛relax操作
+            S.add(MIN_i)
+            for i in self.neighbour(MIN_i):
+                if dist[i] &gt; dist[MIN_i] + self.G[i][MIN_i]:
+                    dist[i] = dist[MIN_i] + self.G[i][MIN_i]
+        return dist        
+</code></pre>
+
+      
+    </div>
+    <div class="article-footer">
+      <!-- <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://luhao.wiki/posts/2W1G2XP/" title="【Algorithm】Graphs" target="_blank" rel="external">http://luhao.wiki/posts/2W1G2XP/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote> -->
+
+
+<!-- <div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://www.luhao.wiki" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://www.luhao.wiki" target="_blank"><span class="text-dark">luhao</span><small class="ml-1x"></small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div> -->
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/posts/1AMJ55J/" title="【Python】tkinter"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/posts/2TKZZE3/" title="【CSDN】进程和线程的深入理解"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	<!-- Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>. -->
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+
+<div id="go-top"></div>
+<style type="text/css">
+#go-top {
+ width:40px;height:36px;
+ background-color:#DDA0DD;
+ position:relative;
+ border-radius:2px;
+ position:fixed;right:10px;bottom:60px;
+ cursor:pointer;display:none;
+}
+#go-top:after {
+ content:" ";
+ position:absolute;left:14px;top:14px;
+ border-top:2px solid #fff;border-right:2px solid #fff;
+ width:12px;height:12px;
+ transform:rotate(-45deg);
+}
+#go-top:hover {
+ background-color:#8A2BE2;
+}
+</style>
+<script>
+$(function () {
+  var top=$("#go-top");
+  $(window).scroll(function () {
+    ($(window).scrollTop() > 300) ? top.show(300) : top.hide(200);
+    $("#go-top").click(function () {
+      $('body,html').animate({scrollTop:0});
+      return false();
+    })
+  });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/prettify.js"></script>
+<script type="text/javascript">
+    $(window).load(function(){
+        $('pre').addClass('prettyprint').attr('style', 'overflow:auto;');
+        $('pre').addClass('prettyprint linenums');
+        prettyPrint();
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
