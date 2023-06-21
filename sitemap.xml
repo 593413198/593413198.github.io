@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://luhao.wiki/posts/1J5662K/</loc>
+    
+    <lastmod>2023-06-21</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://luhao.wiki/posts/25J1JRS/</loc>
     
     <lastmod>2023-06-21</lastmod>
@@ -945,6 +952,20 @@
   
   <url>
     <loc>http://luhao.wiki/categories/%E9%9A%8F%E7%AC%94/%E9%9A%8F%E7%AC%94/</loc>
+    <lastmod>2023-06-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://luhao.wiki/categories/Network/</loc>
+    <lastmod>2023-06-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://luhao.wiki/categories/Network/Network/</loc>
     <lastmod>2023-06-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
