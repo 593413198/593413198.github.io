@@ -26,8 +26,8 @@
     if (window.markmap && Object.keys(window.markmap).length != 0) { createMarkmap(); return }
     const CDN = {
       "js": {
-        "d3": 'https://fastly.jsdelivr.net/npm/d3@6',
-        "markmap_view": 'https://fastly.jsdelivr.net/npm/markmap-view@0.2.7',
+        "d3": "https://fastly.jsdelivr.net/npm/d3@6",
+        "markmap_view": "/html/markmap.css@0.2.7",
       },
       "css": [
         
