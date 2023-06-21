@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://luhao.wiki/images/vertex-normal.png">
 <meta property="og:image" content="http://luhao.wiki/images/pixel-vertex.png">
 <meta property="article:published_time" content="2023-06-13T15:42:19.000Z">
-<meta property="article:modified_time" content="2023-06-18T13:12:53.656Z">
+<meta property="article:modified_time" content="2023-06-21T17:20:28.198Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="OpenGL">
 <meta name="twitter:card" content="summary">
@@ -228,13 +228,18 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <p>Lambertian、Blinn-phong、shading-tech<span id="more"></span></p>
-<div class="admonition note"><p class="admonition-title">链接
+<div class="admonition note"><p class="admonition-title">导读
 </p><ul>
 <li><a target="_blank" rel="noopener" href="https://sites.cs.ucsb.edu/~lingqi/teaching/games101.html">GAMES101 Shading</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.cs.ucr.edu/~shinar/courses/cs130-spring-2012/schedule.html">CS130 Shading</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.cs.toronto.edu/~jacobson/phong-demo/">WebGL demo</a></li>
 </ul>
 </div>
+
+<div class="markmap-container" style="height:300px">
+  <svg data="{&quot;t&quot;:&quot;root&quot;,&quot;d&quot;:0,&quot;v&quot;:&quot;&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[0,1]},&quot;v&quot;:&quot;Factors&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[1,2],&quot;f&quot;:true},&quot;v&quot;:&quot;光源&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[2,3],&quot;f&quot;:true},&quot;v&quot;:&quot;平行光&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[3,4],&quot;f&quot;:true},&quot;v&quot;:&quot;点光&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[4,5],&quot;f&quot;:true},&quot;v&quot;:&quot;聚光灯&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[5,6],&quot;f&quot;:true},&quot;v&quot;:&quot;相对位置&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[6,7],&quot;f&quot;:true},&quot;v&quot;:&quot;距离衰减&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[7,8],&quot;f&quot;:true},&quot;v&quot;:&quot;角度（Lambert’s cosine law）&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[8,9],&quot;f&quot;:true},&quot;v&quot;:&quot;材质&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[9,10],&quot;f&quot;:true},&quot;v&quot;:&quot;Ambient&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[10,11],&quot;f&quot;:true},&quot;v&quot;:&quot;Diffuse&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[11,12],&quot;f&quot;:true},&quot;v&quot;:&quot;Specular&quot;}]}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[12,13]},&quot;v&quot;:&quot;Shading-Reflection⭐&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[13,14],&quot;f&quot;:true},&quot;v&quot;:&quot;<a href=\&quot;#font-color-750000-Lambertian-Reflection-⭐-font\&quot;>Lambertian</a>&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[14,15],&quot;f&quot;:true},&quot;v&quot;:&quot;<a href=\&quot;#font-color-750000-Blinn-Phong-Reflection-⭐-font\&quot;>Blinn-Phong</a>&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[15,16]},&quot;v&quot;:&quot;Shading-Tech&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[16,17],&quot;f&quot;:true},&quot;v&quot;:&quot;<a href=\&quot;#1-Flat-Shading\&quot;>Flat</a>（poly）&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[17,18],&quot;f&quot;:true},&quot;v&quot;:&quot;<a href=\&quot;#2-Gouraud-Shading\&quot;>Gouraund</a>（vertex）&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[18,19],&quot;f&quot;:true},&quot;v&quot;:&quot;<a href=\&quot;#3-Phong-Shading\&quot;>Phong</a>（pixel）&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[19,20]},&quot;v&quot;:&quot;Shading-Normal&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[20,21],&quot;f&quot;:true},&quot;v&quot;:&quot;<a href=\&quot;#1-顶点法线\&quot;>Vertex-normal</a>&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[21,22],&quot;f&quot;:true},&quot;v&quot;:&quot;<a href=\&quot;#2-像素法线\&quot;>Pixel-normal</a>&quot;}]}],&quot;p&quot;:{}}"></svg>
+</div>
+
 <h2 id="Shading">Shading</h2>
 <p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Shading">Wikipedia: Shading</a><br>
 维基百科对于 shading 的定义非常清楚，即对3维场景中模型 <strong>着色</strong> 的过程，且着色的效果取决于如下几个因素：</p>
@@ -594,5 +599,5 @@ $(function () {
 </script>
 <!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-</body>
+<script src="/js/markmap.js"></script></body>
 </html>
