@@ -18,19 +18,17 @@
   
   
   <title>【Apache】搭建文件服务器 | Luhao&#39;s Blog</title>
-  <meta name="description" content="文件服务器: http:&#x2F;&#x2F;1.15.115.4&#x2F; Apache2 Apache2 &#x3D;&#x3D; httpd 安装：apt-get install apache2 启动服务：systemctl start apache2 停止服务：systemctl stop apache2 重启服务：systemctl restart apache2 配置文件：&#x2F;etc&#x2F;apache2&#x2F;apache2.conf 字体配">
+  <meta name="description" content="概要  文件服务器: http:&#x2F;&#x2F;110.42.228.178&#x2F; 旧服务器地址即将到期（2023.6.24），已经迁移完毕   apache2 介绍 Apache2 又称为 httpd，它是一款开源的网页文件服务器，由于其安全性和可靠的跨平台性，被广泛使用。  安装：apt-get install apache2 启动服务：systemctl start apache2 停止服务：systemc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Apache】搭建文件服务器">
 <meta property="og:url" content="http://luhao.wiki/posts/5S5T02/index.html">
 <meta property="og:site_name" content="Luhao&#39;s Blog">
-<meta property="og:description" content="文件服务器: http:&#x2F;&#x2F;1.15.115.4&#x2F; Apache2 Apache2 &#x3D;&#x3D; httpd 安装：apt-get install apache2 启动服务：systemctl start apache2 停止服务：systemctl stop apache2 重启服务：systemctl restart apache2 配置文件：&#x2F;etc&#x2F;apache2&#x2F;apache2.conf 字体配">
+<meta property="og:description" content="概要  文件服务器: http:&#x2F;&#x2F;110.42.228.178&#x2F; 旧服务器地址即将到期（2023.6.24），已经迁移完毕   apache2 介绍 Apache2 又称为 httpd，它是一款开源的网页文件服务器，由于其安全性和可靠的跨平台性，被广泛使用。  安装：apt-get install apache2 启动服务：systemctl start apache2 停止服务：systemc">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://luhao.wiki/images/apache2.png">
 <meta property="article:published_time" content="2023-03-09T16:17:12.000Z">
-<meta property="article:modified_time" content="2023-06-18T13:12:53.656Z">
+<meta property="article:modified_time" content="2023-06-21T15:53:16.474Z">
 <meta property="article:author" content="Luhao">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://luhao.wiki/images/apache2.png">
   <!-- Canonical links -->
   <link rel="canonical" href="http://luhao.wiki/posts/5S5T02/index.html">
   
@@ -170,7 +168,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Apache2"><span class="toc-number">1.</span> <span class="toc-text">Apache2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BE%8E%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">美化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90"><span class="toc-number">3.</span> <span class="toc-text">访问权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%96%91%E9%9A%BE"><span class="toc-number">4.</span> <span class="toc-text">疑难</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#apache2-%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">apache2 介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AE%B9%E8%A7%84%E5%88%92"><span class="toc-number">2.</span> <span class="toc-text">内容规划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%96%91%E9%9A%BE"><span class="toc-number">3.</span> <span class="toc-text">疑难</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E9%93%BE%E7%9B%AE%E5%BD%95"><span class="toc-number">3.1.</span> <span class="toc-text">软链目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E5%AF%86"><span class="toc-number">3.2.</span> <span class="toc-text">加密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81"><span class="toc-number">3.3.</span> <span class="toc-text">中文乱码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BE%8E%E5%8C%96"><span class="toc-number">3.4.</span> <span class="toc-text">美化</span></a></li></ol></li></ol>
     </nav>
   </div>
 </aside>
@@ -215,26 +213,60 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>文件服务器: <a target="_blank" rel="noopener" href="http://1.15.115.4/">http://1.15.115.4/</a></p>
-<h2 id="Apache2"><a target="_blank" rel="noopener" href="https://httpd.apache.org/">Apache2</a></h2>
-<p>Apache2 == httpd<br>
-安装：<code>apt-get install apache2</code><br>
-启动服务：<code>systemctl start apache2</code><br>
-停止服务：<code>systemctl stop apache2</code><br>
-重启服务：<code>systemctl restart apache2</code></p>
-<p>配置文件：<code>/etc/apache2/apache2.conf</code><br>
-字体配置：<code>/etc/apache2/conf-enabled/charset.conf</code></p>
-<p>文件服务器的根目录（默认）：<code>/var/www/html</code><br>
-默认显示的是index.html，需要将其删除，在此目录下创建文件夹或者文件，再去访问服务器ip，就能看到如下效果:</p>
-<p><img src="/images/apache2.png" alt=""></p>
-<p>大功告成！</p>
-<h2 id="美化">美化</h2>
-<p>默认的apache网页风格实在太丑！</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/fuchcz/simple-apache-directory-listing-theme">Github: simple-apache-directory-listing-theme</a></p>
-<h2 id="访问权限">访问权限</h2>
-<p>为luhao创建一个密码，写在passwd中，后续会提示你输入密码的<br>
+        <div class="admonition note"><p class="admonition-title">概要
+</p><ul>
+<li>文件服务器: <a target="_blank" rel="noopener" href="http://110.42.228.178/">http://110.42.228.178/</a></li>
+<li>旧服务器地址即将到期（2023.6.24），已经迁移完毕</li>
+</ul>
+</div>
+<h2 id="apache2-介绍">apache2 介绍</h2>
+<p><a target="_blank" rel="noopener" href="https://httpd.apache.org/"><strong>Apache2</strong></a> 又称为 httpd，它是一款开源的网页文件服务器，由于其安全性和可靠的跨平台性，被广泛使用。</p>
+<ul>
+<li>安装：<code>apt-get install apache2</code></li>
+<li>启动服务：<code>systemctl start apache2</code></li>
+<li>停止服务：<code>systemctl stop apache2</code></li>
+<li>重启服务：<code>systemctl restart apache2</code></li>
+</ul>
+<p>Apache2 配置:</p>
+<ul>
+<li>配置文件：<code>/etc/apache2/apache2.conf</code></li>
+<li>字体配置：<code>/etc/apache2/conf-enabled/charset.conf</code></li>
+</ul>
+<p>文件服务器的根目录（默认）：<strong><code>/var/www/html</code></strong></p>
+<div class="admonition warning"><p class="admonition-title">默认显示
+</p><ul>
+<li>Apache默认展示的网页是 <code>index.html</code>，需要将其删除。</li>
+<li>之后添加文件就能在服务器上看到</li>
+</ul>
+</div>
+<h2 id="内容规划">内容规划</h2>
+<p>该文件服务器主要用于存储一些文件，以方便在不同机器随时访问、以及起到备份的作用。<br>
+大概分为如下几类：</p>
+<ul>
+<li>pdf：一些书籍、资料、ppt等</li>
+<li>tools：一些工具的安装包（支持正版）</li>
+<li>…</li>
+</ul>
+<h2 id="疑难">疑难</h2>
+<h3 id="软链目录">软链目录</h3>
+<p><code>/var/www/html</code> 目录藏得太深，我们希望软链一个外层的目录，这样更容易修改和获取它：</p>
+<ul>
+<li>先删除 <code>html</code> 目录：<code>rm -rf /var/www/html</code></li>
+<li>新建一个软链 到 <code>~/apache</code>：<code>ln -s ~/apache .</code></li>
+<li>改回默认的 html 名称：<code>mv /var/www/apache /var/www/html</code></li>
+</ul>
+<p>如果此时文件服务器仍无法访问，这是因为需要为root加权限：<br>
+<code>chmod +x ~/apache</code></p>
+<h3 id="加密">加密</h3>
+<ul>
+<li>
+<p>为用户 <code>luhao</code> 创建一个密码，写在passwd中，后续会提示你输入密码的<br>
 <code>htpasswd -c /etc/httpd/passwd luhao</code></p>
+</li>
+<li>
 <p>接着在<code>/etc/apache2/apache2.conf</code>中维护你要加密码的路径：</p>
+</li>
+</ul>
 <pre><code class="language-json">&lt;Directory "/var/www/html/to_lock"&gt;
   AllowOverride all
   authuserfile "/etc/httpd/passwd"
@@ -243,13 +275,11 @@
   require user luhao
  &lt;/Directory&gt;
 </code></pre>
-<h2 id="疑难">疑难</h2>
-<p>新建一个<code>/var/www/html</code>到别的目录的软链，专门存文件:<br>
-<code>ln -s /var/www/html /root/apache</code></p>
-<p>此时文件服务器仍无法访问，这是因为需要为root加权限：<br>
-<code>chmod +x /root</code></p>
-<p>中文显示乱码：<br>
-todo，这个还没解决，文件名显示正常，文件内是乱码</p>
+<h3 id="中文乱码">中文乱码</h3>
+<p>todo，这个还没解决，文件名显示正常，文件内是乱码</p>
+<h3 id="美化">美化</h3>
+<p>默认的apache网页风格实在太丑，推荐如下一个GUI框架：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/fuchcz/simple-apache-directory-listing-theme">Github: simple-apache-directory-listing-theme</a></p>
 
       
     </div>
