@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2023-06-22T12:16:39.959Z</updated>
+  <updated>2023-06-22T12:40:51.748Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Computer Networking</title>
+    <link href="http://luhao.wiki/posts/network/"/>
+    <id>http://luhao.wiki/posts/network/</id>
+    <published>2023-06-22T12:18:00.000Z</published>
+    <updated>2023-06-22T12:40:51.748Z</updated>
+    
+    <content type="html"><![CDATA[<p>计算机网络大纲，HTTP/TCP/UDP…<span id="more"></span></p><div class="markmap-container" style="height:425px">  <svg data="{&quot;t&quot;:&quot;root&quot;,&quot;d&quot;:0,&quot;v&quot;:&quot;&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[0,1]},&quot;v&quot;:&quot;Network Model&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[1,2]},&quot;v&quot;:&quot;TCP/IP&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[2,3]},&quot;v&quot;:&quot;OSI&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[3,4]},&quot;v&quot;:&quot;Protocol&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[4,5]},&quot;v&quot;:&quot;HTTP&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[5,6]},&quot;v&quot;:&quot;TCP&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[6,7]},&quot;v&quot;:&quot;UDP&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[7,8]},&quot;v&quot;:&quot;KCP&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[8,9]},&quot;v&quot;:&quot;Web Server&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[9,10]},&quot;v&quot;:&quot;Apache&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[10,11]},&quot;v&quot;:&quot;Nginx&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[11,12]},&quot;v&quot;:&quot;Tools&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[12,13]},&quot;v&quot;:&quot;Telnet&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[13,14]},&quot;v&quot;:&quot;curl&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[14,15]},&quot;v&quot;:&quot;wireshark&quot;}]}],&quot;p&quot;:{}}"></svg></div>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;计算机网络大纲，HTTP/TCP/UDP…&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Network" scheme="http://luhao.wiki/categories/Network/"/>
+    
+    <category term="Network" scheme="http://luhao.wiki/categories/Network/Network/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>【网络】http 协议入门</title>
@@ -93,7 +114,7 @@
     <link href="http://luhao.wiki/posts/2GDQQH6/"/>
     <id>http://luhao.wiki/posts/2GDQQH6/</id>
     <published>2023-06-11T18:00:54.000Z</published>
-    <updated>2023-06-19T18:20:28.823Z</updated>
+    <updated>2023-06-22T12:22:26.435Z</updated>
     
     <content type="html"><![CDATA[<p>CS网课中的 “圣经”<span id="more"></span></p><style type="text/css">blockquote{    line-height: 30px;    padding: 4px 16px;}</style><blockquote><ul><li><a href="https://www.cs.cmu.edu/~213/">课程主页</a> | <a href="https://www.bilibili.com/video/BV1iW411d7hd/">B站视频（中字）</a> | <a href="https://www.cs.cmu.edu/~213/lectures/">课程ppt</a></li><li><a href="http://1.15.115.4/CSAPP-3rd.pdf">CSAPP pdf 英文版</a></li><li><a href="https://github.com/Maecenas/ICS-15213-CSAPP3e-CMU">Labs Github</a></li><li><a href="https://fengmuzi2003.gitbook.io/csapp3e/">CSAPP重点解读</a></li><li><a href="https://wdxtub.com/work/">读薄/读厚 CSAPP</a></li></ul></blockquote><h2 id="CSAPP">CSAPP</h2><p>CSAPP 是 《Computer Systems: A Programmer’s Perspective》 这本书的缩写，它作为CMU大学的ICS课教材，被誉为计算机系列课程的圣经，其内容涉及：计算机组成原理、操作系统、编译优化、网络和并发等。</p><p>“万丈高楼平地起，勿以浮沙筑高台”，学习计算机的底层原理，是在修炼内功、在夯实基础，这比修一个bug或者读几段代码更加实在。</p><h3 id="站内文章">站内文章</h3><ul><li><a href="/posts/24H1CZ3/">2. Information Storage</a></li><li><a href="/posts/1X3A6C1/">9. Virtual Memory</a></li></ul><h2 id="关于-labs">关于 labs</h2><p>首先 <code>CSAPP</code> 的整个学习过程：以 <code>labs</code> 为主，视频和ppt 为辅。在github上找到一份疑似官方一致的repo，自己fork了一份用于开发：<a href="https://github.com/593413198/ICS-15213-CSAPP3e-CMU">🔥<em><strong>Github Repo</strong></em></a></p><p>整个 labs 的设计非常精巧，还囊括了测试、评分的用例，后者是用 python2 脚本编写。以 lab-0 为例稍微介绍其整体的架构设计：</p><ul><li><code>RAEDME</code>：实验说明</li><li><code>Makefile</code>：通过 <code>make</code> 完成实验的编译、运行与测试</li><li><code>*.c, *.h</code>：lab源码 ⭐</li><li><code>qtest</code>：脚本驱动的测试框架，值得一读 ⭐</li></ul><p>其中 <code>console.c</code> 实现了一个精巧的可交互命令行，并集成一些用于 lab 的指令。<code>qtest</code> 集成了前者和一些测试用例，它将评判你的代码是否通过多少case、以及获得多少得分。</p><p><strong>通过实验，读懂实验框架代码，这两件事都很重要！</strong></p><h2 id="Lab0-c-programing">Lab0 - c programing</h2>]]></content>
     
@@ -108,6 +129,8 @@
     
     
     <category term="Python" scheme="http://luhao.wiki/tags/Python/"/>
+    
+    <category term="linux" scheme="http://luhao.wiki/tags/linux/"/>
     
   </entry>
   
@@ -498,38 +521,6 @@
     <category term="Python" scheme="http://luhao.wiki/tags/Python/"/>
     
     <category term="linux" scheme="http://luhao.wiki/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【OS】多线程之互斥算法</title>
-    <link href="http://luhao.wiki/posts/14ZY2JK/"/>
-    <id>http://luhao.wiki/posts/14ZY2JK/</id>
-    <published>2023-05-07T16:58:38.000Z</published>
-    <updated>2023-06-18T13:12:53.656Z</updated>
-    
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">Mutex</p><ul><li>Mutex (<em>Mutal Exclusion</em>): 即相互排斥, 即多个线程不能执行同一段代码（指令）</li><li>PPT: <a href="http://jyywiki.cn/OS/2022/slides/4.slides#/">理解并发程序执行</a> | B站: <a href="https://www.bilibili.com/video/BV15T4y1Q76V">理解并发程序执行 (Peterson算法、模型检验与软件自动化工具)</a></li><li>之前的多线程用C++实现, <strong>这篇改用Python实现</strong>, 因为重点是算法思想而非语言</li></ul></div><div class="admonition warning"><p class="admonition-title">进阶学习 todo</p><ul><li>互斥算法的正确性证明: 画状态机, 暴力穷举, Model checking</li><li>C++, Python: 多线程, 锁等相关</li></ul></div><h2 id="问题背景">问题背景</h2><p><a href="https://stackoverflow.com/questions/15058925/why-using-multiple-threading-to-get-the-sum-is-correct">StackOverflow: Why using multiple threading to get the sum is incorrect?</a></p><p>先看一个经典的 <strong>Python多线程求和</strong>, 经典面试题目, 经典并发Bug:</p><pre><code class="language-python">import threadingN = 1000000x = 0def add():    global x    for _ in range(N):        x += 1t1 = threading.Thread(target=add)t2 = threading.Thread(target=add)t1.start(); t2.start()t1.join(); t2.join()print(x)</code></pre><div class="admonition error"><p class="admonition-title">什么N取值较小（如1000）, 结果却是正确的?</p><ul><li>todo</li></ul></div><p>输出结果分布在 <code>&lt; 200w</code> 之间, 通过前面的学习已经知道, <code>x ++</code> 这个操作是 <strong>非线程安全的</strong></p><p>查看 Python汇编得到 <code>foo</code> 函数的汇编, 看到 <code>x ++</code> 被拆分为 3条汇编指令</p><ul><li><code>LOAD_GLOBAL</code>: 读取x取值</li><li><code>INPLACE_ADD</code>: 执行加1</li><li><code>STORE_GLOBAL</code>: 写入x取值</li></ul><pre><code class="language-asm">    12 LOAD_GLOBAL              1 (x)    14 LOAD_CONST               2 (1)    16 INPLACE_ADD    18 STORE_GLOBAL             1 (x)    20 JUMP_ABSOLUTE            8-&gt;  22 LOAD_CONST               0 (None)    24 RETURN_VALUE</code></pre><p><strong>下面证明为什么被拆成3条cpu指令, 就会导致非线程安全:</strong><br>如下表, 线程A和B分别有三条指令, 汇合在一起就是实现 <code>x ++</code> 的功能</p><table><thead><tr><th style="text-align:center">No.</th><th style="text-align:center">Thread-A</th><th style="text-align:center">Thread-B</th><th style="text-align:center">作用</th></tr></thead><tbody><tr><td style="text-align:center">1</td><td style="text-align:center">load(A)</td><td style="text-align:center">load(B)</td><td style="text-align:center">读 x</td></tr><tr><td style="text-align:center">2</td><td style="text-align:center">add(A)</td><td style="text-align:center">add(B)</td><td style="text-align:center">x ++</td></tr><tr><td style="text-align:center">3</td><td style="text-align:center">store(A)</td><td style="text-align:center">store(B)</td><td style="text-align:center">写 x</td></tr></tbody></table><p>首先明确执行的顺序规则, 同一线程内的指令一定是有序的, 但不同线程间的指令无法确保顺序</p><ul><li><p>一种正确的情形 ✔:<br><code>load(A) -&gt; add(A) -&gt; store(A) -&gt; load(B) -&gt; add(B) -&gt; store(B)</code><br>输入 <code>x=0</code>, 输出 <code>x=2</code>, 这是最理想的情况</p></li><li><p>一种错误的情形 ❌:<br><code>load(A) -&gt; add(A) -&gt; load(B) -&gt; add(B) -&gt; store(A) -&gt; store(B)</code><br>输入 <code>x=0</code>, 输出 <code>x=1</code>, 显然出错了<br>问题在于线程A、B依次load的时候, x取值为0, 相当于都对0做了 <code>+1</code> 的操作, 所以结果少加了一次</p></li></ul><p><strong>如何避免这样的问题?</strong><br>只要保证 <code>x ++</code> 同时只有一个线程在执行, 这样的代码段称为 <font color="#ef6d3b"><strong>Critical Section</strong></font><br>我们只需要确保 Critical Section 部分的代码, 不被多个线程同时执行, 即为它加上一把互斥锁</p><div class="admonition note"><p class="admonition-title">Critical Section</p><ul><li><em>Critical Section is the part of a program which tries to access shared resources.</em><br></li><li>即尝试访问共享内存（或资源）的程序段,</li></ul></div><h2 id="一次失败的尝试">一次失败的尝试</h2><p><strong>现在实现一个多线程互斥算法:</strong><br>脑袋里最直观的想法是, 维护一个全局变量（即锁）, 每当有线程访问 Critical Section 时, 就上锁, 以达到防止别的线程同时访问的目的, 退出访问后不要忘记解锁;</p><pre><code class="language-python">lock = ''x = 0def add():    global x, lock    for _ in range(N):        while lock == '🔒':            pass        lock = '🔒' # add lock        x += 1      # critical section        lock = ''   # release lock</code></pre><p>这段代码很简单很low, 但是你秉承着大道至简的信念, 略有自信的运行了它…<br>Wrong Answer! …</p><p><strong>继续看出错的原因在哪里?</strong><br>第6行 <code>while lock == '🔒'</code> 和 第8行 <code>lock = '🔒'</code>, 这里分别代表 <code>load/store</code> 操作, 其实已经违背了线程安全的原理<br>举个粒子, 线程A/B依次进入while的判断, 都以为现在是无锁的状态, 而实际的加锁都没走到…</p><h2 id="互斥问题的类比">互斥问题的类比</h2><p><strong>当你无法理解一个抽象问题, 尝试将其类比为熟悉或者具体 的概念</strong> <a href="/posts/3819NVV/">💡《直击本质》书摘</a></p><ul><li><p>先假设一些前提：</p><ul><li>每个人是独立的线程</li><li>大脑内的思想是局部的（<code>private</code>）</li><li>自然界的信息是所有线程共享的 （<code>public</code>, <code>shared memory</code>）</li></ul></li><li><p><strong>通过 <code>抢厕所</code> 解释 非线程安全:</strong></p><ul><li>早上10:05（带薪蹲坑的好时候）, A 和 B 同时看到 仅剩的一个厕所（<code>Load</code>）</li><li>他们激动难耐, 都同时冲了过去… （<code>try to store</code>）</li><li>此时产生两个人抢夺一个厕所的情况… （<code>2 threads -&gt; critical section</code>）</li></ul></li><li><p><strong>解决思路一: 叫号</strong></p><ul><li>由一个全局的公告牌决定 轮到谁上, 但是如果叫到A, 但是A不在或者临时有事了…</li><li>缺点: 违背 “空闲必进” 的原则</li></ul></li><li><p><strong>解决思路二: 协商</strong></p><ul><li>让A/B自己讨论放谁进去, 如果碰到两位仇家, 是不是谁也不让最后僵持不下?</li><li>缺点: 陷入死锁</li></ul></li></ul><p>通过这些 <s>牵强</s> 的类比, 大概对互斥算法设计的好坏、标准有了一些认识：</p><div class="admonition note"><p class="admonition-title">互斥算法的三条标准</p><ul><li>Mutex: 互斥的正确性</li><li>Progress: 有线程进入<code>critical section</code></li><li>Bounded Waiting: 有限等待, 无死锁</li></ul></div><h2 id="LockOne算法">LockOne算法</h2><p>顾名思义, 引入一个bit的 <code>turn</code>, 即允许执行的线程id<br>假设 <code>turn==0</code>, 此时线程1想要执行, 只能干等…<br><strong>违背了 “空闲必进” 的原则</strong></p><p><img src="/images/mutex-lockone.png" alt=""></p><h2 id="LockTwo算法">LockTwo算法</h2><p>顾名思义, 引入 2 bits的 <code>flag</code>, 标记第n个线程是否要执行（因为是双线程互斥，2个bit就足够）<br>假线程0、1同时标记了自身的flag, 它们就可以分别卡在等待中, 即死锁.<br><strong>违背了 “有限等待” 的原则</strong></p><p><font color="#FF1E10"><strong>WARNING 纠错:</strong></font> 下图的 <code>flag[i]=true</code> 应该在 <code>while (flag[i])</code> 判断的上方</p><p><img src="/images/mutex-locktwo.png" alt=""></p><h2 id="Peterson算法">Peterson算法</h2><p>既然 1bit的turn 与 2bit的flag都无法完美解决互斥, Peterson算法干脆说：“我全都要！”</p><ul><li><p>它的优点是, 保证了双线程互斥正确性的同时，</p><ul><li>既确保了 <code>LockOne</code> 的 空闲必进 原则</li><li>又防止了 <code>LockTwo</code> 的 陷入死锁 问题</li></ul></li><li><p>尝试阅读如下材料, 以对Peterson算法又更直观的理解:</p><ul><li><a href="https://en.wikipedia.org/wiki/Peterson%27s_algorithm">Wikipedia: Peterson’s algorithm</a></li><li><a href="https://jamesrwilcox.com/SharedMem.html">A Proof of Peterson’s Algorithm</a></li></ul></li></ul><h2 id="写在最后">写在最后</h2><ol><li><p>本文讨论的, 全部基于 双线程互斥, 不适用于 <code>n &gt;= 3</code> 的情形;</p></li><li><p>正确的互斥算法, <strong>其内部的状态转移一定存在环</strong></p><ul><li>直观理解就是, 一个线程进入 <code>critical section</code> 后, 另一个线程不断的轮询等待 (<code>陷入while</code>)</li></ul></li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;Mutex
-&lt;/p&gt;&lt;ul&gt;
-&lt;li&gt;Mutex (&lt;em&gt;Mutal Exclusion&lt;/em&gt;): 即相互排斥, 即多个线程不能执行同一段代码（指令）&lt;/li&gt;</summary>
-      
-    
-    
-    
-    <category term="Linux" scheme="http://luhao.wiki/categories/Linux/"/>
-    
-    <category term="Linux" scheme="http://luhao.wiki/categories/Linux/Linux/"/>
-    
-    
-    <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
-    
-    <category term="Algorithm" scheme="http://luhao.wiki/tags/Algorithm/"/>
-    
-    <category term="Python" scheme="http://luhao.wiki/tags/Python/"/>
     
   </entry>
   
