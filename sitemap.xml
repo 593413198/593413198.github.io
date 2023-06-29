@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://luhao.wiki/posts/git/</loc>
+    
+    <lastmod>2023-06-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://luhao.wiki/posts/2HY4X7A/</loc>
+    
+    <lastmod>2023-06-29</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://luhao.wiki/posts/grade/</loc>
     
     <lastmod>2023-06-29</lastmod>
@@ -9,9 +23,9 @@
   </url>
   
   <url>
-    <loc>http://luhao.wiki/posts/1EGK4YJ/</loc>
+    <loc>http://luhao.wiki/posts/docs/</loc>
     
-    <lastmod>2023-06-29</lastmod>
+    <lastmod>2023-06-27</lastmod>
     
   </url>
   
@@ -82,13 +96,6 @@
     <loc>http://luhao.wiki/posts/vim/</loc>
     
     <lastmod>2023-06-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://luhao.wiki/posts/docs/</loc>
-    
-    <lastmod>2023-06-22</lastmod>
     
   </url>
   
@@ -331,14 +338,14 @@
   </url>
   
   <url>
-    <loc>http://luhao.wiki/about/index.html</loc>
+    <loc>http://luhao.wiki/categories/index.html</loc>
     
     <lastmod>2023-06-18</lastmod>
     
   </url>
   
   <url>
-    <loc>http://luhao.wiki/categories/index.html</loc>
+    <loc>http://luhao.wiki/about/index.html</loc>
     
     <lastmod>2023-06-18</lastmod>
     
@@ -528,13 +535,6 @@
   
   <url>
     <loc>http://luhao.wiki/posts/3GZKBFK/</loc>
-    
-    <lastmod>2023-06-18</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://luhao.wiki/posts/SRXNR1/</loc>
     
     <lastmod>2023-06-18</lastmod>
     
