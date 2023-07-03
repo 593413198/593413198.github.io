@@ -18,24 +18,26 @@
   
   
   <title>写给三年内的技术成长目标 | Luhao&#39;s Blog</title>
-  <meta name="description" content="写于2021年国庆 希望在三年后(2024.10)，能够达到如下的水平  1. 精通2+ 脚本语言  python 2&#x2F;3 Lua javascript&#x2F;typescript  2. 精通1+ 静态类型语言  C&#x2F;C++ C# java  3. 精通3+ Gameplay模块  Skill UI FPS&#x2F;TPS Store Fashion Matching Chating Room Friends">
+  <meta name="description" content="以下 写于2023年7月  继续惊觉时间飞逝 有收获，但也有走弯路 剩余一年时间，保持现有节奏之余，坚持两个核心   核心一：提高效率 当追求细化文档、扩散式学习（遇到陌生的点就深挖）后，工作的效率（指做完主线）明显降低。 中短期来看，这是不好的迹象，期望通过 区分任务主次 来改善。 核心二：攻城略地 期望 “染指” 更多中大型模块，快速弥补经验上的欠缺。 同时，攻坚 modern cpp、lin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="写给三年内的技术成长目标">
-<meta property="og:url" content="http://luhao.wiki/posts/c98bb1ae/index.html">
+<meta property="og:url" content="http://luhao.wiki/posts/goal-2024/index.html">
 <meta property="og:site_name" content="Luhao&#39;s Blog">
-<meta property="og:description" content="写于2021年国庆 希望在三年后(2024.10)，能够达到如下的水平  1. 精通2+ 脚本语言  python 2&#x2F;3 Lua javascript&#x2F;typescript  2. 精通1+ 静态类型语言  C&#x2F;C++ C# java  3. 精通3+ Gameplay模块  Skill UI FPS&#x2F;TPS Store Fashion Matching Chating Room Friends">
+<meta property="og:description" content="以下 写于2023年7月  继续惊觉时间飞逝 有收获，但也有走弯路 剩余一年时间，保持现有节奏之余，坚持两个核心   核心一：提高效率 当追求细化文档、扩散式学习（遇到陌生的点就深挖）后，工作的效率（指做完主线）明显降低。 中短期来看，这是不好的迹象，期望通过 区分任务主次 来改善。 核心二：攻城略地 期望 “染指” 更多中大型模块，快速弥补经验上的欠缺。 同时，攻坚 modern cpp、lin">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-30T22:52:16.000Z">
-<meta property="article:modified_time" content="2023-06-18T13:12:53.656Z">
+<meta property="article:modified_time" content="2023-07-02T17:55:54.978Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="C++">
+<meta property="article:tag" content="Algorithm">
 <meta property="article:tag" content="Python">
+<meta property="article:tag" content="linux">
 <meta property="article:tag" content="Compiler">
 <meta property="article:tag" content="OpenGL">
 <meta property="article:tag" content="markdown">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://luhao.wiki/posts/c98bb1ae/index.html">
+  <link rel="canonical" href="http://luhao.wiki/posts/goal-2024/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Luhao&#39;s Blog" type="application/atom+xml">
   
@@ -173,7 +175,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%B2%BE%E9%80%9A2-%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1. 精通2+ 脚本语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%B2%BE%E9%80%9A1-%E9%9D%99%E6%80%81%E7%B1%BB%E5%9E%8B%E8%AF%AD%E8%A8%80"><span class="toc-number">2.</span> <span class="toc-text">2. 精通1+ 静态类型语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%B2%BE%E9%80%9A3-Gameplay%E6%A8%A1%E5%9D%97"><span class="toc-number">3.</span> <span class="toc-text">3. 精通3+ Gameplay模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%86%9F%E6%82%891-physics-engine"><span class="toc-number">4.</span> <span class="toc-text">4. 熟悉1+ physics engine</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%89%8B%E5%86%99%E4%B8%80%E5%A5%97%E5%9F%BA%E4%BA%8EOpenGL%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF"><span class="toc-number">5.</span> <span class="toc-text">5. 手写一套基于OpenGL的渲染管线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%89%8B%E5%86%99%E4%B8%80%E5%A5%97%E7%B2%97%E7%95%A5%E7%9A%843D-Engine"><span class="toc-number">6.</span> <span class="toc-text">6. 手写一套粗略的3D Engine</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%9B%BE%E5%BD%A2%E5%BC%95%E6%93%8E%E5%85%B6%E4%BB%96"><span class="toc-number">7.</span> <span class="toc-text">7. 图形引擎其他</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-Learning-and-Coding"><span class="toc-number">8.</span> <span class="toc-text">8. Learning and Coding</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9D%9A%E6%8C%81%E9%98%85%E8%AF%BB%E3%80%81%E5%86%99%E4%BD%9C"><span class="toc-number"></span> <span class="toc-text">坚持阅读、写作</span></a>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E4%B8%80%EF%BC%9A%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87"><span class="toc-number">1.</span> <span class="toc-text">核心一：提高效率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E4%BA%8C%EF%BC%9A%E6%94%BB%E5%9F%8E%E7%95%A5%E5%9C%B0"><span class="toc-number">2.</span> <span class="toc-text">核心二：攻城略地</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%9A%E6%8C%81%E9%98%85%E8%AF%BB%E3%80%81%E5%86%99%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">坚持阅读、写作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B2%BE%E9%80%9A2-%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80"><span class="toc-number">4.</span> <span class="toc-text">精通2+ 脚本语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B2%BE%E9%80%9A1-%E9%9D%99%E6%80%81%E7%B1%BB%E5%9E%8B%E8%AF%AD%E8%A8%80"><span class="toc-number">5.</span> <span class="toc-text">精通1+ 静态类型语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B2%BE%E9%80%9A3-Gameplay%E6%A8%A1%E5%9D%97"><span class="toc-number">6.</span> <span class="toc-text">精通3+ Gameplay模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E5%86%99%E4%B8%80%E5%A5%97%E5%9F%BA%E4%BA%8EOpenGL%E7%9A%84%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF"><span class="toc-number">7.</span> <span class="toc-text">手写一套基于OpenGL的渲染管线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E5%BD%A2%E5%BC%95%E6%93%8E%E5%85%B6%E4%BB%96"><span class="toc-number">8.</span> <span class="toc-text">图形引擎其他</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Learning-and-Coding"><span class="toc-number">9.</span> <span class="toc-text">Learning and Coding</span></a></li></ol>
     </nav>
   </div>
 </aside>
@@ -195,7 +197,7 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/posts/c98bb1ae/" class="article-date">
+	<a href="/posts/goal-2024/" class="article-date">
 	  <time datetime="2021-09-30T22:52:16.000Z" itemprop="datePublished">2021-10-01</time>
 	</a>
 </span>
@@ -208,13 +210,13 @@
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/C/" rel="tag">C++</a>, <a class="article-tag-link-link" href="/tags/Compiler/" rel="tag">Compiler</a>, <a class="article-tag-link-link" href="/tags/OpenGL/" rel="tag">OpenGL</a>, <a class="article-tag-link-link" href="/tags/Python/" rel="tag">Python</a>, <a class="article-tag-link-link" href="/tags/markdown/" rel="tag">markdown</a>
+	<a class="article-tag-link-link" href="/tags/Algorithm/" rel="tag">Algorithm</a>, <a class="article-tag-link-link" href="/tags/C/" rel="tag">C++</a>, <a class="article-tag-link-link" href="/tags/Compiler/" rel="tag">Compiler</a>, <a class="article-tag-link-link" href="/tags/OpenGL/" rel="tag">OpenGL</a>, <a class="article-tag-link-link" href="/tags/Python/" rel="tag">Python</a>, <a class="article-tag-link-link" href="/tags/linux/" rel="tag">linux</a>, <a class="article-tag-link-link" href="/tags/markdown/" rel="tag">markdown</a>
   </span>
 
 
         
 
-        <!-- <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/c98bb1ae/#comments" class="article-comment-link">评论</a></span> -->
+        <!-- <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/goal-2024/#comments" class="article-comment-link">评论</a></span> -->
         
 	
 	
@@ -223,92 +225,28 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <div class="admonition note"><p class="admonition-title">写于2021年国庆
-</p><p><em>希望在三年后(2024.10)，能够达到如下的水平</em></p>
+        <div class="admonition warning"><p class="admonition-title">以下 写于2023年7月
+</p><ul>
+<li>继续惊觉时间飞逝</li>
+<li>有收获，但也有走弯路</li>
+<li>剩余一年时间，保持现有节奏之余，坚持两个核心</li>
+</ul>
 </div>
-<h3 id="1-精通2-脚本语言">1. 精通2+ 脚本语言</h3>
-<ul>
-<li><code>python 2/3</code></li>
-<li><s><code>Lua</code></s></li>
-<li><code>javascript/typescript</code></li>
-</ul>
-<h3 id="2-精通1-静态类型语言">2. 精通1+ 静态类型语言</h3>
-<ul>
-<li><code>C/C++</code></li>
-<li><code>C#</code></li>
-<li><s><code>java</code></s></li>
-</ul>
-<h3 id="3-精通3-Gameplay模块">3. 精通3+ Gameplay模块</h3>
-<ul>
-<li>Skill</li>
-<li>UI</li>
-<li>FPS/TPS</li>
-<li><s>Store</s></li>
-<li>Fashion</li>
-<li><s>Matching</s></li>
-<li><s>Chating Room</s></li>
-<li><s>Friends</s></li>
-<li>…</li>
-</ul>
-<h3 id="4-熟悉1-physics-engine"><s>4. 熟悉1+ physics engine</s></h3>
-<ul>
-<li>box2d (2d)</li>
-<li>physx (3d)</li>
-<li>bullet (3d)</li>
-<li>…</li>
-</ul>
-<h3 id="5-手写一套基于OpenGL的渲染管线">5. 手写一套基于OpenGL的渲染管线</h3>
-<ul>
-<li>Shader (compiler and manager)</li>
-<li>Texture</li>
-<li>Camera</li>
-<li>Lighting</li>
-<li>Shadows</li>
-<li>Model/Mesh</li>
-<li>Instancing</li>
-<li>Postprocess</li>
-<li>Animation</li>
-<li>…</li>
-</ul>
-<h3 id="6-手写一套粗略的3D-Engine">6. 手写一套粗略的3D Engine</h3>
-<ul>
-<li>Memory Manager</li>
-<li>Object Manager (Scene, Model)</li>
-<li>Model (fbx, sfx, …)</li>
-<li>Material</li>
-<li>Shader/Postprocess</li>
-<li>Render</li>
-<li>Physics (API is enough)</li>
-<li>Animation</li>
-<li>Editor (Image, Scene, Model…)</li>
-<li>Debug Tools</li>
-</ul>
-<h3 id="7-图形引擎其他">7. 图形引擎其他</h3>
-<ul>
-<li>良好的数学基础</li>
-<li>所有图形学基础</li>
-<li>C++ Coding</li>
-<li>Shell/Batch Scripts</li>
-<li>UE4/Unity的学习借鉴</li>
-<li>前沿技术的积累</li>
-</ul>
-<h3 id="8-Learning-and-Coding">8. Learning and Coding</h3>
-<ul>
-<li>Reading Paper (GDC…)</li>
-<li>Reading Document (API…)</li>
-<li>Code review</li>
-<li>Blog Recording (Markdown!)</li>
-<li>Learn from open-source</li>
-</ul>
+<h3 id="核心一：提高效率">核心一：提高效率</h3>
+<p>当追求细化文档、扩散式学习（遇到陌生的点就深挖）后，工作的效率（指做完主线）明显降低。<br>
+中短期来看，这是不好的迹象，期望通过 <strong>区分任务主次</strong> 来改善。</p>
+<h3 id="核心二：攻城略地">核心二：攻城略地</h3>
+<p>期望 “染指” 更多中大型模块，快速弥补经验上的欠缺。<br>
+同时，攻坚 <em>modern cpp、linux kernel、network、algorithm</em>… 等领域，计算机的 “万丈高楼平地起”，恰恰依赖这些基础知识。</p>
 <hr>
-<div class="admonition note"><p class="admonition-title">写于2022年5月
+<div class="admonition note"><p class="admonition-title">以下 写于2022年5月
 </p><ul>
 <li>惊觉半年已逝；</li>
 <li>回看曾经的目标，<strong>宏大却不够具体，因此缺乏坚持的动力</strong>；</li>
 <li>这次来细化下目标吧!</li>
 </ul>
 </div>
-<h2 id="坚持阅读、写作">坚持阅读、写作</h2>
+<h3 id="坚持阅读、写作">坚持阅读、写作</h3>
 <ul>
 <li>
 <p>每周 <font color="#FF1E10"><em><strong>1+</strong></em></font> 篇博客, 不限题材（算命的、风水的都行）</p>
@@ -323,6 +261,56 @@
 <p>尝试捣鼓一些小玩意，如破解插件、工具脚本，<strong>并将这些成果发布在开源网站上!</strong></p>
 </li>
 </ul>
+<hr>
+<div class="admonition note"><p class="admonition-title">以下 写于2021年国庆
+</p><p><em>希望在三年后(2024.10)，能够达到如下的水平</em></p>
+</div>
+<h3 id="精通2-脚本语言">精通2+ 脚本语言</h3>
+<ul>
+<li><code>python 2/3</code> ➜ 使用层面 ✔</li>
+<li><code>JS/TS</code></li>
+</ul>
+<h3 id="精通1-静态类型语言">精通1+ 静态类型语言</h3>
+<ul>
+<li><s><code>C/C++</code></s> ➜ <code>C++ 11/14/17</code></li>
+</ul>
+<h3 id="精通3-Gameplay模块"><s>精通3+ Gameplay模块</s></h3>
+<ul>
+<li>熟悉常见 Gameplay 模块 ✔</li>
+</ul>
+<h3 id="手写一套基于OpenGL的渲染管线"><s>手写一套基于OpenGL的渲染管线</s></h3>
+<p>基于引擎实现具体中小模块的 <strong>增删查改</strong></p>
+<ul>
+<li><s>Shader (compiler and manager)</s> ➜ cross-platform shadercompiler</li>
+<li><s>Texture</s> ➜ texture-budget</li>
+<li>Camera</li>
+<li><s>Lighting</s> ➜ Cluster Lighting</li>
+<li><s>Shadows</s> ➜ CSM</li>
+<li><s>Model/Mesh</s> ➜ Culling</li>
+<li>Instancing</li>
+<li><s>Postprocess</s>  ➜ SSR</li>
+<li>Animation</li>
+<li>…</li>
+</ul>
+<ul>
+<li>Editor (Image, Scene, Model…) ✔</li>
+<li>Debug Tools ➜ ImGUI、Tracy、RenderDoc…  ✔</li>
+</ul>
+<h3 id="图形引擎其他">图形引擎其他</h3>
+<ul>
+<li>良好的数学基础</li>
+<li><s>图形学基础</s> ➜ GAMES</li>
+<li>UE4/Unity的学习借鉴</li>
+<li>前沿技术的积累</li>
+</ul>
+<h3 id="Learning-and-Coding">Learning and Coding</h3>
+<ul>
+<li>Reading Paper (GDC…)</li>
+<li>Reading Document (API…)</li>
+<li><s>Code review</s> ➜ MR ✔</li>
+<li>Blog Recording (Markdown!) ✔</li>
+<li>Learn from open-source</li>
+</ul>
 
       
     </div>
@@ -332,7 +320,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://luhao.wiki/posts/c98bb1ae/" title="写给三年内的技术成长目标" target="_blank" rel="external">http://luhao.wiki/posts/c98bb1ae/</a>
+      <a href="http://luhao.wiki/posts/goal-2024/" title="写给三年内的技术成长目标" target="_blank" rel="external">http://luhao.wiki/posts/goal-2024/</a>
     </li>
     
     <li class="post-copyright-license">
