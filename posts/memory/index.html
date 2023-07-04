@@ -26,7 +26,7 @@
 <meta property="og:description" content="C++的内存分配与管理">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-04T17:01:35.000Z">
-<meta property="article:modified_time" content="2023-07-04T18:24:56.321Z">
+<meta property="article:modified_time" content="2023-07-04T18:37:39.458Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
@@ -229,7 +229,7 @@
 </div>
 <h2 id="new-delete">new/delete</h2>
 <p><a href="/posts/virtual-memory/#u-class-black-mallco-free-u">malloc / free</a> 前面有介绍过。</p>
-<p>以 <code>A* a = new A</code>为例，通过 <a target="_blank" rel="noopener" href="https://gcc.godbolt.org/">godbolt</a> 查看汇编代码，发现其有两段逻辑组成：</p>
+<p><strong>以 <code>A* a = new A</code>为例，通过 <a target="_blank" rel="noopener" href="https://gcc.godbolt.org/">godbolt</a> 查看汇编代码，发现其有两段逻辑组成：</strong></p>
 <ul>
 <li>调用 <code>new operator</code></li>
 <li>调用 <code>class's constructor</code></li>
@@ -238,6 +238,43 @@
 mov     rbx, rax
 mov     rdi, rbx
 call    A::A() [complete object constructor]
+</code></pre>
+<p><strong>相应的 <code>delete</code> 方法，也对应如下的两段逻辑：</strong></p>
+<ul>
+<li>调用 <code>class's destructor</code></li>
+<li>调用 <code>delete operator</code></li>
+</ul>
+<p>下面重点展开对 <code>new / delete</code> 两个操作符的学习（推荐阅读 <a target="_blank" rel="noopener" href="https://www.programiz.com/cpp-programming/operators">C++ Operators</a> 和 <a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/operators">cppreference operator overloading</a>）</p>
+<p><strong>先看 libc 的 <a target="_blank" rel="noopener" href="https://codebrowser.dev/llvm/libcxx/src/new.cpp.html">源码实现</a>，可以看到是对 <code>malloc</code> 的一层封装。</strong><br>
+如果类自定义了 <code>new /delete</code>，则优先调用它们。</p>
+<pre><code class="language-C++">void *
+operator new(std::size_t size) _THROW_BAD_ALLOC
+{
+    if (size == 0)
+        size = 1;
+    void* p;
+    while ((p = ::malloc(size)) == nullptr)
+    {
+        // If malloc fails and there is a new_handler,
+        // call it to try free up memory.
+        std::new_handler nh = std::get_new_handler();
+        if (nh)
+            nh();
+        else
+#ifndef _LIBCPP_HAS_NO_EXCEPTIONS
+            throw std::bad_alloc();
+#else
+            break;
+#endif
+    }
+    return p;
+}
+
+void
+operator delete(void* ptr) noexcept
+{
+    ::free(ptr);
+}
 </code></pre>
 <h2 id="Todo">Todo</h2>
 <p>最近需求紧，得空再整理吧…</p>

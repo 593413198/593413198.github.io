@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2023-07-04T18:24:56.321Z</updated>
+  <updated>2023-07-04T18:37:39.458Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://luhao.wiki/posts/memory/"/>
     <id>http://luhao.wiki/posts/memory/</id>
     <published>2023-07-04T17:01:35.000Z</published>
-    <updated>2023-07-04T18:24:56.321Z</updated>
+    <updated>2023-07-04T18:37:39.458Z</updated>
     
-    <content type="html"><![CDATA[<p>C++的内存分配与管理<span id="more"></span></p><div class="admonition note"><p class="admonition-title">导读</p><ul><li>理论偏：<a href="/posts/virtual-memory/">【CSAPP】Virtual Memory</a></li><li>本篇结合 C/C++ 了解内存分配相关领域知识</li><li>ptmalloc，tcmalloc，jemalloc ...</li></ul></div><h2 id="new-delete">new/delete</h2><p><a href="/posts/virtual-memory/#u-class-black-mallco-free-u">malloc / free</a> 前面有介绍过。</p><p>以 <code>A* a = new A</code>为例，通过 <a href="https://gcc.godbolt.org/">godbolt</a> 查看汇编代码，发现其有两段逻辑组成：</p><ul><li>调用 <code>new operator</code></li><li>调用 <code>class's constructor</code></li></ul><pre><code class="language-asm">call    operator new(unsigned long)mov     rbx, raxmov     rdi, rbxcall    A::A() [complete object constructor]</code></pre><h2 id="Todo">Todo</h2><p>最近需求紧，得空再整理吧…</p>]]></content>
+    <content type="html"><![CDATA[<p>C++的内存分配与管理<span id="more"></span></p><div class="admonition note"><p class="admonition-title">导读</p><ul><li>理论偏：<a href="/posts/virtual-memory/">【CSAPP】Virtual Memory</a></li><li>本篇结合 C/C++ 了解内存分配相关领域知识</li><li>ptmalloc，tcmalloc，jemalloc ...</li></ul></div><h2 id="new-delete">new/delete</h2><p><a href="/posts/virtual-memory/#u-class-black-mallco-free-u">malloc / free</a> 前面有介绍过。</p><p><strong>以 <code>A* a = new A</code>为例，通过 <a href="https://gcc.godbolt.org/">godbolt</a> 查看汇编代码，发现其有两段逻辑组成：</strong></p><ul><li>调用 <code>new operator</code></li><li>调用 <code>class's constructor</code></li></ul><pre><code class="language-asm">call    operator new(unsigned long)mov     rbx, raxmov     rdi, rbxcall    A::A() [complete object constructor]</code></pre><p><strong>相应的 <code>delete</code> 方法，也对应如下的两段逻辑：</strong></p><ul><li>调用 <code>class's destructor</code></li><li>调用 <code>delete operator</code></li></ul><p>下面重点展开对 <code>new / delete</code> 两个操作符的学习（推荐阅读 <a href="https://www.programiz.com/cpp-programming/operators">C++ Operators</a> 和 <a href="https://en.cppreference.com/w/cpp/language/operators">cppreference operator overloading</a>）</p><p><strong>先看 libc 的 <a href="https://codebrowser.dev/llvm/libcxx/src/new.cpp.html">源码实现</a>，可以看到是对 <code>malloc</code> 的一层封装。</strong><br>如果类自定义了 <code>new /delete</code>，则优先调用它们。</p><pre><code class="language-C++">void *operator new(std::size_t size) _THROW_BAD_ALLOC{    if (size == 0)        size = 1;    void* p;    while ((p = ::malloc(size)) == nullptr)    {        // If malloc fails and there is a new_handler,        // call it to try free up memory.        std::new_handler nh = std::get_new_handler();        if (nh)            nh();        else#ifndef _LIBCPP_HAS_NO_EXCEPTIONS            throw std::bad_alloc();#else            break;#endif    }    return p;}voidoperator delete(void* ptr) noexcept{    ::free(ptr);}</code></pre><h2 id="Todo">Todo</h2><p>最近需求紧，得空再整理吧…</p>]]></content>
     
     
     <summary type="html">&lt;p&gt;C++的内存分配与管理&lt;/p&gt;</summary>
