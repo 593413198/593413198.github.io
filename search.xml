@@ -1389,7 +1389,7 @@
       <link href="/posts/3DJGDAE/"/>
       <url>/posts/3DJGDAE/</url>
       
-        <content type="html"><![CDATA[<ul><li><a href="https://www.sourceware.org/gdb/">GDB: The GNU Project Debugger</a></li><li><a href="https://jyywiki.cn/pages/OS/manuals/gdb-cheat-sheet.pdf">gdb cheat sheet</a></li><li><a href="https://gcc.godbolt.org/">godbolt</a> (C/C++, python等在线转汇编)</li><li><a href="https://www.onlinegdb.com/">online gdb</a> (在线gdb调试)</li></ul><h2 id="godbolt">godbolt</h2><p>推荐这个网站 <a href="https://gcc.godbolt.org">https://gcc.godbolt.org</a>，在线写 <code>C/C++/Python</code> 等代码，并查看整理后的汇编码，非常清晰。</p><p><img src="/images/godbolt.png" alt=""></p>]]></content>
+        <content type="html"><![CDATA[<ul><li><a href="https://www.sourceware.org/gdb/">GDB: The GNU Project Debugger</a></li><li><a href="https://jyywiki.cn/pages/OS/manuals/gdb-cheat-sheet.pdf">gdb cheat sheet</a></li><li><a href="https://gcc.godbolt.org/">godbolt</a> (C/C++, python等在线转汇编)</li><li><a href="https://www.onlinegdb.com/">online gdb</a> (在线gdb调试)</li></ul><h2 id="godbolt">godbolt</h2><p>推荐这个网站 <a href="https://gcc.godbolt.org">https://gcc.godbolt.org</a>，在线写 <code>C/C++/Python</code> 等代码，并查看整理后的汇编码，非常清晰。</p><p><img src="/images/godbolt.png" alt=""></p><h2 id="Todo">Todo</h2>]]></content>
       
       
       <categories>
