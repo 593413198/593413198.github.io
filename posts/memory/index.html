@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://luhao.wiki/images/malloc-demo.png">
 <meta property="og:image" content="http://luhao.wiki/images/memory-call.png">
 <meta property="article:published_time" content="2023-07-04T17:01:35.000Z">
-<meta property="article:modified_time" content="2023-07-09T16:37:32.879Z">
+<meta property="article:modified_time" content="2023-07-09T16:42:43.563Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="linux">
@@ -173,7 +173,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#mallco-free"><span class="toc-number">1.</span> <span class="toc-text">mallco&#x2F;free</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#new-delete"><span class="toc-number">2.</span> <span class="toc-text">new&#x2F;delete</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#System-Call"><span class="toc-number">3.</span> <span class="toc-text">System Call</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#brk-sbrk"><span class="toc-number">3.1.</span> <span class="toc-text">brk, sbrk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mmap"><span class="toc-number">3.2.</span> <span class="toc-text">mmap</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Todo"><span class="toc-number">4.</span> <span class="toc-text">Todo</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#mallco-free"><span class="toc-number">1.</span> <span class="toc-text">mallco&#x2F;free</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#new-delete"><span class="toc-number">2.</span> <span class="toc-text">new&#x2F;delete</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#System-Call"><span class="toc-number">3.</span> <span class="toc-text">System Call</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#brk-sbrk"><span class="toc-number">3.1.</span> <span class="toc-text">brk, sbrk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mmap"><span class="toc-number">3.2.</span> <span class="toc-text">mmap</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ptmalloc"><span class="toc-number">4.</span> <span class="toc-text">ptmalloc</span></a></li></ol>
     </nav>
   </div>
 </aside>
@@ -328,12 +328,7 @@ void *mmap(void *addr, size_t length, int prot, int flags,
             int fd, off_t offset);
 int munmap(void *addr, size_t length);
 </code></pre>
-<h2 id="Todo">Todo</h2>
-<ul>
-<li>man brk</li>
-<li>man mmap</li>
-<li>ptmalloc …</li>
-</ul>
+<h2 id="ptmalloc">ptmalloc</h2>
 
       
     </div>
