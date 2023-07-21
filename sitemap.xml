@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://luhao.wiki/posts/memory/</loc>
+    <loc>http://luhao.wiki/posts/idea/</loc>
     
     <lastmod>2023-07-21</lastmod>
     
@@ -18,7 +18,21 @@
   <url>
     <loc>http://luhao.wiki/posts/talk/</loc>
     
-    <lastmod>2023-07-17</lastmod>
+    <lastmod>2023-07-21</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://luhao.wiki/posts/grade/</loc>
+    
+    <lastmod>2023-07-21</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://luhao.wiki/posts/memory/</loc>
+    
+    <lastmod>2023-07-21</lastmod>
     
   </url>
   
@@ -68,13 +82,6 @@
     <loc>http://luhao.wiki/posts/2TKZZE3/</loc>
     
     <lastmod>2023-07-04</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://luhao.wiki/posts/grade/</loc>
-    
-    <lastmod>2023-07-03</lastmod>
     
   </url>
   
