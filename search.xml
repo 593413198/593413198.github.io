@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>【工具】思维导图</title>
+      <link href="/posts/1F13H6K/"/>
+      <url>/posts/1F13H6K/</url>
+      
+        <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">导读</p><ul><li>学习新的工具，思维导图，这是以前不曾习惯或接触的</li><li>市面常见的 <code>mind map</code> 软件对比</li><li>一些技巧、使用习惯、方法论</li><li><font color="#FF1E10"><strong>TODO</strong></font>： 设计 “搬运失败” 处理方案的导图</li><li><font color="#1A9BFF"><strong>可选</strong></font>：ChatGPT + MindMap 的工作流</li></ul></div><h3 id=""></h3><p>先限定在3款软件:</p><ul><li><a href="https://whimsical.com/">https://whimsical.com/</a> : 学习成本较高</li><li>XMind：没有网页版不能接受</li><li>GitMind</li></ul><h3 id="todo">todo</h3><ul><li><a href="https://zhuanlan.zhihu.com/p/267141019">知乎：横向对比22款思维导图工具</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【vscode】vim定制化插件</title>
       <link href="/posts/vscode-vim/"/>
       <url>/posts/vscode-vim/</url>

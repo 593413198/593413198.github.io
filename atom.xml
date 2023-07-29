@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2023-07-29T18:41:03.599Z</updated>
+  <updated>2023-07-29T20:01:51.520Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【工具】思维导图</title>
+    <link href="http://luhao.wiki/posts/1F13H6K/"/>
+    <id>http://luhao.wiki/posts/1F13H6K/</id>
+    <published>2023-07-29T19:27:53.000Z</published>
+    <updated>2023-07-29T20:01:51.520Z</updated>
+    
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">导读</p><ul><li>学习新的工具，思维导图，这是以前不曾习惯或接触的</li><li>市面常见的 <code>mind map</code> 软件对比</li><li>一些技巧、使用习惯、方法论</li><li><font color="#FF1E10"><strong>TODO</strong></font>： 设计 “搬运失败” 处理方案的导图</li><li><font color="#1A9BFF"><strong>可选</strong></font>：ChatGPT + MindMap 的工作流</li></ul></div><h3 id=""></h3><p>先限定在3款软件:</p><ul><li><a href="https://whimsical.com/">https://whimsical.com/</a> : 学习成本较高</li><li>XMind：没有网页版不能接受</li><li>GitMind</li></ul><h3 id="todo">todo</h3><ul><li><a href="https://zhuanlan.zhihu.com/p/267141019">知乎：横向对比22款思维导图工具</a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;导读
+&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;学习新的工具，思维导图，这是以前不曾习惯或接触的&lt;/li&gt;
+&lt;li&gt;市面常见的 &lt;code&gt;mind map&lt;/code&gt; 软件对比&lt;</summary>
+      
+    
+    
+    
+    <category term="工具" scheme="http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="工具" scheme="http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>【vscode】vim定制化插件</title>
@@ -509,29 +536,6 @@
     <category term="Python" scheme="http://luhao.wiki/tags/Python/"/>
     
     <category term="linux" scheme="http://luhao.wiki/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【GAMES101】Anti-Aliasing</title>
-    <link href="http://luhao.wiki/posts/3P0T9MZ/"/>
-    <id>http://luhao.wiki/posts/3P0T9MZ/</id>
-    <published>2023-05-28T13:13:49.000Z</published>
-    <updated>2023-06-21T17:37:26.635Z</updated>
-    
-    <content type="html"><![CDATA[<p>信号处理、抗锯齿<span id="more"></span></p><div class="admonition note"><p class="admonition-title">导读</p><ul><li><a href="https://learnopengl.com/Advanced-OpenGL/Anti-Aliasing">LearnOpenGL: Anti Aliasing</a></li><li><a href="https://sites.cs.ucsb.edu/~lingqi/teaching/resources/GAMES101_Lecture_06.pdf">GAMES101: Rasterization and Anti Aliasing</a></li><li><a href="https://www.zhihu.com/question/19714540/answer/1119070975">知乎：如何理解傅里叶变换公式？</a></li><li><a href="https://www.zhihu.com/question/264302905">知乎：如何理解图像经傅里叶变换后所得频谱图意义？</a></li></ul></div><div class="markmap-container" style="height:400px">  <svg data="{&quot;t&quot;:&quot;root&quot;,&quot;d&quot;:0,&quot;v&quot;:&quot;&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[0,1]},&quot;v&quot;:&quot;信号处理&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[1,2]},&quot;v&quot;:&quot;时域&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[2,3]},&quot;v&quot;:&quot;频域&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[3,4]},&quot;v&quot;:&quot;空域&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[4,5]},&quot;v&quot;:&quot;<a href=\&quot;#傅里叶变换（Fourier-Transform）\&quot;>傅里叶变换</a>&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[5,6]},&quot;v&quot;:&quot;走样&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[6,7]},&quot;v&quot;:&quot;<a href=\&quot;#什么是走样（Aliasing）\&quot;>What</a>&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[7,8]},&quot;v&quot;:&quot;Jaggies&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[8,9]},&quot;v&quot;:&quot;Moiré&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[9,10]},&quot;v&quot;:&quot;Wheel-effect&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[10,11]},&quot;v&quot;:&quot;<a href=\&quot;#为什么产生走样\&quot;>Why</a>（从信号处理角度）&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[11,12]},&quot;v&quot;:&quot;How&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[12,13]},&quot;v&quot;:&quot;<a href=\&quot;#Blurring\&quot;>Blurring</a>&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[13,14]},&quot;v&quot;:&quot;<a href=\&quot;#High-Pass-Filter\&quot;>Filter</a>&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[14,15]},&quot;v&quot;:&quot;<a href=\&quot;#Convolution\&quot;>Convolution</a>&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[15,16]},&quot;v&quot;:&quot;实际应用&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[16,17]},&quot;v&quot;:&quot;<a href=\&quot;#MSAA\&quot;>MSAA</a>&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[17,18]},&quot;v&quot;:&quot;<a href=\&quot;#FXAA\&quot;>FXAA</a>&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:3,&quot;p&quot;:{&quot;lines&quot;:[18,19]},&quot;v&quot;:&quot;<a href=\&quot;#TAA\&quot;>TAA</a>&quot;}]}]}],&quot;p&quot;:{}}"></svg></div><h2 id="信号处理">信号处理</h2><p>了解反走样与抗锯齿之前，需要学习一些基础的信号处理相关知识，其中最重要的就是 时域、频域 及两者的相互转化关系。</p><h3 id="1-时域-Time-domain">1. 时域 (Time-domain)</h3><blockquote><p>时域 是描述一个数学函数（或物理信号）对于时间的关系（函数）</p></blockquote><p>电脑上的音频文件（例如mp3、wmv…）就是一个时域信号的典型例子，其本质是音频（波形图）在时间上的分布，如下所示：</p><ul><li>横轴：时间 t</li><li>纵轴：声音的振幅<br><img src="/images/signal-mp3.png" alt=""></li></ul><p>声音信号是由 高音、中音、低音 三个部分组成，如果我们想加强低音部分，仅仅通过时域信号是没法修改的。因为高中低音在时域中是混合在一起的，没法通过逆变换将他们抽离开来。<br>因此引申出 频域 的概念 ↓</p><!-- **因此 [傅里叶变换](https://zh.wikipedia.org/wiki/%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2) 的出现，就是为了将信号在时域和频域之间相互转化。** --><h3 id="2-频域-Frequence-domain">2. 频域 (Frequence-domain)</h3><blockquote><p>频域 是描述频率分布的关系</p></blockquote><p>频域的理解有点困难，需要结合时域一起看（如下图）。时域上的信号可以看做不同频率的信号的叠加，因此频域就是展示这些不同频率信号的分布。</p><ul><li>横轴：频率</li><li>纵轴：该频率的振幅（&gt;0）</li></ul><p><img src="/images/frequence-vs-time.png" alt=""></p><div class="admonition note"><p class="admonition-title">空域 (Spatial-domain)</p><ul><li>又称为空间域、图像空间（image space），可以理解为像素在屏幕空间（x，y）的分布。</li></ul></div><h3 id="时域与频域">时域与频域</h3><blockquote><p>时域与频域 表示的是同一个信息，只不过呈现的方式不同。</p></blockquote><p>下面以标准正弦函数 $sin(x)$ 为例，展现时域和频域的不同表示：</p><table><thead><tr><th style="text-align:center"></th><th style="text-align:center">函数</th><th style="text-align:center">示意图</th></tr></thead><tbody><tr><td style="text-align:center">时域</td><td style="text-align:center">$y = sin(t)$</td><td style="text-align:center"><img src="/images/time-domain-demo.gif" alt=""></td></tr><tr><td style="text-align:center">频域</td><td style="text-align:center">$f = \frac{1}{2π}$</td><td style="text-align:center"><img src="/images/frequence-domain-demo.png" alt=""></td></tr></tbody></table><h3 id="傅里叶变换（Fourier-Transform）">傅里叶变换（Fourier Transform）</h3><div class="admonition warning"><p class="admonition-title">关于傅里叶变换</p><ul><li>这部分浅尝辄止，理解基本概念和用法即可</li></ul></div><ul><li><p>任何函数都可以表示为 $sin$、 $cos$ 函数的组合</p></li><li><p>将时域转化到频域（傅里叶变换）</p></li><li><p>将频域转化到时域（逆变换）</p></li></ul><h2 id="什么是走样（Aliasing）">什么是走样（Aliasing）?</h2><p>如下概括了三种常见的走样的导致的 Artifacts：</p><table><thead><tr><th style="text-align:center">Artifacts</th><th style="text-align:center">原因</th><th style="text-align:left">示例</th></tr></thead><tbody><tr><td style="text-align:center"><a href="https://en.wikipedia.org/wiki/Jaggies">Jaggies</a></td><td style="text-align:center">空域采样频率不足</td><td style="text-align:left"><img src="/images/raster-jaggies.png" alt=""></td></tr><tr><td style="text-align:center">Moiré Patterns</td><td style="text-align:center">空域采样频率不足</td><td style="text-align:left"><img src="/images/raster-moire.png" alt=""></td></tr><tr><td style="text-align:center"><a href="https://en.wikipedia.org/wiki/Wagon-wheel_effect">Wagon wheel effect</a></td><td style="text-align:center">时域采样频率不足 <a href="https://michaelbach.de/ot/mot-wagonWheel/">demo</a></td><td style="text-align:left"><img src="/images/raster-wheel.gif" alt=""></td></tr></tbody></table><h2 id="为什么产生走样">为什么产生走样?</h2><h3 id="从信号处理角度理解">从信号处理角度理解</h3><blockquote><p><em>Signals are <font color="#1AAD19">changing too fast (high frequency)</font>, <font color="#FF1E10">but sampled too slowly</font>.</em>  —— GAMES101</p></blockquote><p>将图像信息看做空域信号，根据傅里叶变换得出，可以表示为任何正弦信号的叠加，因此光栅化的过程可以理解为：<strong>以某个频率对原始信号进行采样的过程。</strong><br>由于造物主的超然存在，自然界的所有采样频率可以当做无穷的（时间是连续的、世界是无穷多个像素点…），而妄图用有限的频率去描述、去采样现实世界，即用有穷描述无穷，必然会带来信号和信息的损失。<br>以下图为例，采样频率固定时，当原始信号的频率越低，采样产生的误差也就越小；当原始信号的频率越高，采样产生的误差越大。</p><p><img src="/images/antialisaing-why.png" alt=""></p><p>上面3种常见的 <strong>采样导致的Artifacts</strong>，都是因为采样的频率较低（低于原图像的变化频率）。</p><p>原始图像的信号不是随着时间而变换（时域变换），而是随着空间中x、y的值而变化（空域变换）。信号的变化频率高是指：像素之间的RGB颜色是否发生骤变（如白色255变成黑色0）。<br>从这个角度理解走样的原因：</p><div class="admonition note"><p class="admonition-title">为什么锯齿都在图形的边缘?</p><ul><li>因为内部的信号变化慢，低频采样没什么影响；而边缘的信号变换频率会骤增。</li></ul></div><h2 id="如何进行反走样（Anti-Aliasing）？">如何进行反走样（Anti-Aliasing）？</h2><p>Anti-Aliasing，又称为反走样、抗锯齿，提高采样频率是最直接的反走样方案，如增加分辨率。<br>下面介绍一些常见的AA理论。</p><h3 id="Blurring">Blurring</h3><p>模糊化是反走样的一个基本操作，即在光栅化之前对原始图像做一个模糊的操作。</p><p><img src="/images/aa-blurring.png" alt=""></p><h3 id="High-Pass-Filter">High-Pass Filter</h3><p>高通滤波，即高频的信号可以通过，过滤掉低频的信号</p><h3 id="Low-Pass-Filter">Low-Pass Filter</h3><p>低通滤波，即低频的信号可以通过，过滤掉高频的信号</p><h3 id="Convolution">Convolution</h3><p>前面的滤波技术，本质不是丢弃某些特定频率的信号，而是把它们变成一个新的信号。即$m*n$的信号通过滤波之后，得到的仍然是 $m*n$ 的信号。它的本质就是 <strong>将信号在时域上卷积</strong>，即求平均值。</p><ul><li><strong>滤波器</strong>：一个固定大小的信号，如 $1*3$，且每个信号都对应一个数值（系数），如下所示：<ul><li><img src="/images/aa-filters.png" alt=""></li><li>对于每个像素，根据滑动窗口计算 经滤波器后 的取值。</li><li>示例，对应为 $5$ 的像素，滤波后的结果是 $3*1/4 + 5*1/2 + 3*1/4 = 4$</li></ul></li></ul><p>下图是一个 1/9 的滤波器，它起到了图像模糊化的作用，其本质也是一个低通滤波器（模糊的本质，是去掉高频变换的边缘区域）</p><p><img src="/images/low-filter.png" alt=""></p><div class="admonition warning"><p class="admonition-title">理解困难</p><ul><li>如何理解：时域（空域）的乘积，本质是频域上的卷积</li></ul></div><h3 id="MSAA">MSAA</h3><p><a href="https://en.wikipedia.org/wiki/Multisample_anti-aliasing">MSAA（Multi-Sampling AA）</a> 的本质是在更高倍分辨率下进行采样。<br>下图是一个 <em>4 x MSAA</em> 采样的示例，即对于每个像素，采样其中四个子像素，根据是否在三角形内的比例，得出其颜色的贡献值。</p><p><img src="/images/4xMSAA.png" alt=""></p><p><strong>MSAA的额外开销</strong></p><ul><li>n-MSAA，意味着 N 倍的采样量</li><li>可以尽可能的复用之前的采样值</li></ul><h3 id="FXAA">FXAA</h3><p><a href="https://zh.wikipedia.org/wiki/%E5%BF%AB%E9%80%9F%E8%BF%91%E4%BC%BC%E6%8A%97%E9%8B%B8%E9%BD%92">FXAA（Fast-Approximat AA）</a> 是在屏幕空间的快速近似抗锯齿，它是在后处理阶段进行的。<br>在有锯齿的图像上，找到其边界，并替换为无边界的图像，与采样无关。</p><h3 id="TAA">TAA</h3><p><a href="">TAA（Tempol AA）</a> 将采样从单帧扩展到多帧，尽可能地复用之前帧的结果。需要额外处理动态物体的情况。</p><div class="admonition warning"><p class="admonition-title">写在最后</p><ul><li>MSAA，FXAA，TAA等抗锯齿方案需要更深入的学习和实践，这里只是浅尝辄止</li></ul></div>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;信号处理、抗锯齿&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Graphics" scheme="http://luhao.wiki/categories/Graphics/"/>
-    
-    <category term="Graphics" scheme="http://luhao.wiki/categories/Graphics/Graphics/"/>
-    
-    
-    <category term="OpenGL" scheme="http://luhao.wiki/tags/OpenGL/"/>
     
   </entry>
   
