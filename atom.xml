@@ -43,33 +43,6 @@
   </entry>
   
   <entry>
-    <title>【工具】思维导图</title>
-    <link href="http://luhao.wiki/posts/1F13H6K/"/>
-    <id>http://luhao.wiki/posts/1F13H6K/</id>
-    <published>2023-07-29T19:27:53.000Z</published>
-    <updated>2023-07-30T17:48:55.327Z</updated>
-    
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">导读</p><ul><li>学习新的工具，思维导图，这是以前不曾习惯或接触的</li><li>市面常见的 <code>mind map</code> 软件对比</li><li>一些技巧、使用习惯、方法论</li><li><font color="#FF1E10"><strong>TODO</strong></font>： 设计 “搬运失败” 处理方案的导图</li><li><font color="#1A9BFF"><strong>可选</strong></font>：ChatGPT + MindMap 的工作流</li></ul></div><h2 id="Whimsical">Whimsical</h2><p><a href="https://whimsical.com">https://whimsical.com</a><br>因为全英文，学习成本较高，且中文输入支持较差。</p><ul><li>XMind: 没有网页版不能接受</li><li>GitMind: 暂时没空体验</li></ul><h3 id="todo">todo</h3><ul><li><a href="https://zhuanlan.zhihu.com/p/267141019">知乎：横向对比22款思维导图工具</a></li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;导读
-&lt;/p&gt;&lt;ul&gt;
-&lt;li&gt;学习新的工具，思维导图，这是以前不曾习惯或接触的&lt;/li&gt;
-&lt;li&gt;市面常见的 &lt;code&gt;mind map&lt;/code&gt; 软件对比&lt;</summary>
-      
-    
-    
-    
-    <category term="工具" scheme="http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    <category term="工具" scheme="http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>【vscode】vim定制化插件</title>
     <link href="http://luhao.wiki/posts/vscode-vim/"/>
     <id>http://luhao.wiki/posts/vscode-vim/</id>
@@ -530,6 +503,36 @@
     
     <category term="个人日志" scheme="http://luhao.wiki/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/"/>
     
+    
+    <category term="linux" scheme="http://luhao.wiki/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【selenium】自动秒杀脚本</title>
+    <link href="http://luhao.wiki/posts/3R1HHH2/"/>
+    <id>http://luhao.wiki/posts/3R1HHH2/</id>
+    <published>2023-05-29T16:06:36.000Z</published>
+    <updated>2023-06-18T13:12:53.656Z</updated>
+    
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><ul><li>借助 <code>Python + Selenium</code> 实现 <code>taobao</code> 购物车自动秒杀</li></ul></div><div class="admonition error"><p class="admonition-title">TODO</p><ul><li>增加定时秒杀的功能</li><li><code>time.sleep</code>的时间把控（短则逻辑错误，长则秒杀失败...）</li><li>实测，实战</li></ul></div><h3 id="环境">环境</h3><p>下面以 windows 环境为例，因为高度依赖 chrome ui 界面操作，linux 暂且按下不表</p><ul><li><p><code>pip3 install selenium</code>，直接下载最新的 <code>selenium</code> 库</p></li><li><p><code>chrome://version/</code>，在 <code>chrome</code> 浏览器输入 以查看当前版本</p></li><li><p><a href="https://registry.npmmirror.com/binary.html?path=chromedriver/"><code>mirrors/chromedriver/</code></a>，下载对应版本的 <code>chromedriver.exe</code></p></li></ul><h3 id="访问网页">访问网页</h3><p>只需要掌握 <code>webdriver</code> 的几个核心接口：<code>Chrome</code>、<code>ChromeOptions</code>、<code>find_element</code></p><ul><li><code>options = webdriver.ChromeOptions()</code><br>创建一个 chrome 的配置项，实际用途是避开反爬虫的js检测。<br>具体代码如下，复制粘贴即可：</li></ul><pre><code class="language-python">options.add_experimental_option('excludeSwitches', ['enable-automation'])options.add_argument("--disable-blink-features=AutomationControlled")</code></pre><ul><li><p><code>driver = webdriver.Chrome(executable_path='./chromedriver.exe', options=options)</code><br>创建一个 chrome 的自动化示例，它会唤起一个谷歌浏览器，但是又不同于正常打开的 <code>chrome.exe</code>。<br>注意，需要传入对应版本的 <code>chromedriver.exe</code> 的路径。</p></li><li><p><code>driver.get('https://cart.taobao.com/cart.htm')</code><br>利用 chrome 访问指定的网页</p></li><li><p><code>driver.find_element('id', 'xxx')</code><br>根据html、css规则，查找指定的对象。<br>可选的参数有 <code>id</code>、<code>xpath</code>、<code>name</code>…<br>注意，旧版的方法是 <code>find_element_by_id</code>…</p></li></ul><h3 id="自动登录">自动登录</h3><p>前面访问的网页是 <a href="https://cart.taobao.com/cart.htm">cart.taobao.com/cart.htm</a>，如果浏览器没有对应的缓存，则会自动跳转到登录界面。<br>这时候需要借助 <code>find_element</code> 实现自动登录与跳转。</p><table><thead><tr><th style="text-align:center">find_element</th><th style="text-align:center">Arg1</th><th style="text-align:center">Arg2</th></tr></thead><tbody><tr><td style="text-align:center">用户名</td><td style="text-align:center">name</td><td style="text-align:center">fm-login-id</td></tr><tr><td style="text-align:center">密码</td><td style="text-align:center">name</td><td style="text-align:center">fm-login-password</td></tr></tbody></table><p>代码示例为：</p><pre><code class="language-python"># 用户名input = driver.find_element('name', 'fm-login-id')input.clear() # 清空# time.sleep(0.2) # 防止过快input.send_keys('*******') # 输入您的用户名# 密码input = driver.find_element('name', 'fm-login-password')input.clear() # 清空# time.sleep(0.2) # 防止过快input.send_keys('*******') # 输入您的密码# 跳转driver.find_element("xpath", "//*[@id='login-form']/div[4]/button").click()</code></pre><h3 id="自动下单">自动下单</h3><div class="admonition note"><p class="admonition-title">某宝下单成功有三个步骤</p><ul><li>1.购物车中 “勾选商品”</li><li>2.点击 “结算” 按钮 （选中商品后，按钮才是可点击态）</li><li>3.点击 “提交订单” 按钮 （选择收货地址）</li></ul></div><table><thead><tr><th style="text-align:right">步骤</th><th style="text-align:right">Arg1</th><th style="text-align:right">Arg2</th></tr></thead><tbody><tr><td style="text-align:right">1. 勾选商品</td><td style="text-align:right"><code>id</code></td><td style="text-align:right"><code>J_SelectAll1</code></td></tr><tr><td style="text-align:right">2. 点击结算</td><td style="text-align:right"><code>id</code></td><td style="text-align:right"><code>J_Go</code></td></tr><tr><td style="text-align:right">3. 提交订单</td><td style="text-align:right"><code>link text</code></td><td style="text-align:right"><code>提交订单</code></td></tr></tbody></table><ul><li>勾选商品</li></ul><p>下面简化为购物车内的商品全选。</p><pre><code class="language-python">while 1:    try:        select_all = driver.find_element("id", 'J_SelectAll1')        if select_all:            select_all.click()            break    except:        print ('Retry: 全选商品')</code></pre><ul><li>点击结算</li></ul><pre><code class="language-python">while 1:    try:        buy = driver.find_element("id", 'J_Go')        if buy:            buy.click()            break    except:        print ('Retry: 点击结算')</code></pre><ul><li>提交订单</li></ul><pre><code class="language-python">while 1:    try:        a = driver.find_element("link text", "提交订单")        if a:            a.click()            break    except:        print ('Retry: 提交订单')</code></pre><h3 id="代码示例">代码示例</h3><pre><code class="language-python"># coding: utf-8import timefrom selenium import webdriverusername = ''password = ''TB_LOGIN_URL = 'https://cart.taobao.com/cart.htm'options = webdriver.ChromeOptions()options.add_experimental_option('excludeSwitches', ['enable-automation'])options.add_argument("--disable-blink-features=AutomationControlled")# exe path for chromedriver.exeexe_path = r'E:\chromedriver.exe'driver = webdriver.Chrome(executable_path=exe_path, options=options)driver.get(TB_LOGIN_URL)input = driver.find_element('name', 'fm-login-id')input.clear()driver.implicitly_wait(0.5)print ("Username:", username)input.send_keys(username)input = driver.find_element('name', 'fm-login-password')input.clear()driver.implicitly_wait(0.5)print ("password:", password)input.send_keys(password)driver.find_element("xpath", "//*[@id='login-form']/div[4]/button").click()time.sleep(0.2)# while 1:#     try:#         select_all = driver.find_element("id", 'J_SelectAll1')#         if select_all:#             select_all.click()#             break#     except:#         print ('Retry: 全选商品')# time.sleep(0.2)# while 1:#     try:#         buy = driver.find_element("id", 'J_Go')#         if buy:#             buy.click()#             break#     except:#         print ('Retry: 点击结算')# time.sleep(0.2)# while 1:#     try:#         a = driver.find_element("link text", "提交订单")#         if a:#             a.click()#             break#     except:#         print ('Retry: 提交订单')    assert(0)</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;概要
+&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;借助 &lt;code&gt;Python + Selenium&lt;/code&gt; 实现 &lt;code&gt;taobao&lt;/code&gt; 购物车自动秒杀&lt;/l</summary>
+      
+    
+    
+    
+    <category term="Python" scheme="http://luhao.wiki/categories/Python/"/>
+    
+    <category term="Python" scheme="http://luhao.wiki/categories/Python/Python/"/>
+    
+    
+    <category term="Python" scheme="http://luhao.wiki/tags/Python/"/>
     
     <category term="linux" scheme="http://luhao.wiki/tags/linux/"/>
     
