@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2023-08-13T17:48:26.240Z</updated>
+  <updated>2023-08-13T17:54:18.757Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://luhao.wiki/posts/templates/"/>
     <id>http://luhao.wiki/posts/templates/</id>
     <published>2023-08-13T17:47:03.000Z</published>
-    <updated>2023-08-13T17:48:26.240Z</updated>
+    <updated>2023-08-13T17:54:18.757Z</updated>
     
-    <content type="html"><![CDATA[<p>C++模板、meta-programming<span id="more"></span></p>]]></content>
+    <content type="html"><![CDATA[<p>C++模板、meta-programming<span id="more"></span></p><h2 id="阅读材料">阅读材料</h2><ul><li><p><a href="http://110.42.228.178/pdf/CPP_Templates_2nd.pdf">CPP-Templates-2nd 英文</a></p><ul><li><a href="https://github.com/wuye9036/CppTemplateTutorial">CPP-Templates-2nd 中文版翻译</a></li><li><a href="https://github.com/r00tk1ts/cpp-templates-2nd">cpp-templates-2nd 中文版翻译</a></li></ul></li><li><p><a href="https://github.com/wuye9036/CppTemplateTutorial">C++ Template 进阶指南</a></p></li></ul>]]></content>
     
     
     <summary type="html">&lt;p&gt;C++模板、meta-programming&lt;/p&gt;</summary>
