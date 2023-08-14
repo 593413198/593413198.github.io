@@ -26,7 +26,7 @@
 <meta property="og:description" content="C++模板、meta-programming">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-13T17:47:03.000Z">
-<meta property="article:modified_time" content="2023-08-13T17:54:18.757Z">
+<meta property="article:modified_time" content="2023-08-14T17:53:03.871Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
@@ -129,7 +129,7 @@
     <div class="widget-body">
         <div id="board">
             <div class="content">
-                <p> 文章数量：<b><font color=#1A9BFF>104</font></b> </p> 最后修改：<b><font color=#757575>2023.8.14</font></b><br> <p><font color=#CCA6A6><b>读书要杂, 记录要勤, 业务要精</b></font></p> <p><font color=#CCA6A6><b>思维方式 x 热情 x 能力</b></font></p> <p><b><font color=#A7D6F5>最近有点水...</font></b></p>
+                <p> 文章数量：<b><font color=#1A9BFF>104</font></b> </p> 最后修改：<b><font color=#757575>2023.8.15</font></b><br> <p><font color=#CCA6A6><b>读书要杂, 记录要勤, 业务要精</b></font></p> <p><font color=#CCA6A6><b>思维方式 x 热情 x 能力</b></font></p> <p><b><font color=#A7D6F5>最近有点水...</font></b></p>
             </div>
         </div>
     </div>
@@ -169,7 +169,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99"><span class="toc-number">1.</span> <span class="toc-text">阅读材料</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Function-Templates"><span class="toc-number">1.</span> <span class="toc-text">Function Templates</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E5%9F%BA%E7%A1%80"><span class="toc-number">1.1.</span> <span class="toc-text">模板基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E6%A3%80%E6%9F%A5"><span class="toc-number">1.2.</span> <span class="toc-text">编译检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E6%8E%A8%E5%AF%BC"><span class="toc-number">1.3.</span> <span class="toc-text">参数推导</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E5%8F%82%E6%95%B0"><span class="toc-number">1.4.</span> <span class="toc-text">多参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Class-Templates"><span class="toc-number">2.</span> <span class="toc-text">Class Templates</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E7%89%B9%E5%8C%96"><span class="toc-number">2.1.</span> <span class="toc-text">模板特化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STL"><span class="toc-number">3.</span> <span class="toc-text">STL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90std-max"><span class="toc-number">3.1.</span> <span class="toc-text">⭐std::max</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90std-pair"><span class="toc-number">3.2.</span> <span class="toc-text">⭐std::pair</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99"><span class="toc-number">4.</span> <span class="toc-text">阅读材料</span></a></li></ol>
     </nav>
   </div>
 </aside>
@@ -220,6 +220,155 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <p>C++模板、meta-programming<span id="more"></span></p>
+
+<div class="markmap-container" style="height:300px">
+  <svg data="{&quot;t&quot;:&quot;root&quot;,&quot;d&quot;:0,&quot;v&quot;:&quot;&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[0,1]},&quot;v&quot;:&quot;Function Templates&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[1,2]},&quot;v&quot;:&quot;<a href=\&quot;#模板基础\&quot;>模板基础</a>&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[2,3]},&quot;v&quot;:&quot;<a href=\&quot;#编译检查\&quot;>编译检查</a>&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[3,4]},&quot;v&quot;:&quot;<a href=\&quot;#参数推导\&quot;>参数推导</a>&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[4,5]},&quot;v&quot;:&quot;<a href=\&quot;#多参数\&quot;>多参数</a>&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[5,6]},&quot;v&quot;:&quot;<a href=\&quot;#函数重载\&quot;>函数重载</a>&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[6,7]},&quot;v&quot;:&quot;Class Templates&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[7,8]},&quot;v&quot;:&quot;<a href=\&quot;#模板特化\&quot;>模板特化</a>&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[8,9]},&quot;v&quot;:&quot;STL&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[9,10]},&quot;v&quot;:&quot;<a href=\&quot;#⭐std-max\&quot;>std::max</a>&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[10,11]},&quot;v&quot;:&quot;<a href=\&quot;#⭐std-pair\&quot;>std::pair</a>&quot;}]}],&quot;p&quot;:{}}"></svg>
+</div>
+
+<h2 id="Function-Templates">Function Templates</h2>
+<h3 id="模板基础">模板基础</h3>
+<p>下面是一个最简单的函数模板示例：</p>
+<pre><code class="language-c">template &lt;typename T&gt;
+T max (T a, T b)
+{
+    return b &lt; a ? a : b;
+}
+</code></pre>
+<ul>
+<li><code>T</code> 是定义类型的变量，它可以是 <code>int</code>、<code>float</code>、任何class…</li>
+<li><code>typename</code> 是关键字，<code>template&lt;class T&gt;</code> 是兼容 C++98 的一种正确写法</li>
+<li>上面有两个潜在约束：1. <code>T</code>必须支持<code>&lt;</code>操作符，2. <code>T</code>必须支持拷贝构造函数，为了<code>return</code></li>
+</ul>
+<p>下面是简单的模板使用实例：</p>
+<pre><code class="language-c">::max(7, 8);          // 8
+::max(1.2, 1.5);      // 1.5
+::max("abc", "abcd"); // abcd
+</code></pre>
+<p>当调用上者时，模板会自动实例化为：</p>
+<pre><code>int max(int, int);
+double max(double, double);
+char const* max(char const*, char const*);
+</code></pre>
+<h3 id="编译检查">编译检查</h3>
+<p>模板的编译检查分为两个阶段（<code>Two-Phase Translation</code>）</p>
+<ul>
+<li>定义阶段</li>
+<li>实例化阶段</li>
+</ul>
+<pre><code class="language-c">template &lt;typename T&gt;
+void foo(T t)
+{
+    undeclared(); // 未定义函数，定义阶段报错
+    undeclared(t); // 引用了T，所以实例化阶段才报错
+}
+</code></pre>
+<h3 id="参数推导">参数推导</h3>
+<p>编译器会根据传入参数的类型，自动推导 <code>T</code> 的取值</p>
+<ul>
+<li>若引用传递：不允许类型转化</li>
+<li>若值传递：只允许退化（<code>decay</code>），<code>const</code>和<code>volatile</code>会被忽略。引用会被转化成引用的类型。</li>
+</ul>
+<pre><code class="language-c">int const c = 42;
+int i = 1;
+::max(i, c); // OK: (int, int)
+::max(c, c); // OK: (int, int)
+
+int&amp; ir = i;
+::max(i, ir); // OK: (int, int)
+int arr[4];
+::max(&amp;i, arr); // OK: (int*, int*)
+</code></pre>
+<h3 id="多参数">多参数</h3>
+<p>模板允许定义多组不同的参数，以如下函数示例，其<strong>返回值的类型是不确定的</strong>：</p>
+<pre><code class="language-c">template&lt;typename T1, typename T2&gt;
+T1 max (T1 a, T2 b)
+{
+    return b &lt; a ? a : b;
+}
+</code></pre>
+<ul>
+<li><font color="#ef6d3b"><strong>返回类型推断</strong></font></li>
+</ul>
+<p>从<code>C++14</code>开始，允许使用 <code>auto</code> 声明函数的返回值，即让编译器自己决定。</p>
+<pre><code class="language-c">template&lt;typename T1, typename T2&gt;
+auto max (T1 a, T2 b)
+{
+    return b &lt; a ? a : b;
+}
+</code></pre>
+<p>在<code>C++11</code>中，<code>auto</code>必须配合 <code>trailing return type</code> 使用，否则编译报错如下：</p>
+<div class="admonition error"><p class="admonition-title">error: 'xxx' function uses 'auto' type specifier without trailing return type
+</p></div>
+<pre><code class="language-c">template&lt;typename T1, typename T2&gt;
+auto max (T1 a, T2 b) -&gt; decltype(b&lt;a?a:b);
+</code></pre>
+<ul>
+<li><font color="#ef6d3b"><strong>类型萃取</strong></font></li>
+</ul>
+<pre><code class="language-c">#include &lt;type_traits&gt;
+template&lt;typename T1, typename T2&gt;
+std::common_type_t&lt;T1,T2&gt; max (T1 a, T2 b)
+</code></pre>
+<div class="admonition note"><p class="admonition-title">Trick: C++如何获取变量x的类型?
+</p><ul>
+<li><code>#include &lt;typeinfo&gt;</code></li>
+<li><code>typeid(x).name()</code></li>
+</ul>
+</div>
+<h2 id="Class-Templates">Class Templates</h2>
+<h3 id="模板特化">模板特化</h3>
+<p><font color="#FF1E10"><strong>TODO</strong></font></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://sg-first.gitbooks.io/cpp-template-tutorial/content/jie_te_hua_yu_pian_te_hua.html">深入理解特化与偏特化</a></li>
+</ul>
+<h2 id="STL">STL</h2>
+<h3 id="⭐std-max"><a target="_blank" rel="noopener" href="https://gcc.gnu.org/onlinedocs/gcc-4.9.2/libstdc++/api/a01226_source.html">⭐std::max</a></h3>
+<ul>
+<li><code>_GLIBCXX14_CONSTEXPR</code> 在 <code>C++14</code> 会被替换为 <code>constexpr</code></li>
+<li>实际可以展开为：<code>constexpr inline const _Tp&amp; max(const _Tp&amp; __a, const _Tp&amp; __b)</code>
+<ul>
+<li><code>constexpr</code>无实质作用，重点是参数使用 <code>const &amp;</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-c">  template&lt;typename _Tp&gt;
+    _GLIBCXX14_CONSTEXPR
+    inline const _Tp&amp;
+    max(const _Tp&amp; __a, const _Tp&amp; __b)
+    {
+      // concept requirements
+      __glibcxx_function_requires(_LessThanComparableConcept&lt;_Tp&gt;)
+      //return  __a &lt; __b ? __b : __a;
+      if (__a &lt; __b)
+	return __b;
+      return __a;
+    }
+</code></pre>
+<!-- ### [⭐std::stack](https://gcc.gnu.org/onlinedocs/gcc-4.8.3/libstdc++/api/a01566_source.html) -->
+<h3 id="⭐std-pair"><a target="_blank" rel="noopener" href="https://gcc.gnu.org/onlinedocs/gcc-4.9.2/libstdc++/api/a01240_source.html">⭐std::pair</a></h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/utility/pair/pair">[cppreference] std::pair</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/a/9270585/16823597">[stackoverflow] What is the purpose of std::make_pair vs the constructor of std::pair?</a>
+<ul>
+<li>c++14及之前，<code>std::pair</code>需要显式指定类型，<code>std::make_pair</code>不需要</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-c"> template&lt;typename _T1, typename _T2&gt;
+    struct pair
+    : private __pair_base&lt;_T1, _T2&gt;
+    {
+      typedef _T1 first_type;    ///&lt; The type of the `first` member
+      typedef _T2 second_type;   ///&lt; The type of the `second` member
+
+      _T1 first;                 ///&lt; The first member
+      _T2 second;                ///&lt; The second member
+
+      _GLIBCXX_CONSTEXPR pair()
+      : first(), second() { }
+      // ...
+    }
+</code></pre>
 <h2 id="阅读材料">阅读材料</h2>
 <ul>
 <li>
@@ -231,6 +380,9 @@
 </li>
 <li>
 <p><a target="_blank" rel="noopener" href="https://github.com/wuye9036/CppTemplateTutorial">C++ Template 进阶指南</a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://veselink1.github.io/blog/cpp/metaprogramming/2019/07/13/refl-cpp-deep-dive.html">refl-cpp</a></p>
 </li>
 </ul>
 
@@ -429,5 +581,5 @@ $(function () {
 </script>
 <!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-</body>
+<script src="/js/markmap.js"></script></body>
 </html>
