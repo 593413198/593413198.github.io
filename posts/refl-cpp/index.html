@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>【C++17】refl-cpp | Luhao&#39;s Blog</title>
+  <meta name="description" content="品读C++经典反射库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【C++17】refl-cpp">
+<meta property="og:url" content="http://luhao.wiki/posts/refl-cpp/index.html">
+<meta property="og:site_name" content="Luhao&#39;s Blog">
+<meta property="og:description" content="品读C++经典反射库">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://luhao.wiki/images/vs-macros-expand.png">
+<meta property="article:published_time" content="2023-08-17T16:27:58.000Z">
+<meta property="article:modified_time" content="2023-08-17T17:30:44.265Z">
+<meta property="article:author" content="Luhao">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://luhao.wiki/images/vs-macros-expand.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://luhao.wiki/posts/refl-cpp/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Luhao&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="images\avatar.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://www.luhao.wiki" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">luhao</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        </li>
+      </ul>
+      
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">
+        <i style="color:#9400D3" class="icon icon-stackexchange"></i>
+        公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p> 文章数量：<b><font color=#1A9BFF>105</font></b> </p> 最后修改：<b><font color=#757575>2023.8.18</font></b><br> <p><font color=#CCA6A6><b>读书要杂, 记录要勤, 业务要精</b></font></p> <p><font color=#CCA6A6><b>思维方式 x 热情 x 能力</b></font></p> <p><b><font color=#A7D6F5>最近有点水...</font></b></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-folder-open"></i>
+      分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/">3D Engine</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/">Graphics</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/">Node.js</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/">VSCode</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-archives-fill"></i>
+      归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  <!-- 
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">2.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E5%8F%8D%E5%B0%84"><span class="toc-number">3.</span> <span class="toc-text">基础反射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98"><span class="toc-number">4.</span> <span class="toc-text">构建类的成员</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-macros-%E7%BB%84%E7%BB%87%E4%BB%A3%E7%A0%81"><span class="toc-number">5.</span> <span class="toc-text">使用 macros 组织代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8F%8D%E5%B0%84"><span class="toc-number">6.</span> <span class="toc-text">函数反射</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+ -->
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-C++/refl-cpp" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【C++17】refl-cpp
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/posts/refl-cpp/" class="article-date">
+	  <time datetime="2023-08-17T16:27:58.000Z" itemprop="datePublished">2023-08-18</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/C/">C++</a>►<a class="article-category-link" href="/categories/C/C/">C++</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/C/" rel="tag">C++</a>, <a class="article-tag-link-link" href="/tags/Python/" rel="tag">Python</a>
+  </span>
+
+
+        
+
+        <!-- <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/refl-cpp/#comments" class="article-comment-link">评论</a></span> -->
+        
+	
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>品读<code>C++</code>经典反射库<span id="more"></span></p>
+<div class="admonition note"><p class="admonition-title">导读
+</p><ul>
+<li>源码：<a target="_blank" rel="noopener" href="https://github.com/veselink1/refl-cpp"><em><strong>veselink1/refl-cpp</strong></em></a></li>
+<li>blog：<a target="_blank" rel="noopener" href="https://veselink1.github.io/blog/cpp/metaprogramming/2019/07/13/refl-cpp-deep-dive.html"><em>refl-cpp — A deep dive into this compile-time reflection library for C++</em></a></li>
+<li>这篇博客大致是英文版的 直译 + 自己理解，旨在提高对 <code>templates</code> + <code>reflections</code> 的掌握</li>
+<li>精读blog ➜ 理解源码 ➜ 上手仿造</li>
+</ul>
+</div>
+<h2 id="目录">目录</h2>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E5%9F%BA%E7%A1%80%E5%8F%8D%E5%B0%84">基础反射</a></li>
+<li><a href="#%E6%9E%84%E5%BB%BA%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98">构建类的成员</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8-macros-%E7%BB%84%E7%BB%87%E4%BB%A3%E7%A0%81">使用 <code>macros</code> 组织代码</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E5%8F%8D%E5%B0%84">函数反射</a></li>
+<li>… <font color="#FF1E10"><strong>TODO</strong></font></li>
+</ul>
+<h2 id="前言">前言</h2>
+<p><code>refl-cpp</code> 的设计初衷是：</p>
+<ul>
+<li>支持 在 <strong><code>C++17</code></strong> 及更高版本 <strong>提供编译期反射（Compile-time）</strong> 的方法。</li>
+<li>支持 <code>enumeration</code>，<code>introspection</code>
+<ul>
+<li><code>enumeration</code>：类似 <code>Python dir()</code> 枚举对象所有的属性</li>
+<li><code>introsection</code>：类似 <code>Python getattr</code> 访问对象的指定属性</li>
+</ul>
+</li>
+<li>支持 类型模板、成员模板</li>
+<li>支持 <code>attributes</code> <font color="#FF1E10"><strong>TODO</strong></font></li>
+</ul>
+<p><code>refl-cpp</code> 的设计避免如下：</p>
+<ul>
+<li>避免 使用宏魔法</li>
+<li>避免 <code>Private</code> 私有成员的反射</li>
+<li>避免 运行时 按名称查询类型信息</li>
+</ul>
+<h2 id="基础反射">基础反射</h2>
+<p>首先 <code>refl-cpp</code> 是一个 <code>compile-time</code> 的反射库，这意味着它不会维护一个 runtime 的数据结构来实现反射目的，例如下面是不可取的：</p>
+<pre><code class="language-c">struct TypeInfo {
+    std::string name;           // 对象的类型名称
+    std::vector&lt;?&gt; members;     // 对象的所有成员
+    std::vector&lt;?&gt; attributes;  // 对象的所有成员取值
+}
+// ↓ 维护一个全局的反射数据结构
+std::unordered_map&lt;std::string, TypeInfo&gt; s_typeRegistry;
+</code></pre>
+<p>相反，<code>refl-cpp</code> 的做法是，通过 cpp模板特化 以一种类相关的方式（<code>type-dependent</code>）来存储 <code>metadata</code>，例如下面的做法：</p>
+<pre><code class="language-c">template &lt;typename&gt; 
+struct TypeInfo {};
+
+// ↓ Point类的编译期信息
+template &lt;&gt;
+struct TypeInfo&lt;Point&gt; {
+  static constexpr char name[] = "Point";
+  ??? members = {};
+  ??? attributes = {};
+};
+</code></pre>
+<h2 id="构建类的成员">构建类的成员</h2>
+<p>上一节提供了存储 类信息 的方法，但是如何存储 其成员变量（和方法）呢？<br>
+<code>refl-cpp</code> 使用一种新颖的方式来存储：</p>
+<pre><code class="language-c">template &lt;size_t N&gt;
+struct MemberInfo;
+
+/* 第0个成员的模板特化 */
+template &lt;&gt;
+struct MemberInfo&lt;0&gt; {
+  /* ... */
+};
+
+/* 第1个成员的模板特化 */
+template &lt;&gt;
+struct MemberInfo&lt;1&gt; {
+  /* ... */
+};
+
+static constexpr size_t MemberCount = 2;
+</code></pre>
+<p><code>MemberInfo</code> 是类成员的模板特化，因此将其添加到 <code>TypeInfo</code> 的作用域（如下）。<br>
+<code>typename Dummy</code> 是因为C++不允许成员完全模板特化，而部分成员的模板特化是允许的。<font color="#FF1E10"><strong>TODO</strong></font></p>
+<pre><code class="language-c">
+template &lt;&gt;
+struct TypeInfo&lt;Point&gt; {
+  template &lt;size_t N, typename Dummy&gt;
+  struct MemberInfo;
+
+  /* 第0个成员的模板特化 */
+  template &lt;typename Dummy&gt;
+  struct MemberInfo&lt;0&gt; {
+    /* ... */
+  };
+
+  /* 第1个成员的模板特化 */
+  template &lt;typename Dummy&gt;
+  struct MemberInfo&lt;1&gt; {
+    /* ... */
+  };
+
+  static constexpr size_t MemberCount = 2;
+};
+</code></pre>
+<h2 id="使用-macros-组织代码">使用 <code>macros</code> 组织代码</h2>
+<p>上一节提供了粗略的 类 + 类成员 的反射方案，那么如何声明它们呢？<br>
+答案是借助 <code>macros</code> 实现（作者不是不建议使用宏么😂…）</p>
+<ul>
+<li><code>__COUNTER__</code> 是非标准库的宏，每次调用增加<code>1</code>，且从<code>0</code>开始</li>
+<li>宏展开后的代码，可看示例：<a target="_blank" rel="noopener" href="https://gist.github.com/veselink1/f4e2fa94bda0514631753f13a9b93f9b"><em>refl-cpp-deep-dive-5-generated.cpp</em></a></li>
+<li>另外每个 <code>TypeInfo</code> 和 <code>MemberInfo</code> 还应该包含如下内容：
+<ul>
+<li><code>static constexpr char name[] = …</code></li>
+<li><code>static constexpr std::tuple&lt;…&gt; attributes = {…}</code></li>
+<li><code>static constexpr auto* pointer = &amp;Type::MemberName</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-c">template &lt;typename T&gt;
+struct TypeInfo {};
+
+#define REFLECT_TYPE(TypeName) \
+  template&lt;&gt; struct TypeInfo&lt;TypeName&gt; { \
+    template &lt;size_t, typename&gt; struct MemberInfo; \
+    static constexpr size_t MemberIndexOffset = __COUNTER__ + 1; 
+
+#define REFLECT_FIELD(FieldName) \
+  template &lt;typename Dummy&gt; struct MemberInfo&lt;__COUNTER__ - MemberIndexOffset&gt; \
+  {}; \
+
+#define REFLECT_END \
+    static constexpr size_t MemberCount = __COUNTER__ - MemberIndexOffset; \
+  };
+
+// Usage:
+REFLECT_TYPE(Point) 
+  REFLECT_FIELD(x) 
+  REFLECT_FIELD(y)
+REFLECT_END
+</code></pre>
+<div class="admonition note"><p class="admonition-title">Tips: 借助 VisualStudio 查看宏展开
+</p><ul>
+<li>鼠标悬停在宏上，点击 <code>Expand Inline</code>
+<img src="/images/vs-macros-expand.png" alt=""></li>
+</ul>
+</div>
+<h2 id="函数反射">函数反射</h2>
+<p><code>refl-cpp</code> 还提供反射函数的功能。</p>
+<p>为了区分成员（是变量还是方法），每个 <code>MemberInfo</code> 有一个公共的 <code>typedef</code>，它等同于 <code>refl::members::field</code> 和 <code>refl::members::function</code> 两者之一。而考虑到 函数的重载和模板，这部分功能（相对于反射成员）会更加复杂。</p>
+<p><code>refl-cpp</code> 通过如下方法：<font color="#FF1E10"><strong>TODO</strong></font></p>
+<pre><code class="language-c">template &lt;typename R, typename... Args&gt;
+auto resolve(R(*fn)(Args...), Args&amp;&amp;... args) -&gt; decltype(fn);
+
+/* 
+  Imagine 12 more overloads of resolve for different pointer-to-member 
+  combinations (plain, &amp;, &amp;&amp;, const, volatile qualifiers)
+*/
+
+template &lt;typename... Args&gt;
+static constexpr decltype(detail::resolve(&amp;Type::MemberName, std::declval&lt;Args&gt;()...)) pointer { &amp;Type::MemberName };
+</code></pre>
+
+      
+    </div>
+    <div class="article-footer">
+      <!-- <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://luhao.wiki/posts/refl-cpp/" title="【C++17】refl-cpp" target="_blank" rel="external">http://luhao.wiki/posts/refl-cpp/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote> -->
+
+
+<!-- <div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://www.luhao.wiki" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://www.luhao.wiki" target="_blank"><span class="text-dark">luhao</span><small class="ml-1x"></small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div> -->
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/posts/templates/" title="【cpp】Templates"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	<!-- Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>. -->
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+
+<div id="go-top"></div>
+<style type="text/css">
+#go-top {
+ width:40px;height:36px;
+ background-color:#DDA0DD;
+ position:relative;
+ border-radius:2px;
+ position:fixed;right:10px;bottom:60px;
+ cursor:pointer;display:none;
+}
+#go-top:after {
+ content:" ";
+ position:absolute;left:14px;top:14px;
+ border-top:2px solid #fff;border-right:2px solid #fff;
+ width:12px;height:12px;
+ transform:rotate(-45deg);
+}
+#go-top:hover {
+ background-color:#8A2BE2;
+}
+</style>
+<script>
+$(function () {
+  var top=$("#go-top");
+  $(window).scroll(function () {
+    ($(window).scrollTop() > 300) ? top.show(300) : top.hide(200);
+    $("#go-top").click(function () {
+      $('body,html').animate({scrollTop:0});
+      return false();
+    })
+  });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/prettify.js"></script>
+<script type="text/javascript">
+    $(window).load(function(){
+        $('pre').addClass('prettyprint').attr('style', 'overflow:auto;');
+        $('pre').addClass('prettyprint linenums');
+        prettyPrint();
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
