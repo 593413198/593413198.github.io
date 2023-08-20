@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>【C++11】lvalue &amp; rvalue (references) | Luhao&#39;s Blog</title>
+  <meta name="description" content="C++ 左值、右值引用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【C++11】lvalue &amp; rvalue (references)">
+<meta property="og:url" content="http://luhao.wiki/posts/rvalue/index.html">
+<meta property="og:site_name" content="Luhao&#39;s Blog">
+<meta property="og:description" content="C++ 左值、右值引用">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-08-20T14:53:43.000Z">
+<meta property="article:modified_time" content="2023-08-20T17:58:30.454Z">
+<meta property="article:author" content="Luhao">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://luhao.wiki/posts/rvalue/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Luhao&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="images\avatar.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://www.luhao.wiki" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">luhao</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        </li>
+      </ul>
+      
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">
+        <i style="color:#9400D3" class="icon icon-stackexchange"></i>
+        公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p> 文章数量：<b><font color=#1A9BFF>106</font></b> </p> 最后修改：<b><font color=#757575>2023.8.21</font></b><br> <p><font color=#CCA6A6><b>读书要杂, 记录要勤, 业务要精</b></font></p> <p><font color=#CCA6A6><b>思维方式 x 热情 x 能力</b></font></p> <p><b><font color=#A7D6F5>最近有点水...</font></b></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-folder-open"></i>
+      分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/">3D Engine</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/">Graphics</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/">Node.js</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/">VSCode</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96/">量化</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-archives-fill"></i>
+      归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  <!-- 
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lvalue-rvalue"><span class="toc-number">2.</span> <span class="toc-text">lvalue &amp; rvalue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#function-reference"><span class="toc-number">3.</span> <span class="toc-text">function reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lvalue-to-rvalue"><span class="toc-number">4.</span> <span class="toc-text">lvalue to rvalue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rvalue-to-lvalue"><span class="toc-number">5.</span> <span class="toc-text">rvalue to lvalue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rvalue-reference-%F0%9F%94%A5"><span class="toc-number">6.</span> <span class="toc-text">rvalue reference 🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#move-semantics-%F0%9F%94%A5"><span class="toc-number">7.</span> <span class="toc-text">move semantics 🔥</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81-move-semantics-%F0%9F%92%A1"><span class="toc-number">7.1.</span> <span class="toc-text">为什么需要 move semantics? 💡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#std-move"><span class="toc-number">7.2.</span> <span class="toc-text">std::move</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#std-remove-reference"><span class="toc-number">7.3.</span> <span class="toc-text">std::remove_reference</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+ -->
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-C++/cpp-lvalue-rvalue-references" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【C++11】lvalue &amp; rvalue (references)
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/posts/rvalue/" class="article-date">
+	  <time datetime="2023-08-20T14:53:43.000Z" itemprop="datePublished">2023-08-20</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/C/">C++</a>►<a class="article-category-link" href="/categories/C/C/">C++</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/C/" rel="tag">C++</a>
+  </span>
+
+
+        
+
+        <!-- <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/rvalue/#comments" class="article-comment-link">评论</a></span> -->
+        
+	
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p><code>C++</code> 左值、右值引用<span id="more"></span></p>
+<div class="admonition note"><p class="admonition-title">导读
+</p><ul>
+<li><a target="_blank" rel="noopener" href="https://www.internalpointers.com/post/understanding-meaning-lvalues-and-rvalues-c"><em><strong>Understanding the meaning of lvalues and rvalues in C++</strong></em></a></li>
+<li><a target="_blank" rel="noopener" href="https://www.internalpointers.com/post/c-rvalue-references-and-move-semantics-beginners"><em><strong>C++ rvalue references and move semantics for beginners</strong></em></a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cprogramming.com/c++11/rvalue-references-and-move-semantics-in-c++11.html"><em><strong>Move semantics and rvalue references in C++11</strong></em></a></li>
+</ul>
+</div>
+<h2 id="前言">前言</h2>
+<p>从接触、学习、运用 <code>C++</code> 至今，左右值引用一直是自己困惑的点。伴随着现代C++的发展，它们开始扮演越来越重要的作用（如 <code>std::move</code>、<code>std::remove_reference</code>…）。<br>
+这篇争取彻底搞懂他们。</p>
+<p>先看 <code>gcc</code> 一个编译报错，为什么 <code>666 = x</code> 的语法是错误的？<br>
+<em><font color="#FF1E10"><strong>error:</strong></font> lvalue required as left operand of assignment</em></p>
+<p>编译器是在说：<strong>赋值符号 <code>=</code> 的左操作数，必须是左值 <code>lvalue</code> ! 换句话说，这里的 <code>666</code> 不是一个左值。</strong></p>
+<pre><code class="language-c">int x;
+666 = x;
+</code></pre>
+<h2 id="lvalue-rvalue">lvalue &amp; rvalue</h2>
+<p>如何区分 左值 和 右值？</p>
+<ul>
+<li><strong><code>lvalue</code>：指向明确的内存地址</strong>，又称 <code>variable</code></li>
+<li><strong><code>rvalue</code>：没有明确的内存地址</strong>，又称 <code>literal constant</code></li>
+</ul>
+<p>下面看几个示例：</p>
+<ul>
+<li><code>int x = 666</code>：<code>x</code> 是 <code>lvalue</code>，<code>666</code> 是 <code>rvalue</code></li>
+<li><code>int* y = &amp;x</code>：<code>x</code> 是 <code>lvalue</code>，<code>y</code> 是 <code>lvalue reference</code></li>
+</ul>
+<p>编译规则，赋值<code>=</code> 和取地址<code>&amp;</code> 的左边必须是 <code>lvalue</code>，不然会报如下错误：</p>
+<blockquote>
+<p><em><font color="#FF1E10"><strong>error:</strong></font> lvalue required as left operand of assignment</em><br>
+<em><font color="#FF1E10"><strong>error:</strong></font> lvalue required as unary ‘&amp;’ operand`</em></p>
+</blockquote>
+<div class="admonition warning"><p class="admonition-title">区分 左值 和 左值引用
+</p><ul>
+<li><code>int x = 1</code>：x是左值</li>
+<li><code>int&amp; y = x</code>：y是左值引用</li>
+</ul>
+</div>
+<h2 id="function-reference">function reference</h2>
+<p>函数的返回值可以是 左值，也可以是 右值。</p>
+<ul>
+<li>右值 ×</li>
+</ul>
+<pre><code class="language-c">int setValue() { return 6; };
+
+setValue() = 3; // error: lvalue required as left operand of assignment
+</code></pre>
+<ul>
+<li>左值 √</li>
+</ul>
+<pre><code class="language-c">int x = 100;
+
+int&amp; setValue() { return x; };
+
+setValue() = 1;
+</code></pre>
+<h2 id="lvalue-to-rvalue">lvalue to rvalue</h2>
+<p>左值 经常会被转化为 右值，如下示例：</p>
+<ul>
+<li><code>x, y</code> 都是 左值</li>
+<li><code>x + y</code> 被转化为 右值</li>
+</ul>
+<pre><code class="language-c">int x = 1;
+int y = 3;
+int z = x + y;   // ok
+</code></pre>
+<p>上面经历了一次 <strong>lvalue -&gt; rvalue</strong>  的隐式转换，很多操作符（<code>+, -, /</code>）都会提供。</p>
+<h2 id="rvalue-to-lvalue">rvalue to lvalue</h2>
+<p>右值 到 左值 的转换是被禁止的，如下代码是非法的：</p>
+<pre><code class="language-c">int&amp; x = 10;
+// error: cannot bind non-const lvalue reference of type 'int&amp;' to an rvalue of type 'int'
+</code></pre>
+<h2 id="rvalue-reference-🔥">rvalue reference 🔥</h2>
+<p>C++ 的一条重要编译规则是：<strong>你无法绑定一个 右值 的地址，除非绑定到一个 <code>const</code> 类型</strong>，例如：</p>
+<pre><code class="language-c">int&amp; x = 666; // error: cannot bind non-const lvalue reference of type 'int&amp;' to an rvalue of type 'int'
+const int&amp; x = 666; // OK
+
+std::string s1 = "Hello ";
+std::string s2 = "world";
+const std::string&amp; s3 = s1 + s2;
+s3 += " luhao";  // error: no match for 'operator+=' (operand types are 'const std::string'
+</code></pre>
+<p>但是上面的写法有个弊端，<strong>即无法再修改 <code>s3</code> 的值</strong>。<br>
+为了能够修改右值（即临时变量），<code>C++11</code> 正式引入右值引用（<code>rvalue reference</code>），其符号是 <code>&amp;&amp;</code>：</p>
+<pre><code class="language-c">std::string s1 = "Hello ";
+std::string s2 = "world";
+std::string&amp;&amp; s3 = s1 + s2;
+s3 += " luhao"; // OK
+</code></pre>
+<p>上面的示例看出来用处不大，<strong>因为 <code>rvalue reference</code> 真正大展拳脚的地方，是在 移动语义（<code>move semantics</code>）。</strong></p>
+<h2 id="move-semantics-🔥">move semantics 🔥</h2>
+<p>阅读资料</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cprogramming.com/c++11/rvalue-references-and-move-semantics-in-c++11.html"><em><strong>Move semantics and rvalue references in C++11</strong></em></a></li>
+</ul>
+<p><strong>移动语义 是一种利用右值引用的技术，来避免拷贝临时变量的优化手段。</strong></p>
+<h3 id="为什么需要-move-semantics-💡">为什么需要 move semantics? 💡</h3>
+<p>假设 <code>class Holder</code> 是一个(内存)非常繁重的类，考虑到如下的构造和拷贝构造函数。<br>
+当调用 <code>Holder h1(h)</code> 时，因为 <code>std::copy</code> 造成巨大的内存拷贝开销，如果后文中 <code>h</code> 也不再继续使用，为什么不尝试将 <code>h</code> 转交给 <code>h1</code> 呢?</p>
+<pre><code class="language-c">class Holder
+{
+public:
+    Holder(int size) {
+        m_data = new int[size];
+        m_size = size;
+    }
+    Holder(const Holder&amp; other)
+    {
+        m_data = new int[other.m_size];
+        std::copy(other.m_data, other.m_data + other.m_size, m_data);
+        m_size = other.m_size;
+    }
+
+    ~Holder() { delete[] m_data; }
+
+private:
+    int*   m_data;
+    size_t m_size;
+}
+
+int main()
+{
+    Holder h(10000);
+    Holder h1(h); // 调用 std::copy 带来非必要开销
+    return 1;
+}
+</code></pre>
+<p>借助移动语义，可以优化掉上面的拷贝。注意到下面使用了 <a href="#std-move"><em><strong>std::move</strong></em></a>，它能将左值转化为右值，是C++标准库的成员函数，后面有介绍。</p>
+<pre><code class="language-c">Holder(Holder&amp;&amp; other)
+{
+    // 赋值
+    m_data = other.m_data;
+    m_size = other.m_size;
+    // 清空other的状态
+    other.m_data = nullptr;
+    other.m_size = 0;
+}
+
+int main()
+{
+    Holder h(10000);
+    Holder h1(std::move(h));
+    return 1;
+}
+</code></pre>
+<h3 id="std-move">std::move</h3>
+<p>阅读材料：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/utility/move"><em>cppreference</em></a></li>
+<li><a target="_blank" rel="noopener" href="https://gcc.gnu.org/onlinedocs/libstdc++/libstdc++-api-4.5/a00936_source.html"><em>libstdc++: move.h</em></a></li>
+</ul>
+<p>阅读 <code>std::move</code> 的源码，其实只是作了类型转化，将 任意形式的<code>_Tp</code> 转化成右值:</p>
+<ul>
+<li><code>std::remove_reference</code>：去掉引用</li>
+<li><code>static_cast</code>：隐式转换</li>
+</ul>
+<div class="admonition note"><p class="admonition-title">std::move
+</p><ul>
+<li><code>move</code> 右值：直接返回</li>
+<li><code>move</code> 左值：转成右值，并返回</li>
+</ul>
+</div>
+<pre><code class="language-c">  /**
+   *  @brief  Convert a value to an rvalue.
+   *  @param  __t  A thing of arbitrary type.
+   *  @return The parameter cast to an rvalue-reference to allow moving it.
+  */
+  template&lt;typename _Tp&gt;
+    constexpr typename std::remove_reference&lt;_Tp&gt;::type&amp;&amp;
+    move(_Tp&amp;&amp; __t) noexcept
+    { return static_cast&lt;typename std::remove_reference&lt;_Tp&gt;::type&amp;&amp;&gt;(__t); }
+</code></pre>
+<h3 id="std-remove-reference">std::remove_reference</h3>
+<p><code>remove_reference</code> 顾名思义，就是去除任意类型的引用，借助模板实现。<br>
+核心是对于 <code>_Tp&amp;</code> 和 <code>_Tp&amp;&amp;</code> 这两种带引用的传参，需要去掉其引用的部分，只获取其类型（通过 <code>::type</code> 获取）</p>
+<pre><code class="language-c">  template&lt;typename _Tp&gt;
+    struct remove_reference
+    { typedef _Tp   type; };
+  // 特化
+  template&lt;typename _Tp&gt;
+    struct remove_reference&lt;_Tp&amp;&gt;
+    { typedef _Tp   type; };
+  // 特化
+  template&lt;typename _Tp&gt;
+    struct remove_reference&lt;_Tp&amp;&amp;&gt;
+    { typedef _Tp   type; };
+</code></pre>
+
+      
+    </div>
+    <div class="article-footer">
+      <!-- <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://luhao.wiki/posts/rvalue/" title="【C++11】lvalue &amp; rvalue (references)" target="_blank" rel="external">http://luhao.wiki/posts/rvalue/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote> -->
+
+
+<!-- <div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://www.luhao.wiki" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://www.luhao.wiki" target="_blank"><span class="text-dark">luhao</span><small class="ml-1x"></small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div> -->
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/posts/refl-cpp/" title="【C++17】refl-cpp"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	<!-- Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>. -->
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+
+<div id="go-top"></div>
+<style type="text/css">
+#go-top {
+ width:40px;height:36px;
+ background-color:#DDA0DD;
+ position:relative;
+ border-radius:2px;
+ position:fixed;right:10px;bottom:60px;
+ cursor:pointer;display:none;
+}
+#go-top:after {
+ content:" ";
+ position:absolute;left:14px;top:14px;
+ border-top:2px solid #fff;border-right:2px solid #fff;
+ width:12px;height:12px;
+ transform:rotate(-45deg);
+}
+#go-top:hover {
+ background-color:#8A2BE2;
+}
+</style>
+<script>
+$(function () {
+  var top=$("#go-top");
+  $(window).scroll(function () {
+    ($(window).scrollTop() > 300) ? top.show(300) : top.hide(200);
+    $("#go-top").click(function () {
+      $('body,html').animate({scrollTop:0});
+      return false();
+    })
+  });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/prettify.js"></script>
+<script type="text/javascript">
+    $(window).load(function(){
+        $('pre').addClass('prettyprint').attr('style', 'overflow:auto;');
+        $('pre').addClass('prettyprint linenums');
+        prettyPrint();
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

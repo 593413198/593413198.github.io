@@ -2,7 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://luhao.wiki/posts/refl-cpp/</loc>
+    <loc>http://luhao.wiki/posts/templates/</loc>
+    
+    <lastmod>2023-08-20</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://luhao.wiki/posts/rvalue/</loc>
     
     <lastmod>2023-08-20</lastmod>
     
@@ -11,14 +18,14 @@
   <url>
     <loc>http://luhao.wiki/posts/2023/8/</loc>
     
-    <lastmod>2023-08-19</lastmod>
+    <lastmod>2023-08-20</lastmod>
     
   </url>
   
   <url>
-    <loc>http://luhao.wiki/posts/templates/</loc>
+    <loc>http://luhao.wiki/posts/refl-cpp/</loc>
     
-    <lastmod>2023-08-17</lastmod>
+    <lastmod>2023-08-20</lastmod>
     
   </url>
   
@@ -443,14 +450,14 @@
   </url>
   
   <url>
-    <loc>http://luhao.wiki/categories/index.html</loc>
+    <loc>http://luhao.wiki/about/index.html</loc>
     
     <lastmod>2023-06-18</lastmod>
     
   </url>
   
   <url>
-    <loc>http://luhao.wiki/about/index.html</loc>
+    <loc>http://luhao.wiki/categories/index.html</loc>
     
     <lastmod>2023-06-18</lastmod>
     
