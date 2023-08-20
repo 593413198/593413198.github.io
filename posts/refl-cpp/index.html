@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://luhao.wiki/images/vs-macros-expand.png">
 <meta property="article:published_time" content="2023-08-17T16:27:58.000Z">
-<meta property="article:modified_time" content="2023-08-17T17:30:44.265Z">
+<meta property="article:modified_time" content="2023-08-20T13:40:16.985Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="Python">
@@ -132,7 +132,7 @@
     <div class="widget-body">
         <div id="board">
             <div class="content">
-                <p> 文章数量：<b><font color=#1A9BFF>105</font></b> </p> 最后修改：<b><font color=#757575>2023.8.18</font></b><br> <p><font color=#CCA6A6><b>读书要杂, 记录要勤, 业务要精</b></font></p> <p><font color=#CCA6A6><b>思维方式 x 热情 x 能力</b></font></p> <p><b><font color=#A7D6F5>最近有点水...</font></b></p>
+                <p> 文章数量：<b><font color=#1A9BFF>105</font></b> </p> 最后修改：<b><font color=#757575>2023.8.20</font></b><br> <p><font color=#CCA6A6><b>读书要杂, 记录要勤, 业务要精</b></font></p> <p><font color=#CCA6A6><b>思维方式 x 热情 x 能力</b></font></p> <p><b><font color=#A7D6F5>最近有点水...</font></b></p>
             </div>
         </div>
     </div>
@@ -172,7 +172,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">2.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E5%8F%8D%E5%B0%84"><span class="toc-number">3.</span> <span class="toc-text">基础反射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98"><span class="toc-number">4.</span> <span class="toc-text">构建类的成员</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-macros-%E7%BB%84%E7%BB%87%E4%BB%A3%E7%A0%81"><span class="toc-number">5.</span> <span class="toc-text">使用 macros 组织代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8F%8D%E5%B0%84"><span class="toc-number">6.</span> <span class="toc-text">函数反射</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">2.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#compile-time%E5%8F%8D%E5%B0%84"><span class="toc-number">3.</span> <span class="toc-text">compile-time反射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98"><span class="toc-number">4.</span> <span class="toc-text">构建类的成员</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-macros-%E7%BB%84%E7%BB%87%E4%BB%A3%E7%A0%81"><span class="toc-number">5.</span> <span class="toc-text">使用 macros 组织代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8F%8D%E5%B0%84"><span class="toc-number">6.</span> <span class="toc-text">函数反射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%8D%E5%8E%86%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98"><span class="toc-number">7.</span> <span class="toc-text">遍历类的成员</span></a></li></ol>
     </nav>
   </div>
 </aside>
@@ -234,11 +234,11 @@
 <h2 id="目录">目录</h2>
 <ul>
 <li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
-<li><a href="#%E5%9F%BA%E7%A1%80%E5%8F%8D%E5%B0%84">基础反射</a></li>
+<li><a href="#compile-time%E5%8F%8D%E5%B0%84">compile-time反射</a></li>
 <li><a href="#%E6%9E%84%E5%BB%BA%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98">构建类的成员</a></li>
 <li><a href="#%E4%BD%BF%E7%94%A8-macros-%E7%BB%84%E7%BB%87%E4%BB%A3%E7%A0%81">使用 <code>macros</code> 组织代码</a></li>
 <li><a href="#%E5%87%BD%E6%95%B0%E5%8F%8D%E5%B0%84">函数反射</a></li>
-<li>… <font color="#FF1E10"><strong>TODO</strong></font></li>
+<li><a href="#%E9%81%8D%E5%8E%86%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98">遍历类的成员</a></li>
 </ul>
 <h2 id="前言">前言</h2>
 <p><code>refl-cpp</code> 的设计初衷是：</p>
@@ -259,7 +259,7 @@
 <li>避免 <code>Private</code> 私有成员的反射</li>
 <li>避免 运行时 按名称查询类型信息</li>
 </ul>
-<h2 id="基础反射">基础反射</h2>
+<h2 id="compile-time反射">compile-time反射</h2>
 <p>首先 <code>refl-cpp</code> 是一个 <code>compile-time</code> 的反射库，这意味着它不会维护一个 runtime 的数据结构来实现反射目的，例如下面是不可取的：</p>
 <pre><code class="language-c">struct TypeInfo {
     std::string name;           // 对象的类型名称
@@ -381,6 +381,25 @@ auto resolve(R(*fn)(Args...), Args&amp;&amp;... args) -&gt; decltype(fn);
 template &lt;typename... Args&gt;
 static constexpr decltype(detail::resolve(&amp;Type::MemberName, std::declval&lt;Args&gt;()...)) pointer { &amp;Type::MemberName };
 </code></pre>
+<p>↑ 上面这段代码理解起来较为困难，我们可以将其功能拆解一下，它是为了解决什么问题？</p>
+<p>想象类型 <code>A</code> 具有两个函数重载：</p>
+<ul>
+<li><code>f(int)</code></li>
+<li><code>f(const std::string)</code></li>
+</ul>
+<p>当拥有一个指向f的函数指针（<code>&amp;f</code>）时，编译器怎么知道调用哪个？<br>
+<code>refl-cpp</code> 实际会帮助编译器 推导出正确的重载函数（通过将 <code>&amp;f</code> 作为参数传递给另一个函数的方式，来直接触发函数）。<br>
+<code>resolve</code> 没有任何定义，它只是一个 <code>prototype</code>，作用是作为编译器的一个提示。</p>
+<p>这种方法总结起来是：<strong>传递函数性质的参数（由 <code>std::decalval</code> 产生）</strong>。它的好处是：所有的参数类型转换都适用，即我们可以通过 <code>MemberInfo&lt;?&gt;::pointer&lt;int&gt;</code> 并得到一个 <code>void(*)(long)</code> 类型的指针作为结果。</p>
+<h2 id="遍历类的成员">遍历类的成员</h2>
+<p>前面讲了如何创建和存储类成员的 <code>metadata</code>，这节介绍如何遍历它们（<code>compile-time</code>）。<br>
+核心思想是 借助可变参数模板，创建一个 <code>TypeList</code> 的类型成员列表，并提供枚举的方法。</p>
+<pre><code class="language-c">template &lt;typename... Ts&gt;
+struct TypeList 
+{
+};
+</code></pre>
+<p>!!! NOTE 这块讲的不是很细，没搞懂…</p>
 
       
     </div>
