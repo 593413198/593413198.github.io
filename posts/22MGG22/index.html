@@ -26,7 +26,7 @@
 <meta property="og:description" content="先理解两个概念:  程序是 状态机 程序 &#x3D; 计算 + SYS_call   如何模拟一个数字电路? 假设有两个寄存器，X和Y，取值分别为0和1 每次执行下面的动作:  X′&#x3D; ¬X ∧ Y Y′&#x3D; ¬X ∧ ¬Y  则对应下面三种状态的转移，每个转移对应cpu一个时钟周期：  X&#x3D;0 Y&#x3D;0 X&#x3D;0 Y&#x3D;1 X&#x3D;1 Y&#x3D;0 循环...  这就是一个简单程序的数字电路视角，下面是C代码的实现: g">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-14T13:27:35.000Z">
-<meta property="article:modified_time" content="2023-06-18T13:12:53.656Z">
+<meta property="article:modified_time" content="2023-08-29T17:22:45.706Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="linux">
@@ -170,7 +170,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%A8%A1%E6%8B%9F%E4%B8%80%E4%B8%AA%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF"><span class="toc-number">1.</span> <span class="toc-text">如何模拟一个数字电路?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%8A%B6%E6%80%81%E6%9C%BA"><span class="toc-number">2.</span> <span class="toc-text">C程序的状态机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E4%B8%80%E4%B8%AAC%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">模拟一个C程序的函数调用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%8A%B6%E6%80%81%E6%9C%BA"><span class="toc-number">4.</span> <span class="toc-text">二进制程序的状态机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-%E8%AE%A1%E7%AE%97-syscall"><span class="toc-number">5.</span> <span class="toc-text">程序 &#x3D; 计算 + syscall</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%A8%A1%E6%8B%9F%E4%B8%80%E4%B8%AA%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF"><span class="toc-number">1.</span> <span class="toc-text">如何模拟一个数字电路?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%8A%B6%E6%80%81%E6%9C%BA"><span class="toc-number">2.</span> <span class="toc-text">C程序的状态机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E4%B8%80%E4%B8%AAC%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">模拟一个C程序的函数调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%8A%B6%E6%80%81%E6%9C%BA"><span class="toc-number">4.</span> <span class="toc-text">二进制程序的状态机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F-%E8%AE%A1%E7%AE%97-syscall"><span class="toc-number">5.</span> <span class="toc-text">程序 &#x3D; 计算 + syscall</span></a></li></ol>
     </nav>
   </div>
 </aside>
@@ -226,7 +226,7 @@
 <li><font color="#ef6d3b"><strong>程序 = 计算 + SYS_call</strong></font></li>
 </ul>
 </div>
-<h2 id="如何模拟一个数字电路">如何模拟一个数字电路?</h2>
+<h3 id="如何模拟一个数字电路">如何模拟一个数字电路?</h3>
 <p>假设有两个寄存器，X和Y，取值分别为0和1<br>
 每次执行下面的动作:</p>
 <ul>
@@ -265,25 +265,25 @@ int main() {
 <li><a href="/code/logisim.c">logisim.c</a></li>
 <li><a href="/code/seven-seg.py">seven-seg.py</a></li>
 </ul>
-<h2 id="C程序的状态机">C程序的状态机</h2>
+<h3 id="C程序的状态机">C程序的状态机</h3>
 <ul>
 <li>状态 = stack frame + 全局变量</li>
 <li>初始状态 = main(argv, argv)</li>
 <li>转移 = 执行pc处指令，pc++</li>
 </ul>
 <p>就是这么简单！结合上面的代码更容易理解。</p>
-<h2 id="模拟一个C程序的函数调用">模拟一个C程序的函数调用</h2>
+<h3 id="模拟一个C程序的函数调用">模拟一个C程序的函数调用</h3>
 <ul>
 <li><a href="/code/hanoi-r.c">hanoi-r.c</a></li>
 <li><a href="/code/hanoi-nr.c">hanoi-nr.c</a></li>
 </ul>
-<h2 id="二进制程序的状态机">二进制程序的状态机</h2>
+<h3 id="二进制程序的状态机">二进制程序的状态机</h3>
 <ul>
 <li>状态 = M(内存) + R(寄存器), 所有能存储数据的东西</li>
 <li>初始状态 = ？</li>
 <li>转移 = 执行pc处指令</li>
 </ul>
-<h2 id="程序-计算-syscall">程序 = 计算 + syscall</h2>
+<h3 id="程序-计算-syscall">程序 = 计算 + syscall</h3>
 <p>最基础的main函数都是通过syscall系统调用实现的<br>
 假设没有syscall，你甚至都不能让程序返回or停止！</p>
 <p>如下是一个最简单的没有syscall的C程序</p>
