@@ -8,17 +8,25 @@
       <link href="/posts/1C3P776/"/>
       <url>/posts/1C3P776/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">导读</p><ul><li>交易需要与 <strong>哪些数据</strong> 打交道？</li><li>如何高效地 <strong>存储、读写、计算</strong> 数据？</li></ul></div><h3 id="一图胜千言">一图胜千言</h3><p>交易数据可以分为三类（从左到右），追求可视化表达时，不可避免会损失信息的细节。</p><ul><li><strong>主观交易</strong> 依赖 K线图、技术指标 等作出趋势性、预测性地判断</li><li><strong>量化交易</strong> 往往需要借助 Tick数据 去解读更多的市场微观信息。</li></ul><p><img src="/images/quant-data-chart.png" alt=""></p><div class="admonition warning"><p class="admonition-title">如何理解Tick数据?</p><ul><li>交易所收发交易数据的<strong>最小间隔</strong></li><li>可能是每一笔撮合成交（A股），也可能是每500毫秒的交易快照（商品期货）</li></ul></div><h3 id="数据提供商">数据提供商</h3><p>这里推荐三个具有性价比的渠道，相较于个人投资者（爱好者）而言：</p><table><thead><tr><th style="text-align:center">渠道</th><th style="text-align:center">价格</th><th style="text-align:center">准确度</th><th style="text-align:center">覆盖度</th></tr></thead><tbody><tr><td style="text-align:center">taobao</td><td style="text-align:center">低</td><td style="text-align:center">差<br>（都是个人清洗得到）</td><td style="text-align:center">齐全</td></tr><tr><td style="text-align:center"><a href="http://www.jinshuyuan.net/">金数源</a></td><td style="text-align:center">中<br>（部分低频数据免费）</td><td style="text-align:center">高</td><td style="text-align:center">齐全</td></tr><tr><td style="text-align:center"><a href="https://shinnytech.com/">天勤量化</a></td><td style="text-align:center">高</td><td style="text-align:center">高</td><td style="text-align:center">无股票数据</td></tr></tbody></table><h3 id="数据格式">数据格式</h3><p>金融数据是高度序列化的，偏向于使用矩阵（数组）类结构存储，这点不同于游戏行业的策划数值表。<br>如何选择合适的数据格式，需要从这几方面考虑：</p><ul><li><code>Python/C++</code> 易于开发</li><li>读取速度快</li><li>存储空间小</li></ul><table><thead><tr><th style="text-align:center">格式</th><th style="text-align:center">Python/C++</th><th style="text-align:center">读取速度</th><th style="text-align:center">存储空间</th></tr></thead><tbody><tr><td style="text-align:center">csv</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr><tr><td style="text-align:center">hdf5</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr></tbody></table><h2 id="TODO">TODO</h2><p>整合这三篇博客，将文档<strong>写薄</strong>：</p><ul><li><a href="/posts/11HCGGE/">量化数据介绍</a></li><li><a href="/posts/2QT24MY/">Pandas数据处理</a></li><li><a href="/posts/3RWWC79/">什么是复权价格?</a></li></ul>]]></content>
       
       
       <categories>
           
-          <category> 量化 </category>
+          <category> 量化交易 </category>
           
-          <category> 量化 </category>
+          <category> 量化交易 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+            <tag> Python </tag>
+            
+        </tags>
       
     </entry>
     
@@ -1778,9 +1786,9 @@
       
       <categories>
           
-          <category> 量化 </category>
+          <category> 量化交易 </category>
           
-          <category> 量化 </category>
+          <category> 量化交易 </category>
           
       </categories>
       
@@ -1826,9 +1834,9 @@
       
       <categories>
           
-          <category> 量化 </category>
+          <category> 量化交易 </category>
           
-          <category> 量化 </category>
+          <category> 量化交易 </category>
           
       </categories>
       
@@ -1855,36 +1863,9 @@
       
       <categories>
           
-          <category> 量化 </category>
+          <category> 量化交易 </category>
           
-          <category> 量化 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Python </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>量化数据介绍</title>
-      <link href="/posts/11HCGGE/"/>
-      <url>/posts/11HCGGE/</url>
-      
-        <content type="html"><![CDATA[<p>介绍量化数据的类型、数据源、和处理格式<span id="more"></span></p><hr><h2 id="数据类型">数据类型</h2><p>1.金融数据只有两种, 最原始的<font color="#ef6d3b"><strong>tick数据</strong></font> 和 聚合加工成的<font color="#ef6d3b"><strong>bar数据</strong></font>:</p><ul><li><p><font color="#ef6d3b"><strong>tick</strong></font><br>对于商品期货，是500ms一次的最小交易间隔<br>对于A股，是一次下单、撤单或交易撮合<br>如上行成的一条数据，就成为一个tick</p></li><li><p><font color="#ef6d3b"><strong>bar</strong></font><br>将tick数据在时间尺度上累加，就得到bar数据<br>常见的有 5分钟K线，日k等等<br>股票看盘软件中的一个蜡烛图，就是由该时间段内的信息累加而成的</p></li></ul><p>2.股票软件（如同花顺），做了哪些事？</p><ul><li>从交易所接受最原始的tick数据 （后端）</li><li>清洗、整理数据，获取bar数据 （数据中台）</li><li>生成直观的涨跌 蜡烛图、k线图（前端）</li></ul><hr><h2 id="数据源">数据源</h2><p>这里推荐2个常用的数据来源：</p><ul><li><p><a href="http://www.jinshuyuan.net/"><span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 金数源数据</a></p><ul><li>有免费的A股日K数据</li><li>期货tick卖的挺贵，一个月50RMB</li></ul></li><li><p><a href="https://www.shinnytech.com/tianqin/"><span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 天勤量化</a></p><ul><li>收费版(可试用2周)提供期货tick/bar的下载</li><li>股票数据不全</li></ul></li></ul><h4 id="论数据之于量化的意义">论数据之于量化的意义</h4><p>个人认为两个作用:</p><ul><li><font color="#ef6d3b"><strong>Off time</strong></font>: 离线时，用作策略回测，验证与优化</li><li><font color="#ef6d3b"><strong>Run time</strong></font>: 实盘时，根据实时数据，决定下一秒如何下单交易</li></ul><p>由此可见，数据的规范性、正确性显得尤其重要!!!</p><hr><h2 id="数据格式">数据格式</h2><p>金融数据，不论tick还是bar，都是高度序列化的，因此推荐下面2种：</p><ul><li><font color="#1AAD19"><strong>csv</strong></font>: 逗号分割，易于python解析和excel打开</li><li><font color="#1AAD19"><strong>hdf5</strong></font>: 二进制，读写速度更胜一筹</li></ul><p>如下是 <font color="#ef6d3b"><em>螺纹钢rb2205 2022年1月4日</em></font> 的tick数据，基于csv格式:</p><p><img src="/images/csv.png" alt=""></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 量化 </category>
-          
-          <category> 量化 </category>
+          <category> 量化交易 </category>
           
       </categories>
       

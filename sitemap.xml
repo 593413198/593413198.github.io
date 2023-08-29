@@ -394,13 +394,6 @@
   </url>
   
   <url>
-    <loc>http://luhao.wiki/posts/11HCGGE/</loc>
-    
-    <lastmod>2023-06-18</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://luhao.wiki/posts/38ZNGYA/</loc>
     
     <lastmod>2023-06-18</lastmod>
@@ -944,13 +937,6 @@
   </url>
   
   <url>
-    <loc>http://luhao.wiki/categories/%E9%87%8F%E5%8C%96/</loc>
-    <lastmod>2023-08-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://luhao.wiki/categories/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2023-08-29</lastmod>
     <changefreq>daily</changefreq>
@@ -1049,14 +1035,21 @@
   </url>
   
   <url>
-    <loc>http://luhao.wiki/categories/%E9%87%8F%E5%8C%96/%E9%87%8F%E5%8C%96/</loc>
+    <loc>http://luhao.wiki/categories/%E9%9A%8F%E7%AC%94/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2023-08-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://luhao.wiki/categories/%E9%9A%8F%E7%AC%94/%E9%9A%8F%E7%AC%94/</loc>
+    <loc>http://luhao.wiki/categories/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/</loc>
+    <lastmod>2023-08-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://luhao.wiki/categories/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/</loc>
     <lastmod>2023-08-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
