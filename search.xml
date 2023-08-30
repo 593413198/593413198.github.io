@@ -8,7 +8,7 @@
       <link href="/posts/3GDXTCB/"/>
       <url>/posts/3GDXTCB/</url>
       
-        <content type="html"><![CDATA[<p>OpenAI注册闭坑、GPT Api调用指南<span id="more"></span></p>]]></content>
+        <content type="html"><![CDATA[<p>OpenAI注册闭坑、GPT Api调用指南<span id="more"></span></p><h3 id="注册-OpenAI">注册 <a href="https://openai.com/">OpenAI</a></h3><p>跟这个教程操作即可：<a href="https://www.awyerwu.com/9829.html">ChatGPT最新注册教程</a></p><p>核心问题是两个：</p><ol><li>借助 VPN 绕过 OpenAI 的IP检测封控，直接挂美国</li><li>借助 <a href="https://sms-activate.org/">sms-activate</a> 接收外国手机的验证码</li></ol><h3 id="调用-GPT-Api">调用 <a href="https://platform.openai.com/docs/api-reference">GPT Api</a></h3><p>开发环境使用 <code>python3</code>，通过 <code>pip3 install openai</code> 安装依赖包。<br>注意生产环境也要挂VPN，下面是一段测试代码：</p><pre><code class="language-python"># -*- coding: utf-8 -*-import openaiopenai.api_key = "***********************"completion = openai.ChatCompletion.create(  model="gpt-3.5-turbo-0613",  messages=[    {      "role": "user",       "content": "解释厄尔尼诺现象",    }  ],  temperature = 0.7)print (completion.choices[0].message.content)</code></pre><h3 id="开源推荐">开源推荐</h3><ul><li><a href="https://github.com/zhayujie/chatgpt-on-wechat">chatgpt-on-wechat</a></li></ul><p>微信聊天机器人，支持GPT3.5/GPT4.0/文心一言/讯飞星火模型，支持个人微信、公众号、企业微信，支持文本、语音和图片的处理。</p>]]></content>
       
       
       <categories>
@@ -19,6 +19,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
       
     </entry>
     
