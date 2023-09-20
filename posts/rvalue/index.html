@@ -26,7 +26,7 @@
 <meta property="og:description" content="C++ 左值、右值引用">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-20T14:53:43.000Z">
-<meta property="article:modified_time" content="2023-08-20T17:58:30.454Z">
+<meta property="article:modified_time" content="2023-09-20T15:46:24.295Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
@@ -169,7 +169,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lvalue-rvalue"><span class="toc-number">2.</span> <span class="toc-text">lvalue &amp; rvalue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#function-reference"><span class="toc-number">3.</span> <span class="toc-text">function reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lvalue-to-rvalue"><span class="toc-number">4.</span> <span class="toc-text">lvalue to rvalue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rvalue-to-lvalue"><span class="toc-number">5.</span> <span class="toc-text">rvalue to lvalue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rvalue-reference-%F0%9F%94%A5"><span class="toc-number">6.</span> <span class="toc-text">rvalue reference 🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#move-semantics-%F0%9F%94%A5"><span class="toc-number">7.</span> <span class="toc-text">move semantics 🔥</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81-move-semantics-%F0%9F%92%A1"><span class="toc-number">7.1.</span> <span class="toc-text">为什么需要 move semantics? 💡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#std-move"><span class="toc-number">7.2.</span> <span class="toc-text">std::move</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#std-remove-reference"><span class="toc-number">7.3.</span> <span class="toc-text">std::remove_reference</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A6%E5%80%BC%E5%92%8C%E5%8F%B3%E5%80%BC"><span class="toc-number">2.</span> <span class="toc-text">左值和右值</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#function-reference"><span class="toc-number">2.1.</span> <span class="toc-text">function reference</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A6%E5%80%BC-%E2%86%92-%E5%8F%B3%E5%80%BC"><span class="toc-number">3.</span> <span class="toc-text">左值 → 右值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%B3%E5%80%BC-%E2%86%92-%E5%B7%A6%E5%80%BC"><span class="toc-number">4.</span> <span class="toc-text">右值 → 左值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8-%F0%9F%94%A5"><span class="toc-number">5.</span> <span class="toc-text">右值引用 🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#move%E8%AF%AD%E4%B9%89-%F0%9F%94%A5"><span class="toc-number">6.</span> <span class="toc-text">move语义 🔥</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81-move-semantics-%F0%9F%92%A1"><span class="toc-number">6.1.</span> <span class="toc-text">为什么需要 move semantics? 💡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#std-move"><span class="toc-number">6.2.</span> <span class="toc-text">std::move</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#std-remove-reference"><span class="toc-number">6.3.</span> <span class="toc-text">std::remove_reference</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E4%BC%A0%E5%8F%82"><span class="toc-number">7.</span> <span class="toc-text">三种传参</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-const-T"><span class="toc-number">7.1.</span> <span class="toc-text">1. const T</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-const-T"><span class="toc-number">7.2.</span> <span class="toc-text">2. const T&amp;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-T"><span class="toc-number">7.3.</span> <span class="toc-text">3. T&amp;&amp;</span></a></li></ol></li></ol>
     </nav>
   </div>
 </aside>
@@ -227,6 +227,11 @@
 <li><a target="_blank" rel="noopener" href="https://www.cprogramming.com/c++11/rvalue-references-and-move-semantics-in-c++11.html"><em><strong>Move semantics and rvalue references in C++11</strong></em></a></li>
 </ul>
 </div>
+
+<div class="markmap-container" style="height:200px">
+  <svg data="{&quot;t&quot;:&quot;root&quot;,&quot;d&quot;:0,&quot;v&quot;:&quot;&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[0,1]},&quot;v&quot;:&quot;左值和右值&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[1,2]},&quot;v&quot;:&quot;<a href=\&quot;#左值-→-右值\&quot;>左值 → 右值</a>&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[2,3]},&quot;v&quot;:&quot;<a href=\&quot;#右值-→-左值\&quot;>右值 → 左值</a>&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[3,4]},&quot;v&quot;:&quot;右值引用&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[4,5]},&quot;v&quot;:&quot;<a href=\&quot;#move语义-🔥\&quot;>move语义</a>&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[5,6]},&quot;v&quot;:&quot;<a href=\&quot;#std-move\&quot;>std::move</a>&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[6,7]},&quot;v&quot;:&quot;<a href=\&quot;#std-remove-reference\&quot;>std::remove_reference</a>&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[7,8]},&quot;v&quot;:&quot;<a href=\&quot;#三种传参\&quot;>三种传参</a>&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[8,9]},&quot;v&quot;:&quot;<a href=\&quot;#1-const-T\&quot;>const T</a>&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[9,10]},&quot;v&quot;:&quot;<a href=\&quot;#2-const-T\&quot;>const T&amp;amp;</a>&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[10,11]},&quot;v&quot;:&quot;<a href=\&quot;#3-T\&quot;>T&amp;amp;&amp;amp;</a>&quot;}]}],&quot;p&quot;:{}}"></svg>
+</div>
+
 <h2 id="前言">前言</h2>
 <p>从接触、学习、运用 <code>C++</code> 至今，左右值引用一直是自己困惑的点。伴随着现代C++的发展，它们开始扮演越来越重要的作用（如 <code>std::move</code>、<code>std::remove_reference</code>…）。<br>
 这篇争取彻底搞懂他们。</p>
@@ -236,7 +241,7 @@
 <pre><code class="language-c">int x;
 666 = x;
 </code></pre>
-<h2 id="lvalue-rvalue">lvalue &amp; rvalue</h2>
+<h2 id="左值和右值">左值和右值</h2>
 <p>如何区分 左值 和 右值？</p>
 <ul>
 <li><strong><code>lvalue</code>：指向明确的内存地址</strong>，又称 <code>variable</code></li>
@@ -258,7 +263,7 @@
 <li><code>int&amp; y = x</code>：y是左值引用</li>
 </ul>
 </div>
-<h2 id="function-reference">function reference</h2>
+<h3 id="function-reference">function reference</h3>
 <p>函数的返回值可以是 左值，也可以是 右值。</p>
 <ul>
 <li>右值 ×</li>
@@ -276,7 +281,7 @@ int&amp; setValue() { return x; };
 
 setValue() = 1;
 </code></pre>
-<h2 id="lvalue-to-rvalue">lvalue to rvalue</h2>
+<h2 id="左值-→-右值">左值 → 右值</h2>
 <p>左值 经常会被转化为 右值，如下示例：</p>
 <ul>
 <li><code>x, y</code> 都是 左值</li>
@@ -287,12 +292,12 @@ int y = 3;
 int z = x + y;   // ok
 </code></pre>
 <p>上面经历了一次 <strong>lvalue -&gt; rvalue</strong>  的隐式转换，很多操作符（<code>+, -, /</code>）都会提供。</p>
-<h2 id="rvalue-to-lvalue">rvalue to lvalue</h2>
+<h2 id="右值-→-左值">右值 → 左值</h2>
 <p>右值 到 左值 的转换是被禁止的，如下代码是非法的：</p>
 <pre><code class="language-c">int&amp; x = 10;
 // error: cannot bind non-const lvalue reference of type 'int&amp;' to an rvalue of type 'int'
 </code></pre>
-<h2 id="rvalue-reference-🔥">rvalue reference 🔥</h2>
+<h2 id="右值引用-🔥">右值引用 🔥</h2>
 <p>C++ 的一条重要编译规则是：<strong>你无法绑定一个 右值 的地址，除非绑定到一个 <code>const</code> 类型</strong>，例如：</p>
 <pre><code class="language-c">int&amp; x = 666; // error: cannot bind non-const lvalue reference of type 'int&amp;' to an rvalue of type 'int'
 const int&amp; x = 666; // OK
@@ -310,7 +315,7 @@ std::string&amp;&amp; s3 = s1 + s2;
 s3 += " luhao"; // OK
 </code></pre>
 <p>上面的示例看出来用处不大，<strong>因为 <code>rvalue reference</code> 真正大展拳脚的地方，是在 移动语义（<code>move semantics</code>）。</strong></p>
-<h2 id="move-semantics-🔥">move semantics 🔥</h2>
+<h2 id="move语义-🔥">move语义 🔥</h2>
 <p>阅读资料</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://www.cprogramming.com/c++11/rvalue-references-and-move-semantics-in-c++11.html"><em><strong>Move semantics and rvalue references in C++11</strong></em></a></li>
@@ -407,6 +412,16 @@ int main()
     struct remove_reference&lt;_Tp&amp;&amp;&gt;
     { typedef _Tp   type; };
 </code></pre>
+<h2 id="三种传参">三种传参</h2>
+<h3 id="1-const-T"><code>1. const T</code></h3>
+<p>常量值传递，默认有一次拷贝开销。<br>
+如果是 <code>builtin-types (int、float ...)</code> 推荐使用这种传递方式</p>
+<h3 id="2-const-T"><code>2. const T&amp;</code></h3>
+<p>常量引用传递，<code>&amp;</code> 避免拷贝带来的开销，<code>const</code> 避免被修改。<br>
+但会将生命周期延续</p>
+<h3 id="3-T"><code>3. T&amp;&amp;</code></h3>
+<p>右值传递，避免拷贝带来的开销，推荐复杂结构体如 <code>std::vector ...</code><br>
+缺点是调用者必须传入右值，否则编译期间报错，如果是通用接口比较难受</p>
 
       
     </div>
@@ -607,5 +622,5 @@ $(function () {
 </script>
 <!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-</body>
+<script src="/js/markmap.js"></script></body>
 </html>
