@@ -18,16 +18,16 @@
   
   
   <title>【量化】数据专题 | Luhao&#39;s Blog</title>
-  <meta name="description" content="导读  交易需要与 哪些数据 打交道？ 如何高效地 存储、读写、计算 数据？          数据管线 交易数据可以分为三类（从左到右）：  换一个角度理解：Bar是Tick数据的重要性采样（有点像光栅化），K-Line是Bar数据的可视化展现（有点像Pixel-Shading）。 在这个处理流程中，信息的原貌是不断被丢失的，因此越原始的数据，价值含量越高，就像《舌尖上的中国》所说：高端的食材，">
+  <meta name="description" content="导读  交易需要与 哪些数据 打交道？ 如何获取 可靠、实惠 的数据？ 如何高效地 存储、读写、计算 数据？          数据管线 交易数据可以分为三类（从左到右）：  换一个角度理解：Bar是Tick数据的重要性采样（有点像光栅化），K-Line是Bar数据的可视化展现（有点像Pixel-Shading）。 在这个处理流程中，信息的原貌是不断被丢失的，因此越原始的数据，价值含量越高，就像《">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【量化】数据专题">
 <meta property="og:url" content="http://luhao.wiki/posts/quant-data/index.html">
 <meta property="og:site_name" content="Luhao&#39;s Blog">
-<meta property="og:description" content="导读  交易需要与 哪些数据 打交道？ 如何高效地 存储、读写、计算 数据？          数据管线 交易数据可以分为三类（从左到右）：  换一个角度理解：Bar是Tick数据的重要性采样（有点像光栅化），K-Line是Bar数据的可视化展现（有点像Pixel-Shading）。 在这个处理流程中，信息的原貌是不断被丢失的，因此越原始的数据，价值含量越高，就像《舌尖上的中国》所说：高端的食材，">
+<meta property="og:description" content="导读  交易需要与 哪些数据 打交道？ 如何获取 可靠、实惠 的数据？ 如何高效地 存储、读写、计算 数据？          数据管线 交易数据可以分为三类（从左到右）：  换一个角度理解：Bar是Tick数据的重要性采样（有点像光栅化），K-Line是Bar数据的可视化展现（有点像Pixel-Shading）。 在这个处理流程中，信息的原貌是不断被丢失的，因此越原始的数据，价值含量越高，就像《">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://luhao.wiki/images/quant-data-chart.png">
 <meta property="article:published_time" content="2023-08-29T15:40:15.000Z">
-<meta property="article:modified_time" content="2023-10-03T18:10:16.061Z">
+<meta property="article:modified_time" content="2023-10-04T18:58:19.593Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="Python">
@@ -132,7 +132,7 @@
     <div class="widget-body">
         <div id="board">
             <div class="content">
-                <p> 文章数量：<b><font color=#1A9BFF>113</font></b> </p> 最后修改：<b><font color=#757575>2023.10.4</font></b><br> <p><font color=#CCA6A6><b>读书要杂, 记录要勤, 业务要精</b></font></p> <p><b><font size=1px color=#A7D6F5>了解一个技术与实现一个技术，两者可能相差一到两个量级</font></b></p>
+                <p> 文章数量：<b><font color=#1A9BFF>113</font></b> </p> 最后修改：<b><font color=#757575>2023.10.5</font></b><br> <p><font color=#CCA6A6><b>读书要杂, 记录要勤, 业务要精</b></font></p> <p><b><font size=1px color=#A7D6F5>了解一个技术与实现一个技术，两者可能相差一到两个量级</font></b></p>
             </div>
         </div>
     </div>
@@ -225,6 +225,7 @@
         <div class="admonition note"><p class="admonition-title">导读
 </p><ul>
 <li>交易需要与 <strong>哪些数据</strong> 打交道？</li>
+<li>如何获取 <strong>可靠、实惠</strong> 的数据？</li>
 <li>如何高效地 <strong>存储、读写、计算</strong> 数据？</li>
 </ul>
 </div>
@@ -243,12 +244,11 @@
 <li><strong>主观交易</strong> 依赖 K线图、技术指标 等作出趋势性、预测性地判断</li>
 <li><strong>量化交易</strong> 往往需要借助 Tick数据 去解读更多的市场微观信息。</li>
 </ul>
-<div class="admonition warning"><p class="admonition-title">如何理解Tick数据?
-</p><ul>
+<p><strong>如何理解Tick数据?</strong></p>
+<ul>
 <li>交易所收发交易数据的<strong>最小间隔</strong></li>
 <li>可能是每一笔撮合成交（A股），也可能是每500毫秒的交易快照（商品期货）</li>
 </ul>
-</div>
 <h2 id="数据类型">数据类型</h2>
 <p>狭义理解的金融数据，大概只有 成交量 和 价格 等关键值，但真正的金融市场是错综复杂、影响纷繁的，需要从如下几个领域考量：</p>
 <ul>
@@ -282,25 +282,120 @@
 <tbody>
 <tr>
 <td style="text-align:center"><a target="_blank" rel="noopener" href="http://baostock.com/">baostock</a></td>
-<td style="text-align:center">免费开源</td>
+<td style="text-align:center">免费</td>
 <td style="text-align:center">中</td>
-<td style="text-align:center">无期货数据</td>
+<td style="text-align:center">A股</td>
 </tr>
 <tr>
 <td style="text-align:center"><a target="_blank" rel="noopener" href="http://www.jinshuyuan.net/">金数源</a></td>
-<td style="text-align:center">中<br>（部分低频数据免费）</td>
+<td style="text-align:center">中</td>
 <td style="text-align:center">高</td>
-<td style="text-align:center">齐全</td>
+<td style="text-align:center">期货、A股</td>
 </tr>
 <tr>
 <td style="text-align:center"><a target="_blank" rel="noopener" href="https://shinnytech.com/">天勤量化</a></td>
+<td style="text-align:center">部分免费</td>
+<td style="text-align:center">高</td>
+<td style="text-align:center">期货、A股(18年起)</td>
+</tr>
+<tr>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="http://www.juejinshuju.com/">掘金数据</a></td>
 <td style="text-align:center">高</td>
 <td style="text-align:center">高</td>
-<td style="text-align:center">无股票数据</td>
+<td style="text-align:center">期货、A股、数字货币</td>
 </tr>
 </tbody>
 </table>
 <p>如果你的策略有所起色，甚至扭亏为盈了，后面可以考虑向专业的数据提供商（如<a target="_blank" rel="noopener" href="https://www.wind.com.cn/mobile/WDS/zh.html">Wind</a>、同花顺）购买昂贵但准确的市场数据，有句话说得好：贵的东西总有贵的道理！</p>
+<p><strong>再按照股票、期货细分来看：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">频率</th>
+<th style="text-align:center">数据体量</th>
+<th style="text-align:center">推荐数据源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A股 ①</td>
+<td style="text-align:center">5档逐笔</td>
+<td style="text-align:center">200M/年，合计1T/年</td>
+<td style="text-align:center">tqsdk白嫖</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">1 min</td>
+<td style="text-align:center">5M/年，合计25G/年</td>
+<td style="text-align:center">tqsdk白嫖</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">5 min</td>
+<td style="text-align:center">1M/年，合计5G/年</td>
+<td style="text-align:center">baostock免费</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">日k</td>
+<td style="text-align:center">累计 ~2G</td>
+<td style="text-align:center">baostock免费</td>
+</tr>
+<tr>
+<td style="text-align:center">商品期货 ②</td>
+<td style="text-align:center">tick</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">taobao购买 / tqsdk</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">1 min</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">tqsdk</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">5 min</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">tqsdk</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">日k</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">数字货币</td>
+<td style="text-align:center">tick</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">掘金数据</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">1 min</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">掘金数据</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">5 min</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">掘金数据</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>① 国内主要上市股票约 5000 只，平均上市时间 11.9 个年份，总计上市时间为 61000 个年份（截至发文日期 2023年10月）
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.sse.com.cn/market/stockdata/statistic/">上交所 2288只</a> 1727 x主板 和 561 x科创板</li>
+<li><a target="_blank" rel="noopener" href="https://www.szse.cn/market/">深交所 2827只</a> 1506 x主板 和 1321 x创业板</li>
+<li>首支上市日期为 <code>1990年 平安银行</code></li>
+</ul>
+</li>
+<li>② 国内商品期货暂未统计</li>
+</ul>
 <h2 id="数据格式">数据格式</h2>
 <p>金融数据是高度序列化的，偏向于使用矩阵（数组）类结构存储，这点不同于游戏行业的策划数值表。因此需要衡量如下几点：</p>
 <ul>
