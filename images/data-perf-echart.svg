@@ -1,0 +1,73 @@
+<svg width="1580" height="865" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 1580 865">
+<rect width="1580" height="865" x="0" y="0" id="0" fill="none"></rect>
+<path d="M158 795.5L1422 795.5" fill="none" stroke="#E0E6F1"></path>
+<path d="M158 648.5L1422 648.5" fill="none" stroke="#E0E6F1"></path>
+<path d="M158 501.5L1422 501.5" fill="none" stroke="#E0E6F1"></path>
+<path d="M158 354.5L1422 354.5" fill="none" stroke="#E0E6F1"></path>
+<path d="M158 207.5L1422 207.5" fill="none" stroke="#E0E6F1"></path>
+<path d="M158 60.5L1422 60.5" fill="none" stroke="#E0E6F1"></path>
+<path d="M158 795.5L1422 795.5" fill="none" stroke="#6E7079" stroke-linecap="round"></path>
+<text dominant-baseline="central" text-anchor="end" style="font-size:12px;font-family:Microsoft YaHei;" transform="translate(150 795)" fill="#6E7079">0</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:12px;font-family:Microsoft YaHei;" transform="translate(150 648)" fill="#6E7079">2</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:12px;font-family:Microsoft YaHei;" transform="translate(150 501)" fill="#6E7079">4</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:12px;font-family:Microsoft YaHei;" transform="translate(150 354)" fill="#6E7079">6</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:12px;font-family:Microsoft YaHei;" transform="translate(150 207)" fill="#6E7079">8</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:12px;font-family:Microsoft YaHei;" transform="translate(150 60)" fill="#6E7079">10</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei;" y="6" transform="translate(284.4 803)" fill="#6E7079">csv</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei;" xml:space="preserve" y="6" transform="translate(537.2 803)" fill="#6E7079">csv (gz)</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei;" xml:space="preserve" y="6" transform="translate(790 803)" fill="#6E7079">csv (zip)</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei;" y="6" transform="translate(1042.8 803)" fill="#6E7079">hdf5</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei;" y="6" transform="translate(1295.6 803)" fill="#6E7079">feather</text>
+<path d="M187.072 795l64.8853 0l0 -296.205l-64.8853 0Z" fill="rgb(84,112,198)"></path>
+<path d="M439.872 795l64.8853 0l0 -73.5l-64.8853 0Z" fill="rgb(84,112,198)"></path>
+<path d="M692.672 795l64.8853 0l0 -77.175l-64.8853 0Z" fill="rgb(84,112,198)"></path>
+<path d="M945.472 795l64.8853 0l0 -735l-64.8853 0Z" fill="rgb(84,112,198)"></path>
+<path d="M1198.272 795l64.8853 0l0 -735l-64.8853 0Z" fill="rgb(84,112,198)"></path>
+<path d="M251.9573 795l64.8853 0l0 -102.165l-64.8853 0Z" fill="rgb(145,204,117)"></path>
+<path d="M504.7573 795l64.8853 0l0 -73.5l-64.8853 0Z" fill="rgb(145,204,117)"></path>
+<path d="M757.5573 795l64.8853 0l0 -77.91l-64.8853 0Z" fill="rgb(145,204,117)"></path>
+<path d="M1010.3573 795l64.8853 0l0 -262.395l-64.8853 0Z" fill="rgb(145,204,117)"></path>
+<path d="M1263.1573 795l64.8853 0l0 -551.25l-64.8853 0Z" fill="rgb(145,204,117)"></path>
+<path d="M316.8427 795l64.8853 0l0 -73.5l-64.8853 0Z" fill="rgb(250,200,88)"></path>
+<path d="M569.6427 795l64.8853 0l0 -152.145l-64.8853 0Z" fill="rgb(250,200,88)"></path>
+<path d="M822.4427 795l64.8853 0l0 -152.145l-64.8853 0Z" fill="rgb(250,200,88)"></path>
+<path d="M1075.2427 795l64.8853 0l0 -147l-64.8853 0Z" fill="rgb(250,200,88)"></path>
+<path d="M1328.0427 795l64.8853 0l0 -164.64l-64.8853 0Z" fill="rgb(250,200,88)"></path>
+<text dominant-baseline="central" text-anchor="start" style="font: normal normal 16px Microsoft YaHei" xml:space="preserve" transform="matrix(0,-1,1,0,219.5147,780)" fill="#eee" stroke="rgb(84,112,198)" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">4.03  </text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:12px;font-family:Microsoft YaHei;" x="41.46875" transform="matrix(0,-1,1,0,219.5147,780)" fill="#eee" stroke="rgb(84,112,198)" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">write</text>
+<text dominant-baseline="central" text-anchor="start" style="font: normal normal 16px Microsoft YaHei" xml:space="preserve" transform="matrix(0,-1,1,0,472.3147,780)" fill="#eee" stroke="rgb(84,112,198)" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">1  </text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:12px;font-family:Microsoft YaHei;" x="18.8515625" transform="matrix(0,-1,1,0,472.3147,780)" fill="#eee" stroke="rgb(84,112,198)" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">write</text>
+<text dominant-baseline="central" text-anchor="start" style="font: normal normal 16px Microsoft YaHei" xml:space="preserve" transform="matrix(0,-1,1,0,725.1147,780)" fill="#eee" stroke="rgb(84,112,198)" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">1.05  </text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:12px;font-family:Microsoft YaHei;" x="41.46875" transform="matrix(0,-1,1,0,725.1147,780)" fill="#eee" stroke="rgb(84,112,198)" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">write</text>
+<text dominant-baseline="central" text-anchor="start" style="font: normal normal 16px Microsoft YaHei" xml:space="preserve" transform="matrix(0,-1,1,0,977.9147,780)" fill="#eee" stroke="rgb(84,112,198)" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">75  </text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:12px;font-family:Microsoft YaHei;" x="28.234375" transform="matrix(0,-1,1,0,977.9147,780)" fill="#eee" stroke="rgb(84,112,198)" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">write</text>
+<text dominant-baseline="central" text-anchor="start" style="font: normal normal 16px Microsoft YaHei" xml:space="preserve" transform="matrix(0,-1,1,0,1230.7147,780)" fill="#eee" stroke="rgb(84,112,198)" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">103.8  </text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:12px;font-family:Microsoft YaHei;" x="50.8515625" transform="matrix(0,-1,1,0,1230.7147,780)" fill="#eee" stroke="rgb(84,112,198)" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">write</text>
+<text dominant-baseline="central" text-anchor="start" style="font: normal normal 16px Microsoft YaHei" xml:space="preserve" transform="matrix(0,-1,1,0,284.4,780)" fill="#333">1.39  </text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:12px;font-family:Microsoft YaHei;" x="41.46875" transform="matrix(0,-1,1,0,284.4,780)" fill="#333">read</text>
+<text dominant-baseline="central" text-anchor="start" style="font: normal normal 16px Microsoft YaHei" xml:space="preserve" transform="matrix(0,-1,1,0,537.2,780)" fill="#333">1  </text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:12px;font-family:Microsoft YaHei;" x="18.8515625" transform="matrix(0,-1,1,0,537.2,780)" fill="#333">read</text>
+<text dominant-baseline="central" text-anchor="start" style="font: normal normal 16px Microsoft YaHei" xml:space="preserve" transform="matrix(0,-1,1,0,790,780)" fill="#333">1.06  </text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:12px;font-family:Microsoft YaHei;" x="41.46875" transform="matrix(0,-1,1,0,790,780)" fill="#333">read</text>
+<text dominant-baseline="central" text-anchor="start" style="font: normal normal 16px Microsoft YaHei" xml:space="preserve" transform="matrix(0,-1,1,0,1042.8,780)" fill="#333">3.57  </text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:12px;font-family:Microsoft YaHei;" x="41.46875" transform="matrix(0,-1,1,0,1042.8,780)" fill="#333">read</text>
+<text dominant-baseline="central" text-anchor="start" style="font: normal normal 16px Microsoft YaHei" xml:space="preserve" transform="matrix(0,-1,1,0,1295.6,780)" fill="#333">7.5  </text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:12px;font-family:Microsoft YaHei;" x="32.0859375" transform="matrix(0,-1,1,0,1295.6,780)" fill="#333">read</text>
+<text dominant-baseline="central" text-anchor="start" style="font: normal normal 16px Microsoft YaHei" xml:space="preserve" transform="matrix(0,-1,1,0,349.2853,780)" fill="#333">1  </text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:12px;font-family:Microsoft YaHei;" x="18.8515625" transform="matrix(0,-1,1,0,349.2853,780)" fill="#333">size</text>
+<text dominant-baseline="central" text-anchor="start" style="font: normal normal 16px Microsoft YaHei" xml:space="preserve" transform="matrix(0,-1,1,0,602.0853,780)" fill="#333">2.07  </text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:12px;font-family:Microsoft YaHei;" x="41.46875" transform="matrix(0,-1,1,0,602.0853,780)" fill="#333">size</text>
+<text dominant-baseline="central" text-anchor="start" style="font: normal normal 16px Microsoft YaHei" xml:space="preserve" transform="matrix(0,-1,1,0,854.8853,780)" fill="#333">2.07  </text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:12px;font-family:Microsoft YaHei;" x="41.46875" transform="matrix(0,-1,1,0,854.8853,780)" fill="#333">size</text>
+<text dominant-baseline="central" text-anchor="start" style="font: normal normal 16px Microsoft YaHei" xml:space="preserve" transform="matrix(0,-1,1,0,1107.6853,780)" fill="#333">2  </text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:12px;font-family:Microsoft YaHei;" x="18.8515625" transform="matrix(0,-1,1,0,1107.6853,780)" fill="#333">size</text>
+<text dominant-baseline="central" text-anchor="start" style="font: normal normal 16px Microsoft YaHei" xml:space="preserve" transform="matrix(0,-1,1,0,1360.4853,780)" fill="#333">2.24  </text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:12px;font-family:Microsoft YaHei;" x="41.46875" transform="matrix(0,-1,1,0,1360.4853,780)" fill="#333">size</text>
+<path d="M-5 -5l195.416 0l0 24l-195.416 0Z" transform="translate(697.292 5)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#ccc" stroke-width="0"></path>
+<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(697.292 5)" fill="#5470c6"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:12px;font-family:Microsoft YaHei;" x="30" y="7" transform="translate(697.292 5)" fill="#333">write</text>
+<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(765.7217 5)" fill="#91cc75"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:12px;font-family:Microsoft YaHei;" x="30" y="7" transform="translate(765.7217 5)" fill="#333">read</text>
+<path d="M3.5 0L21.5 0A3.5 3.5 0 0 1 25 3.5L25 10.5A3.5 3.5 0 0 1 21.5 14L3.5 14A3.5 3.5 0 0 1 0 10.5L0 3.5A3.5 3.5 0 0 1 3.5 0" transform="translate(831.251 5)" fill="#fac858"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:12px;font-family:Microsoft YaHei;" x="30" y="7" transform="translate(831.251 5)" fill="#333">size</text>
+</svg>

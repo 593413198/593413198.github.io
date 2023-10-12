@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>csv, hdf5, feather 三种数据性能对比</title>
+      <link href="/posts/2S12DS/"/>
+      <url>/posts/2S12DS/</url>
+      
+        <content type="html"><![CDATA[<p>用于量化金融数据，分析读、写、磁盘、内存性能<span id="more"></span></p><div class="admonition note"><p class="admonition-title">导读</p><ul><li><a href="/posts/quant-data/">这篇blog</a> 介绍了金融相关的数据特性，它对于读写和存储性能有极高要求</li><li>本篇blog 会结合跑测数据，分析三种格式的性能</li></ul></div><h2 id="测试结论">测试结论</h2><p>结论放在最前面，测试数据见 <a href="#%E6%80%A7%E8%83%BD%E6%B1%87%E6%80%BB">文末</a></p><ul><li>数据量小，无脑使用 csv</li><li>数据量大，如果坚持 csv，请使用 <strong>zip</strong> 参数压缩（尽管这会降低读写速率）</li><li>百M级别以上数据，推荐使用 hdf5（而不是feather）<ul><li>性能强于 csv，<strong>读写快5~10倍</strong></li><li>hdf5 对于 Python/C++ 的API支持较好</li><li>feather 虽然性能更强，但限制更多 TODO</li></ul></li></ul><h2 id="基本介绍">基本介绍</h2><h3 id="csv"><a href="https://en.wikipedia.org/wiki/Comma-separated_values">csv</a></h3><p><code>csv</code> 全称是 <code>Comma-separated values</code>，<strong>即以逗号分隔的纯文本格式</strong>，常用后缀是 <code>*.csv</code>。<br>正因为其纯文本的性质，常见的编辑器（或者excel）都可以预览csv文件，所以它的优点是 <strong>简单直观</strong>。<br>然而事物都具有两面性，就像 <code>json</code> 存储格式，直观的代价往往是性能的损失。</p><h3 id="hdf5"><a href="https://en.wikipedia.org/wiki/Hierarchical_Data_Format">hdf5</a></h3><p>全称是 <code>Hierarchical Data Format version 5</code>，<strong>即高度层次化的二进制格式</strong>，常用后缀是 <code>*.h5</code>。<br>hdf5格式从设计之初，就是服务于大型数据。</p><h3 id="feather"><a href="https://arrow.apache.org/docs/python/feather.html">feather</a></h3><p>feather 是一种用于存储数据的 <strong>快速地、轻量级的二进制格式</strong>，常用后缀是 <code>*.fea</code>。<br>它早起就是为 Python(Pandas) 和 R 这两种编程语言所设计的。<br>目前广泛使用的其实是 feather v2 版本，它区别于早期的 v1 版本，这个不用过多了解。</p><h2 id="测试标准">测试标准</h2><p>主要从四个维度测量性能：</p><ul><li>1.写入速度</li><li>2.读取速度</li><li>3.磁盘大小</li><li>4.读取内存 (TODO)</li></ul><p>同时考虑到金融数据的存储格式，大多是 <code>int64</code>、<code>float64</code> 和 <code>timestamp</code>，因此也会分别考量 在这三种格式下的性能表现。</p><h3 id="压缩性">压缩性</h3><p>因为写入的csv文件较大，所以考虑 csv 结合各种压缩算法测试（压缩本质是牺牲性能、换取空间）。<br><code>df.to_csv('', compression)</code> 可以传入 <code>zip</code>、<code>gz</code>、<s><code>bz2</code></s> 等等参数。</p><h3 id="benchmark">benchmark</h3><p>使用 800w x 10 的DataFrame数据，取值范围是 0 ~ 16亿，格式是 <code>np.int64</code></p><pre><code class="language-csv">0                d0                d1                d2                d3                d4                d5                d6                d70  5680658661046001  6886564689964211   777947290120004  6223515736992396  2823728071993317  8416657213663291  3500805963228465  10097481526053971  8952870328278778   306015862731108  9726241400443289  4237512935832667  2875425479333067  6311517969042662   878720088161354  87871182730650332  6858523177136352  1733196075769152   840572662722070  8438133907754012  6671944540650125  1147224095855703  1583106816125259  27980685687731413  2940819554234759  3142545317839947  4641209159206074  8194125756197731  4958881218032026  4405637321734842   500692399773906  35316179424621364  8149680042981168  6793238579260437  3891639455885689  3690167863144449  7552248224604567  6411717840330018  9556078695826276  4851668202438122......[8000000 rows x 9 columns]</code></pre><h2 id="1-写入速度">1. 写入速度</h2><p>注意：因为 追加、覆盖 等模式会影响性能，所以重复测试前，记得删除已写入的数据。</p><table><thead><tr><th style="text-align:center">format</th><th style="text-align:center">write time (s)</th></tr></thead><tbody><tr><td style="text-align:center">csv</td><td style="text-align:center">33.5</td></tr><tr><td style="text-align:center">csv (gz)</td><td style="text-align:center">135</td></tr><tr><td style="text-align:center">csv (zip)</td><td style="text-align:center">128</td></tr><tr><td style="text-align:center">hdf5</td><td style="text-align:center">1.8</td></tr><tr><td style="text-align:center">feather 👍</td><td style="text-align:center">1.3</td></tr></tbody></table><h2 id="2-读取速度">2. 读取速度</h2><p>测试接口，全部选择 <code>pandas read_***</code> 系列，会全部转化为 DataFrame 格式。</p><table><thead><tr><th style="text-align:center">format</th><th style="text-align:center">read time (s)</th></tr></thead><tbody><tr><td style="text-align:center">csv</td><td style="text-align:center">10.8</td></tr><tr><td style="text-align:center">csv (gz)</td><td style="text-align:center">15.0</td></tr><tr><td style="text-align:center">csv (zip)</td><td style="text-align:center">14.1</td></tr><tr><td style="text-align:center">hdf5</td><td style="text-align:center">4.2</td></tr><tr><td style="text-align:center">feather 👍</td><td style="text-align:center">2.0</td></tr></tbody></table><h2 id="3-磁盘大小">3. 磁盘大小</h2><table><thead><tr><th style="text-align:center">format</th><th style="text-align:center">file size (GB)</th></tr></thead><tbody><tr><td style="text-align:center">csv</td><td style="text-align:center">1.10</td></tr><tr><td style="text-align:center">csv (gz)</td><td style="text-align:center">0.53 (48%)</td></tr><tr><td style="text-align:center">csv (zip)</td><td style="text-align:center">0.53 (48%)</td></tr><tr><td style="text-align:center">hdf5</td><td style="text-align:center">0.55 (50%)</td></tr><tr><td style="text-align:center">feather 👍</td><td style="text-align:center">0.49 (44%)</td></tr></tbody></table><h2 id="性能汇总">性能汇总</h2><ul><li>以下统计的是 <strong>相对得分</strong>，数值越高说明性能越好</li></ul><iframe src="/html/data-perf-echart.html" 替换这里的html="" height="600" width="100%" 修改高度即可="" frameborder="0" scrolling="yes"> 支持滚动条</iframe>]]></content>
+      
+      
+      <categories>
+          
+          <category> 量化交易 </category>
+          
+          <category> 量化交易 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+            <tag> Python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【量化】爬虫获取东财数据</title>
       <link href="/posts/spider-easymoney/"/>
       <url>/posts/spider-easymoney/</url>

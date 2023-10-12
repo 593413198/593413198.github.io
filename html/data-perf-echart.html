@@ -1,0 +1,224 @@
+<!--
+	此示例下载自 https://echarts.apache.org/examples/zh/editor.html?c=bar-label-rotation&lang=js&version=5.4.3&renderer=svg&code=MYewdgzgLgBADiCAZAltGBeGBtAUDGAcgBsBTAMykIBp8iAnFAcwAsraDCoQ4a7CARiCjcAtn04pIKACakJRKRFmkAKjwWElKpBXb9tcgErM2mw6QBCwseelz1cXZTvKHPE632T7VmyFFnb0VfaxEAzzNcAF0AblwAQzg4ADpQMHJmAAUE-gTRUihSeghMGABvOnphBKKALgq6AlEpBoBaAE4ABg4CGFEEgA8G7roAX16E4mYwBsq-mB4oFHAIOaa-skoGkj0FBeBSMCL6HcPj4v2-xi8dm6iFsfHegDdi5eApgEFpplnGhZLFaQdYLAjcOA7CFXZqyGRkHYtGTw-S9BZCcKiHYY2wbJ4ECZ0BDKZbgUF9IGrBrE1DQFL0UgyACuhwAFOQmWBgKSwDBWQM4NR4IgAJQAsEC7DE6JlYnxMEwBlQJn0XkC-V9CYVMYi550GRoKAJLmkcmw_49DYDYYwACMXS641wY3iSVS6UyTDK80VNXqMG6k1-_12Lle7xQn2IPxmiLhZAUxJQPJ2FjCtl6BugxsODVtAFZeuAAMIsY1MU0wDlcnl8sU-gjpdDEBICUjEADycFrWAb1z9lbdaXAnvpA7RfSmsZgQ49zBSU7-E4Ib3oH2-wYas5H89X6-jweXwpJwK3yWHGXnSZ5R6zRpNZ_dO6YKTvOdIE5dVoAnqXclAUggQoux5Vk-wIIDGFINYcA2BZwLBFs22IBokPbEDgTgzUjwIBCFjQlCYAIjDwCwgkcPFBUCAI1DW3Q7tMKomBCSYvDNjowjiIY0imPxMFojxEUNSeL8m1gLie3FCAWBAAB3BooHoJkPyJRBk1PGdzznF9r2BTNDXfR8L1HN8TSDadt0vF9FzAcM10jDcLK058Uj3ByDxmXpqiNf1LNHbzahUghyBAegBhEYodnKYAxlwsB8lIAAfcoEjGMYFBC44AGUUAAL0rW0ADZekyqAsqgb8ERgAAiIRiBkaqvMjFgzRgeKCjmPiRPiSleV7OhuBAYhlkhSiYEU5gK1OIghjQK5ZogLIQCkE5WoIAB6dbxu_OBK0IaSEhkOTCDxPVqNICswBkVqZFqBIGmwQhZMYIoaAYUhDre_a8vkaIJyKQYyoqqrygIMiwVKnL8oaAAmLoYE2mBAD7owA7f0AP7VAGj5QBwC0ABujABC3QB1bUAZXlAHJNQB4HTB3ihRgM7xpAIahBtPtpLkhSlKCikoOOHY3KjK4tigO5TGCcEeDOI4TiucgPuVBk1v6XIAGs5hgFn5PG9nmNvO6ADUUFIdXQbVtnlKFBlDo7MBiG_BpyCmICtawgYmEjVQdsrI2ZPVxTTe23aHpIKRUSIARci-7NgEVwgZRYsEGWgUKPdVr2TdIR2FQgBI3i-CAAElnaT42NeU5jTvIuhBi-QY0AejYEIq_2iE-IomFC78YRnauIFUSNlYqZPWare209jhZbqNAPgAgF4vqnl4-SYXKRVn6e-VylA4GXoVCBYGRyHzL7pdqFhLj-rCFqQDiVZppiFkhn7YYAZgRrbUeJ8nKao2Kb81Ogz4Ib8Vca6wXglhBue0XhTGUh3a0eYYafj_r0SC-sYJ4FAQqdqe1nrJlRGA922Iw5HlDvQAA4kkBoloFQ0SIhxEitksKkFEHAMsygYJsRCsAJkMF9rFBQSdBUo8-jj3ujgAALCkLoj8hS2mkV0FIhYYAAHYFH2kfgJR4E4EKYLuB9GQHdwEEPoB3ahEk9IMKYSw4B7CQCcO4cg6C_CwSCIIMIh6toUiPw6NI6REjiowEfvIxRQpFHyPUdhOuWFtFEGUPlfR-CQ6EKwiY2h3F6EKkYcwhIrD5bBRsVwnY9iICOI0VhVxOAZEwBhhIoJlTqlCngbUmGoiwnlwWIjPsiMCBRMIAAdUKC2K6VxOl-z2sQoZW1qJXxochOhE5hkZMsWwjYwzcm2IKbwhxyyJnpz6MMsp2AOgAA5gk1PtBUjoXiYCiK6C0l-pcCACRdEAA
+	⚠ 请注意，该图表不是 Apache ECharts 官方示例，而是由用户代码生成的。请注意鉴别其内容。
+-->
+<!DOCTYPE html>
+<html lang="zh-CN" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/china.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'svg',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    const posList = [
+  'left',
+  'right',
+  'top',
+  'bottom',
+  'inside',
+  'insideTop',
+  'insideLeft',
+  'insideRight',
+  'insideBottom',
+  'insideTopLeft',
+  'insideTopRight',
+  'insideBottomLeft',
+  'insideBottomRight'
+];
+app.configParameters = {
+  rotate: {
+    min: -90,
+    max: 90
+  },
+  align: {
+    options: {
+      left: 'left',
+      center: 'center',
+      right: 'right'
+    }
+  },
+  verticalAlign: {
+    options: {
+      top: 'top',
+      middle: 'middle',
+      bottom: 'bottom'
+    }
+  },
+  position: {
+    options: posList.reduce(function (map, pos) {
+      map[pos] = pos;
+      return map;
+    }, {})
+  },
+  distance: {
+    min: 0,
+    max: 100
+  }
+};
+app.config = {
+  rotate: 90,
+  align: 'left',
+  verticalAlign: 'middle',
+  position: 'insideBottom',
+  distance: 15,
+  onChange: function () {
+    const labelOption = {
+      rotate: app.config.rotate,
+      align: app.config.align,
+      verticalAlign: app.config.verticalAlign,
+      position: app.config.position,
+      distance: app.config.distance,
+    };
+    myChart.setOption({
+      series: [
+        {
+          label: labelOption
+        },
+        {
+          label: labelOption
+        },
+        {
+          label: labelOption
+        },
+        {
+          label: labelOption
+        }
+      ]
+    });
+  }
+};
+const labelOption = {
+  show: true,
+  position: app.config.position,
+  distance: app.config.distance,
+  align: app.config.align,
+  verticalAlign: app.config.verticalAlign,
+  rotate: app.config.rotate,
+  formatter: '{c}  {name|{a}}',
+  fontSize: 16,
+  fontStyle: "bold",
+  rich: {
+    name: {}
+  }
+};
+option = {
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      // type: 'shadow'
+    }
+  },
+  legend: {
+    data: ['write', 'read', 'size'],
+    textStyle: {  
+            fontSize: 20 // 设置图例标记的字体大小  
+        },  
+  },
+  toolbox: {
+    show: true,
+    orient: 'vertical',
+    left: 'right',
+    top: 'center',
+    feature: {
+      mark: { show: true },
+      dataView: { show: true, readOnly: false },
+      magicType: { show: true, type: ['line', 'bar', 'stack'] },
+      restore: { show: true },
+      saveAsImage: { show: true }
+    }
+  },
+  xAxis: [
+    {
+      type: 'category',
+      axisTick: { show: false },
+      data: ['csv', 'csv (gz)', 'csv (zip)', 'hdf5', 'feather'],
+      axisLabel: {  
+            fontSize: 23 // 设置字体大小  
+        }  
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      max: 12,
+    }
+  ],
+  series: [
+    {
+      name: 'write',
+      type: 'bar',
+      barGap: 0,
+      label: labelOption,
+      emphasis: {
+        focus: 'series'
+      },
+      data: [4.03, 1, 10.5, 75, 103]
+    },
+    {
+      name: 'read',
+      type: 'bar',
+      label: labelOption,
+      emphasis: {
+        focus: 'series'
+      },
+      data: [1.39, 1, 1.06, 3.57, 7.5]
+    },
+    {
+      name: 'size',
+      type: 'bar',
+      label: labelOption,
+      emphasis: {
+        focus: 'series'
+      },
+      data: [1, 2.07, 2.07, 2, 2.24]
+    },
+    // {
+    //   name: 'Wetland',
+    //   type: 'bar',
+    //   label: labelOption,
+    //   emphasis: {
+    //     focus: 'series'
+    //   },
+    //   data: [98, 77, 101, 99, 40]
+    // }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>

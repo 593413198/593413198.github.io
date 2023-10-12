@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2023-10-07T15:15:40.007Z</updated>
+  <updated>2023-10-12T16:17:39.098Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>csv, hdf5, feather 三种数据性能对比</title>
+    <link href="http://luhao.wiki/posts/2S12DS/"/>
+    <id>http://luhao.wiki/posts/2S12DS/</id>
+    <published>2023-10-12T14:06:39.000Z</published>
+    <updated>2023-10-12T16:17:39.098Z</updated>
+    
+    <content type="html"><![CDATA[<p>用于量化金融数据，分析读、写、磁盘、内存性能<span id="more"></span></p><div class="admonition note"><p class="admonition-title">导读</p><ul><li><a href="/posts/quant-data/">这篇blog</a> 介绍了金融相关的数据特性，它对于读写和存储性能有极高要求</li><li>本篇blog 会结合跑测数据，分析三种格式的性能</li></ul></div><h2 id="测试结论">测试结论</h2><p>结论放在最前面，测试数据见 <a href="#%E6%80%A7%E8%83%BD%E6%B1%87%E6%80%BB">文末</a></p><ul><li>数据量小，无脑使用 csv</li><li>数据量大，如果坚持 csv，请使用 <strong>zip</strong> 参数压缩（尽管这会降低读写速率）</li><li>百M级别以上数据，推荐使用 hdf5（而不是feather）<ul><li>性能强于 csv，<strong>读写快5~10倍</strong></li><li>hdf5 对于 Python/C++ 的API支持较好</li><li>feather 虽然性能更强，但限制更多 TODO</li></ul></li></ul><h2 id="基本介绍">基本介绍</h2><h3 id="csv"><a href="https://en.wikipedia.org/wiki/Comma-separated_values">csv</a></h3><p><code>csv</code> 全称是 <code>Comma-separated values</code>，<strong>即以逗号分隔的纯文本格式</strong>，常用后缀是 <code>*.csv</code>。<br>正因为其纯文本的性质，常见的编辑器（或者excel）都可以预览csv文件，所以它的优点是 <strong>简单直观</strong>。<br>然而事物都具有两面性，就像 <code>json</code> 存储格式，直观的代价往往是性能的损失。</p><h3 id="hdf5"><a href="https://en.wikipedia.org/wiki/Hierarchical_Data_Format">hdf5</a></h3><p>全称是 <code>Hierarchical Data Format version 5</code>，<strong>即高度层次化的二进制格式</strong>，常用后缀是 <code>*.h5</code>。<br>hdf5格式从设计之初，就是服务于大型数据。</p><h3 id="feather"><a href="https://arrow.apache.org/docs/python/feather.html">feather</a></h3><p>feather 是一种用于存储数据的 <strong>快速地、轻量级的二进制格式</strong>，常用后缀是 <code>*.fea</code>。<br>它早起就是为 Python(Pandas) 和 R 这两种编程语言所设计的。<br>目前广泛使用的其实是 feather v2 版本，它区别于早期的 v1 版本，这个不用过多了解。</p><h2 id="测试标准">测试标准</h2><p>主要从四个维度测量性能：</p><ul><li>1.写入速度</li><li>2.读取速度</li><li>3.磁盘大小</li><li>4.读取内存 (TODO)</li></ul><p>同时考虑到金融数据的存储格式，大多是 <code>int64</code>、<code>float64</code> 和 <code>timestamp</code>，因此也会分别考量 在这三种格式下的性能表现。</p><h3 id="压缩性">压缩性</h3><p>因为写入的csv文件较大，所以考虑 csv 结合各种压缩算法测试（压缩本质是牺牲性能、换取空间）。<br><code>df.to_csv('', compression)</code> 可以传入 <code>zip</code>、<code>gz</code>、<s><code>bz2</code></s> 等等参数。</p><h3 id="benchmark">benchmark</h3><p>使用 800w x 10 的DataFrame数据，取值范围是 0 ~ 16亿，格式是 <code>np.int64</code></p><pre><code class="language-csv">0                d0                d1                d2                d3                d4                d5                d6                d70  5680658661046001  6886564689964211   777947290120004  6223515736992396  2823728071993317  8416657213663291  3500805963228465  10097481526053971  8952870328278778   306015862731108  9726241400443289  4237512935832667  2875425479333067  6311517969042662   878720088161354  87871182730650332  6858523177136352  1733196075769152   840572662722070  8438133907754012  6671944540650125  1147224095855703  1583106816125259  27980685687731413  2940819554234759  3142545317839947  4641209159206074  8194125756197731  4958881218032026  4405637321734842   500692399773906  35316179424621364  8149680042981168  6793238579260437  3891639455885689  3690167863144449  7552248224604567  6411717840330018  9556078695826276  4851668202438122......[8000000 rows x 9 columns]</code></pre><h2 id="1-写入速度">1. 写入速度</h2><p>注意：因为 追加、覆盖 等模式会影响性能，所以重复测试前，记得删除已写入的数据。</p><table><thead><tr><th style="text-align:center">format</th><th style="text-align:center">write time (s)</th></tr></thead><tbody><tr><td style="text-align:center">csv</td><td style="text-align:center">33.5</td></tr><tr><td style="text-align:center">csv (gz)</td><td style="text-align:center">135</td></tr><tr><td style="text-align:center">csv (zip)</td><td style="text-align:center">128</td></tr><tr><td style="text-align:center">hdf5</td><td style="text-align:center">1.8</td></tr><tr><td style="text-align:center">feather 👍</td><td style="text-align:center">1.3</td></tr></tbody></table><h2 id="2-读取速度">2. 读取速度</h2><p>测试接口，全部选择 <code>pandas read_***</code> 系列，会全部转化为 DataFrame 格式。</p><table><thead><tr><th style="text-align:center">format</th><th style="text-align:center">read time (s)</th></tr></thead><tbody><tr><td style="text-align:center">csv</td><td style="text-align:center">10.8</td></tr><tr><td style="text-align:center">csv (gz)</td><td style="text-align:center">15.0</td></tr><tr><td style="text-align:center">csv (zip)</td><td style="text-align:center">14.1</td></tr><tr><td style="text-align:center">hdf5</td><td style="text-align:center">4.2</td></tr><tr><td style="text-align:center">feather 👍</td><td style="text-align:center">2.0</td></tr></tbody></table><h2 id="3-磁盘大小">3. 磁盘大小</h2><table><thead><tr><th style="text-align:center">format</th><th style="text-align:center">file size (GB)</th></tr></thead><tbody><tr><td style="text-align:center">csv</td><td style="text-align:center">1.10</td></tr><tr><td style="text-align:center">csv (gz)</td><td style="text-align:center">0.53 (48%)</td></tr><tr><td style="text-align:center">csv (zip)</td><td style="text-align:center">0.53 (48%)</td></tr><tr><td style="text-align:center">hdf5</td><td style="text-align:center">0.55 (50%)</td></tr><tr><td style="text-align:center">feather 👍</td><td style="text-align:center">0.49 (44%)</td></tr></tbody></table><h2 id="性能汇总">性能汇总</h2><ul><li>以下统计的是 <strong>相对得分</strong>，数值越高说明性能越好</li></ul><iframe src="/html/data-perf-echart.html" 替换这里的html="" height="600" width="100%" 修改高度即可="" frameborder="0" scrolling="yes"> 支持滚动条</iframe>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;用于量化金融数据，分析读、写、磁盘、内存性能&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="量化交易" scheme="http://luhao.wiki/categories/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/"/>
+    
+    <category term="量化交易" scheme="http://luhao.wiki/categories/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/"/>
+    
+    
+    <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
+    
+    <category term="Python" scheme="http://luhao.wiki/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>【量化】爬虫获取东财数据</title>
@@ -491,43 +516,6 @@
     
     <category term="个人日志" scheme="http://luhao.wiki/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/"/>
     
-    
-    <category term="vim" scheme="http://luhao.wiki/tags/vim/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Google评分卡💯及自评</title>
-    <link href="http://luhao.wiki/posts/grade/"/>
-    <id>http://luhao.wiki/posts/grade/</id>
-    <published>2023-06-27T16:40:51.000Z</published>
-    <updated>2023-08-16T17:08:18.021Z</updated>
-    
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">导读</p><ul><li>Google将技术能力划分为 0~11 的等级</li><li>自我评估技术，判断下一步需要作出的努力</li></ul></div><h2 id="↓-Self-Evaluation">↓ Self-Evaluation</h2><table><thead><tr><th style="text-align:left">↓ 基础要求</th><th style="text-align:center">grade</th></tr></thead><tbody><tr><td style="text-align:left">熟悉数据结构与算法</td><td style="text-align:center">2</td></tr><tr><td style="text-align:left">熟练使用 C++11</td><td style="text-align:center">3</td></tr><tr><td style="text-align:left">熟悉并掌握 C++高级特性 (14/17/20)</td><td style="text-align:center">1</td></tr><tr><td style="text-align:left">熟练使用 Python 等脚本语言</td><td style="text-align:center">4</td></tr><tr><td style="text-align:left">熟悉batch、Shell、Linux常见指令</td><td style="text-align:center">1</td></tr><tr><td style="text-align:left">熟悉MySQL等数据库的设计、优化</td><td style="text-align:center">0</td></tr><tr><td style="text-align:left">熟悉编译原理、编译优化</td><td style="text-align:center">1</td></tr><tr><td style="text-align:left">熟悉 vscode、sublime、vim 等IDE、Editor</td><td style="text-align:center">5</td></tr><tr><td style="text-align:left">熟悉 Jenkins、TeamCity 等 CI&amp;CD 平台</td><td style="text-align:center">2</td></tr><tr><td style="text-align:left">熟悉 ChatGPT、CodeMaker 等 AI工具</td><td style="text-align:center">1</td></tr><tr><td style="text-align:left">熟悉Linux内核，如进程管理、内存管理、文件系统等</td><td style="text-align:center">1</td></tr><tr><td style="text-align:left">熟悉网络协议和网络编程，熟悉websocket、HTTP、socket、TCP/IP等</td><td style="text-align:center">1</td></tr><tr><td style="text-align:left">↓ <strong>C/C++领域</strong></td><td style="text-align:center"></td></tr><tr><td style="text-align:left">内存管理、内存分配、ASan原理、内存错误及排查</td><td style="text-align:center">1</td></tr><tr><td style="text-align:left">模板、SFINAE、type traits、metaprogramming</td><td style="text-align:center">1</td></tr><tr><td style="text-align:left">并发、memory order、同步、互斥、boost::asio</td><td style="text-align:center">0</td></tr><tr><td style="text-align:left">编译优化、SIMD、ISPC、CPU性能分析</td><td style="text-align:center">0</td></tr><tr><td style="text-align:left">C++编码规范</td><td style="text-align:center">2</td></tr><tr><td style="text-align:left">↓ <strong>Python2/3领域</strong></td><td style="text-align:center"></td></tr><tr><td style="text-align:left">Todo</td><td style="text-align:center"></td></tr><tr><td style="text-align:left">↓ <strong>工具/pipline领域</strong></td><td style="text-align:center"></td></tr><tr><td style="text-align:left">Jenkins 日常工作使用，无阻碍</td><td style="text-align:center">3</td></tr><tr><td style="text-align:left">VSCode 日常开发使用、多个插件开发经验</td><td style="text-align:center">5</td></tr><tr><td style="text-align:left">Vim 熟练使用、vimrc配置</td><td style="text-align:center">4</td></tr><tr><td style="text-align:left">Git 基本的GUI、CMD操作</td><td style="text-align:center">2 ~ 3</td></tr><tr><td style="text-align:left">↓ <strong>加分项</strong></td><td style="text-align:center"></td></tr><tr><td style="text-align:left">具备内存优化经验、熟悉linux内存分配</td><td style="text-align:center">1</td></tr><tr><td style="text-align:left">熟悉GPU使用，或有底层基础库（CUDA，mkl、openblas等）优化经验</td><td style="text-align:center">0 ~ 1</td></tr><tr><td style="text-align:left">良好的系统设计能力，如 performance、reliability、availability 多维度考量程序</td><td style="text-align:center">2</td></tr><tr><td style="text-align:left">熟悉机器学习平台相关工具，比如k8s，kubeflow，mlflow，automl等</td><td style="text-align:center">0</td></tr><tr><td style="text-align:left">有视频解码和渲染开发经验者优先</td><td style="text-align:center">2</td></tr><tr><td style="text-align:left">有存储系统、分布式系统等底层开发经验</td><td style="text-align:center">0</td></tr></tbody></table><br>## ↓ Google-Standards<table><thead><tr><th style="text-align:center">等级</th><th style="text-align:left">标准</th></tr></thead><tbody><tr><td style="text-align:center">0</td><td style="text-align:left">You are unfamiliar with the subject area</td></tr><tr><td style="text-align:center"></td><td style="text-align:left">一窍不通</td></tr><tr><td style="text-align:center">1</td><td style="text-align:left">You can read/understand the most fundamental aspects of the subject area</td></tr><tr><td style="text-align:center"></td><td style="text-align:left">理解基本概念</td></tr><tr><td style="text-align:center">2</td><td style="text-align:left">Ability to implement small changes,understand basic principles and able to figure out additional details with minimal help</td></tr><tr><td style="text-align:center"></td><td style="text-align:left">能够实现一些小改动，在别人帮助下钻研更多细节</td></tr><tr><td style="text-align:center">3</td><td style="text-align:left">Basic proficiency in a subject area without relying on help</td></tr><tr><td style="text-align:center"></td><td style="text-align:left">基本掌握和熟练使用</td></tr><tr><td style="text-align:center">4</td><td style="text-align:left">You are comfortable with the subject area and all routine work on it</td></tr><tr><td style="text-align:center"></td><td style="text-align:left">足够精通，足够应对所有日常工作</td></tr><tr><td style="text-align:center">5</td><td style="text-align:left">An even lower degree of reliance on reference materials. Deeper skills in a field or specific technology in the subject area.</td></tr><tr><td style="text-align:center"></td><td style="text-align:left">深耕某个细分领域</td></tr><tr><td style="text-align:center">6</td><td style="text-align:left">Ability to develop large programs and systems from scratch</td></tr><tr><td style="text-align:center"></td><td style="text-align:left">独立开发大型系统</td></tr><tr><td style="text-align:center">7~10</td><td style="text-align:left">脚踏实地慢慢来吧…</td></tr></tbody></table>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;导读
-&lt;/p&gt;&lt;ul&gt;
-&lt;li&gt;Google将技术能力划分为 0~11 的等级&lt;/li&gt;
-&lt;li&gt;自我评估技术，判断下一步需要作出的努力&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/d</summary>
-      
-    
-    
-    
-    <category term="个人日志" scheme="http://luhao.wiki/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/"/>
-    
-    <category term="个人日志" scheme="http://luhao.wiki/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/"/>
-    
-    
-    <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
-    
-    <category term="Python" scheme="http://luhao.wiki/tags/Python/"/>
-    
-    <category term="linux" scheme="http://luhao.wiki/tags/linux/"/>
     
     <category term="vim" scheme="http://luhao.wiki/tags/vim/"/>
     
