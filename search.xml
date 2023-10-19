@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>【SIGGRAPH23】Large Scale Terrain Rendering in Call of Duty</title>
+      <link href="/posts/2JP3GCC/"/>
+      <url>/posts/2JP3GCC/</url>
+      
+        <content type="html"><![CDATA[<p><img src="/images/siggraph23-cod-ppt-demo.png" alt=""></p><div class="admonition note"><p class="admonition-title">导读</p><ul><li>这篇 SIGGRAPH 主要描述 COD 中的大规模地形渲染，并大量引用了之前GDC的技术分享</li><li>NETEASE WARNING: 已脱敏、与工作无关</li></ul></div><h3 id="技术参考">技术参考</h3><ul><li><a href="https://advances.realtimerendering.com/s2023/index.html#CODTerrain">SIGGRAPH 2023: Large Scale Terrain Rendering in Call of Duty</a></li><li><a href="https://research.activision.com/publications/2021/09/boots-on-the-ground--the-terrain-of-call-of-duty">GDC 2021: The Terrain of CoD</a></li><li><a href="https://www.gdcvault.com/play/1025480/Terrain-Rendering-in-Far-Cry">GDC 2018: Terrain Rendering in Far Cry 5</a></li><li><a href="https://www.gdcvault.com/play/1021761/Adaptive-Virtual-Texture-Rendering-in">GDC 2015: Adaptive Virtual Texture Rendering in Far Cry 4</a></li></ul><h3 id="大纲">大纲</h3><ul><li><a href="#Why-New-Terrain">Why New Terrain</a></li><li><a href="#Render-Process">Render Process</a></li><li>Virtual Texture</li><li>Color Remap</li><li>Displacement Decal</li><li>Cliff Shading</li><li>Stiching Fix</li><li>Summary</li></ul><h3 id="Why-New-Terrain">Why New Terrain</h3><p>作者阐述，之所需要开发新的地形系统，是因为传统的地形系统无法满足 现有的游戏需求（即策划不满意）。而传统地形主要有如下两个特征：</p><ol><li>地形范围小（如室内地面装饰）</li><li>依赖手动编辑（如魔兽争霸地图）</li></ol><p>作为对比，新的地形系统提出如下三个要求和挑战：</p><ol><li>Lerge-Scale（水平 + 垂直两个维度）   -&gt; 解决性能问题 runtime</li><li>画面多样性、细节保证                 -&gt; 解决表现问题 bugfix, tradeoff</li><li>依赖程序化生产                       -&gt; 解决工具问题 PCG</li></ol><p><img src="/images/siggraph23-cod-new-terrain.png" alt=""></p><h3 id="Render-Process">Render Process</h3><p>作者展示如何在forward管线下绘制一个朴素的地形：</p><ul><li><p>VS Input</p></li><li><p>VS Offset</p></li><li><p>PS Shading</p></li></ul><p><font color="#FF1E10"><strong>TODO</strong></font></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Graphics </category>
+          
+          <category> Graphics </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>csv, hdf5, feather 三种数据性能对比</title>
       <link href="/posts/data-perf/"/>
       <url>/posts/data-perf/</url>
