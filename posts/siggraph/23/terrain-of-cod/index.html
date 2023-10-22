@@ -18,12 +18,12 @@
   
   
   <title>【SIGGRAPH23】Large Scale Terrain Rendering in Call of Duty | Luhao&#39;s Blog</title>
-  <meta name="description" content="预期 10月 完成">
+  <meta name="description" content="导读  这篇 SIGGRAPH 主要描述 COD 中的大规模地形渲染，并大量引用了之前GDC的技术分享 NETEASE WARNING: 已脱敏、与工作无关   技术参考  SIGGRAPH 2023: Large Scale Terrain Rendering in Call of Duty GDC 2021: The Terrain of CoD GDC 2018: Terrain Rend">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【SIGGRAPH23】Large Scale Terrain Rendering in Call of Duty">
 <meta property="og:url" content="http://luhao.wiki/posts/siggraph/23/terrain-of-cod/index.html">
 <meta property="og:site_name" content="Luhao&#39;s Blog">
-<meta property="og:description" content="预期 10月 完成">
+<meta property="og:description" content="导读  这篇 SIGGRAPH 主要描述 COD 中的大规模地形渲染，并大量引用了之前GDC的技术分享 NETEASE WARNING: 已脱敏、与工作无关   技术参考  SIGGRAPH 2023: Large Scale Terrain Rendering in Call of Duty GDC 2021: The Terrain of CoD GDC 2018: Terrain Rend">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://luhao.wiki/images/siggraph23-cod-ppt-demo.png">
 <meta property="og:image" content="http://luhao.wiki/images/siggraph23-cod-new-terrain.png">
@@ -33,8 +33,19 @@
 <meta property="og:image" content="http://luhao.wiki/images/siggraph23-cod-quard-tree.png">
 <meta property="og:image" content="http://luhao.wiki/images/siggraph23-cod-vt.png">
 <meta property="og:image" content="http://luhao.wiki/images/siggraph23-cod-avt.png">
+<meta property="og:image" content="http://luhao.wiki/images/siggraph23-cod-cliff-bug.png">
+<meta property="og:image" content="http://luhao.wiki/images/siggraph23-cod-cliff-xy.png">
+<meta property="og:image" content="http://luhao.wiki/images/siggraph23-cod-cliff-triplanar.png">
+<meta property="og:image" content="http://luhao.wiki/images/siggraph23-cod-cliff-shader.png">
+<meta property="og:image" content="http://luhao.wiki/images/siggraph23-cod-cliff-tiling.png">
+<meta property="og:image" content="http://luhao.wiki/images/siggraph23-cod-cliff-random.png">
+<meta property="og:image" content="http://luhao.wiki/images/siggraph23-cod-cliff-improve.png">
+<meta property="og:image" content="http://luhao.wiki/images/siggraph23-cod-stiching-1.png">
+<meta property="og:image" content="http://luhao.wiki/images/siggraph23-cod-stiching-2.png">
+<meta property="og:image" content="http://luhao.wiki/images/siggraph23-cod-stiching-3.png">
+<meta property="og:image" content="http://luhao.wiki/images/siggraph23-cod-stiching-4.png">
 <meta property="article:published_time" content="2023-10-19T16:55:34.000Z">
-<meta property="article:modified_time" content="2023-10-22T12:04:09.175Z">
+<meta property="article:modified_time" content="2023-10-22T13:58:12.368Z">
 <meta property="article:author" content="Luhao">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://luhao.wiki/images/siggraph23-cod-ppt-demo.png">
@@ -187,7 +198,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E5%8F%82%E8%80%83"><span class="toc-number">1.</span> <span class="toc-text">技术参考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E7%BA%B2"><span class="toc-number">2.</span> <span class="toc-text">大纲</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-New-Terrain"><span class="toc-number"></span> <span class="toc-text">Why New Terrain</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Render-Process"><span class="toc-number"></span> <span class="toc-text">Render Process</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Virtual-Texture"><span class="toc-number"></span> <span class="toc-text">Virtual Texture</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Adaptive-Virtual-Texture"><span class="toc-number">1.</span> <span class="toc-text">Adaptive Virtual Texture</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E5%8F%82%E8%80%83"><span class="toc-number">1.</span> <span class="toc-text">技术参考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E7%BA%B2"><span class="toc-number">2.</span> <span class="toc-text">大纲</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-New-Terrain"><span class="toc-number"></span> <span class="toc-text">Why New Terrain</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Render-Process"><span class="toc-number"></span> <span class="toc-text">Render Process</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Virtual-Texture"><span class="toc-number"></span> <span class="toc-text">Virtual Texture</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Adaptive-Virtual-Texture"><span class="toc-number">1.</span> <span class="toc-text">Adaptive Virtual Texture</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cliff-Shading"><span class="toc-number"></span> <span class="toc-text">Cliff Shading</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0"><span class="toc-number">1.</span> <span class="toc-text">原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tri-Planar-Mapping"><span class="toc-number">2.</span> <span class="toc-text">Tri-Planar Mapping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stiching-Fix"><span class="toc-number"></span> <span class="toc-text">Stiching Fix</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-LOD%E4%B9%8B%E9%97%B4%E7%BC%9D%E9%9A%99"><span class="toc-number">1.</span> <span class="toc-text">1. LOD之间缝隙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%8E%E6%A0%91%E6%9C%A8%E3%80%81%E7%9F%B3%E5%A4%B4%E4%B9%8B%E9%97%B4%E7%9A%84%E7%BC%9D%E9%9A%99"><span class="toc-number">2.</span> <span class="toc-text">2. 与树木、石头之间的缝隙</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E3%80%81%E5%B1%95%E6%9C%9B"><span class="toc-number"></span> <span class="toc-text">总结、展望</span></a>
     </nav>
   </div>
 </aside>
@@ -232,8 +243,7 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>预期 10月 完成<span id="more"></span></p>
-<p><img src="/images/siggraph23-cod-ppt-demo.png" alt=""></p>
+        <p><img src="/images/siggraph23-cod-ppt-demo.png" alt=""></p>
 <div class="admonition note"><p class="admonition-title">导读
 </p><ul>
 <li>这篇 SIGGRAPH 主要描述 COD 中的大规模地形渲染，并大量引用了之前GDC的技术分享</li>
@@ -251,12 +261,15 @@
 <ul>
 <li><a href="#Why-New-Terrain">Why New Terrain</a></li>
 <li><a href="#Render-Process">Render Process</a></li>
-<li><a href="#Virtual-Texture">Virtual Texture</a></li>
-<li>Color Remap</li>
+<li><a href="#Virtual-Texture">Virtual Texture (GDC-15)</a></li>
+<li><a href="#Color-Remap">Color Remap</a></li>
+<li><a href="#Cliff-Shading">Cliff Shading (GDC-18)</a></li>
+<li><a href="#Stiching-Fix">Stiching Fix</a></li>
+</ul>
+<p>TODO:</p>
+<ul>
 <li>Displacement Decal</li>
-<li>Cliff Shading</li>
-<li>Stiching Fix</li>
-<li>Summary</li>
+<li>One Material Per Vertex (OMPV)</li>
 </ul>
 <h2 id="Why-New-Terrain">Why New Terrain</h2>
 <p>作者阐述，之所需要开发新的地形系统，是因为传统的地形系统无法满足 现有的游戏需求（即策划不满意）。而传统地形主要有如下两个特征：</p>
@@ -313,7 +326,67 @@ Pixel Shader 阶段采样各种 Diffuse、Normal 贴图进行着色计算，为�
 <p>VT 技术有一个非常明显的缺陷：<strong>不论 Chunk 距离相机远近如何，但在 VT 中的像素比重却相同</strong>。</p>
 <p>基于这点，AVT 提出了一种基于相机距离的 VT优化技术。其中红色框表示距离相机较近的 Chunk（像素也较高即 64k x 64k），而绿色框距离相机较远（像素分辨率也很低 16k x 16k）</p>
 <p><img src="/images/siggraph23-cod-avt.png" alt=""></p>
-<p><font color="#FF1E10"><strong>TODO</strong></font></p>
+<h2 id="Cliff-Shading">Cliff Shading</h2>
+<p>COD游戏中有大量山坡和悬崖的渲染（参考PUBG），因此开发人员在 GDC-18 中花费大量笔墨讲述了 <code>Cliff Shading</code>，Cliff又翻译成 <strong>悬崖、峭壁</strong>。</p>
+<p>先看看 Cliff Shading 首要解决的是什么问题，当 Chunk 的贴图使用在平坦地面时，表现是完美。但因为山坡峭壁的y轴是非常陡峭的，因此会出现严重的拉伸 tiling 现象：</p>
+<p><img src="/images/siggraph23-cod-cliff-bug.png" alt=""></p>
+<h3 id="原因">原因</h3>
+<p>将世界坐标 (x, y, z) 映射到 贴图空间 (u, v)，首先考虑如下几种朴素的方式（即选取任意两个轴采样）：<br>
+<img src="/images/siggraph23-cod-cliff-xy.png" alt=""></p>
+<p>因为丢失了某一个维度的信息，因此效果是不尽满意的。</p>
+<h3 id="Tri-Planar-Mapping">Tri-Planar Mapping</h3>
+<p>COD团队首先尝试了业界著名的 Tri-Planar Mapping 方案，即分别从 x, y, z 三个方向投影得到映射效果，然后根据法线与三个轴的夹角关系，将三个结果作融合得到最终的效果：</p>
+<p><img src="/images/siggraph23-cod-cliff-triplanar.png" alt=""></p>
+<p><img src="/images/siggraph23-cod-cliff-shader.png" alt=""></p>
+<p>关于 <code>Tri-Planar Mapping</code> 参考阅读：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://catlikecoding.com/unity/tutorials/advanced-rendering/triplanar-mapping/">Triplanar Mapping</a></li>
+<li><a target="_blank" rel="noopener" href="https://gamedevelopment.tutsplus.com/use-tri-planar-texture-mapping-for-better-terrain--gamedev-13821a">Use Tri-Planar Texture Mapping for Better Terrain</a></li>
+</ul>
+<h3 id="问题">问题</h3>
+<p>采用 <code>Tri-Planar Mapping</code> 方案后有明显的两个问题：</p>
+<ol>
+<li>性能非常差（采样数 x3)</li>
+<li>远处 Texture Tiling 非常严重<br>
+<img src="/images/siggraph23-cod-cliff-tiling.png" alt=""></li>
+</ol>
+<p>性能问题先不考虑（因为是PC端游戏），开发团队后面主要描述如何解决山坡上的Tiling问题。<br>
+关于如何消除重复，最简单的方案就是<strong>引入随机数</strong>，这里采用了 Nividia 发表的一篇论文中的噪声函数，最终的做法是将 正常的Blending值 + 噪声值，</p>
+<p><img src="/images/siggraph23-cod-cliff-random.png" alt=""></p>
+<p>观察黑色框中放大的部分，可以看到明显的噪声值，但是整体的效果反而更好的。引用GDC中非常经典的一句话：<strong>“单个像素是错误的，但是放到整体（平均下来）又是正确的”</strong></p>
+<p><img src="/images/siggraph23-cod-cliff-improve.png" alt=""></p>
+<h2 id="Stiching-Fix">Stiching Fix</h2>
+<p>新的地形系统采用将不同 Chunk 拼接渲染的方式，那么是否会导致渲染的缝隙、不连贯呢?<br>
+答案是：会的。</p>
+<p><code>Stiching Fix</code> 重点讲述了COD如何修复地形渲染的一些缝隙，而 <code>Stiching</code> 的中文翻译便是缝隙。</p>
+<h3 id="1-LOD之间缝隙">1. LOD之间缝隙</h3>
+<p>如下图，不同LOD层级之间的 mesh data 差异较大，会出现同一个顶点在两边的信息不共享，这在渲染时会出现明显的错误。<strong>（具体是什么错误?）</strong><br>
+<img src="/images/siggraph23-cod-stiching-1.png" alt=""></p>
+<p>修复的方式比较朴素，即 <strong>将边缘的顶点，移动到另一个lod最近的顶点</strong></p>
+<ul>
+<li>
+<p>跨一层LOD的情形<br>
+<img src="/images/siggraph23-cod-stiching-2.png" alt=""></p>
+</li>
+<li>
+<p>跨两层LOD的情形<br>
+<img src="/images/siggraph23-cod-stiching-3.png" alt=""></p>
+</li>
+</ul>
+<h3 id="2-与树木、石头之间的缝隙">2. 与树木、石头之间的缝隙</h3>
+<p>主要是做一个贴地处理，即根据 Chunk HeightMap 的高度信息，对树木、石头的高度在 Vertex Shader 中做一个高度插值处理，从而实现将它们 <strong>贴在地表</strong></p>
+<p><img src="/images/siggraph23-cod-stiching-4.png" alt=""></p>
+<h2 id="总结、展望">总结、展望</h2>
+<ul>
+<li>地形系统主要细分两个方面：
+<ol>
+<li>卷细节: pcg, texture layers …</li>
+<li>卷性能: avt，gpu pipeline …</li>
+</ol>
+</li>
+<li>从 GDC 2015、2018、2021 再到 Siggraph 的集大成者，任何一项技术的发展都需要持续迭代、集思广益</li>
+<li>了解一个技术，和实现一个技术，两者相差 1~2 个数量级</li>
+</ul>
 
       
     </div>
