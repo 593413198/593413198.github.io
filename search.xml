@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>LaTeX教程（附模板）</title>
+      <link href="/posts/1XKVZC1/"/>
+      <url>/posts/1XKVZC1/</url>
+      
+        <content type="html"><![CDATA[<p>Latex 对于学术党的作用是写论文，对于工作党的作用，那便是写简历了！<br>github 上有非常多的优秀简历 latex 模板，可以自己去搜，改起来非常容易。<br>本文简要记录 <strong>Latex 的安装、开发和发布流程</strong>。<br>github resume: <a href="https://github.com/593413198/Resume">https://github.com/593413198/Resume</a></p><h3 id="安装">安装</h3><p>只讨论 Windows 环境下的安装使用，Linux 实在很难搞定中文字体（你都没好用的图形界面用个der的Latex啊…）</p><p>下载下面的安装包，直接一路点到底（就像你小时候装盗版单机游戏那样…）</p><ul><li><a href="https://www.tug.org/texlive/windows.html#install">latex easy install</a></li></ul><h3 id="开发">开发</h3><p>Latex 每次编辑，依赖于<strong>重新编译</strong>生成可视化文件（如pdf），这是非常影响开发效率的（对比markdown）。<br>聪明的 VSCode 爱好者没有错过这样的机会，勤劳的他们开发出一款 <code>LaTeX Workshop</code> 的插件，真正做到了 <strong>所见即所得</strong>。</p><ul><li><a href="https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop">LaTeX Workshop</a></li></ul><p>使用方式，在VSCode市场安装该插件后，将如下配置写入到 <code>setting.json</code>：</p><pre><code>{    "latex-workshop.synctex.afterBuild.enabled": true,    "latex-workshop.latex.autoBuild.run": "onSave",    "latex-workshop.view.pdf.viewer": "tab",}</code></pre><p>此时每次修改完 latex 文件，按下 <code>ctrl + s</code> 保存键后，VSCode会<strong>自动编译生成</strong>同名的pdf文件。<br>接着使用 <code>LaTeX Workshop: View LaTeX PDF file</code> 新开一个窗口预览 pdf 的实时修改即可！</p><h3 id="发布">发布</h3><ul><li><code>pdflatex ${filename}</code><br>其中 <code>$filename</code> 是 tex 的文件名（不需要输入后缀）</li></ul><h3 id="模板">模板</h3><p>附github上一些优秀的简历模板：</p><ul><li>中文简历：<a href="https://github.com/dyweb/awesome-resume-for-chinese">Awesome Resume for Chinese</a></li><li>英文简历：<a href="https://github.com/posquit0/Awesome-CV">Awesome-CV</a></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>LeetCode</title>
       <link href="/posts/leetcode/"/>
       <url>/posts/leetcode/</url>
