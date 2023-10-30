@@ -1052,7 +1052,7 @@
       <link href="/posts/A20MTJ/"/>
       <url>/posts/A20MTJ/</url>
       
-        <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><ul><li>工作中经常遇到一些阻碍开发流程的提交，希望通过 <code>UnitTest</code> 避免类似的commit</li><li>todo: Python unittest，关于自动化测试的方法，测试理论等</li><li>plan: 预期这周内完成，伴随一些工作的脚本开发</li></ul></div>]]></content>
+        <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">概要</p><ul><li>工作中经常遇到一些阻碍开发流程的提交，希望通过 <code>UnitTest</code> 避免类似的commit</li><li>todo: Python unittest，关于自动化测试的方法，测试理论等</li><li>plan: 预期这周内完成，伴随一些工作的脚本开发</li></ul></div><hr><p>TODO: 尝试学习 <code>pytest</code><br><a href="https://mp.weixin.qq.com/s/y9a1E7BW4e1Mki7oxAbiOQ">pytest, 一个神奇的Python库</a></p>]]></content>
       
       
       <categories>
