@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2023-11-03T16:02:59.509Z</updated>
+  <updated>2023-11-04T18:04:16.552Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【量化】OrderFlow 订单流策略研究</title>
+    <link href="http://luhao.wiki/posts/orderflow/"/>
+    <id>http://luhao.wiki/posts/orderflow/</id>
+    <published>2023-11-04T17:59:51.000Z</published>
+    <updated>2023-11-04T18:04:16.552Z</updated>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="c733ca1e473b5d261dcd58de1ee412caf5bf96b763a2c1941099c32234d48c68">b3dc07a81f6459d120ce338ccca55046a1921bf861d8229323be8f628e362c65</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;hbe hbe-container&quot; id=&quot;hexo-blog-encrypt&quot; data-wpm=&quot;Oh, this is an invalid password. Check and try again, please.&quot; data-whm=&quot;OOP</summary>
+      
+    
+    
+    
+    <category term="量化交易" scheme="http://luhao.wiki/categories/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/"/>
+    
+    <category term="量化交易" scheme="http://luhao.wiki/categories/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>日志：2023年11月</title>
@@ -65,11 +89,11 @@
   </entry>
   
   <entry>
-    <title>LaTeX教程（附模板）</title>
-    <link href="http://luhao.wiki/posts/1XKVZC1/"/>
-    <id>http://luhao.wiki/posts/1XKVZC1/</id>
+    <title>【工具】LaTeX教程（附模板）</title>
+    <link href="http://luhao.wiki/posts/2TXFVDF/"/>
+    <id>http://luhao.wiki/posts/2TXFVDF/</id>
     <published>2023-10-24T15:05:19.000Z</published>
-    <updated>2023-10-24T15:25:48.970Z</updated>
+    <updated>2023-11-04T18:03:22.240Z</updated>
     
     <content type="html"><![CDATA[<p>Latex 对于学术党的作用是写论文，对于工作党的作用，那便是写简历了！<br>github 上有非常多的优秀简历 latex 模板，可以自己去搜，改起来非常容易。<br>本文简要记录 <strong>Latex 的安装、开发和发布流程</strong>。<br>github resume: <a href="https://github.com/593413198/Resume">https://github.com/593413198/Resume</a></p><h3 id="安装">安装</h3><p>只讨论 Windows 环境下的安装使用，Linux 实在很难搞定中文字体（你都没好用的图形界面用个der的Latex啊…）</p><p>下载下面的安装包，直接一路点到底（就像你小时候装盗版单机游戏那样…）</p><ul><li><a href="https://www.tug.org/texlive/windows.html#install">latex easy install</a></li></ul><h3 id="开发">开发</h3><p>Latex 每次编辑，依赖于<strong>重新编译</strong>生成可视化文件（如pdf），这是非常影响开发效率的（对比markdown）。<br>聪明的 VSCode 爱好者没有错过这样的机会，勤劳的他们开发出一款 <code>LaTeX Workshop</code> 的插件，真正做到了 <strong>所见即所得</strong>。</p><ul><li><a href="https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop">LaTeX Workshop</a></li></ul><p>使用方式，在VSCode市场安装该插件后，将如下配置写入到 <code>setting.json</code>：</p><pre><code>{    "latex-workshop.synctex.afterBuild.enabled": true,    "latex-workshop.latex.autoBuild.run": "onSave",    "latex-workshop.view.pdf.viewer": "tab",}</code></pre><p>此时每次修改完 latex 文件，按下 <code>ctrl + s</code> 保存键后，VSCode会<strong>自动编译生成</strong>同名的pdf文件。<br>接着使用 <code>LaTeX Workshop: View LaTeX PDF file</code> 新开一个窗口预览 pdf 的实时修改即可！</p><h3 id="发布">发布</h3><ul><li><code>pdflatex ${filename}</code><br>其中 <code>$filename</code> 是 tex 的文件名（不需要输入后缀）</li></ul><h3 id="模板">模板</h3><p>附github上一些优秀的简历模板：</p><ul><li>中文简历：<a href="https://github.com/dyweb/awesome-resume-for-chinese">Awesome Resume for Chinese</a></li><li>英文简历：<a href="https://github.com/posquit0/Awesome-CV">Awesome-CV</a></li></ul>]]></content>
     
@@ -83,6 +107,10 @@ gi</summary>
       
     
     
+    
+    <category term="工具" scheme="http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="工具" scheme="http://luhao.wiki/categories/%E5%B7%A5%E5%85%B7/%E5%B7%A5%E5%85%B7/"/>
     
     
     <category term="linux" scheme="http://luhao.wiki/tags/linux/"/>
@@ -501,34 +529,6 @@ gi</summary>
     
     
     <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【vscode】vim定制化插件</title>
-    <link href="http://luhao.wiki/posts/vscode-vim/"/>
-    <id>http://luhao.wiki/posts/vscode-vim/</id>
-    <published>2023-07-23T12:04:39.000Z</published>
-    <updated>2023-07-29T18:41:03.599Z</updated>
-    
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">导读</p><ul><li><a href="https://github.com/VSCodeVim/Vim">VSCodeVim</a> 是仿照vim的vscode插件</li><li>本文在其基础上添加一些额外的个性化功能</li></ul></div><h3 id="VSCodeVim">VSCodeVim</h3><p>vscode vim主流插件有两款，分别是:</p><ul><li><a href="https://github.com/VSCodeVim/Vim">VSCodeVim</a>：仿vim的插件，功能不全</li><li><a href="https://github.com/vscode-neovim/vscode-neovim">VSCode Neovim</a>：基于Neovim，功能较全，但依赖nvim环境且配置复杂</li></ul><p>笔者一直使用前者，因此本文全部围绕 VSCodeVim展开。</p><h3 id="缺陷-😞">缺陷 😞</h3><p>VSCodeVim Github 拥有 1.5k 未处理的 Issues，作者的维护迭代速度非常慢，因此有很多缺陷和功能不足之处：</p><ul><li>不支持 vimscript function</li><li>不支持 vim bash</li><li><font color="#FF1E10"><strong>【bug】</strong></font>经常Esc失效，弹窗报错 <code>vim.Escape is undefined</code>… 需要重装插件</li></ul><h3 id="亮点-🎉">亮点 🎉</h3><p>打开 <code>"vim.statusBarColorControl": true</code>，可以使底部 <code>statusBar</code> 跟随 vim模式 而改变颜色。<br>本文希望进而改变 Cursor 和 当前行 的颜色、高亮显示，并支持 config 配置，效果图如下：</p><p><img src="/images/vim-mode-demo.png" alt=""></p><h3 id="改进-💡">改进 💡</h3><ul><li><p><strong>支持配置 StatusBar, Highlight 等颜色配置</strong></p></li><li><p><strong>支持区分 Normal, Insert, Visual 三种模式的颜色</strong></p></li><li><p>下载链接:<br><a href="https://github.com/593413198/Vim/releases/tag/vim-mode-1.0">https://github.com/593413198/Vim/releases/tag/vim-mode-1.0</a></p></li><li><p>配置文件:</p></li></ul><pre><code>    "vim.statusBarColorControl": true,    "vim.alpha": "80",    "vim.statusBarColors.visual": "#005f5f",    "vim.statusBarColors.insert": "#5f0000",</code></pre>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;导读
-&lt;/p&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/VSCodeVim/Vim&quot;&gt;VSCodeVim&lt;/a&gt; 是仿照vim的vsc</summary>
-      
-    
-    
-    
-    <category term="VSCode" scheme="http://luhao.wiki/categories/VSCode/"/>
-    
-    <category term="VSCode" scheme="http://luhao.wiki/categories/VSCode/VSCode/"/>
-    
-    
-    <category term="vim" scheme="http://luhao.wiki/tags/vim/"/>
     
   </entry>
   
