@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2023-11-01T18:08:04.945Z</updated>
+  <updated>2023-11-03T16:02:59.509Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://luhao.wiki/posts/2023/11/"/>
     <id>http://luhao.wiki/posts/2023/11/</id>
     <published>2023-11-01T18:05:53.000Z</published>
-    <updated>2023-11-01T18:08:04.945Z</updated>
+    <updated>2023-11-03T16:02:59.509Z</updated>
     
-    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="02257a56255849142d2e6a07df1c53a24362d0ee3e80aad46fd506a7d1805641">b3dc07a81f6459d120ce338ccca55046116de9af7135eccfa9c61a82756948fc27df5f571b11155db971b554ce89d23ed3c00e24fb7a9ec0157731a5df98b824f238ff88abbb62c13562f11630747d3011cbed05c44bac73f96dc99701ed662846741dfcbac7e90b8a0c88e53667dbe7603e61296150332a8d488caecc5190f3c230e07938659af7dde382912e9e7343c4ee8d8832352d3b5ee4b1ec669d6498515a3137126cb3026a0b55482b03184fa0630edfb34817f07fa0fa31834868880d19008ec746e94108072000ad76ba2cc53217f679b7d9479db64d411c4787c796cbebf63855080b7e5daa4a2d08d5a9baeb3a514bf5ea65d9dbd581920cc7d9e1c2fa9f1bb046ca1c55d8a6f1f52f1040cb7fa8dd787f15c5242dbd311fb6d399c3992be1503df000439c50492a0387ada72b5ebafc4089d9638355897350dd6c988d837c3f39b2f0f71bbe8def07c0</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="1cfe6d89cae142e5318c04dd6a322880da0de5587fa5f6ad034ef06c64711754">b3dc07a81f6459d120ce338ccca55046116de9af7135eccfa9c61a82756948fcbd4e843bbc35efe202732f6cadb7679987d6aed0421fd1ccab91de6abb1efd32be3d0a8414f1b626b7b4c21d0a6385e7ddc350a55930dbe37742d156b45489acc961bc8da3c1152e36c157852f22ce5ca3c3df6fb381643358df38b6302d7be5bb31c12f9b0e687c6b62013f3a79a580e2662a71b3fd6999d9255f0eef2aa7c6e8af087d196e94785af0e408d60e910f3d71e4c9bd4b3f97ab34036f820f62c4973ca1e37fc1b888ac459bfd03341a0fae39296b15275a8bbbdf5ecdbc35eaa3baa89f58312255b9cfbdd3cff78ada98a33cc7767eb031fe4055088746c95d8b28561981924242fa4b92ae606c28fb75a139e89bbe89b4190a561ea7b33f090e473030869a062da7782a2ff82ac6cc8dcdb7ed228c807628e400ad6c7a409403edd914d6dfcd02cf235f010736054368021c9dda0b6a99bab0a6effc49cf937eb7e05dc89093d673dc05cebe08ce644d93c9de35dae3a90fadcc0169671b7c13191d3dd6897b7809f3f86db5865d5f72299983f5a7bd011d7c7bee9785f752c93b975a14efbf453b19e695df23ed7d572589017372693cb1d884eaa9f7f4d358b7b5bc747f34cc7d8acb9948eaa0cfb9a7ec2ff5c3c9216bb006f9d9bddfd157320b98ac521cb173bd39f93b6bd74babb6386f4fa598373b3323e2794e691af260a44b75d3bc7e35f10d7d1e6695d8168b9464264258a40eafe8f4da1b5acc3e0c0aa1b9451cdc58ebf58622d4297b09d67cb4a690d67f42cb5feaacb44297bbf3ee8acc2ad5b7a9f173317eba08b57eacf672b310cff51bb7534281ca8d019a741fcb7b650c406fd135d866af3b91f81797e281291df3e1a2115fec4a4fc0c42e133303c93f9c92d8347dd27f993fbe</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
     
     
       
@@ -88,30 +88,6 @@ gi</summary>
     <category term="linux" scheme="http://luhao.wiki/tags/linux/"/>
     
     <category term="markdown" scheme="http://luhao.wiki/tags/markdown/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode</title>
-    <link href="http://luhao.wiki/posts/leetcode/"/>
-    <id>http://luhao.wiki/posts/leetcode/</id>
-    <published>2023-10-19T17:31:47.000Z</published>
-    <updated>2023-10-19T17:33:16.730Z</updated>
-    
-    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="52809598307c9d2d069360126ba1bfd3cd94bdee5ad874e6ba75288f4262f7d7">9f2b9e3585d2f45282fcbae6e5d2f979e1fcebfc392f5685d7a100c522052fdd</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;hbe hbe-container&quot; id=&quot;hexo-blog-encrypt&quot; data-wpm=&quot;Oh, this is an invalid password. Check and try again, please.&quot; data-whm=&quot;OOP</summary>
-      
-    
-    
-    
-    <category term="Algorithm" scheme="http://luhao.wiki/categories/Algorithm/"/>
-    
-    <category term="Algorithm" scheme="http://luhao.wiki/categories/Algorithm/Algorithm/"/>
-    
     
   </entry>
   
@@ -525,6 +501,34 @@ gi</summary>
     
     
     <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【vscode】vim定制化插件</title>
+    <link href="http://luhao.wiki/posts/vscode-vim/"/>
+    <id>http://luhao.wiki/posts/vscode-vim/</id>
+    <published>2023-07-23T12:04:39.000Z</published>
+    <updated>2023-07-29T18:41:03.599Z</updated>
+    
+    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">导读</p><ul><li><a href="https://github.com/VSCodeVim/Vim">VSCodeVim</a> 是仿照vim的vscode插件</li><li>本文在其基础上添加一些额外的个性化功能</li></ul></div><h3 id="VSCodeVim">VSCodeVim</h3><p>vscode vim主流插件有两款，分别是:</p><ul><li><a href="https://github.com/VSCodeVim/Vim">VSCodeVim</a>：仿vim的插件，功能不全</li><li><a href="https://github.com/vscode-neovim/vscode-neovim">VSCode Neovim</a>：基于Neovim，功能较全，但依赖nvim环境且配置复杂</li></ul><p>笔者一直使用前者，因此本文全部围绕 VSCodeVim展开。</p><h3 id="缺陷-😞">缺陷 😞</h3><p>VSCodeVim Github 拥有 1.5k 未处理的 Issues，作者的维护迭代速度非常慢，因此有很多缺陷和功能不足之处：</p><ul><li>不支持 vimscript function</li><li>不支持 vim bash</li><li><font color="#FF1E10"><strong>【bug】</strong></font>经常Esc失效，弹窗报错 <code>vim.Escape is undefined</code>… 需要重装插件</li></ul><h3 id="亮点-🎉">亮点 🎉</h3><p>打开 <code>"vim.statusBarColorControl": true</code>，可以使底部 <code>statusBar</code> 跟随 vim模式 而改变颜色。<br>本文希望进而改变 Cursor 和 当前行 的颜色、高亮显示，并支持 config 配置，效果图如下：</p><p><img src="/images/vim-mode-demo.png" alt=""></p><h3 id="改进-💡">改进 💡</h3><ul><li><p><strong>支持配置 StatusBar, Highlight 等颜色配置</strong></p></li><li><p><strong>支持区分 Normal, Insert, Visual 三种模式的颜色</strong></p></li><li><p>下载链接:<br><a href="https://github.com/593413198/Vim/releases/tag/vim-mode-1.0">https://github.com/593413198/Vim/releases/tag/vim-mode-1.0</a></p></li><li><p>配置文件:</p></li></ul><pre><code>    "vim.statusBarColorControl": true,    "vim.alpha": "80",    "vim.statusBarColors.visual": "#005f5f",    "vim.statusBarColors.insert": "#5f0000",</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;导读
+&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/VSCodeVim/Vim&quot;&gt;VSCodeVim&lt;/a&gt; 是仿照vim的vsc</summary>
+      
+    
+    
+    
+    <category term="VSCode" scheme="http://luhao.wiki/categories/VSCode/"/>
+    
+    <category term="VSCode" scheme="http://luhao.wiki/categories/VSCode/VSCode/"/>
+    
+    
+    <category term="vim" scheme="http://luhao.wiki/tags/vim/"/>
     
   </entry>
   
