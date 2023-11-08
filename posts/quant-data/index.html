@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://luhao.wiki/images/quant-data-chart.png">
 <meta property="article:published_time" content="2023-08-29T15:40:15.000Z">
-<meta property="article:modified_time" content="2023-10-13T17:23:14.145Z">
+<meta property="article:modified_time" content="2023-11-08T13:19:41.983Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
@@ -496,7 +496,18 @@ with Pool(processes=6) as pool:
 <li><s>错误写法: <code>df.name = xxx</code></s></li>
 </ul>
 </li>
+<li>
+<p>Pandas Warning:</p>
+</li>
 </ul>
+<pre><code class="language-python">SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+</code></pre>
+<p>一般是链式赋值时会报，根本原因是尝试对 copy 出来的 DataFrame 尝试去赋值。<br>
+下面是一个典型的例子:</p>
+<pre><code class="language-python">df.A.loc[df.B &gt; 100] = 0      # ×
+df.loc[df.B &gt; 100, 'A'] = 0   # √
+</code></pre>
 <h4 id="复杂操作">复杂操作</h4>
 <ul>
 <li>
