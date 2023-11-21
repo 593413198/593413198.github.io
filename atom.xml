@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2023-11-05T17:44:24.686Z</updated>
+  <updated>2023-11-21T17:48:37.359Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>游戏引擎“百日计划”</title>
+    <link href="http://luhao.wiki/posts/100/"/>
+    <id>http://luhao.wiki/posts/100/</id>
+    <published>2023-11-21T16:58:29.000Z</published>
+    <updated>2023-11-21T17:48:37.359Z</updated>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="a7a7d0cd4782e1916c7f3ce9d3d16175032f90c97fe089205712f08239ea996e">b3dc07a81f6459d120ce338ccca550461a2f2c197c689a9371989662854148c4fd9727821849267e41f02b2df5f966a388a0f4c7f51644ed822b189ef1d17fde20e45030e0cabff58eb4ff794146d383f4321ce9b5f10f1c30f5b2c957495587cf27bd742a6a4715d070800e9ed7b95f7c988d38d018a6dab23492bfb321ad1bf638d5ed0329c410905a344eb7901f8547bea67815413ebbf2495fc9cbdb7631f92e24ad3ec7000aaa2b641692af984117bf13c0272a60b9b16fe0982db8ce4a552402ce8241cec195d8a1a046cde2bba4946b36834d21cfcd7fbe98a64da8c86a39bcd7227f792ceb5493e760e39c8b4cd78e24624eaef4b8e168b32d48dfc92bfab5a1566993c9a8971f45f20dd96ac0d92feef8fa2cf5fb843b55659b418f914a6b4e801a1c9e27e9d5ff73890574e2cdb7b2dbc04f1d2ac51f0fd06cc3a047ab49770abbd75dfe13268cf52d107812c32474fee1621f273a622301b78ddb9e49e11bda8f7cddfcbb7c65be91e84f054377f5277fb50b8f7fc9fbe92464f021c021aa723f83bddec80acf70597695bc6841a5b3518df81a0604782ee90259ce04923d6ad7bece75f28af326ddcdec045b4851bf56a4b89087befe91146f45fa750c2fe19ce8b18c7f732f7b9e955dfc0e7d59824b08a0b07093e0e26027e1f0cb8dd19ce56d3da6f173e19f13a896b1282aaec158f625d55befd9b5695d5a9cac7ba1ee3ff05f67073c51fb71fdc47939b0545267bf0b9271bd2986f29ff010e2c1b1a8b7732430ce7e8eb0ac2e0574a97d193df693cf255c1e3648d4123b9e488790046c0202ab0784235e8a69c0ed02496f67b31e0e89aeda88c89197bae49fc2b5ffcf277d848c6d31366bdbff896f86f8f8e5373e46af9efc7124d06420d329a79a0149ab2805b62399fb6e907825d60fd5ef7ca6f025bb3c8822142be308c035f6b9596e0cf6474f958fa449aa62bab62d22deaec1d827a2848c1797e7d604e1bd8b44a2ca90a5a631ccc8a3d9310fd58bc46f56eacd3873d7b12dd241d7567a09de8fde32c833e85fd7f8ca89d6655d710e22a76d38962359c25ec599264f3b1c0816952da436d8150ee174eae3663ef7078d28cd764af34099ea8298a3a3be52c68033e8c404cf7de81ba28812765dac642d47e3f4a223204e645bb1a9f0c6f9c0723bd48ee4e1f1ea54e7241bb184c2b7c4e2534a346cdfd80abfdec1d3e693eb2039a7a5c6680ee022ae6d4c2c829687eb56eb313cf7e939f1e0</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;2023.11 ~ 2024.3，点亮 &lt;code&gt;80%&lt;/code&gt; 游戏引擎的知识迷雾&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="3D Engine" scheme="http://luhao.wiki/categories/3D-Engine/"/>
+    
+    <category term="3D Engine" scheme="http://luhao.wiki/categories/3D-Engine/3D-Engine/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>【量化】OrderFlow 订单流策略研究</title>
@@ -509,34 +530,6 @@ gi</summary>
     
     
     <category term="C++" scheme="http://luhao.wiki/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【vscode】vim定制化插件</title>
-    <link href="http://luhao.wiki/posts/vscode-vim/"/>
-    <id>http://luhao.wiki/posts/vscode-vim/</id>
-    <published>2023-07-23T12:04:39.000Z</published>
-    <updated>2023-07-29T18:41:03.599Z</updated>
-    
-    <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">导读</p><ul><li><a href="https://github.com/VSCodeVim/Vim">VSCodeVim</a> 是仿照vim的vscode插件</li><li>本文在其基础上添加一些额外的个性化功能</li></ul></div><h3 id="VSCodeVim">VSCodeVim</h3><p>vscode vim主流插件有两款，分别是:</p><ul><li><a href="https://github.com/VSCodeVim/Vim">VSCodeVim</a>：仿vim的插件，功能不全</li><li><a href="https://github.com/vscode-neovim/vscode-neovim">VSCode Neovim</a>：基于Neovim，功能较全，但依赖nvim环境且配置复杂</li></ul><p>笔者一直使用前者，因此本文全部围绕 VSCodeVim展开。</p><h3 id="缺陷-😞">缺陷 😞</h3><p>VSCodeVim Github 拥有 1.5k 未处理的 Issues，作者的维护迭代速度非常慢，因此有很多缺陷和功能不足之处：</p><ul><li>不支持 vimscript function</li><li>不支持 vim bash</li><li><font color="#FF1E10"><strong>【bug】</strong></font>经常Esc失效，弹窗报错 <code>vim.Escape is undefined</code>… 需要重装插件</li></ul><h3 id="亮点-🎉">亮点 🎉</h3><p>打开 <code>"vim.statusBarColorControl": true</code>，可以使底部 <code>statusBar</code> 跟随 vim模式 而改变颜色。<br>本文希望进而改变 Cursor 和 当前行 的颜色、高亮显示，并支持 config 配置，效果图如下：</p><p><img src="/images/vim-mode-demo.png" alt=""></p><h3 id="改进-💡">改进 💡</h3><ul><li><p><strong>支持配置 StatusBar, Highlight 等颜色配置</strong></p></li><li><p><strong>支持区分 Normal, Insert, Visual 三种模式的颜色</strong></p></li><li><p>下载链接:<br><a href="https://github.com/593413198/Vim/releases/tag/vim-mode-1.0">https://github.com/593413198/Vim/releases/tag/vim-mode-1.0</a></p></li><li><p>配置文件:</p></li></ul><pre><code>    "vim.statusBarColorControl": true,    "vim.alpha": "80",    "vim.statusBarColors.visual": "#005f5f",    "vim.statusBarColors.insert": "#5f0000",</code></pre>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;导读
-&lt;/p&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/VSCodeVim/Vim&quot;&gt;VSCodeVim&lt;/a&gt; 是仿照vim的vsc</summary>
-      
-    
-    
-    
-    <category term="VSCode" scheme="http://luhao.wiki/categories/VSCode/"/>
-    
-    <category term="VSCode" scheme="http://luhao.wiki/categories/VSCode/VSCode/"/>
-    
-    
-    <category term="vim" scheme="http://luhao.wiki/tags/vim/"/>
     
   </entry>
   
