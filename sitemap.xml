@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://luhao.wiki/posts/2023b/</loc>
+    
+    <lastmod>2023-11-21</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://luhao.wiki/posts/2023/11/</loc>
     
     <lastmod>2023-11-21</lastmod>
@@ -114,13 +121,6 @@
   </url>
   
   <url>
-    <loc>http://luhao.wiki/posts/2023b/</loc>
-    
-    <lastmod>2023-10-08</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://luhao.wiki/posts/idea/</loc>
     
     <lastmod>2023-10-04</lastmod>
@@ -136,13 +136,6 @@
   
   <url>
     <loc>http://luhao.wiki/posts/paofu/</loc>
-    
-    <lastmod>2023-09-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://luhao.wiki/posts/ue/</loc>
     
     <lastmod>2023-09-27</lastmod>
     
