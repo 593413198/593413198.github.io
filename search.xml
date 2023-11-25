@@ -8,7 +8,7 @@
       <link href="/posts/2ZE2VGG/"/>
       <url>/posts/2ZE2VGG/</url>
       
-        <content type="html"><![CDATA[<h2 id="引擎汇总">引擎汇总</h2><ul><li>一些老引擎（如 KlayGE、AtomicEngine）不支持 VS2022 编译运行，需要额外修改</li><li>一些引擎（如 ogre）只能采用组件的形式嵌入，没法直接当成编辑器打开*</li></ul><table><thead><tr><th style="text-align:center">Engine</th><th style="text-align:center">特点</th><th style="text-align:center">Build&amp;Run</th><th style="text-align:center">编辑器</th></tr></thead><tbody><tr><td style="text-align:center"><a href="https://github.com/gongminmin/KlayGE">KlayGE</a></td><td style="text-align:center"></td><td style="text-align:center">❌</td><td style="text-align:center"></td></tr><tr><td style="text-align:center"><a href="https://github.com/urho3d/urho3d">urho3d</a></td><td style="text-align:center">代码风格👍，容易上手👍</td><td style="text-align:center">✔</td><td style="text-align:center"></td></tr><tr><td style="text-align:center"><a href="https://github.com/AtomicGameEngine/AtomicGameEngine">Atomic</a></td><td style="text-align:center">继承自urho3d，实现C#脚本系统</td><td style="text-align:center">✔</td><td style="text-align:center">✔</td></tr><tr><td style="text-align:center"><a href="https://github.com/OGRECave/ogre">ogre</a></td><td style="text-align:center">功能庞大</td><td style="text-align:center"></td><td style="text-align:center"></td></tr><tr><td style="text-align:center">o3de</td><td style="text-align:center">todo</td><td style="text-align:center"></td><td style="text-align:center"></td></tr><tr><td style="text-align:center">godot</td><td style="text-align:center">todo</td><td style="text-align:center"></td><td style="text-align:center"></td></tr><tr><td style="text-align:center">cocos-2dx</td><td style="text-align:center">todo</td><td style="text-align:center"></td><td style="text-align:center"></td></tr></tbody></table><h3 id="注意">注意</h3><ul><li>编译前请阅读 github 上的文档</li><li>如果 cmake.exe 不清楚传递哪些参数，请使用 <strong>cmake-gui</strong>（推荐）</li><li>因为某些引擎版本古老，编译脚本写死了如 <code>VS2015、VS2017</code> 等参数，这种情况比较坑爹得手动改</li></ul><h3 id="编译相关">编译相关</h3><ul><li><code>error c2001: newline in constant</code><br>这个报错一般是因为文本格式错误，可以用记事本重新保存为 <code>UTF-8 BOM</code></li></ul><h2 id="KlayGE">KlayGE</h2><p>截止23年还在更新维护，但是提交频率不高。<br>cmake遇到错误，手动解决后还是无法生成，已经放弃。</p><h2 id="urho3d">urho3d</h2><div class="admonition note"><p class="admonition-title">NOTE</p><ul><li>重点学习 urho3d 代码风格、项目结构</li></ul></div><p>截止23年1月已经放弃维护，且已改成俄语项目（?）。<br>抛开别的因素，代码风格和结构非常 nice，同时又不显得复杂，值得阅读学习。</p><p>支持两种图形API:</p><ul><li><code>OpenGL</code>: urho3d\Source\Urho3D\GraphicsAPI\OpenGL</li><li><code>DX11</code>: urho3d\Source\Urho3D\GraphicsAPI\Direct3D11</li></ul><p>项目结构分为 samples示例 和 源码部分，非常容易上手:</p><p><img src="/images/urho3d-demo.png" alt=""></p><p>代码、注释的风格也十分清爽，这里给俄罗斯人竖起大拇指o(￣▽￣)ｄ：</p><p><img src="/images/urho3d-graphics.png" alt=""></p><p>推荐一些模块的阅读：</p><ul><li>Graphics 渲染模块的API组织</li><li>xml、json 的模块化管理</li><li>IK、2D/3D 的物理模块</li></ul><h2 id="Atomic">Atomic</h2><div class="admonition note"><p class="admonition-title">NOTE</p><ul><li>这部分源码和 urho3d 重合度较高，建议一起对比阅读</li></ul></div><p>Atomic核心源码是继承的urho3d。<br>编译脚本只有 vs2015、vs2017，因此手动用 cmake-gui build 比较稳妥。</p><p>严格意义上说，Atomic 算完整的游戏引擎，拥有 runtime、编辑器、创建项目 等一整套流程，通过启动 <code>AtomicEditor</code> 可以打开一个项目管理器的窗口后，参考 Unity、UE 的实现。</p><p><img src="/images/atomic-project.png" alt=""></p><h2 id="ogre">ogre</h2><div class="admonition note"><p class="admonition-title">NOTE</p><ul><li>ogre 功能庞大，但是 GUI 真的丑</li></ul></div><ul><li>全称为: <code>Object-Oriented Graphics Rendering Engine</code>，即 面向对象的图形渲染引擎（不禁疑问，这年头还有不是OO的引擎?）</li><li>支持几乎所有图形API：<code>Direct3D 9 &amp; 11, Metal, Vulkan, OpenGL (incl. ES2, ES3 and OGL3+) and WebGL (Emscripten)</code></li><li>cmake 时遇到 <code>imgui-1.90</code> 缺失的报错，建议手动clone一份</li></ul><p>可以通过官方demo (<code>SampleBrower</code>) 进一步了解引擎实现:<br><img src="/images/ogre-demo.png" alt=""></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="引擎汇总">引擎汇总</h2><ul><li>一些老引擎（如 KlayGE、AtomicEngine）不支持 VS2022 编译运行，需要额外修改</li><li>一些引擎（如 ogre）只能采用组件的形式嵌入，没法直接当成编辑器打开*</li></ul><table><thead><tr><th style="text-align:center">Engine</th><th style="text-align:center">特点</th><th style="text-align:center">Build&amp;Run</th><th style="text-align:center">编辑器</th></tr></thead><tbody><tr><td style="text-align:center"><a href="https://github.com/gongminmin/KlayGE">KlayGE</a></td><td style="text-align:center"></td><td style="text-align:center">❌</td><td style="text-align:center"></td></tr><tr><td style="text-align:center"><a href="https://github.com/urho3d/urho3d">urho3d</a></td><td style="text-align:center">代码风格👍，容易上手👍</td><td style="text-align:center">✔</td><td style="text-align:center"></td></tr><tr><td style="text-align:center"><a href="https://github.com/AtomicGameEngine/AtomicGameEngine">Atomic</a></td><td style="text-align:center">继承自urho3d，实现C#脚本系统</td><td style="text-align:center">✔</td><td style="text-align:center">✔</td></tr><tr><td style="text-align:center"><a href="https://github.com/OGRECave/ogre">ogre</a></td><td style="text-align:center">功能庞大</td><td style="text-align:center">✔</td><td style="text-align:center"></td></tr><tr><td style="text-align:center">o3de</td><td style="text-align:center">todo</td><td style="text-align:center"></td><td style="text-align:center"></td></tr><tr><td style="text-align:center">godot</td><td style="text-align:center">todo</td><td style="text-align:center"></td><td style="text-align:center"></td></tr><tr><td style="text-align:center">cocos-2dx</td><td style="text-align:center">todo</td><td style="text-align:center"></td><td style="text-align:center"></td></tr></tbody></table><h3 id="注意">注意</h3><ul><li>编译前请阅读 github 上的文档</li><li>如果 cmake.exe 不清楚传递哪些参数，请使用 <strong>cmake-gui</strong>（推荐）</li><li>因为某些引擎版本古老，编译脚本写死了如 <code>VS2015、VS2017</code> 等参数，这种情况比较坑爹得手动改</li></ul><h3 id="编译相关">编译相关</h3><ul><li><code>error c2001: newline in constant</code><br>这个报错一般是因为文本格式错误，可以用记事本重新保存为 <code>UTF-8 BOM</code></li></ul><h2 id="KlayGE">KlayGE</h2><p>截止23年还在更新维护，但是提交频率不高。<br>cmake遇到错误，手动解决后还是无法生成，已经放弃。</p><h2 id="urho3d">urho3d</h2><div class="admonition note"><p class="admonition-title">NOTE</p><ul><li>重点学习 urho3d 代码风格、项目结构</li></ul></div><p>截止23年1月已经放弃维护，且已改成俄语项目（?）。<br>抛开别的因素，代码风格和结构非常 nice，同时又不显得复杂，值得阅读学习。</p><p>支持两种图形API:</p><ul><li><code>OpenGL</code>: urho3d\Source\Urho3D\GraphicsAPI\OpenGL</li><li><code>DX11</code>: urho3d\Source\Urho3D\GraphicsAPI\Direct3D11</li></ul><p>项目结构分为 samples示例 和 源码部分，非常容易上手:</p><p><img src="/images/urho3d-demo.png" alt=""></p><p>代码、注释的风格也十分清爽，这里给俄罗斯人竖起大拇指o(￣▽￣)ｄ：</p><p><img src="/images/urho3d-graphics.png" alt=""></p><p>推荐一些模块的阅读：</p><ul><li>Graphics 渲染模块的API组织</li><li>xml、json 的模块化管理</li><li>IK、2D/3D 的物理模块</li></ul><h2 id="Atomic">Atomic</h2><div class="admonition note"><p class="admonition-title">NOTE</p><ul><li>这部分源码和 urho3d 重合度较高，建议一起对比阅读</li></ul></div><p>Atomic核心源码是继承的urho3d。<br>编译脚本只有 vs2015、vs2017，因此手动用 cmake-gui build 比较稳妥。</p><p>严格意义上说，Atomic 算完整的游戏引擎，拥有 runtime、编辑器、创建项目 等一整套流程，通过启动 <code>AtomicEditor</code> 可以打开一个项目管理器的窗口后，参考 Unity、UE 的实现。</p><p><img src="/images/atomic-project.png" alt=""></p><h2 id="ogre">ogre</h2><div class="admonition note"><p class="admonition-title">NOTE</p><ul><li>ogre 功能庞大，但是 GUI 真的丑</li></ul></div><ul><li>全称为: <code>Object-Oriented Graphics Rendering Engine</code>，即 面向对象的图形渲染引擎（不禁疑问，这年头还有不是OO的引擎?）</li><li>支持几乎所有图形API：<code>Direct3D 9 &amp; 11, Metal, Vulkan, OpenGL (incl. ES2, ES3 and OGL3+) and WebGL (Emscripten)</code></li><li>cmake 时遇到 <code>imgui-1.90</code> 缺失的报错，建议手动clone一份</li></ul><p>可以通过官方demo (<code>SampleBrower</code>) 进一步了解引擎实现:<br><img src="/images/ogre-demo.png" alt=""></p>]]></content>
       
       
       <categories>
@@ -114,9 +114,9 @@
       
         <tags>
             
-            <tag> C++ </tag>
-            
             <tag> Python </tag>
+            
+            <tag> C++ </tag>
             
             <tag> OpenGL </tag>
             
@@ -195,9 +195,9 @@
       
         <tags>
             
-            <tag> C++ </tag>
-            
             <tag> Python </tag>
+            
+            <tag> C++ </tag>
             
         </tags>
       
@@ -245,9 +245,9 @@
       
         <tags>
             
-            <tag> C++ </tag>
-            
             <tag> Python </tag>
+            
+            <tag> C++ </tag>
             
         </tags>
       
@@ -478,9 +478,9 @@
       
         <tags>
             
-            <tag> C++ </tag>
-            
             <tag> Python </tag>
+            
+            <tag> C++ </tag>
             
         </tags>
       
@@ -507,9 +507,9 @@
       
         <tags>
             
-            <tag> C++ </tag>
-            
             <tag> Python </tag>
+            
+            <tag> C++ </tag>
             
         </tags>
       
@@ -632,9 +632,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       
@@ -688,11 +688,11 @@
       
         <tags>
             
-            <tag> linux </tag>
+            <tag> Python </tag>
             
             <tag> C++ </tag>
             
-            <tag> Python </tag>
+            <tag> linux </tag>
             
             <tag> vim </tag>
             
@@ -817,9 +817,9 @@
       
         <tags>
             
-            <tag> C++ </tag>
-            
             <tag> Python </tag>
+            
+            <tag> C++ </tag>
             
         </tags>
       
@@ -846,9 +846,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> Python </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       
@@ -923,11 +923,11 @@
       
         <tags>
             
-            <tag> linux </tag>
+            <tag> Python </tag>
             
             <tag> C++ </tag>
             
-            <tag> Python </tag>
+            <tag> linux </tag>
             
         </tags>
       
@@ -983,9 +983,9 @@
       
         <tags>
             
-            <tag> C++ </tag>
-            
             <tag> Python </tag>
+            
+            <tag> C++ </tag>
             
             <tag> Compiler </tag>
             
@@ -1041,9 +1041,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> Python </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       
@@ -1124,11 +1124,11 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> Graphics </tag>
             
             <tag> C++ </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       
@@ -1224,11 +1224,11 @@
       
         <tags>
             
-            <tag> linux </tag>
+            <tag> Python </tag>
             
             <tag> C++ </tag>
             
-            <tag> Python </tag>
+            <tag> linux </tag>
             
         </tags>
       
@@ -1255,11 +1255,11 @@
       
         <tags>
             
+            <tag> Python </tag>
+            
             <tag> C++ </tag>
             
             <tag> Algorithm </tag>
-            
-            <tag> Python </tag>
             
         </tags>
       
@@ -1361,9 +1361,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> linux </tag>
             
             <tag> Compiler </tag>
             
@@ -1461,9 +1461,9 @@
       
         <tags>
             
-            <tag> C++ </tag>
-            
             <tag> Python </tag>
+            
+            <tag> C++ </tag>
             
         </tags>
       
@@ -1517,9 +1517,9 @@
       
         <tags>
             
-            <tag> Algorithm </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Algorithm </tag>
             
         </tags>
       
@@ -1602,9 +1602,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> Python </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       
@@ -1685,9 +1685,9 @@
       
         <tags>
             
-            <tag> C++ </tag>
-            
             <tag> Python </tag>
+            
+            <tag> C++ </tag>
             
         </tags>
       
@@ -1743,11 +1743,11 @@
       
         <tags>
             
-            <tag> linux </tag>
+            <tag> Python </tag>
             
             <tag> C++ </tag>
             
-            <tag> Python </tag>
+            <tag> linux </tag>
             
             <tag> Compiler </tag>
             
@@ -1776,9 +1776,9 @@
       
         <tags>
             
-            <tag> markdown </tag>
-            
             <tag> Python </tag>
+            
+            <tag> markdown </tag>
             
         </tags>
       
@@ -1805,9 +1805,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> Python </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       
@@ -1834,9 +1834,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> Python </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       
@@ -1863,11 +1863,11 @@
       
         <tags>
             
+            <tag> Python </tag>
+            
             <tag> linux </tag>
             
             <tag> markdown </tag>
-            
-            <tag> Python </tag>
             
         </tags>
       
@@ -1894,9 +1894,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       
@@ -1923,9 +1923,9 @@
       
         <tags>
             
-            <tag> markdown </tag>
-            
             <tag> Python </tag>
+            
+            <tag> markdown </tag>
             
         </tags>
       
@@ -1973,9 +1973,9 @@
       
         <tags>
             
-            <tag> C++ </tag>
-            
             <tag> Python </tag>
+            
+            <tag> C++ </tag>
             
         </tags>
       
@@ -2002,9 +2002,9 @@
       
         <tags>
             
-            <tag> C++ </tag>
-            
             <tag> Python </tag>
+            
+            <tag> C++ </tag>
             
         </tags>
       
@@ -2031,11 +2031,11 @@
       
         <tags>
             
-            <tag> linux </tag>
+            <tag> Python </tag>
             
             <tag> C++ </tag>
             
-            <tag> Python </tag>
+            <tag> linux </tag>
             
         </tags>
       
@@ -2062,11 +2062,11 @@
       
         <tags>
             
-            <tag> linux </tag>
+            <tag> Python </tag>
             
             <tag> C++ </tag>
             
-            <tag> Python </tag>
+            <tag> linux </tag>
             
         </tags>
       
@@ -2114,11 +2114,11 @@
       
         <tags>
             
-            <tag> linux </tag>
+            <tag> Python </tag>
             
             <tag> C++ </tag>
             
-            <tag> Python </tag>
+            <tag> linux </tag>
             
         </tags>
       
@@ -2201,9 +2201,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> Python </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       
@@ -2278,11 +2278,11 @@
       
         <tags>
             
-            <tag> linux </tag>
+            <tag> Python </tag>
             
             <tag> C++ </tag>
             
-            <tag> Python </tag>
+            <tag> linux </tag>
             
         </tags>
       
@@ -2309,9 +2309,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> Python </tag>
+            
+            <tag> linux </tag>
             
             <tag> vim </tag>
             
@@ -2424,9 +2424,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> Python </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       
@@ -2480,9 +2480,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> Python </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       
@@ -2509,9 +2509,9 @@
       
         <tags>
             
-            <tag> C++ </tag>
-            
             <tag> Python </tag>
+            
+            <tag> C++ </tag>
             
         </tags>
       
@@ -2538,9 +2538,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> Python </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       
@@ -2729,9 +2729,9 @@
       
         <tags>
             
-            <tag> C++ </tag>
-            
             <tag> Python </tag>
+            
+            <tag> C++ </tag>
             
         </tags>
       
@@ -2835,11 +2835,11 @@
       
         <tags>
             
-            <tag> linux </tag>
+            <tag> Python </tag>
             
             <tag> Algorithm </tag>
             
-            <tag> Python </tag>
+            <tag> linux </tag>
             
         </tags>
       
@@ -2943,11 +2943,11 @@
       
         <tags>
             
-            <tag> linux </tag>
+            <tag> OpenGL </tag>
             
             <tag> Algorithm </tag>
             
-            <tag> OpenGL </tag>
+            <tag> linux </tag>
             
         </tags>
       
@@ -3055,19 +3055,19 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
-            <tag> markdown </tag>
+            <tag> Python </tag>
             
             <tag> C++ </tag>
             
+            <tag> OpenGL </tag>
+            
             <tag> Algorithm </tag>
             
-            <tag> Python </tag>
+            <tag> linux </tag>
             
             <tag> Compiler </tag>
             
-            <tag> OpenGL </tag>
+            <tag> markdown </tag>
             
         </tags>
       
@@ -3148,11 +3148,11 @@
       
         <tags>
             
-            <tag> linux </tag>
+            <tag> Python </tag>
             
             <tag> Algorithm </tag>
             
-            <tag> Python </tag>
+            <tag> linux </tag>
             
         </tags>
       
@@ -3179,9 +3179,9 @@
       
         <tags>
             
-            <tag> Algorithm </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Algorithm </tag>
             
         </tags>
       
