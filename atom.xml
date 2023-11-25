@@ -6,7 +6,7 @@
   <link href="http://luhao.wiki/atom.xml" rel="self"/>
   
   <link href="http://luhao.wiki/"/>
-  <updated>2023-11-25T17:51:56.852Z</updated>
+  <updated>2023-11-25T17:58:30.845Z</updated>
   <id>http://luhao.wiki/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Real-Time Rendering 阅读计划</title>
-    <link href="http://luhao.wiki/posts/2N669KY/"/>
-    <id>http://luhao.wiki/posts/2N669KY/</id>
+    <link href="http://luhao.wiki/posts/rtr/"/>
+    <id>http://luhao.wiki/posts/rtr/</id>
     <published>2023-11-25T15:15:40.000Z</published>
-    <updated>2023-11-25T17:51:56.852Z</updated>
+    <updated>2023-11-25T17:58:30.845Z</updated>
     
     <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">资源 (支持正版)</p><ul><li><a href="https://www.realtimerendering.com/">realtimerendering.com</a></li><li><a href="http://110.42.228.178/pdf/RTR4-EN.pdf">RTR4-EN</a></li><li><a href="http://110.42.228.178/pdf/RTR4-CN.pdf">RTR4-CN</a></li></ul></div><h2 id="Before">Before</h2><ul><li>建议阅读英文原版，遇到困难时借助如下工具：<ul><li>翻译软件</li><li>chatgpt</li><li>毛星云的中译版</li></ul></li><li>整个学习过程，需要结合源码阅读、引擎demo落地</li></ul><h2 id="Ch-2">Ch.2</h2><p>本章介绍实时渲染中的一个核心观念：<strong><code>graphics rendering pipeline</code></strong>，它将图形渲染的整个过程，抽象为一条管线，同时明确两个原则：</p><ul><li>各个阶段可以<strong>并行化</strong>，但有些会依赖上一个阶段的输出</li><li><strong>短板效应</strong>，性能总是受制于最慢的一个阶段</li></ul><p>本章还将渲染管线细分为四个阶段，后面会依次介绍：</p><ul><li>Application</li><li>Geometry Processing</li><li>Rasterization</li><li>Pixel Processing</li></ul><p><img src="/images/rtr-pipeline.png" alt=""></p><h3 id="1-Application">1. Application</h3><p>所有与渲染相关的CPU部分，都被统称为 <code>Application</code> 阶段，它的核心诉求是：<strong>计算出所有需要渲染的 <code>render primitive</code>（点、线、三角形）</strong>，并输入到GPU中，给下一个阶段执行。</p><p>重点学习如下领域：</p><ul><li>(CPU) Culling</li><li>Collision Detection</li><li>Multi-RenderThread</li></ul><h3 id="2-Geometry-Processing">2. Geometry Processing</h3><p>这部分完全运行在GPU上，<strong>输入是CPU传入的 <code>Primitives</code>，输出是屏幕上的 <code>Pixel</code></strong>，它的功能较为繁重，因此被细分多个小环节。</p><p><img src="/images/rtr-geometry-processing.png" alt=""></p><p><strong>2.1 Vertex Shading</strong></p><p>先明确CPU阶段最后传入的数据格式（参考 OpenGL VBO, VAO），它是渲染图形的所有顶点信息的列表。考虑到它们是基于 模型空间的，因此要<strong>通过 <code>MVP</code> 变换</strong>转化到统一的世界投影空间。</p><p>同时，顶点上还包含<strong>法线、颜色、UV</strong>等信息，<code>VS</code>中可以由这些信息进行一些廉价高效的着色计算（当然效果比较挫）。</p><p><strong>2.2 Clipping</strong></p><p>在经历过投影变换后，我们得到一个 (-1, -1, -1) ~ (1, 1, 1) 范围的标准立方体，出于性能和可见性考虑，所以超出这个范围的顶点都不应该渲染，即被裁剪掉。</p><p><strong>2.3 Screen Mapping</strong></p><p>这阶段的输入是经历 Clipping 之后的三维坐标，输出应该是二维坐标。<br><font color="#FF1E10"><strong>todo: 比较粗略，没搞懂具体做了什么</strong></font></p><p><img src="/images/rtr-screen-mapping.png" alt=""></p><h3 id="3-Rasterization-⭐">3. Rasterization ⭐</h3><p><a href="/posts/M5TXVE/#Pixels">【GAMES101】Rasterization</a></p><p>这阶段的核心，是将二维坐标，映射到屏幕坐标。</p><blockquote><p>假设有一台分辨率为 <code>1024 x 720</code> 的显示器，那么光栅化的作用就是，计算 1024x720 个数组的 rgba 取值。<br>这些 rgba 取值再传递给显示硬件，就是最终呈现的画面。</p></blockquote><p><img src="/images/rtr-rasterization.png" alt=""></p><ul><li>(上图）左二阶段：<br>通过确定每个像素在对应的三角形内（<a href="/posts/M5TXVE/#%E9%97%AE%E9%A2%98%E5%BB%BA%E6%A8%A1">参考</a>），以决定其着色。<br>其中 <code>Triangle Traversal</code> 就是遍历所有的三角形，并对像素进行插值，其中学问很深不细究。</li></ul><h3 id="4-Pixel-Processing">4. Pixel Processing</h3><ul><li>(上图）右二阶段：<br>即经典的 <code>Pixel Shading</code>，逐像素的着色计算，这里不详细展开</li></ul><p>这阶段所有的颜色信息，都存储在 <code>ColorBuffer</code> 的GPU内存上，通过 RenderDoc 抓帧可以查看其具体内容。</p><p><strong>visibility</strong><br>另外，<strong>更新可见性</strong> 也是这一阶段的重要任务。通过每次绘制时与 <code>Z-Buffer</code> 比较，即可以判断深度遮挡关系，这里是硬件支持的算法。<br>值得注意的是，<code>Z-Buffer</code>机制对于半透明的绘制很不友好，因此需要严格遵守 <strong>“先Opaque、后Transparent”</strong> 的绘制顺序。<br>而 <code>ColorBuffer</code> 的 Alpha通道，通常还支持用作 透明度测试，即 <code>AlphaTest</code>，也不详细展开。</p><p><strong>Stencil-Test</strong><br>通常还会将 <code>Z-Buffer</code>的其中8位用来实现 <code>Stencil-Buffer</code>，即所谓的 <strong>“模板测试”</strong></p>]]></content>
     
