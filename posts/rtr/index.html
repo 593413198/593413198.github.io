@@ -18,19 +18,22 @@
   
   
   <title>Real-Time Rendering 阅读计划 | Luhao&#39;s Blog</title>
-  <meta name="description" content="资源 (支持正版)  realtimerendering.com RTR4-EN RTR4-CN   Before  建议阅读英文原版，遇到困难时借助如下工具：  翻译软件 chatgpt 毛星云的中译版   整个学习过程，需要结合源码阅读、引擎demo落地  Ch.2 本章介绍实时渲染中的一个核心观念：graphics rendering pipeline，它将图形渲染的整个过程，抽象为一条管线">
+  <meta name="description" content="资源 (支持正版)  realtimerendering.com RTR4-EN，RTR4-CN   Before  建议阅读英文原版，遇到困难时借助：翻译软件、Chatgpt、毛星云的中译版 建议结合引擎源码 + 实践落地理解，不要纸上谈兵      章节 概要     Ch.2 渲染管线概览：四个阶段   Ch.3 GPU硬件、GPU视角的渲染管线        Ch.2  本章介绍实时渲染中">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Real-Time Rendering 阅读计划">
 <meta property="og:url" content="http://luhao.wiki/posts/rtr/index.html">
 <meta property="og:site_name" content="Luhao&#39;s Blog">
-<meta property="og:description" content="资源 (支持正版)  realtimerendering.com RTR4-EN RTR4-CN   Before  建议阅读英文原版，遇到困难时借助如下工具：  翻译软件 chatgpt 毛星云的中译版   整个学习过程，需要结合源码阅读、引擎demo落地  Ch.2 本章介绍实时渲染中的一个核心观念：graphics rendering pipeline，它将图形渲染的整个过程，抽象为一条管线">
+<meta property="og:description" content="资源 (支持正版)  realtimerendering.com RTR4-EN，RTR4-CN   Before  建议阅读英文原版，遇到困难时借助：翻译软件、Chatgpt、毛星云的中译版 建议结合引擎源码 + 实践落地理解，不要纸上谈兵      章节 概要     Ch.2 渲染管线概览：四个阶段   Ch.3 GPU硬件、GPU视角的渲染管线        Ch.2  本章介绍实时渲染中">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://luhao.wiki/images/rtr-pipeline.png">
 <meta property="og:image" content="http://luhao.wiki/images/rtr-geometry-processing.png">
 <meta property="og:image" content="http://luhao.wiki/images/rtr-screen-mapping.png">
 <meta property="og:image" content="http://luhao.wiki/images/rtr-rasterization.png">
+<meta property="og:image" content="http://luhao.wiki/images/rtr-gpu-pipeline.png">
+<meta property="og:image" content="http://luhao.wiki/images/rtr-renderdoc.png">
+<meta property="og:image" content="http://luhao.wiki/images/rtr-graphics-api.png">
 <meta property="article:published_time" content="2023-11-25T15:15:40.000Z">
-<meta property="article:modified_time" content="2023-11-25T17:58:30.845Z">
+<meta property="article:modified_time" content="2023-11-28T13:38:00.667Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="Graphics">
 <meta property="article:tag" content="OpenGL">
@@ -185,7 +188,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Before"><span class="toc-number">1.</span> <span class="toc-text">Before</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ch-2"><span class="toc-number">2.</span> <span class="toc-text">Ch.2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Application"><span class="toc-number">2.1.</span> <span class="toc-text">1. Application</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Geometry-Processing"><span class="toc-number">2.2.</span> <span class="toc-text">2. Geometry Processing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Rasterization-%E2%AD%90"><span class="toc-number">2.3.</span> <span class="toc-text">3. Rasterization ⭐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Pixel-Processing"><span class="toc-number">2.4.</span> <span class="toc-text">4. Pixel Processing</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Before"><span class="toc-number">1.</span> <span class="toc-text">Before</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ch-2"><span class="toc-number">2.</span> <span class="toc-text">Ch.2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Application"><span class="toc-number">2.1.</span> <span class="toc-text">1. Application</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Geometry-Processing"><span class="toc-number">2.2.</span> <span class="toc-text">2. Geometry Processing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Rasterization-%E2%AD%90"><span class="toc-number">2.3.</span> <span class="toc-text">3. Rasterization ⭐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Pixel-Processing"><span class="toc-number">2.4.</span> <span class="toc-text">4. Pixel Processing</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ch-3"><span class="toc-number">3.</span> <span class="toc-text">Ch.3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vertex-Shading"><span class="toc-number">3.1.</span> <span class="toc-text">Vertex Shading</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pixel-Shading"><span class="toc-number">3.2.</span> <span class="toc-text">Pixel Shading</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Compute-Shading"><span class="toc-number">3.3.</span> <span class="toc-text">Compute Shading</span></a></li></ol></li></ol>
     </nav>
   </div>
 </aside>
@@ -238,23 +241,42 @@
         <div class="admonition note"><p class="admonition-title">资源 (支持正版)
 </p><ul>
 <li><a target="_blank" rel="noopener" href="https://www.realtimerendering.com/">realtimerendering.com</a></li>
-<li><a target="_blank" rel="noopener" href="http://110.42.228.178/pdf/RTR4-EN.pdf">RTR4-EN</a></li>
-<li><a target="_blank" rel="noopener" href="http://110.42.228.178/pdf/RTR4-CN.pdf">RTR4-CN</a></li>
+<li><a target="_blank" rel="noopener" href="http://110.42.228.178/pdf/RTR4-EN.pdf">RTR4-EN</a>，<a target="_blank" rel="noopener" href="http://110.42.228.178/pdf/RTR4-CN.pdf">RTR4-CN</a></li>
 </ul>
 </div>
 <h2 id="Before">Before</h2>
 <ul>
-<li>建议阅读英文原版，遇到困难时借助如下工具：
-<ul>
-<li>翻译软件</li>
-<li>chatgpt</li>
-<li>毛星云的中译版</li>
+<li>建议阅读英文原版，遇到困难时借助：翻译软件、Chatgpt、毛星云的中译版</li>
+<li>建议结合引擎源码 + 实践落地理解，不要纸上谈兵</li>
 </ul>
-</li>
-<li>整个学习过程，需要结合源码阅读、引擎demo落地</li>
-</ul>
+<hr>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">章节</th>
+<th style="text-align:left">概要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="#Ch-2">Ch.2</a></td>
+<td style="text-align:left">渲染管线概览：四个阶段</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="#Ch-3">Ch.3</a></td>
+<td style="text-align:left">GPU硬件、GPU视角的渲染管线</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
 <h2 id="Ch-2">Ch.2</h2>
-<p>本章介绍实时渲染中的一个核心观念：<strong><code>graphics rendering pipeline</code></strong>，它将图形渲染的整个过程，抽象为一条管线，同时明确两个原则：</p>
+<blockquote>
+<p>本章介绍实时渲染中的一个核心观念：<strong><code>graphics rendering pipeline</code></strong>，它将图形渲染的整个过程，抽象为一条流水线。</p>
+</blockquote>
+<p>渲染管线的开发，有两条重要原则：</p>
 <ul>
 <li>各个阶段可以<strong>并行化</strong>，但有些会依赖上一个阶段的输出</li>
 <li><strong>短板效应</strong>，性能总是受制于最慢的一个阶段</li>
@@ -312,6 +334,75 @@
 而 <code>ColorBuffer</code> 的 Alpha通道，通常还支持用作 透明度测试，即 <code>AlphaTest</code>，也不详细展开。</p>
 <p><strong>Stencil-Test</strong><br>
 通常还会将 <code>Z-Buffer</code>的其中8位用来实现 <code>Stencil-Buffer</code>，即所谓的 <strong>“模板测试”</strong></p>
+<h2 id="Ch-3">Ch.3</h2>
+<blockquote>
+<p>本章主要介绍 GPU 的硬件架构和管线，重点理解 <code>SIMT</code> 和 <code>Warp</code> 的概念，并结合实践理解 <code>VS &amp; PS</code></p>
+</blockquote>
+<p><strong>GPU硬件</strong></p>
+<p>关于 GPU 的硬件架构，参考 <a href="/posts/gpu/">这篇文章</a>。</p>
+<ul>
+<li>Warp：GPU并行处理任务的硬件形式，一个warp通常包含 32 个线程。</li>
+<li>SIMT：<code>Single-Instrucion Multiple-Threads</code>，多个线程执行相同的指令，高度并行化。</li>
+</ul>
+<p><strong>GPU管线</strong></p>
+<p>下图是GPU的整条渲染管线，其中绿色表示可编程部分，蓝色表示固定部分，黄色是可配置、但无法编程。<br>
+<img src="/images/rtr-gpu-pipeline.png" alt=""></p>
+<p>可以结合 renderdoc 的 pipeline 试图理解这一整个管线：<br>
+<img src="/images/rtr-renderdoc.png" alt=""></p>
+<p>对于可编程的 shader 管线，虽然最终GPU硬件执行的是机器代码，但是多家厂商退出了适合编写的高级语言，例如：</p>
+<ul>
+<li>HLSL：DirectX High-level Shading Language</li>
+<li>GLSL：OpenGL Shading Language</li>
+</ul>
+<p>通常 shader 会允许被离线编译和存储，这些被叫做中间语言：</p>
+<ul>
+<li>IL：Intermediate Language</li>
+</ul>
+<p><strong>图形API</strong></p>
+<p>每次图形API调用时，shader阶段都会包含两种类型的输入：</p>
+<ol>
+<li>uniform input：指在一次 draw-call 中不会改变的常量（如投影矩阵、texture）</li>
+<li>varying input：指在一次 draw-call 中会变化的变量（如顶点位置）</li>
+</ol>
+<p>图形API的发展也十分迅速，如下图所示：</p>
+<ul>
+<li>OpenGL 和 Vulkan 显著特点都是跨平台</li>
+<li>Metal 是苹果与 2014 年为自家产品研发的低开销的图形API</li>
+<li>OpenGL ES 是指转为移动设备研发的<br>
+<img src="/images/rtr-graphics-api.png" alt=""></li>
+</ul>
+<h3 id="Vertex-Shading">Vertex Shading</h3>
+<p>VS 通常是可编程管线中的第一个阶段，前面有说过，它的输入就是一堆 mesh 的二维坐标（附加 color、normal 等信息），一般有如下用途：</p>
+<ul>
+<li>顶点动画：草、角色</li>
+<li>地形高度：通过一张 height-map 模拟地形的高低起伏</li>
+<li>程序化变形：模拟布料、水面的运动</li>
+<li>粒子特效：创建一个粒子发射器</li>
+<li>…</li>
+</ul>
+<h3 id="Pixel-Shading">Pixel Shading</h3>
+<p>这阶段是基于像素颜色作一系列计算，其性能也与分辨率和Shader复杂度直接相关。</p>
+<p><strong>MRT</strong><br>
+早期的GPU，仅支持将PS的结果输出到一张RT上面，这样的绘制效率是很低下的。<br>
+MRT（Multiple Render Target）技术的推出，<strong>支持在一个pass绘制对个对象（GBuffer）</strong>，这催生了 Deferred Shading 的诞生，这里不展开描述。</p>
+<p><strong>ddx ddy</strong><br>
+硬件提供了像素求偏导数的接口，由于GPU并行处理像素点时，会将 2x2 个像素放到同一个Quard中，因此<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/329521044">计算偏导数</a>十分方便。<br>
+换言之，这三个像素的 <code>ddx ddy</code> 取值也是相同的。</p>
+<ul>
+<li>ddx(v) = 该像素点右边的v值 - 该像素点的v值</li>
+<li>ddy(v) = 该像素点下面的v值 - 该像素点的v值</li>
+</ul>
+<p>推荐阅读 <a target="_blank" rel="noopener" href="https://blog.csdn.net/u013746357/article/details/107975128">mipmap_level 的计算原理</a></p>
+<h3 id="Compute-Shading">Compute Shading</h3>
+<div class="admonition error"><p class="admonition-title">Compute Shaing 部分缺乏工层经验，后面来补空缺吧
+</p></div>
+<p>DX11 引入了 CS技术，它充分利用GPU并行计算的特点，使其扩展到 深度学习、神经网络、量化计算 等复杂的计算领域，而不仅仅局限于图形学。</p>
+<p>它的优势之一在于，可以访问任意GPU上的数据，具体有如下应用：</p>
+<ul>
+<li>粒子系统</li>
+<li>Culling</li>
+<li>景深等</li>
+</ul>
 
       
     </div>
