@@ -18,12 +18,12 @@
   
   
   <title>【硬件】GPU架构 | Luhao&#39;s Blog</title>
-  <meta name="description" content="GPU 与 显卡 的关系 GPU 是 显卡最核心的部件, 除了GPU, 显卡还有散热器、通讯元件等电子设备 目前的 GPU 厂家主要有两个：  NVIDIA: 英伟达, 主要是GTX, RTX系列, 俗称N卡 AMD: 主要是Radeon系列, 俗称A卡  摩尔定律 Moore’s Law 是由 Intel 的创始人摩尔提出: CPU的性能每隔 18个月 就会提升一倍（同时成本也会相应地降低一倍）">
+  <meta name="description" content="GPU 与 显卡 的关系 GPU 是 显卡最核心的部件, 除了GPU, 显卡还有散热器、通讯元件等电子设备 目前的 GPU 厂家主要有两个：  NVIDIA：英伟达, 主要是GTX, RTX系列, 俗称 N卡 AMD：主要是Radeon系列, 俗称 A卡  摩尔定律 Moore’s Law 是由 Intel 的创始人摩尔提出: CPU的性能每隔 18个月 就会提升一倍（同时成本也会相应地降低一倍）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【硬件】GPU架构">
 <meta property="og:url" content="http://luhao.wiki/posts/3Z9MX8B/index.html">
 <meta property="og:site_name" content="Luhao&#39;s Blog">
-<meta property="og:description" content="GPU 与 显卡 的关系 GPU 是 显卡最核心的部件, 除了GPU, 显卡还有散热器、通讯元件等电子设备 目前的 GPU 厂家主要有两个：  NVIDIA: 英伟达, 主要是GTX, RTX系列, 俗称N卡 AMD: 主要是Radeon系列, 俗称A卡  摩尔定律 Moore’s Law 是由 Intel 的创始人摩尔提出: CPU的性能每隔 18个月 就会提升一倍（同时成本也会相应地降低一倍）">
+<meta property="og:description" content="GPU 与 显卡 的关系 GPU 是 显卡最核心的部件, 除了GPU, 显卡还有散热器、通讯元件等电子设备 目前的 GPU 厂家主要有两个：  NVIDIA：英伟达, 主要是GTX, RTX系列, 俗称 N卡 AMD：主要是Radeon系列, 俗称 A卡  摩尔定律 Moore’s Law 是由 Intel 的创始人摩尔提出: CPU的性能每隔 18个月 就会提升一倍（同时成本也会相应地降低一倍）">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://luhao.wiki/images/cpu-gpu.png">
 <meta property="og:image" content="http://luhao.wiki/images/gpu-tesla.png">
@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://luhao.wiki/images/gpu-ifelse.png">
 <meta property="og:image" content="http://luhao.wiki/images/gpu-fermi.png">
 <meta property="article:published_time" content="2023-05-05T18:06:42.000Z">
-<meta property="article:modified_time" content="2023-06-18T13:12:53.652Z">
+<meta property="article:modified_time" content="2023-11-28T12:02:06.680Z">
 <meta property="article:author" content="Luhao">
 <meta property="article:tag" content="Graphics">
 <meta name="twitter:card" content="summary">
@@ -185,7 +185,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#GPU-%E4%B8%8E-%E6%98%BE%E5%8D%A1-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.</span> <span class="toc-text">GPU 与 显卡 的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%A9%E5%B0%94%E5%AE%9A%E5%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">摩尔定律</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU-%E5%92%8C-GPU-%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB"><span class="toc-number">3.</span> <span class="toc-text">CPU 和 GPU 的主要区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GPU-%E6%9E%B6%E6%9E%84%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2"><span class="toc-number">4.</span> <span class="toc-text">GPU 架构发展历史</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-Tesla-%E6%9E%B6%E6%9E%84"><span class="toc-number">4.1.</span> <span class="toc-text">0. Tesla 架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Fermi-%E6%9E%B6%E6%9E%84"><span class="toc-number">4.2.</span> <span class="toc-text">1. Fermi 架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Kepler-%E6%9E%B6%E6%9E%84"><span class="toc-number">4.3.</span> <span class="toc-text">2. Kepler 架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%9E%B6%E6%9E%84"><span class="toc-number">4.4.</span> <span class="toc-text">其他架构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%9E%B6%E6%9E%84"><span class="toc-number">5.</span> <span class="toc-text">移动端架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="toc-number">6.</span> <span class="toc-text">写在最后</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#GPU-%E4%B8%8E-%E6%98%BE%E5%8D%A1-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.</span> <span class="toc-text">GPU 与 显卡 的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%A9%E5%B0%94%E5%AE%9A%E5%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">摩尔定律</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU-%E5%92%8C-GPU-%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB"><span class="toc-number">3.</span> <span class="toc-text">CPU 和 GPU 的主要区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GPU-%E6%9E%B6%E6%9E%84%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2"><span class="toc-number">4.</span> <span class="toc-text">GPU 架构发展历史</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-Tesla-%E6%9E%B6%E6%9E%84"><span class="toc-number">4.1.</span> <span class="toc-text">0. Tesla 架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Fermi-%E6%9E%B6%E6%9E%84"><span class="toc-number">4.2.</span> <span class="toc-text">1. Fermi 架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Kepler-%E6%9E%B6%E6%9E%84"><span class="toc-number">4.3.</span> <span class="toc-text">2. Kepler 架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%9E%B6%E6%9E%84"><span class="toc-number">4.4.</span> <span class="toc-text">其他架构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%9E%B6%E6%9E%84"><span class="toc-number">5.</span> <span class="toc-text">移动端架构</span></a></li></ol>
     </nav>
   </div>
 </aside>
@@ -239,8 +239,8 @@
 <p>GPU 是 显卡最核心的部件, 除了GPU, 显卡还有散热器、通讯元件等电子设备</p>
 <p>目前的 GPU 厂家主要有两个：</p>
 <ul>
-<li><code>NVIDIA</code>: 英伟达, 主要是GTX, RTX系列, 俗称<code>N卡</code></li>
-<li><code>AMD</code>: 主要是Radeon系列, 俗称<code>A卡</code></li>
+<li><em><strong>NVIDIA</strong></em>：英伟达, 主要是GTX, RTX系列, 俗称 <strong>N卡</strong></li>
+<li><em><strong>AMD</strong></em>：主要是Radeon系列, 俗称 <strong>A卡</strong></li>
 </ul>
 <h2 id="摩尔定律">摩尔定律</h2>
 <p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%91%A9%E5%B0%94%E5%AE%9A%E5%BE%8B">Moore’s Law</a> 是由 Intel 的创始人摩尔提出:<br>
@@ -255,14 +255,14 @@
 <ul>
 <li><a target="_blank" rel="noopener" href="https://www.cherryservers.com/blog/gpu-vs-cpu-what-are-the-key-differences">GPU vs CPU: What Are The Key Differences?</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/biglucky/p/4223565.html">CPU 和 GPU 的设计区别</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.eet-china.com/mp/a180440.html">深入GPU硬件架构及运行机制</a></li>
+<li>Real-time Rendering 第三章</li>
 </ul>
 </li>
 <li>
 <p>一个通俗的比喻:</p>
 <ul>
-<li>CPU是几个大学教授, 单打独斗能力强</li>
-<li>GPU是成千个小学生, 擅长大规模并发计算</li>
+<li>CPU是几个大学教授（大核）, 单打独斗能力强</li>
+<li>GPU是成千个小学生（小核）, 擅长大规模并发计算</li>
 </ul>
 </li>
 </ul>
@@ -276,35 +276,35 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">Short for</td>
+<td style="text-align:center">全称</td>
 <td style="text-align:center"><em>Central Processing Unit</em></td>
 <td style="text-align:center"><em>Graphics Processing Unit</em></td>
 </tr>
 <tr>
-<td style="text-align:center">Cores</td>
+<td style="text-align:center">核心数 (eg.)</td>
 <td style="text-align:center">6大核 (i5 10600kf)</td>
 <td style="text-align:center">4864小核 (RTX 3060Ti)</td>
 </tr>
 <tr>
-<td style="text-align:center">Memory</td>
-<td style="text-align:center">Performance, Capacity</td>
-<td style="text-align:center">Bandwidth</td>
-</tr>
-<tr>
-<td style="text-align:center">Arch.</td>
+<td style="text-align:center">架构</td>
 <td style="text-align:center">SIMD</td>
 <td style="text-align:center">SIMT</td>
 </tr>
 <tr>
-<td style="text-align:center">Application</td>
-<td style="text-align:center">Operation System</td>
-<td style="text-align:center">Graphcis, AI</td>
+<td style="text-align:center">应用</td>
+<td style="text-align:center">操作系统、高并发程序</td>
+<td style="text-align:center">图形引擎、AI</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 </tbody>
 </table>
 <h2 id="GPU-架构发展历史">GPU 架构发展历史</h2>
 <h3 id="0-Tesla-架构"><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Tesla_(microarchitecture)">0. Tesla 架构</a></h3>
-<div class="admonition note"><p class="admonition-title">Tesla 虽然是 GPU最简单的架构, 但是写这文章时, 大概只理解了不到两成（很多概念太抽象了）, 希望伴随职业生涯的学习能不断加深对硬件的理解
+<div class="admonition error"><p class="admonition-title">Tesla 虽然是 GPU最简单的架构, 但是写这文章时, 大概只理解了不到两成（很多概念太抽象了）, 希望伴随职业生涯的学习能不断加深对硬件的理解
 </p></div>
 <p>Tesla 是第一个面市的 GPU 架构, 但是经典永不过时<br>
 这篇知乎写的很好, 作者把GPU比作一个外包公司: <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/403354366">【GPU】Tesla架构（一）：初识GPU架构</a></p>
@@ -353,7 +353,7 @@ SM 是真正负责干活的小部门, 内部划分如下:</p>
 </ul>
 <p><img src="/images/gpu-tpc.png" alt=""></p>
 <p><strong>接下来尝试理解GPU的高度并行 ⭐</strong></p>
-<p>当 SMC 拿到 多条二进制GPU指令后, 会以 32个线程为单位 分发给手下的 SM, 它们就称为一个 Warp, 这就是 **SIMT（Single-Instruction, MultipleThread）**架构</p>
+<p>当 SMC 拿到 多条二进制GPU指令后, 会以 32个线程为单位 分发给手下的 SM, 它们就称为一个 Warp, 这就是  <strong>SIMT（Single-Instruction, MultipleThread）</strong> 架构</p>
 <p>真正的并行单位是 Warp.</p>
 <p>理想情况下, 每个线程执行相同的指令（想象所有 pixel走的分支L逻辑一致）, 这时候几乎是 100% 并行的（取决于指令数 和 core数量）</p>
 <p>但是实际 shader 运算中, 会出现 <code>if</code> 等分支语句, 导致不同线程的执行分支也不同, 如图展示了一个 Warp 中不同线程进入不同分支情况:</p>
@@ -382,10 +382,12 @@ SM 是真正负责干活的小部门, 内部划分如下:</p>
 <p>区别于桌面端的架构, 移动端GPU受限于电池的短板, 需要避免高带宽导致的高电耗</p>
 <p>当前主流的移动端 GPU架构（如PowerVR, Adreno, Mali…）, 都是基于块的渲染 <strong>（Tile Based Rendering, TBR）</strong>; 作为对比, 桌面端的GPU架构都是 <strong>（Immediate Mode Renderers, IMR）</strong></p>
 <p>什么是一个 Tile? 假设一个屏幕分辨率是 2k（2560 x 1440）, 它将每 16x16 划分为一个 Tile, 每个Tile内有自己的缓存, 绘制时也是逐 Tile绘制</p>
-<h2 id="写在最后">写在最后</h2>
-<p>开这篇文章是为了普及一些GPU硬件的知识, 因为学习软件汇编时必然也会接触 CPU硬件架构.<br>
-但是GPU硬件很多概念根本看不懂, 很抽象, 权当科普吧…<br>
-过一段时间再回来头, 希望会好点</p>
+<hr>
+<div class="admonition error"><p class="admonition-title">写在最后
+</p><ul>
+<li>体会到了什么叫作 浅尝辄止，很多概念看不懂、很抽象、纯粹走马观花般科普。过一段时间再回头看，希望有所提高</li>
+</ul>
+</div>
 
       
     </div>
