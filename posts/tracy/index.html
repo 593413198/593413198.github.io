@@ -27,9 +27,11 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/wolfpld/tracy/master/doc/profiler.png">
 <meta property="og:image" content="http://luhao.wiki/images/tracy-start.png">
+<meta property="og:image" content="http://luhao.wiki/images/tracy-demo.png">
 <meta property="article:published_time" content="2023-11-28T07:53:41.000Z">
-<meta property="article:modified_time" content="2023-11-28T11:21:21.260Z">
+<meta property="article:modified_time" content="2023-11-28T14:11:53.598Z">
 <meta property="article:author" content="Luhao">
+<meta property="article:tag" content="OpenGL">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/wolfpld/tracy/master/doc/profiler.png">
   <!-- Canonical links -->
@@ -214,6 +216,11 @@
   </span>
 
         
+  <!-- <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/OpenGL/" rel="tag">OpenGL</a>
+  </span> -->
+
 
         
 
@@ -273,10 +280,18 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 <li><code>ZoneScopedN(name)</code></li>
 <li><code>ZoneScopedNC(name, color)</code></li>
 </ul>
+<p>可以通过 <code>ZoneText</code> 传递一些参数，例如 <code>shader uniform</code> 的名称，以观察哪一次调用开销大：</p>
+<ul>
+<li><code>ZoneText(name, size)</code></li>
+</ul>
 <p><strong>Step 3. 开始 Profile</strong></p>
 <p>运行标的程序后，注意打开对应版本的 <code>tracy.exe</code>（<a target="_blank" rel="noopener" href="https://github.com/wolfpld/tracy/releases">下载地址</a>），点击 <code>connect</code> 即可。<br>
 对于高版本的 tracy，下方（红框内）还罗列出可以 attach 的进程，非常贴心。</p>
 <p><img src="/images/tracy-start.png" alt=""></p>
+<hr>
+<p><strong>示例</strong></p>
+<p>笔者实现一个 OpenGL Demo，发现 <code>Render</code> 部分的开销比较大，于是集成Tracy后增加了一些插装，最后定位到是一次 <code>glUniformMatrix4fv</code> 传递时的开销，如下图：</p>
+<p><img src="/images/tracy-demo.png" alt=""></p>
 <hr>
 <h3 id="其他">其他</h3>
 <ul>
