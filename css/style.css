@@ -487,7 +487,8 @@ h6,
 }
 
 p {
-  margin: 0 0 8.5px;
+  /* margin: 0 0 8.5px; */
+  margin: 0 0 .5px;
 }
 
 .lead {
@@ -3325,6 +3326,8 @@ svg {
   max-width: 100%;
   /* height: auto; */
   max-height: 100%;
+  margin-top: 5px;
+  margin-bottom: 8px;
 }
 
 /*------------------ clear ------------------------------*/
