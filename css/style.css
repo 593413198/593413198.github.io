@@ -462,8 +462,8 @@ h1,
 
 h2,
 .h2 {
-  font-size: 26px;
-  color:#750000;
+  font-size: 25px;
+  color:#600000;
 }
 
 h3,
@@ -658,7 +658,9 @@ ul ul,
 ul ol,
 ol ul,
 ol ol {
-  margin-bottom: 10.5px;
+  /* margin-bottom: 10.5px; */
+  /* 底部空隙去掉 */
+  margin-bottom: 0.0px;
 }
 
 .list-unstyled {
@@ -3207,7 +3209,7 @@ button.close {
  */
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 12px;
   height: 4px;
   background: transparent;
 }
@@ -3326,8 +3328,8 @@ svg {
   max-width: 100%;
   /* height: auto; */
   max-height: 100%;
-  margin-top: 5px;
-  margin-bottom: 8px;
+  margin-top: 8px;
+  margin-bottom: 10px;
 }
 
 /*------------------ clear ------------------------------*/
@@ -6538,14 +6540,14 @@ body.no-sidebar .sidebar {
 .marked-body h3 {
   padding-bottom: 0.3em;
   font-size: 1.25em;
-  /* border-bottom: 1px solid #f2f2f2; */
+  border-bottom: 1px solid #f2f2f2;
   /* border-top: 2.5px solid #f2f2f2; */
 }
 
 .marked-body h4 {
   padding-bottom: 0.3em;
-  font-size: 1.3em;
-  border-bottom: 1px solid #f2f2f2;
+  font-size: 1.2em;
+  /* border-bottom: 1px solid #f2f2f2; */
 }
 
 .marked-body a {

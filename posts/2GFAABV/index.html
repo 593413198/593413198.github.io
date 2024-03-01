@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>【Graphics-2022】渲染管线 | Luhao&#39;s Blog</title>
+  <meta name="description" content="IMR、TBR、Pipeline…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Graphics-2022】渲染管线">
+<meta property="og:url" content="http://luhao.wiki/posts/2GFAABV/index.html">
+<meta property="og:site_name" content="Luhao&#39;s Blog">
+<meta property="og:description" content="IMR、TBR、Pipeline…">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://luhao.wiki/images/2022-rendering-pipeline_35740.png">
+<meta property="og:image" content="http://luhao.wiki/images/2022-rendering-pipeline_23750.png">
+<meta property="og:image" content="http://luhao.wiki/images/2022-rendering-pipeline_25797.png">
+<meta property="og:image" content="http://luhao.wiki/images/2022-rendering-pipeline_27939.png">
+<meta property="og:image" content="http://luhao.wiki/images/2022-rendering-pipeline_35771.png">
+<meta property="og:image" content="http://luhao.wiki/images/2022-rendering-pipeline_53347.png">
+<meta property="og:image" content="http://luhao.wiki/images/2022-rendering-pipeline_08888.png">
+<meta property="og:image" content="http://luhao.wiki/images/2022-rendering-pipeline_34173.png">
+<meta property="og:image" content="http://luhao.wiki/images/2022-rendering-pipeline_16452.png">
+<meta property="og:image" content="http://luhao.wiki/images/2022-rendering-pipeline_37944.png">
+<meta property="og:image" content="http://luhao.wiki/images/2022-rendering-pipeline_13639.png">
+<meta property="og:image" content="http://luhao.wiki/images/2022-rendering-pipeline_45218.png">
+<meta property="og:image" content="http://luhao.wiki/images/2022-rendering-pipeline_46152.png">
+<meta property="og:image" content="http://luhao.wiki/images/2022-rendering-pipeline_10671.png">
+<meta property="og:image" content="http://luhao.wiki/images/2022-rendering-pipeline_55447.png">
+<meta property="og:image" content="http://luhao.wiki/images/2022-rendering-pipeline_41030.png">
+<meta property="og:image" content="http://luhao.wiki/images/2022-rendering-pipeline_06607.png">
+<meta property="og:image" content="http://luhao.wiki/images/2022-rendering-pipeline_37432.png">
+<meta property="article:published_time" content="2023-12-04T17:31:13.000Z">
+<meta property="article:modified_time" content="2024-03-01T05:33:17.404Z">
+<meta property="article:author" content="Luhao">
+<meta property="article:tag" content="Graphics">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://luhao.wiki/images/2022-rendering-pipeline_35740.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://luhao.wiki/posts/2GFAABV/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Luhao&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="images\avatar.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://www.luhao.wiki" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">luhao</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">简介</span>
+          </a>
+        </li>
+        
+        
+        </li>
+      </ul>
+      
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">
+        <i style="color:#9400D3" class="icon icon-stackexchange"></i>
+        公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p> 文章数量：<b><font color=#1A9BFF>125</font></b> </p> 最后修改：<b><font color=#757575>2024.3.1</font></b><br> <p>读书要杂, 记录要勤, 业务要精</font></p> <p>“永不离开”的态度</p> <p>“随时离开”的能力</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-folder-open"></i>
+      分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/">3D Engine</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/">Graphics</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/">Node.js</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/RealtimeRendering/">RealtimeRendering</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/">VSCode</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/">量化交易</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">10</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-archives-fill"></i>
+      归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">十月 2023</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  <!-- 
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E6%9E%B6%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">硬件架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IMR"><span class="toc-number">2.</span> <span class="toc-text">IMR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TBR"><span class="toc-number">3.</span> <span class="toc-text">TBR</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Index-Driven-Vertex-Shading-Mali"><span class="toc-number">3.1.</span> <span class="toc-text">Index-Driven Vertex Shading (Mali)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Binning-Pass-Adreno"><span class="toc-number">3.2.</span> <span class="toc-text">Binning Pass (Adreno)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hidden-Sureface-Removal-PowerVR"><span class="toc-number">3.3.</span> <span class="toc-text">Hidden Sureface Removal (PowerVR)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RenderPass"><span class="toc-number">4.</span> <span class="toc-text">RenderPass</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Frame-Graph"><span class="toc-number">5.</span> <span class="toc-text">Frame Graph</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Compute-Pipeline"><span class="toc-number">6.</span> <span class="toc-text">Compute Pipeline</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+ -->
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Graphics/Graphics2022-pipeline" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【Graphics-2022】渲染管线
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/posts/2GFAABV/" class="article-date">
+	  <time datetime="2023-12-04T17:31:13.000Z" itemprop="datePublished">2023-12-05</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Graphics/">Graphics</a>
+  </span>
+
+        
+  <!-- <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Graphics/" rel="tag">Graphics</a>
+  </span> -->
+
+
+        
+
+        <!-- <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/2GFAABV/#comments" class="article-comment-link">评论</a></span> -->
+        
+	
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>IMR、TBR、Pipeline…<span id="more"></span></p>
+<div class="admonition note"><p class="admonition-title">推荐阅读：
+</p><ul>
+<li><a target="_blank" rel="noopener" href="https://v.netease.com/evideo/video_course/show?course_id=18829">2022图形引擎-内部资料</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/timlly/p/15546797.html#1246-hidden-surface-removal">剖析虚幻渲染体系（12）- 移动端专题Part 2（GPU架构和机制） - 0向往0 - 博客园</a></li>
+<li>Todo: 与 <a href="https://luhao.wiki/posts/gpu/">【硬件】GPU架构 | Luhao's Blog</a> 这篇文章合并</li>
+</ul>
+</div>
+
+<div class="markmap-container" style="height:250px">
+  <svg data="{&quot;t&quot;:&quot;root&quot;,&quot;d&quot;:0,&quot;v&quot;:&quot;&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[0,1]},&quot;v&quot;:&quot;硬件架构&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[1,2]},&quot;v&quot;:&quot;<code>Discrete</code>&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[2,3]},&quot;v&quot;:&quot;<code>Coupled</code>&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[3,4]},&quot;v&quot;:&quot;IMR&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[4,5]},&quot;v&quot;:&quot;Warp&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[5,6]},&quot;v&quot;:&quot;TBR&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[6,7]},&quot;v&quot;:&quot;Mali: Index-Driven Vertex Shading&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[7,8]},&quot;v&quot;:&quot;Adreno: Binning Pass&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[8,9]},&quot;v&quot;:&quot;PowerVR: Hidden Sureface Removal&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[9,10]},&quot;v&quot;:&quot;Pipeline&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[10,11]},&quot;v&quot;:&quot;Render Pass&quot;}]},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[11,12]},&quot;v&quot;:&quot;Frame Graph&quot;},{&quot;t&quot;:&quot;heading&quot;,&quot;d&quot;:1,&quot;p&quot;:{&quot;lines&quot;:[12,13]},&quot;v&quot;:&quot;Compute Pipeline&quot;}],&quot;p&quot;:{}}"></svg>
+</div>
+
+<h2 id="硬件架构">硬件架构</h2>
+<p>如果仅从 CPU、GPU、Memory 三者的角度考虑硬件架构，那么可以分为如下两类：</p>
+<ul>
+<li>（左）<strong>分离式架构</strong>，CPU和GPU有各自独立的内存和 Cache，通过 <code>PCI-e</code> 总线通讯。其特点是：高带宽、高延迟，性能瓶颈是数据传输。主要应用于 PC 和 手机。</li>
+<li>（右）<strong>耦合式架构</strong>，CPU和GPU共享内存和 Cache。主要应用于 PS4 等游戏主机。</li>
+</ul>
+<p><img src="../../images/2022-rendering-pipeline_35740.png" alt=""></p>
+<h2 id="IMR">IMR</h2>
+<p><code>Immediate Mode Rendering</code>，通常指 PC 端的GPU渲染架构，其特点是：所有渲染管线中的读写操作，都直接由 GPU(紫色) 和 显存(深灰色) 之间完成，如图所示：<br>
+<img src="../../images/2022-rendering-pipeline_23750.png" alt=""></p>
+<p>其中 ↑ 表示读取显存，如 Vertex 阶段需要读取 几何（顶点）信息，而 ↓ 表示写回显存，如 Visibility 测试阶段需要写 Depth-Buffer。这些会带来巨大的带宽开销，IMR结构通过引入 L1、L2 Cache 之类的结构来尝试优化这部分带宽。</p>
+<div class="admonition warning"><p class="admonition-title">移动端
+</p><ul>
+<li>由于 高带宽 导致的 高功耗，IMR架构对 移动端 的 <strong>性能</strong> 是致命打击！</li>
+<li>因此 移动端 大都选择 性能友好 的TBR架构</li>
+</ul>
+</div>
+<hr>
+<p>如何理解 GPU 的 <strong>高度并行化</strong>?</p>
+<ul>
+<li>参考阅读: <a href="/posts/gpu/#GPU-%E6%9E%B6%E6%9E%84%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2">##GPU 架构发展历史</a></li>
+<li>假设 GPU 每个 core 一次只处理一个 vertex，（NVIDIA架构）每个 SM 中包含 32 个cores，那么就可以同时处理 32 个 vertex，这些统一称为一个 <code>Warp</code></li>
+<li>因此 <strong>Warp</strong> 的数量直接决定 GPU 的性能<br>
+<img src="../../images/2022-rendering-pipeline_25797.png" alt=""></li>
+</ul>
+<hr>
+<ul>
+<li><strong>问题</strong>：<code>Warp</code> 之间是可以并行执行的吗？为什么图示是并发执行呢？<br>
+<img src="../../images/2022-rendering-pipeline_27939.png" alt=""></li>
+</ul>
+<hr>
+<ul>
+<li>光栅化阶段，最小单位是一个 <code>Quard</code>（即包含4个像素）。以下图为例，其中绿色表示通过光栅化，黄色表示因为 <code>Quard</code> 而被保留的像素。</li>
+<li>之所以使用 <code>Quard</code> 的形式，是因为便于计算 <code>ddx, ddy</code>。这个在计算 mipmap 的时候有奇效。<br>
+<img src="../../images/2022-rendering-pipeline_35771.png" alt=""></li>
+</ul>
+<h2 id="TBR">TBR</h2>
+<p><code>Tiled Based Rendering</code>，一般用于移动端GPU（例如 Mali），通过引入 <code>Tiled Memory</code> 降低带宽的读写功耗。</p>
+<ul>
+<li>优化点：先写 <code>Tiled Meomry</code>，再实现 <code>Blend</code> …，最后再写入 <code>DDR</code></li>
+<li>参考阅读：<a target="_blank" rel="noopener" href="https://litmin.github.io/2019/08/31/%E8%AF%91-The-Mali-GPU-An-Abstract-Machine-Part-2-Tile-based-Rendering/">[译]The Mali GPU: An Abstract Machine, Part 2 - Tile-based Rendering | Litmin的笔记</a></li>
+<li>参考阅读：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/timlly/p/15546797.html">剖析虚幻渲染体系（12）- 移动端专题Part 2（GPU架构和机制） - 0向往0 - 博客园</a></li>
+</ul>
+<p><img src="../../images/2022-rendering-pipeline_53347.png" alt=""></p>
+<hr>
+<p>很多及计算机技术，都是通过引入一个中间件，<code>TBR</code>架构就是典型的例子。</p>
+<ul>
+<li>面对一个巨大的汉堡，一口吞不下去（IMR带宽高）</li>
+<li>尝试将汉堡咬成多个小口，慢慢吃下去（TBR低带宽）</li>
+</ul>
+<hr>
+<h3 id="Index-Driven-Vertex-Shading-Mali">Index-Driven Vertex Shading (Mali)</h3>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/timlly/p/15546797.html#12411-index-driven-vertex-shading"><strong>IDVS</strong></a> 是 Mali GPU 的优化技术，考虑到传统的 vertex shading，即使经过 50% backface culling（也可能是 frontface culling），顶点的写入数量也剩 50%：</p>
+<p><img src="../../images/2022-rendering-pipeline_08888.png" alt=""></p>
+<p><strong>优化关键点在于</strong>，既然有 50% 顶点是注定要被 Culling 掉的，那么为什么要写入内存呢?<br>
+因此 Mali GPU 将 Vertex Shading 细分为两个阶段，分别是：</p>
+<ul>
+<li><code>Position Shading</code>：位置着色，发生在 Culling 之前，只转换顶点位置，因此输入只有 pos</li>
+<li><code>Varying Shading</code>：可变着色，发生在 Culling 之后，只处理通过 Culling 的顶点的其他信息、操作</li>
+</ul>
+<p>假设 顶点 Vertex 的分布是，按照 pos、npos 的比例为 <code>1:1</code>：（通常情况更为复杂，eg. position、uv、normal …）</p>
+<ul>
+<li>缺陷是：需要CPU将这些信息分开存储<br>
+<img src="../../images/2022-rendering-pipeline_34173.png" alt=""></li>
+</ul>
+<p>那么 IDVS 技术起码节省 <strong>50% 比例的 npos</strong>：<br>
+<img src="../../images/2022-rendering-pipeline_16452.png" alt=""></p>
+<p>进一步分析，通常 <code>Varing shading</code> 开销一定是大于 <code>Position Shading</code>，所以 拆分两阶段，能够让 <code>Varing shading</code> 充分享受到 Culling 的收益。</p>
+<hr>
+<h3 id="Binning-Pass-Adreno">Binning Pass (Adreno)</h3>
+<p>参照前文，既然某些 Vertex 压根不会参与最终的渲染，那么有没有可能，这些都不用写到内存呢？（节省掉 0.5 Vertex Write）。<br>
+Adreno 引入一个 Binning Pass 的技术，在 Vertex Shading 阶段（同样先是只处理 pos），将所有的 visibilty 写到内存中，避免了顶点信息的写入。</p>
+<p><img src="../../images/2022-rendering-pipeline_37944.png" alt=""></p>
+<hr>
+<p>Adreno 基于 Binning Pass 的渲染架构如下图，继续悟一悟：</p>
+<p><img src="../../images/2022-rendering-pipeline_13639.png" alt=""></p>
+<hr>
+<h3 id="Hidden-Sureface-Removal-PowerVR">Hidden Sureface Removal (PowerVR)</h3>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/timlly/p/15546797.html#1246-hidden-surface-removal"><strong>HSR</strong></a> 可以直接理解为 隐藏表面的剔除，传统的 OverDraw 是通过 Early-Z 避免，而 HSR 可以无视绘制顺序避免 OverDraw。</p>
+<ul>
+<li>如下由远及近绘制时，不会对遮挡的像素进行任何剔除，但是 PowerVR 做到了！</li>
+</ul>
+<p><img src="../../images/2022-rendering-pipeline_45218.png" alt=""></p>
+<hr>
+<p>HSR 实际做法是，在光栅化之后，<strong>写入一个 Depth-Buffer(降分辨率) 到 Tiled Memory</strong>，在后续的深度测试中也会依据它进行一些 Culling。</p>
+<p><img src="../../images/2022-rendering-pipeline_46152.png" alt=""></p>
+<h2 id="RenderPass">RenderPass</h2>
+<p>对于 RenderPass 的定义：对于渲染管线的一次完整执行（连续地往 FrameBuffer 绘制对象的一组行为），如下：</p>
+<p><img src="../../images/2022-rendering-pipeline_10671.png" alt=""></p>
+<hr>
+<p>RenderPass 的组织形式对于性能影响非常大，如下绘制一个Scene（电视机中是另一个Scene的画面）：<br>
+<img src="../../images/2022-rendering-pipeline_55447.png" alt=""></p>
+<p>下图展示了两种绘制方式：</p>
+<ul>
+<li>左侧：3 Pass，先绘制音响，后从 FrameBuffer 切到另一个 RenderTarget，来绘制另一个Scene，接着再切回 FrameBuffer 绘制整个Scene</li>
+<li>右侧：2 Pass，先绘制另一个Scene到某个RenderTarget上，然后切回 FrameBuffer，绘制音响和电视，并将之前的 RenderTarget 当做 Texture Load 过来即可</li>
+</ul>
+<p><img src="../../images/2022-rendering-pipeline_41030.png" alt=""></p>
+<p>分析以上两者的绘制开销：</p>
+<ul>
+<li>左侧：3 x store，2 x load</li>
+<li>右侧：2 x store，1 x load</li>
+</ul>
+<p>由于 <code>Load/Store</code> 操作依赖带宽的开销非常高，因此 2 Pass 的方案显然性能更加友好。</p>
+<h2 id="Frame-Graph">Frame Graph</h2>
+<p>为了优化 Render Pass 的绘制顺序，更好的配置 <code>Load/Store</code> 的关系，可以引入 <code>Frame Graph</code> 一种有向无环图：</p>
+<ul>
+<li>有利于渲染并行、排序</li>
+<li>有利于性能优化，降低 Load/Store 开销</li>
+</ul>
+<p><img src="../../images/2022-rendering-pipeline_06607.png" alt=""></p>
+<h2 id="Compute-Pipeline">Compute Pipeline</h2>
+<p>Compute Pipeline 的意义：</p>
+<ul>
+<li>在多线程组（thread group）之间共享内存。eg. 在一个 <code>Quad</code> 内计算 <code>sum, agg ...</code></li>
+<li>读写 Buffers（例如 FrameBuffer、顶点数组 …）</li>
+</ul>
+<p>如下是一个 DX12 的渲染管线示例：<br>
+<img src="../../images/2022-rendering-pipeline_37432.png" alt=""><br>
+<br><br>
+<br><br>
+<br><br>
+<br></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <!-- <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://luhao.wiki/posts/2GFAABV/" title="【Graphics-2022】渲染管线" target="_blank" rel="external">http://luhao.wiki/posts/2GFAABV/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote> -->
+
+
+<!-- <div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://www.luhao.wiki" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://www.luhao.wiki" target="_blank"><span class="text-dark">luhao</span><small class="ml-1x"></small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div> -->
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/posts/18QJ9Y1/" title="【Graphics-2022】图形API"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/posts/2023-12/" title="日志：2023年12月"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+  
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	<!-- Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>. -->
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+
+<div id="go-top"></div>
+<style type="text/css">
+#go-top {
+ width:40px;height:36px;
+ background-color:#DDA0DD;
+ position:relative;
+ border-radius:2px;
+ position:fixed;right:10px;bottom:60px;
+ cursor:pointer;display:none;
+}
+#go-top:after {
+ content:" ";
+ position:absolute;left:14px;top:14px;
+ border-top:2px solid #fff;border-right:2px solid #fff;
+ width:12px;height:12px;
+ transform:rotate(-45deg);
+}
+#go-top:hover {
+ background-color:#8A2BE2;
+}
+</style>
+<script>
+$(function () {
+  var top=$("#go-top");
+  $(window).scroll(function () {
+    ($(window).scrollTop() > 300) ? top.show(300) : top.hide(200);
+    $("#go-top").click(function () {
+      $('body,html').animate({scrollTop:0});
+      return false();
+    })
+  });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/prettify.js"></script>
+<script type="text/javascript">
+    $(window).load(function(){
+        $('pre').addClass('prettyprint').attr('style', 'overflow:auto;');
+        $('pre').addClass('prettyprint linenums');
+        prettyPrint();
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script src="/js/markmap.js"></script></body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>【AlphaBet】cores/datasource | Luhao&#39;s Blog</title>
+  <meta name="description" content="AlphaBet 数据模块">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【AlphaBet】cores&#x2F;datasource">
+<meta property="og:url" content="http://luhao.wiki/posts/cores-datasource/index.html">
+<meta property="og:site_name" content="Luhao&#39;s Blog">
+<meta property="og:description" content="AlphaBet 数据模块">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-09-28T19:07:30.000Z">
+<meta property="article:modified_time" content="2024-03-01T05:33:17.408Z">
+<meta property="article:author" content="Luhao">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://luhao.wiki/posts/cores-datasource/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Luhao&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="images\avatar.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://www.luhao.wiki" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">luhao</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">简介</span>
+          </a>
+        </li>
+        
+        
+        </li>
+      </ul>
+      
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">
+        <i style="color:#9400D3" class="icon icon-stackexchange"></i>
+        公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p> 文章数量：<b><font color=#1A9BFF>125</font></b> </p> 最后修改：<b><font color=#757575>2024.3.1</font></b><br> <p>读书要杂, 记录要勤, 业务要精</font></p> <p>“永不离开”的态度</p> <p>“随时离开”的能力</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-folder-open"></i>
+      分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3D-Engine/">3D Engine</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Graphics/">Graphics</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/">Node.js</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/RealtimeRendering/">RealtimeRendering</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/VSCode/">VSCode</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E5%BF%97/">个人日志</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B1%87%E7%BC%96/">汇编</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/">量化交易</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">10</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">
+      <i style="color:#9400D3" class="icon icon-archives-fill"></i>
+      归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">十月 2023</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  <!-- 
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      
+    </nav>
+  </div>
+</aside>
+ -->
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-量化交易/cores-datasource" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【AlphaBet】cores/datasource
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/posts/cores-datasource/" class="article-date">
+	  <time datetime="2023-09-28T19:07:30.000Z" itemprop="datePublished">2023-09-29</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/">量化交易</a>
+  </span>
+
+        
+  <!-- <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Python/" rel="tag">Python</a>
+  </span> -->
+
+
+        
+
+        <!-- <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/cores-datasource/#comments" class="article-comment-link">评论</a></span> -->
+        
+	
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="0b1b8f656acec1ff98a93abbfc04f797fa7ebf713f291bb92451c4ace903fa56">b3dc07a81f6459d120ce338ccca5504625d42614b93020ffae3fe33410b4b3b7b132d51143295cdac39b893eaf193f19c019943d7e59177912cd230786c73130f76d9215c2bfeb61246a440ea10f1093f8813644e0539c6bf43af0a466ef4a3869f03545f2371c4406e374164f0141df491302831c878c9bcf684755d710c17cb4b0117718299701c3e92d7e680e2d2efa6064966556690e77b81a309d85d8062be1c5b16f52b901b914a1111d41228d16b637e33b3fb8dfd796dd947c22ca30563139d3e404d882931db783f4126db99a7310744b338a985b524a9dac8083a2a5a5aa404a7c2aba3842b8f7170f7f93a7593facb8e80f8a87e073ace10df1f6817abad52038b81e62d6a1a3b5bc4d762953c1267b1f408b00733262f7146a94e3cc80d2df634050dee46a6355ee9af83995a7b5f4b80a5627ca71066f60f41aae74b02944fe44fae3e3890718da71a40dac85b3a4877d7fcc4da2b4de3a90168081f652bad4aa16c8811955fe8cc5f31d48e9e6b338f3a16d72afc12c1b30979360689fc8ffa09031579ecc5c27ead8281c37a80b03115545b47cd91d5c57bc6503fcf138d0842fb48ab0e4172b9d4698818bfb1ceb274eac3a0d6b9c3588d345b8728b191f6c2a76bc31b7cfd2696bae0070bdb02e358907df38197b78dcfe73ee8453a3b0e5fe968017f26b66fc424a40812601fc222a55e5611d4a8588216b604291816ee56365c21979ea5309e05fbe4406a199a103f743cac2b4f5490ed210d312f7892b3cd2200a2d21dfdb5da61de40922326ab8ba2ad850c74083ed76534b200289b9d29bce4d5386cdf542920306aebdb9c3f8c6298c1ae30e68a9c24dd7117c5df3fd9c7deea388325380c97ce330b91d3ebb1fb0b033257940b7290eb571146644e8a93ac55e78aff64e321aef22ec9b15358bec56c2b3fd8da25dcf16af0bce5d57d453df12ea5406d0a74b0eedaeb1a9c7e47305f5b02c5446a0c9e4274cfe77954f49a64ba12cf0bc45a1a2dbc0afbeec373af4d6afa3495d4a6b0ecae0de608b00b884fb1f557d13f85725e01671ea88d5ae21a0b9330dacc81cfae76a95a04b0f2f1b2571d53274d9bd3ced52a666e7cb23ad553ee8208fdb807b4bca86092ed2c75bf74b1aa541e634cfdaf7324570274d5a956d43d0c9c8acceb5fb4ae741343a1541baec4798a1b90e46785bfb6776edf372f608809bb214bb938602dcad522bc85947299cfccbb3b82ae0bbe06a228ec5f5a51745a8d47a7b49213278d2a1a69f87deec6e6333cdc71635161ad51d49a3da3b09b8cb0192c4b44ced1a57ec859f6c767cf78e72532397dfa8711c1f4183761fd657018ed7ced1c41bf6a38aa2e17b945ec39a9d6c89bb4ee46ce084c5b3330350c1bd3181a8e43fdfa5c469f32b52d500899ce836250a75f55b36164f858641f417acb902d14ac00d4d578249fcca2cf13f02610a0ccd46ced8d1cc6b877443681997f635223b29c19f432eec63583a9cc76947bbb9aede27e3627873d2b3d8610ce976af5f09a85868ca27eadfd0b221d308a5eb00f98807aa234033dfeae4cb79d123d75a928c28d987d08d220b6ed82f922dee7f6ed63a927892e7d05c9cde9eda1910da379fa307677b2db814089e95fcee0ffa8fc77f67c28e89f4ed744b36c0074dcb5aa5970394a2edde2b6b372e5428552027fd5e152f7eea267dbfbc5fabdf6fd30a482cf5405a855497613698139b650e96e3697703aaccabc94e9238ac7df7aede7ceae407823a6caf5b164c88e88229e5976781c65d137c5292b3f212cd62548e6d26e38d0bbbe1ab74922bdae5cbf75d438082e7c9728d810d48a1b33cc1caec7f360c988efe754987db66faf5fd146d5765c046498601d43150f3757bd9c7d9b181f65e9c8c89a3a3c9e56788a8602a30f688e5c8ccb610f82d8433b46b8f0f503e92b6911a4d6633471246ac12e1e5f62f11f01c986fb06b5addbc2de2ce804ae602539298e728b3f0e32374a24f62117947617e2cfa584c4bca77296877f07271b4939fcba9d133e20b241aad65c20bf40012e53e045794079658b7f7a220d47d109cb8b96949cc37b3ed39be79c9cb1392049b476c81b62080e3de8759f1bf32b32ee4e9ee66804d3e4aeb7553126894666cde4fd36d5f2ef3bad7a9e634d680eb8ff3d3042813fbc24c5c4b945a115c949a473a24bfbaec6ff4cbf93a93f5bf8cc293a2dceb77e9f3628928510109302f70147ea35c95213168f585545d129ccdb24e6716774cfb7eb12a259c0df7814a4a60fbc879d91c15a3270a11c72a5a96e1672a3e910525e270d2c0b754261d7098c285ddf9632614465392df09cf6f2a51de2971f6c69fd925e139876990cb1bcf76af3cfb7e21390d3b7016115f853ce4e841a31fb157c0d117be05c030ad3112efb7942eb8d3dbe53e43d7184449b7ccd32d8436d758f449ff4a043d6532db51be35aaa720278150f8e6eb37932a71ed5139e001a99c48facbf8611cd32567bd0e753900ff548157b6ce628ba80d2c8ade57a43c3ea1bcd95aebee89bf3f707aa6664778cf378e97f171404f3ee2e545cc9bf5d7c232bd72830d02c078f09170e8b574a9b5a42cab62d77e5232b4b999990bb37577904b3cf30e0c679148384c355ea7fb3ce2d675f8de4d94caf6823840f508367ae512364309d5dffb4898c5b3acf9df38621fbe5138c62ce20e1c633c9f4ae8bc31ec8d1fe3960bb88f3e22b9d0eba64144c14abde3e14d2002abd7ec57ca4be265d935e3ae86333db06108373e7190f261c4f2ad274a39f8149302e5075d6a3075ba6f7caee39e60187a3c264520801622fddc943619b4e5c4f498208b58b00028dcaf273a431f46a4bfbeca5634567593b711b9f97d99e86c9c6830c9b23d00b7ba8994c780ebd5bf6fbfcc8d9896f86fe27b7c5a6a229bac38dd0c2143c8c7bb0f36a9f1d84f08577692a18a63a89c0ac402fbc820fbc5f2ca4f77adc3b37d5967ead5548042170e890818b097ea0a4c69894fa848ee39ae14ed4f25af1260c4639f7f6fcf1043476872034a194616834c15f92abb40240298b77d34744b032b51a3b6f9aa52bde8064954929e2866f2ddb45daf630b7e7bd664b9b68cd9b860753fa59d2ca39a8d881f293b8d66cf49e683716a976cee7cf7f2a2d3fa744d024980e15f97ee49a5747b530c4f4278563e0bec4e6304f9b44dc894f1968f59ff5604d76b33c9ff92d225554572f31459f5d87de3ca513eebca5df10843581438779d165326cb5d35828017a6f52c3e377a484348a67e05db4fab09e77f6a3feef9656696e69a77a6ecacbdae0c7195a2642c21080fa630f6e583fb6c11583aba3447986b0d6df732d96454955b759f154245c0e5e1367cfb9d8a40081f153af35403a042f64ae92c75055c9e1f03660c6fb602907bd2eae4eee7cf4c39970d6671016ec3b630cbb48106f4eaeb756b0d2363ec2adfd62ae770df9b89bf2d0ede1ae709cc8575e9fac8c0cd910006b240843190fcf320163afb1421a16e9c45ac152f9710427344d399639ced68ef07bae2ed4532489e64cc44ee12c18a034a29a6ab44588297e462533cda884585696884aeb5d5bc96b4c268d84af086b462dda95a296b2314dcd3d2b8d5a0dbf6835cc9890b23a3ea8d10d9cc426a5988b60c01a78761c618e67010b6804107b0f19286d974fb2ef58a43f7afcd8d04c018bc8e85696dbb9471b33f8cf0759ae8ee3584f31e317f62d56c94759ce59d0bfd7a85eb2e2970030b682b1a0cc66aa8a5939ff4ec137cb3f5b4b39dbf861bdf1e47df54dcb75b9d2c8e351baf67505f4c5faa964e6dffd043bb756c1df8fada50df8aaa4aebf68a59d96830840bc6f21baa66c77ba968a8d808f62d3ff99684371737a11fd15189a59960682831f4b542f0e8e2e9db8ddbeb6bf8209bb1aee6fac64a7f86695a394b750d0fa9cdf30fd6eca3fe769e5dfcaac87e3db0ce32dfa790becf81afe76974b440265c8e0d4a5f74ac3fba72bd63184ab603fb0f83a17bf7e3ec04fb2e63dd72ae99865418a42a0d8ab8f89dd286a58d3388eb89cd501bfa28504fbf2a372883d1da58c20f001964d472c9fb278adf2e50910d455d0c513900afb020780b044f930ba9903c79ddb8fd0b8273faa9a2a577dd020410a56f951844b5b76c6e9dd7e8e0f80b7978fe8f98f94936ea06ebd420de5a02a402afa6ace3de20bedecefee37398980e251984eaf0f6779aeddb7fc88ac76b9f3c67832ad6a56f0420d01aa75883ceb5dac50d64d0c158500ba22d12e8075665da3e407c19661a8818a7ad7a0191cd6d316bf292e09bd1932a8a13299a5bf07fc683e33dd2c5bf9eaf8dc8dc2383e719180758e38c7a3e1e0ea3dfbd047026d6993060cf03eebb117a814fd115c98f6806dfc1a1a7cf322f1f53125723ab68cd06305de0b0e06b2f538a57c2cbb18ce5945ee5cf15fb357bf97317d634e94f18f01267e147</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+      
+    </div>
+    <div class="article-footer">
+      <!-- <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://luhao.wiki/posts/cores-datasource/" title="【AlphaBet】cores/datasource" target="_blank" rel="external">http://luhao.wiki/posts/cores-datasource/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote> -->
+
+
+<!-- <div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://www.luhao.wiki" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://www.luhao.wiki" target="_blank"><span class="text-dark">luhao</span><small class="ml-1x"></small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div> -->
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/posts/2023-10/" title="日志：2023年10月"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/posts/paofu/" title="泡芙成长日记"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+  
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	<!-- Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>. -->
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+
+<div id="go-top"></div>
+<style type="text/css">
+#go-top {
+ width:40px;height:36px;
+ background-color:#DDA0DD;
+ position:relative;
+ border-radius:2px;
+ position:fixed;right:10px;bottom:60px;
+ cursor:pointer;display:none;
+}
+#go-top:after {
+ content:" ";
+ position:absolute;left:14px;top:14px;
+ border-top:2px solid #fff;border-right:2px solid #fff;
+ width:12px;height:12px;
+ transform:rotate(-45deg);
+}
+#go-top:hover {
+ background-color:#8A2BE2;
+}
+</style>
+<script>
+$(function () {
+  var top=$("#go-top");
+  $(window).scroll(function () {
+    ($(window).scrollTop() > 300) ? top.show(300) : top.hide(200);
+    $("#go-top").click(function () {
+      $('body,html').animate({scrollTop:0});
+      return false();
+    })
+  });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/prettify.js"></script>
+<script type="text/javascript">
+    $(window).load(function(){
+        $('pre').addClass('prettyprint').attr('style', 'overflow:auto;');
+        $('pre').addClass('prettyprint linenums');
+        prettyPrint();
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
